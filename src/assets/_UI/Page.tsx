@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { ReactNode } from "react";
+import Footer from "./Footer";
 
 export default function Page({
   children,
@@ -13,7 +14,10 @@ export default function Page({
       <Head>
         <title>JobParadise - {pageName}</title>
       </Head>
-      <main className="max-w-[100rem] mx-auto py-5">{children}</main>
+      <main className="max-w-[100rem] mx-auto py-5 md:min-h-screen">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }
