@@ -11,7 +11,7 @@ export default function ButtonBlock({
   return (
     <Button
       className={twMerge(
-        "bg-primary text-white font-semibold leading-none rounded-lg py-3 px-5",
+        "bg-primary text-white font-semibold leading-none rounded-lg text-[13px] py-3 px-5",
         className
       )}
     >
