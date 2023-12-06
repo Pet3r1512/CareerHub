@@ -1,3 +1,5 @@
+import SearchBar from "@/assets/SearchBar";
+
 export default function Title() {
   return (
     <div className="md:w-[38%] flex flex-col gap-y-16">
@@ -8,6 +10,7 @@ export default function Title() {
         Great platform for job seekers that passionate about startups. Find your
         dream job easier in this paradise
       </p>
+      <SearchBar />
     </div>
   );
 }
