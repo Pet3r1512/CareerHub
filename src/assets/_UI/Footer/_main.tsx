@@ -37,7 +37,10 @@ function AboutSection() {
       <ul className="flex flex-col gap-2">
         {sections.map((section, index) => {
           return (
-            <li className="text-gray" key={index}>
+            <li
+              className="text-gray hover:text-white transition-all duration-75 ease-linear"
+              key={index}
+            >
               <a href="#">{section}</a>
             </li>
           );
@@ -55,7 +58,10 @@ function ResourceSection() {
       <ul className="flex flex-col gap-2">
         {sections.map((section, index) => {
           return (
-            <li className="text-gray" key={index}>
+            <li
+              className="text-gray hover:text-white transition-all duration-75 ease-linears"
+              key={index}
+            >
               <a href="#">{section}</a>
             </li>
           );
