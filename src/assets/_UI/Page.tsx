@@ -19,7 +19,7 @@ export default function Page({
       </Head>
       <main
         className={twMerge(
-          "max-w-[100rem] mx-auto py-5 md:min-h-screen",
+          "max-w-[100rem] mx-auto py-5 px-2 lg:px-0 md:min-h-screen",
           className
         )}
       >
