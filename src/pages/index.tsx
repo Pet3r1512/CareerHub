@@ -5,7 +5,7 @@ import Page from "@/assets/_UI/Page";
 
 export default function Home() {
   return (
-    <Page className="flex flex-col gap-y-24">
+    <Page className="flex flex-col gap-y-4 md:gap-y-24">
       <Header />
       <section className="md:min-h-screen">
         <Hero />
