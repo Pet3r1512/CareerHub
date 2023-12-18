@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Page className="flex flex-col gap-y-4 md:gap-y-24">
       <Header />
-      <section className="md:min-h-screen">
+      <section className="lg:min-h-screen">
         <Hero />
       </section>
     </Page>

@@ -11,6 +11,8 @@ export default function Hero() {
           alt=""
           // width={731.6} height={710.4}
           fill
+          priority
+          sizes="100"
           className="hidden md:block object-contain !h-fit relative md:unset top-1/2 lg:top-0 my-auto lg:mt-0 !w-full ml-auto"
         />
       </div>
