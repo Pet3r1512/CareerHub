@@ -7,7 +7,7 @@ export default function Hero() {
       <Title />
       <div className="w-1/2 [&>p]:unset relative sm:unset hidden md:block lg:!h-screen">
         <Image
-          src="/images/hero/Image.png"
+          src="/static/images/hero/Image.png"
           alt=""
           // width={731.6} height={710.4}
           fill

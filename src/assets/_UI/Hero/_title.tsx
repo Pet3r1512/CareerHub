@@ -6,7 +6,7 @@ export default function Title() {
     <div className="md:w-[38%] flex flex-col gap-y-4 md:gap-y-8 lg:gap-y-16">
       <div className="relative">
         <Image
-          src="/images/hero/Image.png"
+          src="/static/images/hero/Image.png"
           alt=""
           // width={731.6} height={710.4}
           fill
