@@ -79,11 +79,7 @@ function Subcription() {
         The latest job news, articles, sent to your inbox weekly.
       </p>
       <div className="flex gap-4 mt-12">
-        <Input
-          label="Email Address"
-          variant="standard"
-          crossOrigin={undefined}
-        />
+        <Input label="Email Address" variant="standard" crossOrigin={true} />
         <ButtonBlock
           content="Subcribe"
           className="w-1/3 sm:w-full lg:w-[30%]"
