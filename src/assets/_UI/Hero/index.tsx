@@ -7,7 +7,7 @@ export default function Hero() {
       <Title />
       <div className="w-1/2 [&>p]:unset relative sm:unset hidden md:block lg:!h-screen">
         <Image
-          src="/static/images/hero/Image.png"
+          src="https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Hero.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0hlcm8ucG5nIiwiaWF0IjoxNzAyOTk3Mjc1LCJleHAiOjE3MzQ1MzMyNzV9.p1aKs31GREmrubUD2oE1AMmGDNpGRmh0YeuwdBfMmlo&t=2023-12-19T14%3A47%3A44.808Z"
           alt=""
           // width={731.6} height={710.4}
           fill
