@@ -14,13 +14,13 @@ export default function Page({
 }) {
   const renderedPageName = `JobParadise - ${pageName}`;
   return (
-    <div>
+    <div className="min-h-screen">
       <Head>
         <title>{renderedPageName}</title>
       </Head>
       <main
         className={twMerge(
-          "max-w-[100rem] mx-auto pt-6 pb-14 px-2 lg:px-0 lg:min-h-screen",
+          "max-w-[100rem] mx-auto pt-6 pb-0 lg:pb-14 px-2 lg:px-0 lg:min-h-screen",
           className
         )}
       >
