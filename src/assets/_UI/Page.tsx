@@ -12,10 +12,11 @@ export default function Page({
   pageName?: string;
   className?: string;
 }) {
+  const renderedPageName = `JobParadise - ${pageName}`;
   return (
     <div>
       <Head>
-        <title>JobParadise - {pageName}</title>
+        <title>{renderedPageName}</title>
       </Head>
       <main
         className={twMerge(
