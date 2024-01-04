@@ -66,17 +66,17 @@ export default function Category() {
   return (
     <section className="flex flex-col gap-y-16 mt-16 lg:mt-0">
       <div className="flex items-center justify-between">
-        <h1 className="font-extrabold text-2xl lg:text-5xl">
+        <h1 className="font-extrabold text-2xl sm:text-3xl lg:text-5xl">
           Explore by <span className="text-blue">category</span>
         </h1>
         <div className="flex items-center gap-x-2 text-primary">
-          <a href="" className="font-semibold lg:text-lg">
+          <a href="" className="font-semibold sm:text-md lg:text-lg">
             Show all jobs
           </a>
           <MoveRight />
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 justify-items-center lg:grid-cols-4 w-full lg:grid-rows-2 grid-flow-row auto-rows-auto lg:gap-8 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 justify-items-center lg:grid-cols-4 w-full lg:grid-rows-2 grid-flow-row auto-rows-auto lg:gap-8 gap-2 sm:gap-4">
         {/* Containers here */}
         {sampleCategoryData.map((category) => {
           return (
