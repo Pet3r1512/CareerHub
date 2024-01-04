@@ -2,6 +2,7 @@ import ButtonBlock from "@/assets/_UI/_button";
 import Header from "@/assets/_UI/Header";
 import Hero from "@/assets/_UI/Hero";
 import Page from "@/assets/_UI/Page";
+import Category from "@/assets/home/Category";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <section className="lg:min-h-screen">
         <Hero />
+        <Category />
       </section>
     </Page>
   );
