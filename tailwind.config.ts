@@ -16,15 +16,12 @@ const config: Config = {
       green: "#56CDAD",
       white: "#FFF",
       black: "#000",
-      gray: "#626B7D"
+      gray: {
+        dark: "#626B7D",
+        light: "#ced4da"
+      }
     },
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
