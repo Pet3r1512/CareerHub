@@ -8,7 +8,7 @@ export default function Logo({ className }: { className?: string }) {
         alt=""
         className="lg:h-10 h-8 w-auto"
       />
-      <p className="font-mono font-extrabold text-3xl text-primary cursor-default">
+      <p className="font-mono font-extrabold lg:text-3xl text-xl text-primary cursor-default">
         CareerHub
       </p>
     </div>
