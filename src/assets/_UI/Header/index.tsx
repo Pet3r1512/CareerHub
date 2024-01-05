@@ -9,7 +9,7 @@ export default function Header() {
         <Logo />
         <Menu />
       </div>
-      <div className="flex items-center gap-5">
+      <div className="items-center gap-5 hidden lg:flex">
         <ButtonBlock
           className="bg-white text-primary font-bold"
           content="Login"

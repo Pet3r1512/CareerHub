@@ -1,6 +1,6 @@
 export default function Menu() {
   return (
-    <ul className="text-gray flex gap-4 text-lg font-semibold">
+    <ul className="text-gray lg:flex gap-4 text-lg font-semibold hidden">
       <li>
         <a href="#">Find Jobs</a>
       </li>
