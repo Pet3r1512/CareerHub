@@ -1,6 +1,13 @@
-export default function Menu() {
+import { twMerge } from "tailwind-merge";
+
+export default function Menu({ className }: { className?: string }) {
   return (
-    <ul className="text-gray flex gap-4 text-lg font-semibold">
+    <ul
+      className={twMerge(
+        "text-gray lg:flex gap-4 text-lg font-semibold hidden",
+        className
+      )}
+    >
       <li>
         <a href="#">Find Jobs</a>
       </li>

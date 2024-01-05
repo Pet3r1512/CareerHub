@@ -8,8 +8,7 @@ export default function Main() {
       <div className="flex flex-col gap-6 sm:w-[30%] lg:w-1/3">
         <Logo className="text-white" />
         <p className="text-gray font-[550]">
-          Great platform for job seekers that passionate about startups. Find
-          your dream job easier in this paradise
+          Navigating Your Career Journey with CareerHub.
         </p>
       </div>
       <div className="flex gap-4 lg:gap-10 lg:w-1/3 lg:justify-center">
