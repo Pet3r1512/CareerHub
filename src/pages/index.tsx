@@ -1,4 +1,3 @@
-import ButtonBlock from "@/assets/_UI/_button";
 import Header from "@/assets/_UI/Header";
 import Hero from "@/assets/_UI/Hero";
 import Page from "@/assets/_UI/Page";
