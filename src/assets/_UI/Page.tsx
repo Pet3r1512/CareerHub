@@ -12,7 +12,7 @@ export default function Page({
   pageName?: string;
   className?: string;
 }) {
-  const renderedPageName = `JobParadise - ${pageName}`;
+  const renderedPageName = `CareerHub - ${pageName}`;
   return (
     <div>
       <Head>
