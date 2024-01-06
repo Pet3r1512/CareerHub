@@ -10,6 +10,8 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
+import ButtonBlock from "@/assets/_UI/_button";
+import Link from "next/link";
 
 export default function SignUp() {
   return (
@@ -27,7 +29,12 @@ export default function SignUp() {
           />
         </div>
         <div className="lg:w-1/2 p-6 min-h-screen flex flex-col items-center gap-y-4 lg:gap-y-0">
-          <Logo className="self-end" />
+          <div className="flex w-full justify-between items-center">
+            <Link href="/">
+              <ButtonBlock content="Home" />
+            </Link>
+            <Logo />
+          </div>
           <div className="flex items-center justify-center h-full md:my-auto lg:my-0">
             <SignUpForm />
           </div>
