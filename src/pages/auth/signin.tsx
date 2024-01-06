@@ -97,12 +97,12 @@ function SignInForm() {
         </Button>
         <Typography color="black" className="mt-4 text-center font-normal">
           Do not have an account?{" "}
-          <a
+          <Link
             href="/auth/signup"
             className="font-semibold underline text-gray-900"
           >
             Sign Up
-          </a>
+          </Link>
         </Typography>
       </form>
     </Card>

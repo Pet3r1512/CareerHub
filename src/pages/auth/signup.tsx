@@ -184,12 +184,12 @@ function SignUpForm() {
         </Button>
         <Typography color="black" className="mt-4 text-center font-normal">
           Already have an account?{" "}
-          <a
+          <Link
             href="/auth/signin"
             className="font-semibold underline text-gray-900"
           >
             Sign In
-          </a>
+          </Link>
         </Typography>
       </form>
     </Card>
