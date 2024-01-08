@@ -12,17 +12,15 @@ import {
 } from "@material-tailwind/react";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
+import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
 
 export default function SignIn() {
   return (
     <Page className="py-0 max-w-none">
       <section className="lg:flex min-h-screen">
         <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col items-center justify-center">
-          <Image
-            src={
-              "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Illustrations/signin.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0lsbHVzdHJhdGlvbnMvc2lnbmluLnBuZyIsImlhdCI6MTcwNDU0MjM5OCwiZXhwIjoxNzM2MDc4Mzk4fQ.MppPGCJHsg4-YJ-RqCV9WAtiKqsv0oQVWgGZMwERkR0&t=2024-01-06T11%3A59%3A56.612Z"
-            }
-            alt=""
+          <ImageWithLoading
+            src="https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Illustrations/signin.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0lsbHVzdHJhdGlvbnMvc2lnbmluLnBuZyIsImlhdCI6MTcwNDU0MjM5OCwiZXhwIjoxNzM2MDc4Mzk4fQ.MppPGCJHsg4-YJ-RqCV9WAtiKqsv0oQVWgGZMwERkR0&t=2024-01-06T11%3A59%3A56.612Z"
             width={(800 * 4) / 5}
             height={(600 * 4) / 5}
             priority
