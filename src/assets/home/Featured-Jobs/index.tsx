@@ -21,7 +21,7 @@ export default function FeaturedJobs() {
         {jobs.slice(0, 8).map((job, index) => (
           <div
             key={index}
-            className="border border-gray-light p-4 flex flex-col gap-1 px-6 text-sm rounded-md hover:bg-gray-100 transition duration-200 ease-in-out"
+            className="border border-gray-light p-4 flex flex-col gap-1 px-6 text-sm rounded-md lg:hover:bg-gray-100 transition duration-200 ease-in-out"
           >
             <div className="flex justify-between items-center">
               {/* <Image
@@ -33,7 +33,7 @@ export default function FeaturedJobs() {
               <p>Image</p>
               <Button
                 variant="outline"
-                className="p-1 px-2 border text-primary border-primary hover:bg-primary hover:text-white transition duration-200 ease-in-out rounded-sm"
+                className="p-1 px-2 border text-primary border-primary lg:hover:bg-primary lg:hover:text-white transition duration-200 ease-in-out rounded-sm"
               >
                 {job.job.employment_type}
               </Button>
