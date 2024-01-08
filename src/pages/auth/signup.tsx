@@ -12,17 +12,15 @@ import {
 } from "@material-tailwind/react";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
+import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
 
 export default function SignUp() {
   return (
     <Page className="py-0 max-w-none">
       <section className="lg:flex min-h-screen">
         <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col items-center justify-center">
-          <Image
-            src={
-              "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Illustrations/signup.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0lsbHVzdHJhdGlvbnMvc2lnbnVwLnBuZyIsImlhdCI6MTcwNDUyMjM0MCwiZXhwIjoxNzM2MDU4MzQwfQ.hYZ7c9ZGBYiBydT464e3TO__WgtVMdM4MINrr6cxZsY&t=2024-01-06T06%3A25%3A38.637Z"
-            }
-            alt=""
+          <ImageWithLoading
+            src="https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Illustrations/signup.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0lsbHVzdHJhdGlvbnMvc2lnbnVwLnBuZyIsImlhdCI6MTcwNDUyMjM0MCwiZXhwIjoxNzM2MDU4MzQwfQ.hYZ7c9ZGBYiBydT464e3TO__WgtVMdM4MINrr6cxZsY&t=2024-01-06T06%3A25%3A38.637Z"
             width={800}
             height={600}
             priority
