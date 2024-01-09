@@ -1,9 +1,17 @@
-import { PrismaClient } from '@prisma/client'
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient()
 
 async function main() {
-  // ... you will write your Prisma Client queries here
+  await prisma.user.create({
+    data: {
+      full_name: "Pham Tang Thanh Phong",
+      gender: "Male",
+      email: "pttp15122002@gmail.com"
+      ,phone_number: "0768058382",
+      password: "thanhPhong15122002"
+    }
+  })
 }
 
 main()
