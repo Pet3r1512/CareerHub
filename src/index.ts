@@ -3,14 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.user.create({
-    data: {
-      full_name: "Pham Tang Thanh Phong",
-      gender: "Male",
-      email: "pttp15122002@gmail.com"
-      ,phone_number: "0768058382",
-      password: "thanhPhong15122002"
-    }
+  await prisma.user.deleteMany({
   })
 }
 
