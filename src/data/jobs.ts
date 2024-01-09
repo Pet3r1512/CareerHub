@@ -276,7 +276,7 @@ const jobs = [
       company: {
         name: "EcoSolutions Research",
         image:
-          "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme_full.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BY21lX2Z1bGwucG5nIiwiaWF0IjoxNzA0NzA4NjgzLCJleHAiOjE3MzYyNDQ2ODN9.ARUj20GrZZb49er995NuB5qVsOt2HM9tDeHfHk9j1Ak&t=2024-01-08T10%3A11%3A21.850Z",
+          "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BY21lLnBuZyIsImlhdCI6MTcwNDcwODY5NCwiZXhwIjoxNzM2MjQ0Njk0fQ.6NWYj1PZiq2-X-iRnb15hB0v8UQmn1CTSsdOpJbzmbY&t=2024-01-08T10%3A11%3A32.805Z",
         location: {
           city: "Vancouver",
           country: "Canada",
