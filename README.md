@@ -44,7 +44,7 @@ This project is only used for EDUCATIONAL AND LEARNING PURPOSE; COMMERCIAL of an
 
 ## References
 
-    Special thanks to:
+Special thanks to:
 
 - [Figma Design](<https://www.figma.com/file/CcrwqMT0urq0xXUATau6ap/Jobhuntly---Job-Board-%26-Portal-Web-and-Mobile-UI-Kit-(Community)?type=design&node-id=0-1&mode=design&t=6O7040LGadXeGkeO-0>)
 - [Illutrations](<https://www.figma.com/file/P6Br53I38tz9P5t0V0RGdo/Free-Freelance-%26-Remote-Job-Illustration-Set-(Community)?type=design&t=6O7040LGadXeGkeO-6>)
@@ -76,4 +76,6 @@ SOFTWARE.
 
 ## Information
 
-If there is any copyright violation of any of the project's resources, please contact us via Email: peter1512.dev@gmail.com.
+If there is any copyright violation of any of the project's resources, please contact us via Email:
+
+    peter1512.dev@gmail.com.
