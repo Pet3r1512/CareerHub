@@ -48,7 +48,11 @@ export default function FeaturedJobs() {
             </p>
             <div className="flex flex-wrap gap-2 text-white mt-3">
               {job.job.tags.slice(0, 2).map((tag, index) => (
-                <CustomizeBadge content={tag} key={index} />
+                <CustomizeBadge
+                  content={tag}
+                  key={index}
+                  variant={"secondary"}
+                />
               ))}
             </div>
           </div>
