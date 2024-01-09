@@ -1,6 +1,5 @@
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
-import Image from "next/image";
 import {
   Card,
   Input,
@@ -9,10 +8,27 @@ import {
   Typography,
   Select,
   Option,
+  Radio,
 } from "@material-tailwind/react";
+import {
+  Formik,
+  FormikHelpers,
+  FormikProps,
+  Form,
+  Field,
+  FieldProps,
+} from "formik";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
+
+interface SignUpFormValues {
+  full_name: string;
+  gender: string;
+  email: string;
+  phone_number: string;
+  password: string;
+}
 
 export default function SignUp() {
   return (
@@ -43,6 +59,89 @@ export default function SignUp() {
 }
 
 function SignUpForm() {
+  const initialValues: SignUpFormValues = {
+    full_name: "",
+    gender: "Hide",
+    email: "",
+    phone_number: "",
+    password: "",
+  };
+
+  const CustomFullnameInput = (props: any) => {
+    return (
+      <Input
+        variant="standard"
+        crossOrigin={true}
+        size="lg"
+        placeholder="Career Hub"
+        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+        labelProps={{
+          className: "before:content-none after:content-none",
+        }}
+        {...props}
+      />
+    );
+  };
+
+  const CustomGenderInput = (props: any) => {
+    return (
+      <select {...props}>
+        <option value={"Hide"}>Hide your gender</option>
+        <option value={"Male"}>Male</option>
+        <option value={"Female"}>Female</option>
+      </select>
+    );
+  };
+
+  const CustomEmailInput = (props: any) => {
+    return (
+      <Input
+        variant="standard"
+        crossOrigin={true}
+        size="lg"
+        placeholder="me.careerhub@mail.com"
+        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+        labelProps={{
+          className: "before:content-none after:content-none",
+        }}
+        {...props}
+      />
+    );
+  };
+
+  const CustomPhonenumberInput = (props: any) => {
+    return (
+      <Input
+        variant="standard"
+        crossOrigin={true}
+        size="lg"
+        type="tel"
+        name="phone_number"
+        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+        labelProps={{
+          className: "before:content-none after:content-none",
+        }}
+        {...props}
+      />
+    );
+  };
+
+  const CustomPasswordInput = (props: any) => {
+    return (
+      <Input
+        variant="standard"
+        crossOrigin={true}
+        type="password"
+        size="lg"
+        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+        labelProps={{
+          className: "before:content-none after:content-none",
+        }}
+        {...props}
+      />
+    );
+  };
+
   return (
     <Card
       color="transparent"
@@ -56,140 +155,104 @@ function SignUpForm() {
         Nice to meet you! Please create an account to explore amazing jobs just
         for you!
       </Typography>
-      <form className="mt-8 mb-2 w-full max-w-screen-lg sm:w-96">
-        <div className="mb-1 flex flex-col gap-6">
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Name <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            placeholder="Career Hub"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Gender
-          </Typography>
-          <Select
-            className="[&>span]:text-lg"
-            animate={{
-              mount: { y: 0 },
-              unmount: { y: 25 },
-            }}
-            label="How can we call you?"
-          >
-            <Option>Male</Option>
-            <Option>Female</Option>
-            <Option>Hide your gender</Option>
-          </Select>
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Email <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            placeholder="me.careerhub@mail.com"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Phone Number <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            type="tel"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Password <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            type="password"
-            size="lg"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Confirm Password <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            type="password"
-            size="lg"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-        </div>
-        <Checkbox
-          crossOrigin={true}
-          label={
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, actions) => {
+          console.log({ values, actions });
+        }}
+      >
+        <Form className="mt-8 mb-2 w-full max-w-screen-lg sm:w-96">
+          <div className="mb-1 flex flex-col gap-6">
             <Typography
-              variant="small"
-              color="gray"
-              className="flex items-center font-normal"
+              variant="h6"
+              color="blue-gray"
+              className="-mb-3 flex items-center gap-x-1"
             >
-              I agree the&nbsp;
-              <a
-                href="/info/terms"
-                className="font-semibold text-primary underline transition-colors hover:text-gray-900"
-              >
-                Terms and Conditions
-              </a>
+              Your Name <span className="text-red-500">*</span>
             </Typography>
-          }
-          containerProps={{ className: "-ml-2.5" }}
-        />
-        <Button className="mt-6 bg-primary text-md" fullWidth>
-          sign up
-        </Button>
-        <Typography color="black" className="mt-4 text-center font-normal">
-          Already have an account?{" "}
-          <Link
-            href="/auth/signin"
-            className="font-semibold underline text-gray-900"
-          >
-            Sign In
-          </Link>
-        </Typography>
-      </form>
+            <Field name="full_name" as={CustomFullnameInput} />
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="-mb-3 flex items-center gap-x-1"
+            >
+              Gender
+            </Typography>
+            <Field id="gender" name="gender" as={CustomGenderInput} />
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="-mb-3 flex items-center gap-x-1"
+            >
+              Your Email <span className="text-red-500">*</span>
+            </Typography>
+            <Field name="email" as={CustomEmailInput} />
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="-mb-3 flex items-center gap-x-1"
+            >
+              Your Phone Number <span className="text-red-500">*</span>
+            </Typography>
+            <Field name="phone_number" as={CustomPhonenumberInput} />
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="-mb-3 flex items-center gap-x-1"
+            >
+              Password <span className="text-red-500">*</span>
+            </Typography>
+            <Field name="password" as={CustomPasswordInput} />
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="-mb-3 flex items-center gap-x-1"
+            >
+              Confirm Password <span className="text-red-500">*</span>
+            </Typography>
+            <Input
+              crossOrigin={true}
+              type="password"
+              size="lg"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
+          </div>
+          <Checkbox
+            crossOrigin={true}
+            label={
+              <Typography
+                variant="small"
+                color="gray"
+                className="flex items-center font-normal"
+              >
+                I agree the&nbsp;
+                <a
+                  href="/info/terms"
+                  className="font-semibold text-primary underline transition-colors hover:text-gray-900"
+                >
+                  Terms and Conditions
+                </a>
+              </Typography>
+            }
+            containerProps={{ className: "-ml-2.5" }}
+          />
+          <Button type="submit" className="mt-6 bg-primary text-md" fullWidth>
+            sign up
+          </Button>
+          <Typography color="black" className="mt-4 text-center font-normal">
+            Already have an account?{" "}
+            <Link
+              href="/auth/signin"
+              className="font-semibold underline text-gray-900"
+            >
+              Sign In
+            </Link>
+          </Typography>
+        </Form>
+      </Formik>
     </Card>
   );
 }
