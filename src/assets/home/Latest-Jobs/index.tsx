@@ -1,4 +1,9 @@
 import { MoveRight } from "lucide-react";
+import jobs from "@/data/jobs";
+import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import CustomizeBadge from "@/components/customizeBadge";
 
 export default function LatestJobs() {
   return (
@@ -13,6 +18,53 @@ export default function LatestJobs() {
           </a>
           <MoveRight />
         </div>
+      </div>
+      <div className="grid lg:grid-cols-2 grid-flow-row grid-cols-1 p-4 lg:p-8 lg:px-16 gap-8">
+        {jobs.slice(8).map((job, index) => (
+          <div
+            key={index}
+            className="bg-gray-100 flex p-6 px-8 items-center gap-8 text-sm rounded-md lg:hover:bg-gray-200 transition duration-200 ease-in-out"
+          >
+            <div className="w-12 h-12 relative">
+              <Image
+                src={job.job.company.image}
+                alt={job.job.company.name}
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="font-bold text-base">{job.job.title}</p>
+              <p className="text-gray-dark line-clamp-1">
+                {job.job.company.name} &bull; {job.job.company.location.city},{" "}
+                {job.job.company.location.country}
+              </p>
+              <div className="flex flex-col lg:flex-row gap-2 lg:items-center h-fit mt-2">
+                <Badge
+                  variant="secondary"
+                  className="p-1 px-3 bg-green/20 text-green w-fit"
+                >
+                  {job.job.employment_type}
+                </Badge>
+                <div className="invisible lg:visible">
+                  <Separator
+                    orientation="vertical"
+                    className="bg-gray-light lg:h-8"
+                  />
+                </div>
+                <div className="flex flex-wrap gap-2 text-white">
+                  {job.job.tags.slice(0, 2).map((tag, index) => (
+                    <CustomizeBadge
+                      content={tag}
+                      key={index}
+                      variant={"outline"}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
