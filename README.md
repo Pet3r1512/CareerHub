@@ -21,7 +21,7 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 - [PlanetScale](https://planetscale.com/)
 - [Supabase](https://supabase.com/)
 
-### Testing and Delopyment
+### Testing and Deployment
 
 - [Vercel](https://vercel.com/)
 - [MeticulousAI](https://www.meticulous.ai/)
