@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function FeaturedJobs() {
   return (
-    <section className="flex flex-col gap-y-8 md:gap-y-16 mt-16 lg:mt-0">
+    <section className="flex flex-col gap-y-8 md:gap-y-16 mt-8 lg:mt-0">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-y-4">
         <h1 className="font-extrabold text-5xl sm:text-4xl lg:text-5xl">
           Featured <span className="text-blue">jobs</span>

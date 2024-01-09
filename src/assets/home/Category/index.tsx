@@ -64,7 +64,7 @@ export default function Category() {
   ];
 
   return (
-    <section className="flex flex-col gap-y-8 md:gap-y-16">
+    <section className="flex flex-col gap-y-8 md:gap-y-16 mt-8 lg:mt-0">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-y-4">
         <h1 className="font-extrabold text-5xl sm:text-4xl lg:text-5xl">
           Explore by <span className="text-blue">category</span>
