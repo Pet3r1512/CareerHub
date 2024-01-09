@@ -2,10 +2,11 @@ import { MoveRight } from "lucide-react";
 import jobs from "@/data/jobs";
 import CustomizeBadge from "@/components/customizeBadge";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function FeaturedJobs() {
   return (
-    <section className="flex flex-col gap-y-8 md:gap-y-16 mt-16 lg:mt-0">
+    <section className="flex flex-col gap-y-8 md:gap-y-16 mt-8 lg:mt-0">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-y-4">
         <h1 className="font-extrabold text-5xl sm:text-4xl lg:text-5xl">
           Featured <span className="text-blue">jobs</span>
@@ -21,16 +22,17 @@ export default function FeaturedJobs() {
         {jobs.slice(0, 8).map((job, index) => (
           <div
             key={index}
-            className="border border-gray-light p-4 flex flex-col gap-1 px-6 text-sm rounded-md lg:hover:bg-gray-100 transition duration-200 ease-in-out"
+            className="border border-gray-light p-4 flex flex-col gap-2 px-6 text-sm rounded-md lg:hover:bg-gray-100 transition duration-200 ease-in-out"
           >
             <div className="flex justify-between items-center">
-              {/* <Image
-                src={job.job.company.image}
-                alt={job.job.company.name}
-                width={50}
-                height={50}
-              /> */}
-              <p>Image</p>
+              <div className="w-12 h-12 relative">
+                <Image
+                  src={job.job.company.image}
+                  alt={job.job.company.name}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
               <Button
                 variant="outline"
                 className="p-1 px-2 border text-primary border-primary lg:hover:bg-primary lg:hover:text-white transition duration-200 ease-in-out rounded-sm"
@@ -48,7 +50,11 @@ export default function FeaturedJobs() {
             </p>
             <div className="flex flex-wrap gap-2 text-white mt-3">
               {job.job.tags.slice(0, 2).map((tag, index) => (
-                <CustomizeBadge content={tag} key={index} />
+                <CustomizeBadge
+                  content={tag}
+                  key={index}
+                  variant={"secondary"}
+                />
               ))}
             </div>
           </div>

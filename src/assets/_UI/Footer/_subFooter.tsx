@@ -1,7 +1,7 @@
 export default function SubFooter() {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-4 items-center">
-      <p className="font-semibold">2023 @JobParadise. All rights reserved.</p>
+      <p className="font-semibold">2023 @CareerHub. All rights reserved.</p>
       <div className="flex items-center gap-2">
         <img
           className="w-6 h-6"
