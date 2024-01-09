@@ -114,7 +114,7 @@ function SignUpForm() {
             color="blue-gray"
             className="-mb-3 flex items-center gap-x-1"
           >
-            Your Phone Number
+            Your Phone Number <span className="text-red-500">*</span>
           </Typography>
           <Input
             crossOrigin={true}
