@@ -80,7 +80,7 @@ function FindCompanyName() {
           <Input
             type="text"
             placeholder="Company name or keyword"
-            className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 text-gray-600 p-0 h-fit w-full"
+            className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full"
           />
         </div>
       </div>
