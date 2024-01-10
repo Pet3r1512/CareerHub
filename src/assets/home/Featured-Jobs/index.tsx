@@ -40,7 +40,9 @@ export default function FeaturedJobs() {
                 {job.job.employment_type}
               </Button>
             </div>
-            <p className="font-bold mt-2 text-base">{job.job.title}</p>
+            <a href="#" className="font-bold mt-2 text-base">
+              {job.job.title}
+            </a>
             <p className="text-gray-dark line-clamp-1">
               {job.job.company.name} &bull; {job.job.company.location.city},{" "}
               {job.job.company.location.country}

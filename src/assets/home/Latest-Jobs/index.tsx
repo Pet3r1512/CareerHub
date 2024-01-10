@@ -23,7 +23,7 @@ export default function LatestJobs() {
         {jobs.slice(8).map((job, index) => (
           <div
             key={index}
-            className="bg-gray-100 flex p-6 px-8 items-center gap-8 text-sm rounded-md lg:hover:bg-gray-200 transition duration-200 ease-in-out"
+            className="bg-gray-100 flex p-6 px-8 items-center gap-8 text-sm rounded-md lg:hover:bg-gray-200 transition duration-200 ease-in-out lg:hover:shadow-md"
           >
             <div className="w-12 h-12 relative">
               <Image
@@ -34,7 +34,9 @@ export default function LatestJobs() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <p className="font-bold text-base">{job.job.title}</p>
+              <a href="#" className="font-bold text-base">
+                {job.job.title}
+              </a>
               <p className="text-gray-dark line-clamp-1">
                 {job.job.company.name} &bull; {job.job.company.location.city},{" "}
                 {job.job.company.location.country}
@@ -42,7 +44,7 @@ export default function LatestJobs() {
               <div className="flex flex-col lg:flex-row gap-2 lg:items-center h-fit mt-2">
                 <Badge
                   variant="secondary"
-                  className="p-1 px-3 bg-green/20 text-green w-fit"
+                  className="p-1 px-3 bg-green/20 text-green w-fit cursor-pointer"
                 >
                   {job.job.employment_type}
                 </Badge>
