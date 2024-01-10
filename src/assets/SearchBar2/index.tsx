@@ -17,13 +17,13 @@ type SearchBar2Props = {
 
 function FindJobLocation() {
   return (
-    <div className="p-2 w-full lg:w-1/3 h-full">
+    <div className="p-2 w-full lg:w-[40%] h-full flex gap-4 items-center">
+      <MapPin size={24} color="#424242" />
       <Select>
-        <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600">
+        <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600 relative p-0 h-fit lg:text-base">
+          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
           <div className="flex gap-2 items-center w-full mr-3">
-            <MapPin size={20} color="#424242" />
-            <div className="w-full text-left relative">
-              <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
+            <div className="w-full text-left">
               <SelectValue placeholder="Choose location" />
             </div>
           </div>
@@ -54,17 +54,15 @@ function FindJobLocation() {
 
 function FindJobName() {
   return (
-    <div className="p-2 w-full lg:w-1/3 h-full">
-      <div className="w-full p-2 flex gap-2 items-center h-10">
-        <Search size={20} color="#424242" />
-        <div className="relative w-full">
-          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
-          <Input
-            type="text"
-            placeholder="Job title or keyword"
-            className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 text-gray-600 p-0 h-fit w-full"
-          />
-        </div>
+    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%]">
+      <Search size={24} color="#424242" />
+      <div className="relative w-full">
+        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
+        <Input
+          type="text"
+          placeholder="Job title or keyword"
+          className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full lg:text-base lg:placeholder:text-base"
+        />
       </div>
     </div>
   );
@@ -72,17 +70,15 @@ function FindJobName() {
 
 function FindCompanyName() {
   return (
-    <div className="p-2 w-full lg:w-1/3 h-full">
-      <div className="w-full p-2 flex gap-2 items-center h-10">
-        <Search size={20} color="#424242" />
-        <div className="relative w-full">
-          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
-          <Input
-            type="text"
-            placeholder="Company name or keyword"
-            className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full"
-          />
-        </div>
+    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%]">
+      <Search size={24} color="#424242" />
+      <div className="relative w-full">
+        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
+        <Input
+          type="text"
+          placeholder="Company name or keyword"
+          className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full lg:text-base lg:placeholder:text-base"
+        />
       </div>
     </div>
   );
@@ -90,7 +86,7 @@ function FindCompanyName() {
 
 export default function SearchBar2({ type }: SearchBar2Props) {
   return (
-    <div className="flex flex-wrap p-6 px-8 gap-8 justify-evenly items-center w-full bg-white">
+    <div className="flex flex-wrap gap-8 lg:gap-0 p-8 justify-evenly items-center w-full lg:w-[90%] bg-white">
       {type === "company" ? <FindCompanyName /> : <FindJobName />}
       <Separator
         orientation="vertical"
