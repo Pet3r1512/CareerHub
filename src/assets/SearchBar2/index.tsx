@@ -86,7 +86,7 @@ function FindCompanyName() {
 
 export default function SearchBar2({ type }: SearchBar2Props) {
   return (
-    <div className="flex flex-wrap gap-8 lg:gap-0 p-8 justify-evenly items-center w-full lg:w-[90%] bg-white">
+    <div className="flex flex-wrap gap-8 lg:gap-0 p-8 px-0 justify-evenly items-center w-full bg-white">
       {type === "company" ? <FindCompanyName /> : <FindJobName />}
       <Separator
         orientation="vertical"
