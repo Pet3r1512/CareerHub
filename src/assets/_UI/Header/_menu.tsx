@@ -12,7 +12,7 @@ export default function Menu({ className }: { className?: string }) {
         <a href="#">Find Jobs</a>
       </li>
       <li>
-        <a href="#">Browse Companies</a>
+        <a href="/companies">Browse Companies</a>
       </li>
     </ul>
   );
