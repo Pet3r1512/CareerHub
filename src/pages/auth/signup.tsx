@@ -1,26 +1,45 @@
+"use client";
+
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-  Select,
-  Option,
-  Radio,
-} from "@material-tailwind/react";
-import {
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldProps,
-} from "formik";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+
+const formSchema = z.object({
+  full_name: z.string().min(2).max(50),
+  gender: z.string(),
+  email: z.string().email(),
+  phone_number: z.string().length(10).startsWith("0"),
+  password: z.string().min(8).includes("!@#$%^&*_"),
+  confirm_password: z.string().min(8),
+});
 
 interface SignUpFormValues {
   full_name: string;
@@ -59,200 +78,192 @@ export default function SignUp() {
 }
 
 function SignUpForm() {
-  const initialValues: SignUpFormValues = {
-    full_name: "",
-    gender: "Hide",
-    email: "",
-    phone_number: "",
-    password: "",
-  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const CustomFullnameInput = (props: any) => {
-    return (
-      <Input
-        variant="standard"
-        crossOrigin={true}
-        size="lg"
-        placeholder="Career Hub"
-        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-        labelProps={{
-          className: "before:content-none after:content-none",
-        }}
-        {...props}
-      />
-    );
-  };
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      full_name: "",
+      gender: "",
+      email: "",
+      phone_number: "",
+      password: "",
+    },
+  });
 
-  const CustomGenderInput = (props: any) => {
-    return (
-      <select {...props}>
-        <option value={"Hide"}>Hide your gender</option>
-        <option value={"Male"}>Male</option>
-        <option value={"Female"}>Female</option>
-      </select>
-    );
-  };
-
-  const CustomEmailInput = (props: any) => {
-    return (
-      <Input
-        variant="standard"
-        crossOrigin={true}
-        size="lg"
-        placeholder="me.careerhub@mail.com"
-        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-        labelProps={{
-          className: "before:content-none after:content-none",
-        }}
-        {...props}
-      />
-    );
-  };
-
-  const CustomPhonenumberInput = (props: any) => {
-    return (
-      <Input
-        variant="standard"
-        crossOrigin={true}
-        size="lg"
-        type="tel"
-        name="phone_number"
-        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-        labelProps={{
-          className: "before:content-none after:content-none",
-        }}
-        {...props}
-      />
-    );
-  };
-
-  const CustomPasswordInput = (props: any) => {
-    return (
-      <Input
-        variant="standard"
-        crossOrigin={true}
-        type="password"
-        size="lg"
-        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-        labelProps={{
-          className: "before:content-none after:content-none",
-        }}
-        {...props}
-      />
-    );
-  };
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
 
   return (
-    <Card
-      color="transparent"
-      shadow={false}
-      className="flex flex-col items-center"
-    >
-      <Typography variant="h1" className="text-primary self-start">
+    <div className="bg-white p-8 rounded shadow-md w-full md:w-48 lg:w-full">
+      <h2 className="text-3xl lg:text-5xl font-semibold mb-4 text-primary">
         Create New Account
-      </Typography>
-      <Typography color="gray" className="mt-1 font-normal w-full self-start">
+      </h2>
+      <h3 className="mb-8 md:text-md lg:text-lg">
         Nice to meet you! Please create an account to explore amazing jobs just
         for you!
-      </Typography>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          console.log({ values, actions });
-        }}
-      >
-        <Form className="mt-8 mb-2 w-full max-w-screen-lg sm:w-96">
-          <div className="mb-1 flex flex-col gap-6">
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="-mb-3 flex items-center gap-x-1"
-            >
-              Your Name <span className="text-red-500">*</span>
-            </Typography>
-            <Field name="full_name" as={CustomFullnameInput} />
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="-mb-3 flex items-center gap-x-1"
-            >
-              Gender
-            </Typography>
-            <Field id="gender" name="gender" as={CustomGenderInput} />
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="-mb-3 flex items-center gap-x-1"
-            >
-              Your Email <span className="text-red-500">*</span>
-            </Typography>
-            <Field name="email" as={CustomEmailInput} />
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="-mb-3 flex items-center gap-x-1"
-            >
-              Your Phone Number <span className="text-red-500">*</span>
-            </Typography>
-            <Field name="phone_number" as={CustomPhonenumberInput} />
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="-mb-3 flex items-center gap-x-1"
-            >
-              Password <span className="text-red-500">*</span>
-            </Typography>
-            <Field name="password" as={CustomPasswordInput} />
-            <Typography
-              variant="h6"
-              color="blue-gray"
-              className="-mb-3 flex items-center gap-x-1"
-            >
-              Confirm Password <span className="text-red-500">*</span>
-            </Typography>
-            <Input
-              crossOrigin={true}
-              type="password"
-              size="lg"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
+      </h3>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <div className="flex w-full items-center gap-1">
+            <FormField
+              control={form.control}
+              name="full_name"
+              render={({ field }) => (
+                <FormItem className="w-2/3">
+                  <FormLabel className="text-md font-semibold">
+                    Full Name
+                  </FormLabel>
+                  <FormControl>
+                    <div className="grid w-full items-center gap-1.5">
+                      <Input
+                        type="text"
+                        id="full_name"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="gender"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-md font-semibold">
+                    Gender
+                  </FormLabel>
+                  <FormControl>
+                    <Select required>
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Choose Your Gender" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectItem value="male">Male</SelectItem>
+                          <SelectItem value="female">Female</SelectItem>
+                          <SelectItem value="hide">Hide Your Gender</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
           </div>
-          <Checkbox
-            crossOrigin={true}
-            label={
-              <Typography
-                variant="small"
-                color="gray"
-                className="flex items-center font-normal"
-              >
-                I agree the&nbsp;
-                <a
-                  href="/info/terms"
-                  className="font-semibold text-primary underline transition-colors hover:text-gray-900"
-                >
-                  Terms and Conditions
-                </a>
-              </Typography>
-            }
-            containerProps={{ className: "-ml-2.5" }}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-md font-semibold">
+                  Email Address
+                </FormLabel>
+                <FormControl>
+                  <div className="grid w-full items-center gap-1.5">
+                    <Input
+                      required
+                      type="email"
+                      id="email"
+                      placeholder="johndoe.careerhub@mail.com"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          <Button type="submit" className="mt-6 bg-primary text-md" fullWidth>
-            sign up
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-md font-semibold">
+                  Password
+                </FormLabel>
+                <FormControl>
+                  <div className="flex w-full items-center gap-4">
+                    <Input
+                      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+"
+                      required
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                    />
+                    <Button
+                      className="bg-white hover:bg-white"
+                      onClick={() => {
+                        setShowPassword(!showPassword);
+                      }}
+                    >
+                      {showPassword ? <Eye /> : <EyeOff />}
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormDescription>
+                  &#x2022; Must have at least 8 characters
+                </FormDescription>
+                <FormDescription>
+                  &#x2022; Must have at least 1 uppercase and 1 lowercase letter
+                </FormDescription>
+                <FormDescription>
+                  &#x2022; Must have at least 1 number
+                </FormDescription>
+                <FormDescription>
+                  &#x2022; Must have at least 1 special characters (e.g., !, @,
+                  #, $, %, ^, &)
+                </FormDescription>
+                <FormDescription>
+                  &#x2022; Spaces are not allowed
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirm_password"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-md font-semibold">
+                  Confirm Password
+                </FormLabel>
+                <FormControl>
+                  <div className="flex w-full items-center gap-1">
+                    <Input
+                      required
+                      type={showConfirmPassword ? "text" : "password"}
+                      id="confirm_password"
+                    />
+                    <Button
+                      className="bg-white hover:bg-white"
+                      onClick={() => {
+                        setShowConfirmPassword(!showConfirmPassword);
+                      }}
+                    >
+                      {showPassword ? <Eye /> : <EyeOff />}
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            className="text-white rounded-xl px-6 py-4 text-lg font-semibold"
+          >
+            Sign Up
           </Button>
-          <Typography color="black" className="mt-4 text-center font-normal">
-            Already have an account?{" "}
-            <Link
-              href="/auth/signin"
-              className="font-semibold underline text-gray-900"
-            >
-              Sign In
-            </Link>
-          </Typography>
-        </Form>
-      </Formik>
-    </Card>
+        </form>
+      </Form>
+    </div>
   );
 }
