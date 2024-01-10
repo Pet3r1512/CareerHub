@@ -17,11 +17,11 @@ type SearchBar2Props = {
 
 function FindJobLocation() {
   return (
-    <div className="p-2 w-full lg:w-[40%] h-full flex gap-4 items-center">
+    <div className="p-2 w-full lg:w-[40%] h-full flex gap-4 items-center group/item">
       <MapPin size={24} color="#424242" />
       <Select>
         <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600 relative p-0 h-fit lg:text-base">
-          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
+          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 group-hover/item:bg-black/50 transition duration-300"></span>
           <div className="flex gap-2 items-center w-full mr-3">
             <div className="w-full text-left">
               <SelectValue placeholder="Choose location" />
@@ -70,10 +70,10 @@ function FindJobName() {
 
 function FindCompanyName() {
   return (
-    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%]">
+    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%] group/item">
       <Search size={24} color="#424242" />
       <div className="relative w-full">
-        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
+        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 group-hover/item:bg-black/50 transition duration-300"></span>
         <Input
           type="text"
           placeholder="Company name or keyword"
