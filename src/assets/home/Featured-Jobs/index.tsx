@@ -29,8 +29,8 @@ export default function FeaturedJobs() {
                 <Image
                   src={job.job.company.image}
                   alt={job.job.company.name}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: "contain" }}
                 />
               </div>
               <Button
@@ -40,7 +40,14 @@ export default function FeaturedJobs() {
                 {job.job.employment_type}
               </Button>
             </div>
-            <a href="#" className="font-bold mt-2 text-base">
+            <a
+              href="#"
+              className="font-bold mt-2 text-base transition-all w-fit relative group/item"
+            >
+              <span
+                className="w-0 h-[1px] absolute bottom-0 right-0 transition-all duration-500 lg:group-hover/item:w-full lg:group-hover/item:left-0 lg:group-hover/item:bg-black/40"
+                aria-hidden
+              ></span>
               {job.job.title}
             </a>
             <p className="text-gray-dark line-clamp-1">

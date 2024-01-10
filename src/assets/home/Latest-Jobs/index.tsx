@@ -29,8 +29,8 @@ export default function LatestJobs() {
               <Image
                 src={job.job.company.image}
                 alt={job.job.company.name}
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: "contain" }}
               />
             </div>
             <div className="flex flex-col gap-2">
