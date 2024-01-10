@@ -102,7 +102,7 @@ export default function CustomizeBadge({ content, variant }: IProps) {
   return (
     <Badge
       variant={variant}
-      className={`p-1 px-3 ${badgeColorClass}`}
+      className={`p-1 px-3 cursor-pointer ${badgeColorClass}`}
       color={badgeColorClass}
     >
       {content}
