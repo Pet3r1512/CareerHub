@@ -34,7 +34,14 @@ export default function LatestJobs() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <a href="#" className="font-bold text-base">
+              <a
+                href="#"
+                className="font-bold text-base transition-all w-fit relative group/item"
+              >
+                <span
+                  className="w-0 h-[1px] absolute bottom-0 right-0 transition-all duration-500 lg:group-hover/item:w-full lg:group-hover/item:left-0 lg:group-hover/item:bg-black/40"
+                  aria-hidden
+                ></span>
                 {job.job.title}
               </a>
               <p className="text-gray-dark line-clamp-1">
