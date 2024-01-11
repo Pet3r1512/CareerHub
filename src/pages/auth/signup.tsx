@@ -141,7 +141,7 @@ function SignUpForm() {
   };
 
   return (
-    <div className="bg-white p-8 rounded shadow-md w-full md:w-48 lg:w-full">
+    <div className="bg-white p-8 rounded shadow-md w-full md:w-full">
       <h2 className="text-3xl lg:text-5xl font-semibold mb-4 text-primary">
         Create New Account
       </h2>
@@ -151,7 +151,7 @@ function SignUpForm() {
       </h3>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-          <div className="flex w-full items-center gap-4">
+          <div className="flex lg:flex-row flex-col w-full lg:items-center gap-4">
             <FormField
               control={form.control}
               name="full_name"
@@ -182,7 +182,7 @@ function SignUpForm() {
               name="gender"
               render={({ field }) => {
                 return (
-                  <FormItem className="w-1/3">
+                  <FormItem className="lg:w-1/3">
                     <FormLabel htmlFor="gender">Gender</FormLabel>
                     <Select onValueChange={field.onChange}>
                       <FormControl>
@@ -233,7 +233,7 @@ function SignUpForm() {
                   Password
                 </FormLabel>
                 <FormControl>
-                  <div className="flex w-full items-center gap-4">
+                  <div className="flex w-full items-center gap-3 lg:gap-4">
                     <Input
                       // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+"
                       type={showPassword ? "text" : "password"}
@@ -241,7 +241,7 @@ function SignUpForm() {
                       {...field}
                     />
                     <Button
-                      className="bg-white hover:bg-white"
+                      className="bg-white hover:bg-white px-0 lg:px-4"
                       tabIndex={-1}
                       onClick={handleTogglePassword}
                     >
@@ -265,14 +265,14 @@ function SignUpForm() {
                   Confirm Password
                 </FormLabel>
                 <FormControl>
-                  <div className="flex w-full items-center gap-4">
+                  <div className="flex w-full items-center gap-3 lg:gap-4">
                     <Input
                       type={showConfirmPassword ? "text" : "password"}
                       id="confirm_password"
                       {...field}
                     />
                     <Button
-                      className="bg-white hover:bg-white"
+                      className="bg-white hover:bg-white px-0 lg:px-4"
                       tabIndex={-1}
                       onClick={handleToggleConfirmPassword}
                     >
