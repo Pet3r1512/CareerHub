@@ -52,10 +52,6 @@ const formSchema = z
         required_error: "Email is required!",
       })
       .email(),
-    phone_number: z
-      .string()
-      .length(10)
-      .startsWith("0", "Phone number must starts with 0!"),
     password: z.string().min(8, "Password must has at least 8 characters!"),
     confirm_password: z.string().min(8),
   })
@@ -106,7 +102,6 @@ function SignUpForm() {
     defaultValues: {
       full_name: "",
       email: "",
-      phone_number: "",
       password: "",
       confirm_password: "",
     },
