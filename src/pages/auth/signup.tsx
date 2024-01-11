@@ -55,15 +55,10 @@ const formSchema = z
     password: z.string().min(8, "Password must has at least 8 characters!"),
     confirm_password: z.string().min(8),
   })
-  .refine(
-    (values) => {
-      return values.confirm_password === values.confirm_password;
-    },
-    {
-      message: "Confirm password must match Password",
-      path: ["confirm_password"],
-    }
-  );
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Passwords do not match",
+    path: ["confirm_password"],
+  });
 
 export default function SignUp() {
   return (
