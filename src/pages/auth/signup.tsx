@@ -20,7 +20,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import {
   Select,
@@ -113,6 +113,34 @@ function SignUpForm() {
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     clearErrors();
     console.log({ values });
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      form.handleSubmit(handleSubmit);
+    }
+  };
+
+  const handleTogglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Check if the clicked element is the button itself or a descendant
+    const targetElement = e.target as HTMLButtonElement;
+    if (targetElement.tagName.toLowerCase() !== "button") {
+      e.preventDefault();
+      // Toggle password visibility
+      setShowPassword(!showPassword);
+    }
+  };
+
+  const handleToggleConfirmPassword = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    // Check if the clicked element is the button itself or a descendant
+    const targetElement = e.target as HTMLButtonElement;
+    if (targetElement.tagName.toLowerCase() !== "button") {
+      e.preventDefault();
+      // Toggle password visibility
+      setShowConfirmPassword(!showConfirmPassword);
+    }
   };
 
   return (
@@ -217,9 +245,8 @@ function SignUpForm() {
                     />
                     <Button
                       className="bg-white hover:bg-white"
-                      onClick={() => {
-                        setShowPassword(!showPassword);
-                      }}
+                      tabIndex={-1}
+                      onClick={handleTogglePassword}
                     >
                       {showPassword ? <Eye /> : <EyeOff />}
                     </Button>
@@ -249,9 +276,8 @@ function SignUpForm() {
                     />
                     <Button
                       className="bg-white hover:bg-white"
-                      onClick={() => {
-                        setShowConfirmPassword(!showConfirmPassword);
-                      }}
+                      tabIndex={-1}
+                      onClick={handleToggleConfirmPassword}
                     >
                       {showConfirmPassword ? <Eye /> : <EyeOff />}
                     </Button>
@@ -263,6 +289,7 @@ function SignUpForm() {
           />
           <Button
             type="submit"
+            onKeyPress={handleKeyPress}
             className="text-white rounded-xl px-6 py-4 text-lg font-semibold"
           >
             Sign Up
