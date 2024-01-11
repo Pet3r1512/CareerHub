@@ -31,6 +31,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Typography } from "@material-tailwind/react";
 
 enum GenderEnum {
   female = "female",
@@ -122,11 +123,9 @@ function SignUpForm() {
   };
 
   const handleTogglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // Check if the clicked element is the button itself or a descendant
     const targetElement = e.target as HTMLButtonElement;
     if (targetElement.tagName.toLowerCase() !== "button") {
       e.preventDefault();
-      // Toggle password visibility
       setShowPassword(!showPassword);
     }
   };
@@ -134,11 +133,9 @@ function SignUpForm() {
   const handleToggleConfirmPassword = (
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
-    // Check if the clicked element is the button itself or a descendant
     const targetElement = e.target as HTMLButtonElement;
     if (targetElement.tagName.toLowerCase() !== "button") {
       e.preventDefault();
-      // Toggle password visibility
       setShowConfirmPassword(!showConfirmPassword);
     }
   };
@@ -294,6 +291,15 @@ function SignUpForm() {
           >
             Sign Up
           </Button>
+          <Typography color="black" className="mt-4 font-normal text-right">
+            Already have an account?{" "}
+            <Link
+              href="/auth/signin"
+              className="font-bold underline text-gray-900"
+            >
+              Sign Up
+            </Link>
+          </Typography>
         </form>
       </Form>
     </div>
