@@ -21,6 +21,10 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 - [PlanetScale](https://planetscale.com/)
 - [Supabase](https://supabase.com/)
 
+### Form validations and security
+- [React Hook Form](https://react-hook-form.com/)
+- [Bcrypt](https://github.com/kelektiv/node.bcrypt.js)
+
 ### Testing and Deployment
 
 - [Vercel](https://vercel.com/)
