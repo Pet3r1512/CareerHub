@@ -51,7 +51,7 @@ export default function ImageWithLoading({
       priority={priority}
       className={twMerge(
         className,
-        "transition-opacity opacity-0 duration-[1.75s]"
+        "transition-opacity opacity-0 duration-[170ms]"
       )}
       onLoadingComplete={(image) => {
         image.classList.remove("opacity-0");

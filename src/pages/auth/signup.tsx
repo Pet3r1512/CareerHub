@@ -1,18 +1,65 @@
+"use client";
+
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
-import Image from "next/image";
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-  Select,
-  Option,
-} from "@material-tailwind/react";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { Label } from "@/components/ui/label";
+import { useState, KeyboardEvent } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Typography } from "@material-tailwind/react";
+
+enum GenderEnum {
+  female = "female",
+  male = "male",
+  hide = "hide",
+}
+
+const formSchema = z
+  .object({
+    full_name: z
+      .string({
+        required_error: "Full name is required!",
+      })
+      .min(2)
+      .max(50),
+    gender: z.nativeEnum(GenderEnum),
+    email: z
+      .string({
+        required_error: "Email is required!",
+      })
+      .email(),
+    password: z.string().min(8, "Password must has at least 8 characters!"),
+    confirm_password: z.string().min(8),
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: "Passwords do not match",
+    path: ["confirm_password"],
+  });
 
 export default function SignUp() {
   return (
@@ -43,153 +90,220 @@ export default function SignUp() {
 }
 
 function SignUpForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      full_name: "",
+      email: "",
+      password: "",
+      confirm_password: "",
+    },
+  });
+
+  type SignupFormSchemaType = z.infer<typeof formSchema>;
+
+  const {
+    register,
+    clearErrors,
+    formState: { errors, isSubmitting },
+  } = useForm<SignupFormSchemaType>();
+
+  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+    clearErrors();
+    console.log({ values });
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      form.handleSubmit(handleSubmit);
+    }
+  };
+
+  const handleTogglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const targetElement = e.target as HTMLButtonElement;
+    if (targetElement.tagName.toLowerCase() !== "button") {
+      e.preventDefault();
+      setShowPassword(!showPassword);
+    }
+  };
+
+  const handleToggleConfirmPassword = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const targetElement = e.target as HTMLButtonElement;
+    if (targetElement.tagName.toLowerCase() !== "button") {
+      e.preventDefault();
+      setShowConfirmPassword(!showConfirmPassword);
+    }
+  };
+
   return (
-    <Card
-      color="transparent"
-      shadow={false}
-      className="flex flex-col items-center"
-    >
-      <Typography variant="h1" className="text-primary self-start">
+    <div className="bg-white p-8 rounded shadow-md w-full md:w-full">
+      <h2 className="text-3xl lg:text-5xl font-semibold mb-4 text-primary">
         Create New Account
-      </Typography>
-      <Typography color="gray" className="mt-1 font-normal w-full self-start">
+      </h2>
+      <h3 className="mb-8 md:text-md lg:text-lg">
         Nice to meet you! Please create an account to explore amazing jobs just
         for you!
-      </Typography>
-      <form className="mt-8 mb-2 w-full max-w-screen-lg sm:w-96">
-        <div className="mb-1 flex flex-col gap-6">
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Name <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            placeholder="Career Hub"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
+      </h3>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+          <div className="flex lg:flex-row flex-col w-full lg:items-center gap-4">
+            <FormField
+              control={form.control}
+              name="full_name"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel
+                    htmlFor="full_name"
+                    className="text-md font-semibold"
+                  >
+                    Full Name
+                  </FormLabel>
+                  <FormControl>
+                    <div className="grid w-full items-center gap-1.5">
+                      <Input
+                        type="text"
+                        id="full_name"
+                        placeholder="John Doe"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="gender"
+              render={({ field }) => {
+                return (
+                  <FormItem className="lg:w-1/3">
+                    <FormLabel htmlFor="gender">Gender</FormLabel>
+                    <Select onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue id="gender" placeholder="" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent id="gender">
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                        <SelectItem value="hide">Hide Your Gender</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+          </div>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel htmlFor="email" className="text-md font-semibold">
+                  Email Address
+                </FormLabel>
+                <FormControl>
+                  <div className="grid w-full items-center gap-1.5">
+                    <Input
+                      type="email"
+                      id="email"
+                      placeholder="johndoe.careerhub@mail.com"
+                      {...field}
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Gender
-          </Typography>
-          <Select
-            className="[&>span]:text-lg"
-            animate={{
-              mount: { y: 0 },
-              unmount: { y: 25 },
-            }}
-            label="How can we call you?"
-          >
-            <Option>Male</Option>
-            <Option>Female</Option>
-            <Option>Hide your gender</Option>
-          </Select>
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Email <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            placeholder="me.careerhub@mail.com"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel htmlFor="password" className="text-md font-semibold">
+                  Password
+                </FormLabel>
+                <FormControl>
+                  <div className="flex w-full items-center gap-3 lg:gap-4">
+                    <Input
+                      // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+"
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      {...field}
+                    />
+                    <Button
+                      className="bg-white hover:bg-white px-0 lg:px-4"
+                      tabIndex={-1}
+                      onClick={handleTogglePassword}
+                    >
+                      {showPassword ? <Eye /> : <EyeOff />}
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Phone Number <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            type="tel"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
+          <FormField
+            control={form.control}
+            name="confirm_password"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel
+                  htmlFor="confirm_password"
+                  className="text-md font-semibold"
+                >
+                  Confirm Password
+                </FormLabel>
+                <FormControl>
+                  <div className="flex w-full items-center gap-3 lg:gap-4">
+                    <Input
+                      type={showConfirmPassword ? "text" : "password"}
+                      id="confirm_password"
+                      {...field}
+                    />
+                    <Button
+                      className="bg-white hover:bg-white px-0 lg:px-4"
+                      tabIndex={-1}
+                      onClick={handleToggleConfirmPassword}
+                    >
+                      {showConfirmPassword ? <Eye /> : <EyeOff />}
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
+          <Button
+            type="submit"
+            onKeyPress={handleKeyPress}
+            className="text-white rounded-xl px-6 py-4 text-lg font-semibold"
           >
-            Password <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            type="password"
-            size="lg"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Confirm Password <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            type="password"
-            size="lg"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-        </div>
-        <Checkbox
-          crossOrigin={true}
-          label={
-            <Typography
-              variant="small"
-              color="gray"
-              className="flex items-center font-normal"
+            Sign Up
+          </Button>
+          <Typography color="black" className="mt-4 font-normal text-right">
+            Already have an account?{" "}
+            <Link
+              href="/auth/signin"
+              className="font-bold underline text-gray-900"
             >
-              I agree the&nbsp;
-              <a
-                href="/info/terms"
-                className="font-semibold text-primary underline transition-colors hover:text-gray-900"
-              >
-                Terms and Conditions
-              </a>
-            </Typography>
-          }
-          containerProps={{ className: "-ml-2.5" }}
-        />
-        <Button className="mt-6 bg-primary text-md" fullWidth>
-          sign up
-        </Button>
-        <Typography color="black" className="mt-4 text-center font-normal">
-          Already have an account?{" "}
-          <Link
-            href="/auth/signin"
-            className="font-semibold underline text-gray-900"
-          >
-            Sign In
-          </Link>
-        </Typography>
-      </form>
-    </Card>
+              Sign Up
+            </Link>
+          </Typography>
+        </form>
+      </Form>
+    </div>
   );
 }
+
+// https://github.com/ByteGrad/react-hook-form-with-zod-and-server-side/blob/main/components/form-with-rhf-and-zod-and-server.tsx
