@@ -32,7 +32,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Typography } from "@material-tailwind/react";
-import hashPassword from "@/lib/hash";
 
 enum GenderEnum {
   female = "female",
