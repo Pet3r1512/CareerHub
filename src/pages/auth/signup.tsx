@@ -32,6 +32,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Typography } from "@material-tailwind/react";
+import hashPassword from "@/lib/hash";
 
 enum GenderEnum {
   female = "female",
@@ -111,8 +112,24 @@ function SignUpForm() {
     formState: { errors, isSubmitting },
   } = useForm<SignupFormSchemaType>();
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     clearErrors();
+    const hasedPassword = await fetch("/api/hashPassword", {
+      method: "POST",
+      body: values.password,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        if (data) {
+          console.log(data);
+          values.password = data.hashedPassword;
+        }
+      })
+      .catch((err) => console.error(err));
     console.log({ values });
   };
 
