@@ -126,6 +126,7 @@ function SignUpForm() {
         if (data) {
           console.log(data);
           values.password = data.hashedPassword;
+          values.confirm_password = data.hashedPassword;
         }
       })
       .catch((err) => console.error(err));
