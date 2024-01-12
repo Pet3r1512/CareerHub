@@ -1,12 +1,11 @@
 import CompaniesOptions from "../_UI/SideOptions/companiesOptions";
+import CompaniesContainer from "./companiesContainer";
 
 export default function Companies() {
   return (
-    <section className="w-full h-full flex">
+    <section className="min-h-screen w-full lg:flex justify-evenly">
       <CompaniesOptions />
-      <section className="bg-gray-700 w-3/4 h-full lg:p-12 lg:px-16">
-        Main
-      </section>
+      <CompaniesContainer />
     </section>
   );
 }
