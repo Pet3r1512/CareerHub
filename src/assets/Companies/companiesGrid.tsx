@@ -19,7 +19,10 @@ export default function CompaniesGrid({ view, sort }: CompaniesGridProps) {
       )}
     >
       {companies.slice(0, itemAmount).map((company, index) => (
-        <div key={index} className="border p-4 flex flex-col gap-4">
+        <div
+          key={index}
+          className="border p-4 flex flex-col gap-4 lg:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md cursor-pointer"
+        >
           <div className="flex justify-between items-start">
             <p>Image</p>
             <Badge
@@ -29,7 +32,16 @@ export default function CompaniesGrid({ view, sort }: CompaniesGridProps) {
               {company.remaining_jobs_count} Jobs
             </Badge>
           </div>
-          <p className="text-base lg:text-lg font-bold">{company.name}</p>
+          <a
+            href="#"
+            className="text-base lg:text-lg font-bold relative group/item w-fit"
+          >
+            <span
+              className="w-0 h-[1px] absolute bottom-0 right-0 transition-all duration-500 lg:group-hover/item:w-full lg:group-hover/item:left-0 lg:group-hover/item:bg-black/40"
+              aria-hidden
+            ></span>
+            {company.name}
+          </a>
           <p className="text-gray-dark opacity-90 line-clamp-3">
             {company.description}
           </p>

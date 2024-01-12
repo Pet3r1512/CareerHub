@@ -21,7 +21,7 @@ function FindJobLocation() {
       <MapPin size={24} color="#424242" />
       <Select>
         <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600 relative p-0 h-fit lg:text-base">
-          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 group-hover/item:bg-black/50 transition duration-300"></span>
+          <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
           <div className="flex gap-2 items-center w-full mr-3">
             <div className="w-full text-left">
               <SelectValue placeholder="Choose location" />
@@ -54,10 +54,10 @@ function FindJobLocation() {
 
 function FindJobName() {
   return (
-    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%]">
+    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%] group/item">
       <Search size={24} color="#424242" />
       <div className="relative w-full">
-        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0"></span>
+        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
         <Input
           type="text"
           placeholder="Job title or keyword"
@@ -73,7 +73,7 @@ function FindCompanyName() {
     <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%] group/item">
       <Search size={24} color="#424242" />
       <div className="relative w-full">
-        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 group-hover/item:bg-black/50 transition duration-300"></span>
+        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
         <Input
           type="text"
           placeholder="Company name or keyword"
@@ -86,7 +86,7 @@ function FindCompanyName() {
 
 export default function SearchBar2({ type }: SearchBar2Props) {
   return (
-    <div className="flex flex-wrap gap-8 lg:gap-0 p-8 px-0 justify-evenly items-center w-full bg-white">
+    <div className="flex flex-wrap gap-8 lg:gap-0 p-8 px-4 justify-evenly items-center w-full bg-white">
       {type === "company" ? <FindCompanyName /> : <FindJobName />}
       <Separator
         orientation="vertical"
