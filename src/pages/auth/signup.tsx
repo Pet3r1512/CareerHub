@@ -20,8 +20,8 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Label } from "@/components/ui/label";
-import { useState, KeyboardEvent } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { useState, KeyboardEvent, useEffect } from "react";
+import { Eye, EyeOff, ShieldAlert } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -33,6 +33,9 @@ import {
 } from "@/components/ui/select";
 import { Typography } from "@material-tailwind/react";
 import { useRouter } from "next/router";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 
 enum GenderEnum {
   female = "female",
@@ -64,7 +67,7 @@ const formSchema = z
 
 export default function SignUp() {
   return (
-    <Page className="py-0 max-w-none">
+    <Page className="py-0 max-w-none relative">
       <section className="lg:flex min-h-screen">
         <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col items-center justify-center">
           <ImageWithLoading
@@ -94,8 +97,10 @@ function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -116,6 +121,7 @@ function SignUpForm() {
   } = useForm<SignupFormSchemaType>();
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    setServerError("");
     setSubmitting(true);
     clearErrors();
     const hasedPassword = await fetch("/api/hashPassword", {
@@ -139,15 +145,26 @@ function SignUpForm() {
       body: JSON.stringify({ values }),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
+        return res.json();
       })
       .then((data) => {
         if (data) {
           setSubmitting(false);
           if (data.result === "Done") {
-            router.push("/");
+            toast({
+              title: "Create Account Successfully!",
+              className: "bg-green",
+            });
+            setTimeout(() => {
+              router.push("/");
+            }, 2000);
+          }
+          if (data.result === "Conflict") {
+            toast({
+              variant: "destructive",
+              title: "Create Account Conflict",
+              description: data.message,
+            });
           }
         }
       });
@@ -340,6 +357,7 @@ function SignUpForm() {
           </Typography>
         </form>
       </Form>
+      <Toaster />
     </div>
   );
 }
