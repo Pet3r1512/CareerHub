@@ -142,6 +142,7 @@ function SignUpForm() {
       .catch((err) => console.error(err));
     const createUser = await fetch("/api/auth/createUser", {
       method: "POST",
+      headers: { "Content-type": "application/json" },
       body: JSON.stringify({ values }),
     })
       .then((res) => {
