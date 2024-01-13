@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma-push": "npx prisma db push",
+    "prisma-studio": "npx prisma studio",
+    "db": "concurrently \"pscale connect careerhub --port 3309\" \"npx prisma studio\"",
+    "dev-db": "concurrently \"next dev\" \"pscale connect careerhub --port 3309\" \"npx prisma studio\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -22,6 +26,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "concurrently": "^8.2.2",
     "lucide-react": "^0.294.0",
     "next": "14.0.3",
     "prisma": "^5.7.1",
