@@ -32,6 +32,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Typography } from "@material-tailwind/react";
+import { useRouter } from "next/router";
 
 enum GenderEnum {
   female = "female",
@@ -92,6 +93,9 @@ export default function SignUp() {
 function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -112,6 +116,7 @@ function SignUpForm() {
   } = useForm<SignupFormSchemaType>();
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    setSubmitting(true);
     clearErrors();
     const hasedPassword = await fetch("/api/hashPassword", {
       method: "POST",
@@ -124,13 +129,28 @@ function SignUpForm() {
       })
       .then((data) => {
         if (data) {
-          console.log(data);
           values.password = data.hashedPassword;
           values.confirm_password = data.hashedPassword;
         }
       })
       .catch((err) => console.error(err));
-    console.log({ values });
+    const createUser = await fetch("/api/auth/createUser", {
+      method: "POST",
+      body: JSON.stringify({ values }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        if (data) {
+          setSubmitting(false);
+          if (data.result === "Done") {
+            router.push("/");
+          }
+        }
+      });
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
@@ -303,6 +323,7 @@ function SignUpForm() {
           />
           <Button
             type="submit"
+            disabled={submitting ? true : false}
             onKeyPress={handleKeyPress}
             className="text-white rounded-xl px-6 py-4 text-lg font-semibold"
           >
