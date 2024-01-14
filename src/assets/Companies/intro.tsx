@@ -29,6 +29,7 @@ export default function Intro({
           alt="background"
           fill
           style={{ objectFit: "cover" }}
+          priority
         />
         <div className="w-full h-full backdrop-blur-sm bg-white/30 "></div>
       </div>
