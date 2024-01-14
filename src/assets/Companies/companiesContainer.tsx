@@ -67,7 +67,7 @@ export default function CompaniesContainer() {
           </label>
         </div>
       </div>
-      <CompaniesGrid view={view} sort={sort} />
+      <CompaniesGrid key={view} view={view} sort={sort} />
     </section>
   );
 }
