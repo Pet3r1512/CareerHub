@@ -1,5 +1,4 @@
 import Header from "@/assets/_UI/Header";
-import Footer from "@/assets/_UI/Footer";
 import Intro from "@/assets/Companies/intro";
 import Companies from "@/assets/Companies";
 import Page from "@/assets/_UI/Page";
