@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 export default function Menu({ className }: { className?: string }) {
   return (
@@ -9,10 +10,10 @@ export default function Menu({ className }: { className?: string }) {
       )}
     >
       <li>
-        <a href="#">Find Jobs</a>
+        <Link href="#">Find Jobs</Link>
       </li>
       <li>
-        <a href="#">Browse Companies</a>
+        <Link href="/companies">Browse Companies</Link>
       </li>
     </ul>
   );
