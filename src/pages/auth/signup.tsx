@@ -1,5 +1,3 @@
-"use client";
-
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
 import ButtonBlock from "@/assets/_UI/_button";
@@ -125,7 +123,7 @@ function SignUpForm() {
     setSubmitting(true);
     clearErrors();
     const hasedPassword = await fetch("/api/hashPassword", {
-      method: "POST",
+      method: "Post",
       body: values.password,
     })
       .then((response) => {
@@ -141,7 +139,7 @@ function SignUpForm() {
       })
       .catch((err) => console.error(err));
     const createUser = await fetch("/api/auth/createUser", {
-      method: "POST",
+      method: "Post",
       body: JSON.stringify({ values }),
     })
       .then((res) => {
@@ -207,11 +205,7 @@ function SignUpForm() {
         for you!
       </h3>
       <Form {...form}>
-        <form
-          method="POST"
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="space-y-8"
-        >
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
           <div className="flex lg:flex-row flex-col w-full lg:items-center gap-4">
             <FormField
               control={form.control}
