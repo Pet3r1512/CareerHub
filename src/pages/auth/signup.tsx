@@ -165,6 +165,13 @@ function SignUpForm() {
             });
           }
         }
+      })
+      .catch((error) => {
+        return toast({
+          variant: "destructive",
+          title: error.name,
+          description: error.message,
+        });
       });
   };
 
