@@ -6,7 +6,6 @@ import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,22 +15,18 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { Label } from "@/components/ui/label";
-import { useState, KeyboardEvent, useEffect } from "react";
-import { Eye, EyeOff, ShieldAlert } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { useState, KeyboardEvent } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { Typography } from "@material-tailwind/react";
 import { useRouter } from "next/router";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -95,7 +90,6 @@ function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [serverError, setServerError] = useState("");
 
   const router = useRouter();
   const { toast } = useToast();
@@ -119,7 +113,6 @@ function SignUpForm() {
   } = useForm<SignupFormSchemaType>();
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
-    setServerError("");
     setSubmitting(true);
     clearErrors();
     const hasedPassword = await fetch("/api/hashPassword", {
@@ -147,7 +140,6 @@ function SignUpForm() {
       })
       .then((data) => {
         if (data) {
-          setSubmitting(false);
           if (data.result === "Done") {
             toast({
               title: "Create Account Successfully!",
@@ -173,6 +165,7 @@ function SignUpForm() {
           description: error.message,
         });
       });
+    setSubmitting(false);
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
