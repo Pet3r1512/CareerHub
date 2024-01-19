@@ -89,7 +89,7 @@ export default function SignUp() {
 function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting, setSubmitting] = useState(false); //for loading
 
   const router = useRouter();
   const { toast } = useToast();
@@ -115,6 +115,7 @@ function SignUpForm() {
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setSubmitting(true);
     clearErrors();
+    // hash password
     const hasedPassword = await fetch("/api/hashPassword", {
       method: "Post",
       body: values.password,
@@ -131,6 +132,7 @@ function SignUpForm() {
         }
       })
       .catch((err) => console.error(err));
+    // add new user to db
     const createUser = await fetch("/api/auth/createUser", {
       method: "Post",
       body: JSON.stringify({ values }),
@@ -168,12 +170,14 @@ function SignUpForm() {
     setSubmitting(false);
   };
 
+  // Submiting form by Pressing "Enter"
   const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === "Enter") {
       form.handleSubmit(handleSubmit);
     }
   };
 
+  // Toggle show/hidden password input
   const handleTogglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     const targetElement = e.target as HTMLButtonElement;
     if (targetElement.tagName.toLowerCase() !== "button") {
