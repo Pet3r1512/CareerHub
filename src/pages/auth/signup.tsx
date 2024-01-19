@@ -207,7 +207,11 @@ function SignUpForm() {
         for you!
       </h3>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+        <form
+          method="POST"
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="space-y-8"
+        >
           <div className="flex lg:flex-row flex-col w-full lg:items-center gap-4">
             <FormField
               control={form.control}
