@@ -51,10 +51,13 @@ export default function ImageWithLoading({
       priority={priority}
       className={twMerge(
         className,
-        "transition-opacity opacity-0 duration-[170ms]"
+        "transition-opacity opacity-0 duration-150"
       )}
-      onLoadingComplete={(image) => {
-        image.classList.remove("opacity-0");
+      onLoad={(event) => {
+        const image = event.target as HTMLImageElement;
+        if (image) {
+          image.classList.remove("opacity-0");
+        }
       }}
     />
   );

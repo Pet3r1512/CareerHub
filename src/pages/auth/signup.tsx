@@ -1,5 +1,3 @@
-"use client";
-
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
 import ButtonBlock from "@/assets/_UI/_button";
@@ -8,7 +6,6 @@ import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,20 +15,20 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { Label } from "@/components/ui/label";
+import { useForm } from "react-hook-form";
 import { useState, KeyboardEvent } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { Typography } from "@material-tailwind/react";
+import { useRouter } from "next/router";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 
 enum GenderEnum {
   female = "female",
@@ -63,7 +60,7 @@ const formSchema = z
 
 export default function SignUp() {
   return (
-    <Page className="py-0 max-w-none">
+    <Page className="py-0 max-w-none relative">
       <section className="lg:flex min-h-screen">
         <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col items-center justify-center">
           <ImageWithLoading
@@ -92,6 +89,10 @@ export default function SignUp() {
 function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [submitting, setSubmitting] = useState(false); //for loading
+
+  const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -111,17 +112,72 @@ function SignUpForm() {
     formState: { errors, isSubmitting },
   } = useForm<SignupFormSchemaType>();
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    setSubmitting(true);
     clearErrors();
-    console.log({ values });
+    // hash password
+    const hasedPassword = await fetch("/api/hashPassword", {
+      method: "Post",
+      body: values.password,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        if (data) {
+          values.password = data.hashedPassword;
+          values.confirm_password = data.hashedPassword;
+        }
+      })
+      .catch((err) => console.error(err));
+    // add new user to db
+    const createUser = await fetch("/api/auth/createUser", {
+      method: "Post",
+      body: JSON.stringify({ values }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data) {
+          if (data.result === "Done") {
+            toast({
+              title: "Create Account Successfully!",
+              className: "bg-green",
+            });
+            setTimeout(() => {
+              router.push("/");
+            }, 2000);
+          }
+          if (data.result === "Conflict") {
+            toast({
+              variant: "destructive",
+              title: "Create Account Conflict",
+              description: data.message,
+            });
+          }
+        }
+      })
+      .catch((error) => {
+        return toast({
+          variant: "destructive",
+          title: error.name,
+          description: error.message,
+        });
+      });
+    setSubmitting(false);
   };
 
+  // Submiting form by Pressing "Enter"
   const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === "Enter") {
       form.handleSubmit(handleSubmit);
     }
   };
 
+  // Toggle show/hidden password input
   const handleTogglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
     const targetElement = e.target as HTMLButtonElement;
     if (targetElement.tagName.toLowerCase() !== "button") {
@@ -286,6 +342,7 @@ function SignUpForm() {
           />
           <Button
             type="submit"
+            disabled={submitting ? true : false}
             onKeyPress={handleKeyPress}
             className="text-white rounded-xl px-6 py-4 text-lg font-semibold"
           >
@@ -302,6 +359,7 @@ function SignUpForm() {
           </Typography>
         </form>
       </Form>
+      <Toaster />
     </div>
   );
 }
