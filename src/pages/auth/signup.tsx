@@ -17,7 +17,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useState, KeyboardEvent } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, RefreshCw } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -29,6 +29,7 @@ import { Typography } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
+import { twMerge } from "tailwind-merge";
 
 enum GenderEnum {
   female = "female",
@@ -343,10 +344,16 @@ function SignUpForm() {
           <Button
             type="submit"
             disabled={submitting ? true : false}
-            onKeyPress={handleKeyPress}
-            className="text-white rounded-xl px-6 py-4 text-lg font-semibold"
+            onKeyDown={handleKeyPress}
+            className="text-white rounded-xl px-6 py-4 text-lg font-semibold flex items-center gap-1 justify-between"
           >
             Sign Up
+            <RefreshCw
+              className={twMerge(
+                "w-[18px] h-[18px] animate-spin",
+                submitting ? "block" : "hidden"
+              )}
+            />
           </Button>
           <Typography color="black" className="mt-4 font-normal text-right">
             Already have an account?{" "}

@@ -13,6 +13,8 @@ import {
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
+import { RefreshCw } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 
 export default function SignIn() {
   return (
@@ -91,7 +93,13 @@ function SignInForm() {
           />
         </div>
         <Button className="mt-6 bg-primary text-md" fullWidth>
-          sign up
+          Sign In
+          <RefreshCw
+            className={twMerge(
+              "w-[18px] h-[18px] animate-spin"
+              // submitting ? "block" : "hidden"
+            )}
+          />
         </Button>
         <Typography color="black" className="mt-4 text-center font-normal">
           Do not have an account?{" "}
