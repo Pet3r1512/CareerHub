@@ -8,6 +8,9 @@ import PaginationSection from "@/components/paginationSection";
 type CompaniesGridProps = {
   view: "grid" | "list";
   sort: string;
+  searchParams?: {
+    page: number;
+  };
 };
 
 type Company = {
@@ -19,9 +22,13 @@ type Company = {
   remaining_jobs_count: number;
 };
 
-export default function CompaniesGrid({ view, sort }: CompaniesGridProps) {
+export default function CompaniesGrid({
+  view,
+  sort,
+  searchParams,
+}: CompaniesGridProps) {
   const itemAmountDependOnView = view == "grid" ? 8 : 4;
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const currentPage: number = searchParams?.page || 1;
   const [itemsPerPage, setItemsPerPage] = useState<number>(
     itemAmountDependOnView
   );
@@ -45,7 +52,6 @@ export default function CompaniesGrid({ view, sort }: CompaniesGridProps) {
       </div>
       <PaginationSection
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
         itemsPerPage={itemsPerPage}
         totalItems={companies.length}
       />

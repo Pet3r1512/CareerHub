@@ -7,19 +7,17 @@ import {
   PaginationLink,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
-import { Dispatch, SetStateAction } from "react";
 import { twMerge } from "tailwind-merge";
+import Router from "next/router";
 
 export default function PaginationSection({
   totalItems,
   itemsPerPage,
   currentPage,
-  setCurrentPage,
 }: {
   totalItems: number;
   itemsPerPage: number;
   currentPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
 }) {
   const pageNumbers = [];
 
@@ -37,13 +35,39 @@ export default function PaginationSection({
 
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
-      setCurrentPage(currentPage + 1);
+      Router.push(
+        {
+          pathname: "/companies",
+          query: { page: currentPage + 1 },
+        },
+        undefined,
+        { scroll: false }
+      );
     }
   };
+
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      Router.push(
+        {
+          pathname: "/companies",
+          query: { page: currentPage - 1 },
+        },
+        undefined,
+        { scroll: false }
+      );
     }
+  };
+
+  const handleCurrentPage = (page: number) => {
+    Router.push(
+      {
+        pathname: "/companies",
+        query: { page: page },
+      },
+      undefined,
+      { scroll: false }
+    );
   };
 
   const renderPage = () => {
@@ -56,7 +80,7 @@ export default function PaginationSection({
         )}
       >
         <PaginationLink
-          onClick={() => setCurrentPage(page)}
+          onClick={() => handleCurrentPage(page)}
           className="lg:hover:bg-gray-200"
         >
           {page}
@@ -68,7 +92,7 @@ export default function PaginationSection({
       renderPageNumbers.unshift(
         <PaginationEllipsis
           key="ellipsis-start"
-          onClick={() => setCurrentPage(activePage[0] - 1)}
+          onClick={() => handleCurrentPage(activePage[0] - 1)}
         />
       );
     }
@@ -77,7 +101,9 @@ export default function PaginationSection({
       renderPageNumbers.push(
         <PaginationEllipsis
           key="ellipsis-end"
-          onClick={() => setCurrentPage(activePage[activePage.length - 1] + 1)}
+          onClick={() =>
+            handleCurrentPage(activePage[activePage.length - 1] + 1)
+          }
         />
       );
     }

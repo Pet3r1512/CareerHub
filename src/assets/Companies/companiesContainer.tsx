@@ -9,8 +9,11 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import CompaniesGrid from "./companiesGrid";
+import { useSearchParams } from "next/navigation";
 
 export default function CompaniesContainer() {
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [sort, setSort] = useState<string>("relevant");
 
@@ -67,7 +70,12 @@ export default function CompaniesContainer() {
           </label>
         </div>
       </div>
-      <CompaniesGrid key={view} view={view} sort={sort} />
+      <CompaniesGrid
+        key={view + page}
+        view={view}
+        sort={sort}
+        searchParams={{ page: +page! }}
+      />
     </section>
   );
 }
