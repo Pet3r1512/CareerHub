@@ -92,7 +92,10 @@ function SignInForm() {
             }}
           />
         </div>
-        <Button className="mt-6 bg-primary text-md" fullWidth>
+        <Button
+          className="mt-6 bg-primary text-md flex items-center gap-2 justify-center"
+          fullWidth
+        >
           Sign In
           <RefreshCw
             className={twMerge(
