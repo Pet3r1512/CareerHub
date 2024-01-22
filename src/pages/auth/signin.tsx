@@ -15,6 +15,7 @@ import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
 import { RefreshCw } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import { useState } from "react";
 
 export default function SignIn() {
   return (
@@ -45,6 +46,8 @@ export default function SignIn() {
 }
 
 function SignInForm() {
+  const [submitting, setSubmitting] = useState(false);
+
   return (
     <Card
       color="transparent"
@@ -99,8 +102,8 @@ function SignInForm() {
           Sign In
           <RefreshCw
             className={twMerge(
-              "w-[18px] h-[18px] animate-spin"
-              // submitting ? "block" : "hidden"
+              "w-[18px] h-[18px] animate-spin",
+              submitting ? "block" : "hidden"
             )}
           />
         </Button>
