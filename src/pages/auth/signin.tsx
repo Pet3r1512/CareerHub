@@ -1,6 +1,6 @@
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
-import { Card, Button, Typography } from "@material-tailwind/react";
+import { Card, Typography } from "@material-tailwind/react";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/router";
 import { Toaster } from "@/components/ui/toaster";
+import { Button } from "@/components/ui/button";
 
 export default function SignIn() {
   return (
@@ -203,7 +204,7 @@ function SignInForm() {
                         {...field}
                       />
                       <Button
-                        className="bg-white shadow-xl text-black py-2 px-0 lg:px-4"
+                        className="bg-white hover:bg-white shadow-xl text-black px-0 lg:px-4"
                         tabIndex={-1}
                         onClick={handleTogglePassword}
                       >
@@ -217,8 +218,7 @@ function SignInForm() {
             />
           </div>
           <Button
-            className="mt-6 bg-primary text-md flex items-center gap-2 justify-center"
-            fullWidth
+            className="text-white rounded-xl px-6 py-4 text-lg font-semibold flex items-center gap-1 justify-between mt-8"
             disabled={submitting ? true : false}
             type="submit"
             onKeyDown={handleKeyPress}
