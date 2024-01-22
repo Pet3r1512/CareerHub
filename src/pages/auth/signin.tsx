@@ -1,20 +1,28 @@
 import Page from "@/assets/_UI/Page";
 import Logo from "@/assets/_UI/_logo";
-import Image from "next/image";
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-  Select,
-  Option,
-} from "@material-tailwind/react";
+import { Card, Typography } from "@material-tailwind/react";
 import ButtonBlock from "@/assets/_UI/_button";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
-import { RefreshCw } from "lucide-react";
+import { Eye, EyeOff, RefreshCw } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import { useState, KeyboardEvent } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
+import { useRouter } from "next/router";
+import { Toaster } from "@/components/ui/toaster";
+import { Button } from "@/components/ui/button";
 
 export default function SignIn() {
   return (
@@ -45,6 +53,97 @@ export default function SignIn() {
 }
 
 function SignInForm() {
+  const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const router = useRouter();
+
+  const formSchema = z.object({
+    email: z.string({ required_error: "Email is required!" }).email(),
+    password: z.string().min(8, "Password must has at least 8 characters!"),
+  });
+
+  const {
+    register,
+    clearErrors,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    clearErrors();
+    setSubmitting(true);
+    let userPassword = "";
+    await fetch("/api/auth/signin", {
+      method: "Post",
+      body: values.email,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data) {
+          if (data.result === "Done") {
+            userPassword = data.message;
+            console.log(userPassword);
+          } else {
+            toast({
+              variant: "destructive",
+              title: "Email or password is incorrect!",
+            });
+          }
+        }
+        return;
+      });
+    await fetch("/api/checkPassword", {
+      method: "Post",
+      body: JSON.stringify({ plain: values.password, hash: userPassword }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.result === true) {
+          toast({
+            title: "Log in successfully",
+            className: "bg-green",
+          });
+          setTimeout(() => {
+            router.push("/");
+          }, 1500);
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Email or password is incorrect!",
+          });
+        }
+      });
+    setSubmitting(false);
+  };
+
+  // Submiting form by Pressing "Enter"
+  const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter") {
+      form.handleSubmit(handleSubmit);
+    }
+  };
+
+  // Toggle show/hidden password input
+  const handleTogglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const targetElement = e.target as HTMLButtonElement;
+    if (targetElement.tagName.toLowerCase() !== "button") {
+      e.preventDefault();
+      setShowPassword(!showPassword);
+    }
+  };
+
   return (
     <Card
       color="transparent"
@@ -57,63 +156,93 @@ function SignInForm() {
       <Typography color="gray" className="mt-1 font-normal w-full self-start">
         Welcome back! Please sign in to find your dream position!
       </Typography>
-      <form className="mt-8 mb-2 w-full max-w-screen-lg sm:w-96">
-        <div className="mb-1 flex flex-col gap-6">
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Your Email <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            size="lg"
-            placeholder="me.careerhub@mail.com"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex items-center gap-x-1"
-          >
-            Password <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            crossOrigin={true}
-            type="password"
-            size="lg"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-        </div>
-        <Button
-          className="mt-6 bg-primary text-md flex items-center gap-2 justify-center"
-          fullWidth
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="mt-8 mb-2 w-full max-w-screen-lg sm:w-96"
         >
-          Sign In
-          <RefreshCw
-            className={twMerge(
-              "w-[18px] h-[18px] animate-spin"
-              // submitting ? "block" : "hidden"
-            )}
-          />
-        </Button>
-        <Typography color="black" className="mt-4 text-center font-normal">
-          Do not have an account?{" "}
-          <Link
-            href="/auth/signup"
-            className="font-semibold underline text-gray-900"
+          <div className="mb-1 flex flex-col gap-6">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel htmlFor="email" className="text-md font-semibold">
+                    Email
+                  </FormLabel>
+                  <FormControl>
+                    <div className="grid w-full items-center gap-1.5">
+                      <Input
+                        type="email"
+                        id="email"
+                        placeholder="johndoe.careerhub@mail.com"
+                        {...field}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel
+                    htmlFor="password"
+                    className="text-md font-semibold"
+                  >
+                    Password
+                  </FormLabel>
+                  <FormControl>
+                    <div className="flex w-full items-center gap-3 lg:gap-4">
+                      <Input
+                        // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+"
+                        type={showPassword ? "text" : "password"}
+                        id="password"
+                        {...field}
+                      />
+                      <Button
+                        className="bg-white hover:bg-white shadow-xl text-black px-0 lg:px-4"
+                        tabIndex={-1}
+                        onClick={handleTogglePassword}
+                      >
+                        {showPassword ? <Eye /> : <EyeOff />}
+                      </Button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button
+            className="text-white rounded-xl px-6 py-4 text-lg font-semibold flex items-center gap-1 justify-between mt-8"
+            disabled={submitting ? true : false}
+            type="submit"
+            onKeyDown={handleKeyPress}
           >
-            Sign Up
-          </Link>
-        </Typography>
-      </form>
+            Sign In
+            <RefreshCw
+              className={twMerge(
+                "w-[18px] h-[18px] animate-spin",
+                submitting ? "block" : "hidden"
+              )}
+            />
+          </Button>
+          <Typography color="black" className="mt-4 text-center font-normal">
+            Do not have an account?{" "}
+            <Link
+              href="/auth/signup"
+              className="font-semibold underline text-gray-900"
+            >
+              Sign Up
+            </Link>
+          </Typography>
+        </form>
+      </Form>
+      <Toaster />
     </Card>
   );
 }
