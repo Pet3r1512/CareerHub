@@ -20,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         })
         if(user) {
-            console.log(user)
             return res.status(200).json({
                 result: "Done",
                 message: user?.password
