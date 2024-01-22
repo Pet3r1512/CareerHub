@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/pagination";
 import { twMerge } from "tailwind-merge";
 import Router from "next/router";
+import PushQuery from "../utils/routerQuery";
 
 export default function PaginationSection({
   totalItems,
@@ -35,39 +36,39 @@ export default function PaginationSection({
 
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
-      Router.push(
-        {
-          pathname: "/companies",
-          query: { page: currentPage + 1 },
+      PushQuery({
+        pathname: Router.pathname,
+        query: {
+          search: Router.query.search,
+          location: Router.query.location,
+          page: currentPage + 1,
         },
-        undefined,
-        { scroll: false }
-      );
+      });
     }
   };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      Router.push(
-        {
-          pathname: "/companies",
-          query: { page: currentPage - 1 },
+      PushQuery({
+        pathname: Router.pathname,
+        query: {
+          search: Router.query.search,
+          location: Router.query.location,
+          page: currentPage - 1,
         },
-        undefined,
-        { scroll: false }
-      );
+      });
     }
   };
 
   const handleCurrentPage = (page: number) => {
-    Router.push(
-      {
-        pathname: "/companies",
-        query: { page: page },
+    PushQuery({
+      pathname: Router.pathname,
+      query: {
+        search: Router.query.search,
+        location: Router.query.location,
+        page: page,
       },
-      undefined,
-      { scroll: false }
-    );
+    });
   };
 
   const renderPage = () => {

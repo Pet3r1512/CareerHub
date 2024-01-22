@@ -3,14 +3,11 @@ import { Badge } from "@/components/ui/badge";
 import { twMerge } from "tailwind-merge";
 import CustomizeBadge from "@/components/customizeBadge";
 import PaginationSection from "@/components/paginationSection";
+import { useSearchParams } from "next/navigation";
 
 type CompaniesGridProps = {
   view: "grid" | "list";
   sort: string;
-  searchParams?: {
-    page?: number;
-    search?: string;
-  };
 };
 
 type Company = {
@@ -22,16 +19,17 @@ type Company = {
   remaining_jobs_count: number;
 };
 
-export default function CompaniesGrid({
-  view,
-  sort,
-  searchParams,
-}: CompaniesGridProps) {
+export default function CompaniesGrid({ view, sort }: CompaniesGridProps) {
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
+  const search = searchParams.get("search") || "";
   const itemAmountDependOnView = view == "grid" ? 8 : 4;
-  const currentPage: number = searchParams?.page || 1;
-
+  const currentPage: number = +page! || 1;
   const lastItemIndex = currentPage * itemAmountDependOnView;
   const firstItemIndex = lastItemIndex - itemAmountDependOnView;
+  const data = companies.filter((company) =>
+    company.name.toLowerCase().includes(search.toLowerCase() || "")
+  );
 
   return (
     <div className="flex flex-col gap-12 items-center">
@@ -41,21 +39,14 @@ export default function CompaniesGrid({
           view == "grid" ? "lg:grid lg:grid-cols-2" : ""
         )}
       >
-        {companies
-          .filter((company) =>
-            company.name
-              .toLowerCase()
-              .includes(searchParams?.search?.toLowerCase() || "")
-          )
-          .slice(firstItemIndex, lastItemIndex)
-          .map((company, index) => (
-            <CompanyItem key={index} company={company} index={index} />
-          ))}
+        {data.slice(firstItemIndex, lastItemIndex).map((company, index) => (
+          <CompanyItem key={index} company={company} index={index} />
+        ))}
       </div>
       <PaginationSection
         currentPage={currentPage}
         itemsPerPage={itemAmountDependOnView}
-        totalItems={companies.length}
+        totalItems={data.length}
       />
     </div>
   );

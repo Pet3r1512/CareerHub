@@ -12,17 +12,28 @@ import { Input } from "@/components/ui/input";
 import { SelectGroup } from "@radix-ui/react-select";
 import { useEffect, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
-import router from "next/router";
+import Router from "next/router";
+import PushQuery from "@/utils/routerQuery";
+import { locations } from "@/data/locations";
 
 type SearchBar2Props = {
   type: "company" | "job";
 };
 
 function ChooseLocation() {
+  const [location, setLocation] = useState("");
+
+  useEffect(() => {
+    PushQuery({
+      pathname: Router.pathname,
+      query: { search: Router.query.search, location: location },
+    });
+  }, [location]);
+
   return (
     <div className="p-2 w-full lg:w-[40%] h-full flex gap-4 items-center group/item">
       <MapPin size={24} color="#424242" />
-      <Select>
+      <Select onValueChange={(e) => setLocation(e)}>
         <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600 relative p-0 h-fit lg:text-base">
           <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
           <div className="flex gap-2 items-center w-full mr-3">
@@ -33,21 +44,15 @@ function ChooseLocation() {
         </SelectTrigger>
         <SelectContent>
           <SelectGroup className="text-gray-600">
-            <SelectItem value="SG" className="cursor-pointer">
-              Ho Chi Minh city
-            </SelectItem>
-            <SelectItem value="HN" className="cursor-pointer">
-              Ha Noi
-            </SelectItem>
-            <SelectItem value="DN" className="cursor-pointer">
-              Da Nang
-            </SelectItem>
-            <SelectItem value="CT" className="cursor-pointer">
-              Can Tho
-            </SelectItem>
-            <SelectItem value="BD" className="cursor-pointer">
-              Binh Duong
-            </SelectItem>
+            {locations.map((location, index) => (
+              <SelectItem
+                key={index}
+                value={location.value}
+                className="cursor-pointer"
+              >
+                {location.name}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -60,26 +65,11 @@ function SearchName({ type }: SearchBar2Props) {
   const debouncedInputValue = useDebounce(inputValue, 500);
 
   useEffect(() => {
-    if (type == "company") {
-      router.push(
-        {
-          pathname: "/companies",
-          query: { search: debouncedInputValue },
-        },
-        undefined,
-        { scroll: false }
-      );
-    } else {
-      router.push(
-        {
-          pathname: "/jobs",
-          query: { search: debouncedInputValue },
-        },
-        undefined,
-        { scroll: false }
-      );
-    }
-  }, [debouncedInputValue, type]);
+    PushQuery({
+      pathname: Router.pathname,
+      query: { search: debouncedInputValue, location: Router.query.location },
+    });
+  }, [debouncedInputValue]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -115,7 +105,6 @@ export default function SearchBar2({ type }: SearchBar2Props) {
         className="bg-gray-light lg:h-10 hidden lg:block"
       />
       <ChooseLocation />
-      <ButtonBlock content="Search" />
     </div>
   );
 }
