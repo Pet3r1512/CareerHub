@@ -8,7 +8,8 @@ type CompaniesGridProps = {
   view: "grid" | "list";
   sort: string;
   searchParams?: {
-    page: number;
+    page?: number;
+    search?: string;
   };
 };
 
@@ -41,6 +42,11 @@ export default function CompaniesGrid({
         )}
       >
         {companies
+          .filter((company) =>
+            company.name
+              .toLowerCase()
+              .includes(searchParams?.search?.toLowerCase() || "")
+          )
           .slice(firstItemIndex, lastItemIndex)
           .map((company, index) => (
             <CompanyItem key={index} company={company} index={index} />
