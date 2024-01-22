@@ -39,8 +39,7 @@ export default function PaginationSection({
       PushQuery({
         pathname: Router.pathname,
         query: {
-          search: Router.query.search,
-          location: Router.query.location,
+          ...Router.query,
           page: currentPage + 1,
         },
       });
@@ -52,8 +51,7 @@ export default function PaginationSection({
       PushQuery({
         pathname: Router.pathname,
         query: {
-          search: Router.query.search,
-          location: Router.query.location,
+          ...Router.query,
           page: currentPage - 1,
         },
       });
@@ -64,8 +62,7 @@ export default function PaginationSection({
     PushQuery({
       pathname: Router.pathname,
       query: {
-        search: Router.query.search,
-        location: Router.query.location,
+        ...Router.query,
         page: page,
       },
     });

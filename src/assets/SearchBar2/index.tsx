@@ -9,7 +9,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { SelectGroup } from "@radix-ui/react-select";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
 import Router from "next/router";
 import { locations } from "@/data/locations";
@@ -20,19 +20,17 @@ type SearchBar2Props = {
 };
 
 function ChooseLocation() {
-  const [location, setLocation] = useState("");
-
-  useEffect(() => {
+  const handleChange = (value: string) => {
     PushQuery({
       pathname: Router.pathname,
-      query: { search: Router.query.search, location: location },
+      query: { ...Router.query, location: value, page: "" },
     });
-  }, [location]);
+  };
 
   return (
     <div className="p-2 w-full lg:w-[40%] h-full flex gap-4 items-center group/item">
       <MapPin size={24} color="#424242" />
-      <Select onValueChange={(e) => setLocation(e)}>
+      <Select onValueChange={handleChange}>
         <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600 relative p-0 h-fit lg:text-base">
           <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
           <div className="flex gap-2 items-center w-full mr-3">
@@ -60,14 +58,21 @@ function ChooseLocation() {
 }
 
 function SearchName({ type }: SearchBar2Props) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState<string | null>(null);
   const debouncedInputValue = useDebounce(inputValue, 500);
+  const firstRender = useRef(true);
 
   useEffect(() => {
-    PushQuery({
-      pathname: Router.pathname,
-      query: { search: debouncedInputValue, location: Router.query.location },
-    });
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else if (debouncedInputValue == null) {
+      firstRender.current = false;
+    } else {
+      PushQuery({
+        pathname: Router.pathname,
+        query: { ...Router.query, search: debouncedInputValue, page: "" },
+      });
+    }
   }, [debouncedInputValue]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +93,7 @@ function SearchName({ type }: SearchBar2Props) {
           }
           className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full lg:text-base lg:placeholder:text-base"
           onChange={handleInputChange}
-          value={inputValue}
+          value={inputValue || ""}
         />
       </div>
     </div>

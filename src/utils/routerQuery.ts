@@ -11,15 +11,22 @@ type QueryProps = {
 };
 
 export function PushQuery({ pathname, query }: QueryProps) {
-  return Router.push(
+  const params = new URLSearchParams({
+    ...(query.page && { page: query.page.toString() }),
+    ...(query.search && { search: query.search.toString() }),
+    ...(query.location &&
+      query.location != "All" && {
+        location: query.location.toString(),
+      }),
+    ...(query.options && { options: query.options.toString() }),
+  });
+
+  const newQuery = params.toString() ? `${params.toString()}` : "";
+
+  return Router.replace(
     {
       pathname: pathname,
-      query: {
-        search: query.search,
-        location: query.location,
-        options: query.options,
-        page: query.page,
-      },
+      query: newQuery,
     },
     undefined,
     { scroll: false }
