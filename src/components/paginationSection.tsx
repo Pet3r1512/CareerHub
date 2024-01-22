@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/pagination";
 import { twMerge } from "tailwind-merge";
 import Router from "next/router";
-import PushQuery from "../utils/routerQuery";
+import { PushQuery } from "@/utils/routerQuery";
 
 export default function PaginationSection({
   totalItems,

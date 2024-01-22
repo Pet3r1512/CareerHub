@@ -1,4 +1,3 @@
-import ButtonBlock from "../_UI/_button";
 import { Search, MapPin } from "lucide-react";
 import {
   Select,
@@ -13,8 +12,8 @@ import { SelectGroup } from "@radix-ui/react-select";
 import { useEffect, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
 import Router from "next/router";
-import PushQuery from "@/utils/routerQuery";
 import { locations } from "@/data/locations";
+import { PushQuery } from "@/utils/routerQuery";
 
 type SearchBar2Props = {
   type: "company" | "job";

@@ -10,7 +10,7 @@ type QueryProps = {
   };
 };
 
-export default function PushQuery({ pathname, query }: QueryProps) {
+export function PushQuery({ pathname, query }: QueryProps) {
   return Router.push(
     {
       pathname: pathname,
