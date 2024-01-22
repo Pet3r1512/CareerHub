@@ -116,7 +116,7 @@ function SignInForm() {
             className: "bg-green",
           });
           setTimeout(() => {
-            router.push("/");
+            router.push("/profile");
           }, 1500);
         } else {
           toast({
