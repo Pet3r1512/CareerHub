@@ -19,4 +19,8 @@ export const locations = [
     name: "Binh Duong",
     value: "BD",
   },
+  {
+    name: "All",
+    value: "All",
+  },
 ];
