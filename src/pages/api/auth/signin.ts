@@ -10,15 +10,26 @@ const prisma = new PrismaClient()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     await runMiddleware(req, res, cors)
-    const data = JSON.parse(req.body)
 
-    const {email, password} = data.values
+    const email = req.body
 
     try {
         const user = await prisma.user.findFirst({
-            where: {AND: [{email}, {password}]}
+            where: {
+                email: email,
+            }
         })
-        console.log(user)
+        if(user) {
+            console.log(user)
+            return res.status(200).json({
+                result: "Done",
+                message: user?.password
+            })
+        }
+        return res.status(201).json({
+            result: "Error",
+            message: "User not found!"
+        })
     }
     catch(error) {
         console.error("Error: ", error)
