@@ -14,12 +14,19 @@ import { useDebounce } from "@/hooks/useDebounce";
 import Router from "next/router";
 import { locations } from "@/data/locations";
 import { PushQuery } from "@/utils/routerQuery";
+import { useSearchParams } from "next/navigation";
 
 type SearchBar2Props = {
   type: "company" | "job";
+  loading: {
+    isSearchLoading: boolean;
+    setIsSearchLoading: (value: boolean) => void;
+  };
 };
 
 function ChooseLocation() {
+  const searchParams = useSearchParams();
+  const locationParam = searchParams.get("location");
   const handleChange = (value: string) => {
     PushQuery({
       pathname: Router.pathname,
@@ -35,7 +42,12 @@ function ChooseLocation() {
           <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
           <div className="flex gap-2 items-center w-full mr-3">
             <div className="w-full text-left">
-              <SelectValue placeholder="Choose location" />
+              <SelectValue
+                placeholder={
+                  locations.find((obj) => obj.value == locationParam)?.name ||
+                  "Choose location"
+                }
+              />
             </div>
           </div>
         </SelectTrigger>
@@ -57,10 +69,13 @@ function ChooseLocation() {
   );
 }
 
-function SearchName({ type }: SearchBar2Props) {
+function SearchName({ type, loading }: SearchBar2Props) {
   const [inputValue, setInputValue] = useState<string | null>(null);
-  const debouncedInputValue = useDebounce(inputValue, 500);
+  const debouncedInputValue = useDebounce(inputValue, 1000);
   const firstRender = useRef(true);
+  const searchParams = useSearchParams();
+  const searchParam = searchParams.get("search");
+  const setLoading = loading.setIsSearchLoading;
 
   useEffect(() => {
     if (firstRender.current) {
@@ -72,24 +87,35 @@ function SearchName({ type }: SearchBar2Props) {
         pathname: Router.pathname,
         query: { ...Router.query, search: debouncedInputValue, page: "" },
       });
+      setLoading(false);
     }
-  }, [debouncedInputValue]);
+  }, [debouncedInputValue, setLoading]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+    setLoading(true);
   };
 
   return (
     <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%] group/item">
-      <Search size={24} color="#424242" />
+      {!loading.isSearchLoading && <Search size={24} color="#424242" />}
+      {loading.isSearchLoading && (
+        <div className="flex space-x-1 justify-center items-center bg-transparent h-fit dark:invert relative">
+          <span className="sr-only">Loading...</span>
+          <div className="h-1 w-1 bg-blue rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+          <div className="h-1 w-1 bg-blue rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+          <div className="h-1 w-1 bg-blue rounded-full animate-bounce"></div>
+        </div>
+      )}
       <div className="relative w-full">
         <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
         <Input
           type="text"
           placeholder={
-            type == "company"
+            searchParam ||
+            (type == "company"
               ? "Company name or keyword"
-              : "Job title or keyword"
+              : "Job title or keyword")
           }
           className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full lg:text-base lg:placeholder:text-base"
           onChange={handleInputChange}
@@ -100,10 +126,10 @@ function SearchName({ type }: SearchBar2Props) {
   );
 }
 
-export default function SearchBar2({ type }: SearchBar2Props) {
+export default function SearchBar2({ type, loading }: SearchBar2Props) {
   return (
     <div className="flex flex-wrap gap-8 lg:gap-0 p-8 px-4 justify-evenly items-center w-full bg-white">
-      <SearchName type={type} />
+      <SearchName type={type} loading={loading} />
       <Separator
         orientation="vertical"
         className="bg-gray-light lg:h-10 hidden lg:block"

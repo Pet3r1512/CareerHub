@@ -9,17 +9,32 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import CompaniesGrid from "./companiesGrid";
+import { companies } from "@/data/companies";
+import { useSearchParams } from "next/navigation";
 
-export default function CompaniesContainer() {
+export default function CompaniesContainer({
+  loading,
+}: {
+  loading: {
+    isSearchLoading: boolean;
+    setIsSearchLoading: (value: boolean) => void;
+  };
+}) {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [sort, setSort] = useState<string>("relevant");
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search") || "";
+  const data = companies.filter((company) =>
+    company.name.toLowerCase().includes(search.toLowerCase() || "")
+  );
 
   return (
     <section className="lg:w-[65%] h-full pt-16 lg:p-12 lg:px-16 flex flex-col gap-8">
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between items-center">
         <div className="leading-loose">
           <h1 className="font-bold text-4xl">All Jobs</h1>
-          <p>Showing 73 results</p>
+          <p>Showing {data.length} results</p>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-4">
@@ -67,7 +82,13 @@ export default function CompaniesContainer() {
           </label>
         </div>
       </div>
-      <CompaniesGrid key={view} view={view} sort={sort} />
+      <CompaniesGrid
+        key={view}
+        view={view}
+        sort={sort}
+        loading={loading}
+        data={data}
+      />
     </section>
   );
 }
