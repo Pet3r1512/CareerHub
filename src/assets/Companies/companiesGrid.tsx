@@ -2,7 +2,6 @@ import { companies } from "@/data/companies";
 import { Badge } from "@/components/ui/badge";
 import { twMerge } from "tailwind-merge";
 import CustomizeBadge from "@/components/customizeBadge";
-import { useState } from "react";
 import PaginationSection from "@/components/paginationSection";
 
 type CompaniesGridProps = {
@@ -29,12 +28,9 @@ export default function CompaniesGrid({
 }: CompaniesGridProps) {
   const itemAmountDependOnView = view == "grid" ? 8 : 4;
   const currentPage: number = searchParams?.page || 1;
-  const [itemsPerPage, setItemsPerPage] = useState<number>(
-    itemAmountDependOnView
-  );
 
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const lastItemIndex = currentPage * itemAmountDependOnView;
+  const firstItemIndex = lastItemIndex - itemAmountDependOnView;
 
   return (
     <div className="flex flex-col gap-12 items-center">
@@ -52,7 +48,7 @@ export default function CompaniesGrid({
       </div>
       <PaginationSection
         currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
+        itemsPerPage={itemAmountDependOnView}
         totalItems={companies.length}
       />
     </div>
