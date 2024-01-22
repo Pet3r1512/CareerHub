@@ -14,6 +14,7 @@ import { useSearchParams } from "next/navigation";
 export default function CompaniesContainer() {
   const searchParams = useSearchParams();
   const page = searchParams.get("page");
+  const search = searchParams.get("search");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [sort, setSort] = useState<string>("relevant");
 
@@ -74,7 +75,7 @@ export default function CompaniesContainer() {
         key={view + page}
         view={view}
         sort={sort}
-        searchParams={{ page: +page! }}
+        searchParams={{ page: +page!, search: search! }}
       />
     </section>
   );
