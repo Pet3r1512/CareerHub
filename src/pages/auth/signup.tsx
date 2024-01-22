@@ -361,7 +361,7 @@ function SignUpForm() {
               href="/auth/signin"
               className="font-bold underline text-gray-900"
             >
-              Sign Up
+              Sign In
             </Link>
           </Typography>
         </form>
