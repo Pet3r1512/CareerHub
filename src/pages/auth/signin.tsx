@@ -23,6 +23,7 @@ import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/router";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
+import { login, useAppDispatch } from "@/lib/store";
 
 export default function SignIn() {
   return (
@@ -55,6 +56,8 @@ export default function SignIn() {
 function SignInForm() {
   const [submitting, setSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -92,7 +95,7 @@ function SignInForm() {
         if (data) {
           if (data.result === "Done") {
             userPassword = data.message;
-            console.log(userPassword);
+            dispatch(login({ full_name: data.user_full_name }));
           } else {
             toast({
               variant: "destructive",
