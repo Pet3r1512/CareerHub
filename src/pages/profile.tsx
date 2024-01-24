@@ -1,5 +1,3 @@
-// pages/index.tsx
-
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
@@ -12,6 +10,7 @@ function Profile() {
       router.push("/auth/signin");
     }
   }, []);
+
   return (
     <div>
       <p>Check the console for cookie information.</p>
