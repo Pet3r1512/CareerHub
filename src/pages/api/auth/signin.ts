@@ -4,7 +4,6 @@ import Cors from "cors";
 import { runMiddleware } from "@/middlleware/cors";
 import { serialize } from 'cookie';
 import { generateToken } from "@/utils/auth";
-const jwt = require('jsonwebtoken');
 const cors = Cors({
   methods: ["POST", "GET", "HEAD"],
 });
@@ -34,6 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(200).json({
                 result: "Done",
                 message: user?.password,
+                user_full_name: user?.full_name
             });
         }
         else {
