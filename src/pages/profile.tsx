@@ -11,6 +11,12 @@ function Profile() {
 
   // Add routing for unAuthenticated user
 
+  useEffect(() => {
+    if (!user) {
+      router.push("/auth/signin");
+    }
+  }, []);
+
   return (
     <Page pageName="Careerhub - Profile">
       <p>{user?.full_name}</p>
