@@ -25,7 +25,11 @@ export default function Page({
       <Head>
         <title>{renderedPageName}</title>
       </Head>
-      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      <AnimatePresence
+        mode="wait"
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
         <motion.main
           variants={variants}
           initial="hidden"

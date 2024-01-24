@@ -1,29 +1,20 @@
-// pages/index.tsx
-
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
+import Page from "@/assets/_UI/Page";
+import { useAppSelector } from "@/lib/store";
 
 function Profile() {
   const router = useRouter();
 
-  useEffect(() => {
-    if (!Cookies.get("token")) {
-      router.push("/auth/signin");
-    }
-  }, []);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const user = useAppSelector((state) => state.auth.user);
+
+  // Add routing for unAuthenticated user
+
   return (
-    <div>
-      <p>Check the console for cookie information.</p>
-      <button
-        onClick={() => {
-          Cookies.remove("token");
-          router.push("/auth/signin");
-        }}
-      >
-        Sign Out
-      </button>
-    </div>
+    <Page pageName="Careerhub - Profile">
+      <p>{user?.full_name}</p>
+    </Page>
   );
 }
 
