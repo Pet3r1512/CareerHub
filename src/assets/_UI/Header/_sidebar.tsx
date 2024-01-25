@@ -4,6 +4,8 @@ import Logo from "../_logo";
 import Menu from "./_menu";
 import { ChevronRight } from "lucide-react";
 import Auth from "./_auth";
+import UserAvatar from "./_avatar";
+import { useAppSelector } from "@/lib/store";
 
 export default function Sidebar({
   isOpen,
@@ -12,6 +14,8 @@ export default function Sidebar({
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
+  const user = useAppSelector((state) => state.auth.user);
+
   return (
     <Drawer
       open={isOpen}
@@ -32,7 +36,7 @@ export default function Sidebar({
       </div>
       <div className="flex flex-col justify-between h-full">
         <Menu className="flex flex-col" />
-        <Auth />
+        {!user ? <Auth /> : <UserAvatar />}
       </div>
     </Drawer>
   );
