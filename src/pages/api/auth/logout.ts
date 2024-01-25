@@ -6,5 +6,5 @@ import { destroyCookie } from 'nookies';
 export default (req: NextApiRequest, res: NextApiResponse) => {
     destroyCookie({ res }, 'token');
 
-    res.status(200).json({ success: true });
+    return res.status(200).json({ success: true });
 };
