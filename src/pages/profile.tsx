@@ -17,7 +17,7 @@ function Profile() {
 
   return (
     <Page pageName="Careerhub - Profile">
-      <Header />
+      <></>
     </Page>
   );
 }
