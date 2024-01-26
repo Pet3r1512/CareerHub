@@ -14,6 +14,7 @@ import { Typography } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { LogOut } from "lucide-react";
 
 export default function UserAvatar() {
   const [userToken, setUserToken] = useState("");
@@ -43,19 +44,20 @@ export default function UserAvatar() {
 
   if (userToken !== "") {
     return (
-      <Menubar className="border-0 lg:hidden">
+      <Menubar className="border-0 w-full lg:max-w-fit">
         <MenubarMenu>
-          <MenubarTrigger className="flex items-center gap-2 hover:cursor-pointer">
-            <Typography className="truncate max-w-xl font-bold">
+          <MenubarTrigger className="flex w-full items-center flex-row-reverse lg:flex-row gap-2 hover:cursor-pointer">
+            <Typography className="truncate text-xl font-bold flex items-center justify-between w-full">
               {user?.full_name}
+              <button className="lg:hidden text-red-700" onClick={handleLogout}>
+                <LogOut />
+              </button>
             </Typography>
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             </Avatar>
           </MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>Settings</MenubarItem>
-            <MenubarSeparator />
+          <MenubarContent className="hidden lg:block">
             <MenubarItem className="text-red-500">
               <button onClick={handleLogout}>Sign Out</button>
             </MenubarItem>
