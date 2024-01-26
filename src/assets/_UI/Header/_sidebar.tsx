@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react";
 import Auth from "./_auth";
 import UserAvatar from "./_avatar";
 import { useAppSelector } from "@/lib/store";
+import { twMerge } from "tailwind-merge";
 
 export default function Sidebar({
   isOpen,
@@ -20,7 +21,10 @@ export default function Sidebar({
     <Drawer
       open={isOpen}
       placement="right"
-      className="px-4 py-6 flex flex-col gap-y-8"
+      className={twMerge(
+        "px-4 py-6 flex flex-col gap-y-8",
+        isOpen ? "sidebar-opened" : ""
+      )}
     >
       <div className="flex items-center justify-between">
         <Logo />

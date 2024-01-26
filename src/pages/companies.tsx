@@ -9,9 +9,9 @@ export default function CompaniesPage() {
       className="pt-6 px-0 lg:min-h-screen max-w-screen"
       pageName="Companies"
     >
-      <section className="max-w-[100rem] mx-auto px-2 lg:px-0">
+      {/* <section className="max-w-[100rem] mx-auto px-2 lg:px-0">
         <Header />
-      </section>
+      </section> */}
       <Intro
         title="dream companies"
         description="Find the dream companies you dream work for"
