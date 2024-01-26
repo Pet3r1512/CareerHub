@@ -33,7 +33,7 @@ export default function Header({
       </button>
       <Sidebar isOpen={openSidebar} setIsOpen={setOpenSidebar} />
       {/* Signin/Signup button for PCs */}
-      {!user && <Auth className="hidden lg:block" />}
+      {!user && <Auth className="hidden lg:flex" />}
     </section>
   );
 }
