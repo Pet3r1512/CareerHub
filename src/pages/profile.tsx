@@ -3,14 +3,12 @@ import Page from "@/assets/_UI/Page";
 import Header from "@/assets/_UI/Header";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { useAppSelector } from "@/lib/store";
 
 function Profile() {
   const router = useRouter();
-  const user = useAppSelector((state) => state.auth.user);
 
   useEffect(() => {
-    if (!Cookies.get().token || !user) {
+    if (!Cookies.get().token) {
       router.push("/auth/signin");
     }
   }, []);
