@@ -8,10 +8,12 @@ import Header from "./Header";
 export default function Page({
   children,
   pageName = "Home",
+  noHeader = false,
   className,
 }: {
   children: ReactNode;
   pageName?: string;
+  noHeader?: boolean;
   className?: string;
 }) {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -48,7 +50,12 @@ export default function Page({
               openSidebar ? "h-screen overflow-hidden" : ""
             )}
           >
-            <Header openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
+            <div className={noHeader ? "hidden" : ""}>
+              <Header
+                openSidebar={openSidebar}
+                setOpenSidebar={setOpenSidebar}
+              />
+            </div>
             {children}
           </main>
         </motion.main>
