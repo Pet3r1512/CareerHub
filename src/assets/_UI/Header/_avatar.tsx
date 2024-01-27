@@ -58,6 +58,14 @@ export default function UserAvatar() {
             </Avatar>
           </MenubarTrigger>
           <MenubarContent className="hidden lg:block">
+            <MenubarItem
+              onClick={() => {
+                router.push("/profile");
+              }}
+            >
+              Profile
+            </MenubarItem>
+            <MenubarSeparator />
             <MenubarItem className="text-red-500">
               <button onClick={handleLogout}>Sign Out</button>
             </MenubarItem>

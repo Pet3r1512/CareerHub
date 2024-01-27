@@ -2,11 +2,13 @@ import { Drawer } from "@material-tailwind/react";
 import { Dispatch, SetStateAction } from "react";
 import Logo from "../_logo";
 import Menu from "./_menu";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, User } from "lucide-react";
 import Auth from "./_auth";
 import UserAvatar from "./_avatar";
 import { useAppSelector } from "@/lib/store";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Sidebar({
   isOpen,
@@ -16,6 +18,7 @@ export default function Sidebar({
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const user = useAppSelector((state) => state.auth.user);
+  const router = useRouter();
 
   return (
     <Drawer
@@ -40,7 +43,22 @@ export default function Sidebar({
       </div>
       <div className="flex flex-col justify-between h-full">
         <Menu className="flex flex-col" />
-        {!user ? <Auth /> : <UserAvatar />}
+        {!user ? (
+          <Auth />
+        ) : (
+          <div className="flex flex-col gap-16 text-gray text-lg font-semibold">
+            <button
+              className="flex items-center gap-2"
+              onClick={() => {
+                router.push("/profile");
+              }}
+            >
+              <User />
+              <Link href="/profile">Profile</Link>
+            </button>
+            <UserAvatar />
+          </div>
+        )}
       </div>
     </Drawer>
   );
