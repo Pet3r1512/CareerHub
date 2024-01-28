@@ -1,18 +1,23 @@
 import Head from "next/head";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import Footer from "./Footer";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
+import Header from "./Header";
 
 export default function Page({
   children,
   pageName = "Home",
+  noHeader = false,
   className,
 }: {
   children: ReactNode;
   pageName?: string;
+  noHeader?: boolean;
   className?: string;
 }) {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const renderedPageName = `CareerHub - ${pageName}`;
   const variants = {
     hidden: { opacity: 0, x: 300, y: 0 },
@@ -38,15 +43,23 @@ export default function Page({
           transition={{ type: "spring", stiffness: 260, damping: 30 }}
         >
           <main
+            id="body"
             className={twMerge(
               "max-w-[100rem] mx-auto pt-6 pb-14 px-2 lg:px-0 lg:min-h-screen",
-              className
+              className,
+              openSidebar ? "h-screen overflow-hidden" : ""
             )}
           >
+            <div className={noHeader ? "hidden" : ""}>
+              <Header
+                openSidebar={openSidebar}
+                setOpenSidebar={setOpenSidebar}
+              />
+            </div>
             {children}
           </main>
         </motion.main>
-        <Footer />
+        <Footer className={openSidebar ? "hidden" : ""} />
       </AnimatePresence>
     </div>
   );

@@ -27,7 +27,7 @@ import { login, useAppDispatch } from "@/lib/store";
 
 export default function SignIn() {
   return (
-    <Page className="py-0 max-w-none">
+    <Page className="py-0 max-w-none" noHeader>
       <section className="lg:flex min-h-screen">
         <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col items-center justify-center">
           <ImageWithLoading

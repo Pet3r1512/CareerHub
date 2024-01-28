@@ -61,7 +61,7 @@ const formSchema = z
 
 export default function SignUp() {
   return (
-    <Page className="py-0 max-w-none relative">
+    <Page className="py-0 max-w-none relative" noHeader>
       <section className="lg:flex min-h-screen">
         <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col items-center justify-center">
           <ImageWithLoading
