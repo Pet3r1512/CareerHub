@@ -95,7 +95,9 @@ function SignInForm() {
         if (data) {
           if (data.result === "Done") {
             userPassword = data.message;
-            dispatch(login({ full_name: data.user_full_name }));
+            dispatch(
+              login({ full_name: data.user_full_name, uuid: data.uuid })
+            );
           } else {
             toast({
               variant: "destructive",
