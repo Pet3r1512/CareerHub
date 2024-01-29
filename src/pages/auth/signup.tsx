@@ -150,7 +150,7 @@ function SignUpForm() {
             });
             setTimeout(() => {
               router.push("/");
-            }, 2000);
+            }, 1000);
           }
           if (data.result === "Conflict") {
             toast({

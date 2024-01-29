@@ -120,7 +120,7 @@ function SignInForm() {
           });
           setTimeout(() => {
             router.push("/profile");
-          }, 1500);
+          }, 1000);
         } else {
           toast({
             variant: "destructive",
