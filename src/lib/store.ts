@@ -6,6 +6,7 @@ import { useDispatch as useReduxDispatch, Provider, TypedUseSelectorHook, useSel
 // Define the type for the user
 interface User {
   full_name: string;
+  uuid?: string;
   // Add other user properties as needed
 }
 
