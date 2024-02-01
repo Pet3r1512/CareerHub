@@ -20,8 +20,10 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 - [Prisma](https://www.prisma.io/)
 - [PlanetScale](https://planetscale.com/)
 - [Supabase](https://supabase.com/)
+- [Redux](https://redux.js.org/)
 
 ### Form validations and security
+
 - [React Hook Form](https://react-hook-form.com/)
 - [Bcrypt](https://github.com/kelektiv/node.bcrypt.js)
 
