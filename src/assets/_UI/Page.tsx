@@ -33,7 +33,6 @@ export default function Page({
         <title>{renderedPageName}</title>
       </Head>
       <AnimatePresence
-        mode="wait"
         initial={false}
         onExitComplete={() => window.scrollTo(0, 0)}
       >

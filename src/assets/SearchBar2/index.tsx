@@ -1,4 +1,3 @@
-import ButtonBlock from "../_UI/_button";
 import { Search, MapPin } from "lucide-react";
 import {
   Select,
@@ -10,41 +9,59 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { SelectGroup } from "@radix-ui/react-select";
+import { useEffect, useRef, useState } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
+import Router from "next/router";
+import { locations } from "@/data/locations";
+import { PushQuery } from "@/utils/routerQuery";
+import { useSearchParams } from "next/navigation";
 
 type SearchBar2Props = {
   type: "company" | "job";
+  loading: {
+    isSearchLoading: boolean;
+    setIsSearchLoading: (value: boolean) => void;
+  };
 };
 
-function FindJobLocation() {
+function ChooseLocation() {
+  const searchParams = useSearchParams();
+  const locationParam = searchParams.get("location");
+  const handleChange = (value: string) => {
+    PushQuery({
+      pathname: Router.pathname,
+      query: { ...Router.query, location: value, page: "" },
+    });
+  };
+
   return (
     <div className="p-2 w-full lg:w-[40%] h-full flex gap-4 items-center group/item">
       <MapPin size={24} color="#424242" />
-      <Select>
+      <Select onValueChange={handleChange}>
         <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 text-gray-600 relative p-0 h-fit lg:text-base">
           <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
           <div className="flex gap-2 items-center w-full mr-3">
             <div className="w-full text-left">
-              <SelectValue placeholder="Choose location" />
+              <SelectValue
+                placeholder={
+                  locations.find((obj) => obj.value == locationParam)?.name ||
+                  "Choose location"
+                }
+              />
             </div>
           </div>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup className="text-gray-600">
-            <SelectItem value="SG" className="cursor-pointer">
-              Ho Chi Minh city
-            </SelectItem>
-            <SelectItem value="HN" className="cursor-pointer">
-              Ha Noi
-            </SelectItem>
-            <SelectItem value="DN" className="cursor-pointer">
-              Da Nang
-            </SelectItem>
-            <SelectItem value="CT" className="cursor-pointer">
-              Can Tho
-            </SelectItem>
-            <SelectItem value="BD" className="cursor-pointer">
-              Binh Duong
-            </SelectItem>
+            {locations.map((location) => (
+              <SelectItem
+                key={location.value}
+                value={location.value}
+                className="cursor-pointer"
+              >
+                {location.name}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -52,48 +69,72 @@ function FindJobLocation() {
   );
 }
 
-function FindJobName() {
+function SearchName({ type, loading }: SearchBar2Props) {
+  const [inputValue, setInputValue] = useState<string | null>(null);
+  const debouncedInputValue = useDebounce(inputValue, 1000);
+  const firstRender = useRef(true);
+  const searchParams = useSearchParams();
+  const searchParam = searchParams.get("search");
+  const setLoading = loading.setIsSearchLoading;
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else if (debouncedInputValue == null) {
+      firstRender.current = false;
+    } else {
+      PushQuery({
+        pathname: Router.pathname,
+        query: { ...Router.query, search: debouncedInputValue, page: "" },
+      });
+      setLoading(false);
+    }
+  }, [debouncedInputValue, setLoading]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    setLoading(true);
+  };
+
   return (
     <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%] group/item">
-      <Search size={24} color="#424242" />
+      {!loading.isSearchLoading && <Search size={24} color="#424242" />}
+      {loading.isSearchLoading && (
+        <div className="flex space-x-1 justify-center items-center bg-transparent h-fit dark:invert relative">
+          <span className="sr-only">Loading...</span>
+          <div className="h-1 w-1 bg-blue rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+          <div className="h-1 w-1 bg-blue rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+          <div className="h-1 w-1 bg-blue rounded-full animate-bounce"></div>
+        </div>
+      )}
       <div className="relative w-full">
         <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
         <Input
           type="text"
-          placeholder="Job title or keyword"
+          placeholder={
+            searchParam ||
+            (type == "company"
+              ? "Company name or keyword"
+              : "Job title or keyword")
+          }
           className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full lg:text-base lg:placeholder:text-base"
+          onChange={handleInputChange}
+          value={inputValue || ""}
         />
       </div>
     </div>
   );
 }
 
-function FindCompanyName() {
-  return (
-    <div className="w-full p-2 flex gap-4 items-center h-10 lg:w-[40%] group/item">
-      <Search size={24} color="#424242" />
-      <div className="relative w-full">
-        <span className="absolute h-[1px] bg-black/20 w-full -bottom-3 left-0 lg:group-hover/item:bg-black/50 transition duration-300"></span>
-        <Input
-          type="text"
-          placeholder="Company name or keyword"
-          className="rounded-none border-none focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-600 p-0 h-fit w-full lg:text-base lg:placeholder:text-base"
-        />
-      </div>
-    </div>
-  );
-}
-
-export default function SearchBar2({ type }: SearchBar2Props) {
+export default function SearchBar2({ type, loading }: SearchBar2Props) {
   return (
     <div className="flex flex-wrap gap-8 lg:gap-0 p-8 px-4 justify-evenly items-center w-full bg-white">
-      {type === "company" ? <FindCompanyName /> : <FindJobName />}
+      <SearchName type={type} loading={loading} />
       <Separator
         orientation="vertical"
         className="bg-gray-light lg:h-10 hidden lg:block"
       />
-      <FindJobLocation />
-      <ButtonBlock content="Search" />
+      <ChooseLocation />
     </div>
   );
 }

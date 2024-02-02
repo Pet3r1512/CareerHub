@@ -8,6 +8,10 @@ type IntroProps = {
   description: string;
   searchType: "job" | "company";
   className?: string;
+  loading: {
+    isSearchLoading: boolean;
+    setIsSearchLoading: (value: boolean) => void;
+  };
 };
 
 export default function Intro({
@@ -15,6 +19,7 @@ export default function Intro({
   description,
   searchType,
   className,
+  loading,
 }: IntroProps) {
   return (
     <section
@@ -41,7 +46,7 @@ export default function Intro({
       </p>
       <p className="text-base text-center opacity-70 z-10">{description}</p>
       <div className="w-full flex flex-col gap-4 items-center z-10">
-        <SearchBar2 type={searchType} />
+        <SearchBar2 type={searchType} loading={loading} />
         <div className="w-full">
           <p className="text-gray-600">
             Popular:{" "}
