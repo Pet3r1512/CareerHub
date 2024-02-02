@@ -1,4 +1,3 @@
-import { companies } from "@/data/companies";
 import { Badge } from "@/components/ui/badge";
 import { twMerge } from "tailwind-merge";
 import CustomizeBadge from "@/components/customizeBadge";
@@ -53,7 +52,11 @@ export default function CompaniesGrid({
           data
             .slice(firstItemIndex, lastItemIndex)
             .map((company, index) => (
-              <CompanyItem key={index} company={company} index={index} />
+              <CompanyItem
+                key={company.name + index}
+                company={company}
+                index={index}
+              />
             ))}
       </div>
       <PaginationSection
@@ -68,7 +71,7 @@ export default function CompaniesGrid({
 function CompanyItem({ company, index }: { company: Company; index: number }) {
   return (
     <div
-      key={index}
+      key={company.name + index}
       className="border p-4 flex flex-col gap-4 lg:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md cursor-pointer"
     >
       <div className="flex justify-between items-start">
@@ -95,7 +98,7 @@ function CompanyItem({ company, index }: { company: Company; index: number }) {
       </p>
       <div className="flex flex-wrap gap-4">
         {company.industry_tags.map((tag, index) => (
-          <CustomizeBadge key={index} content={tag} variant="outline" />
+          <CustomizeBadge key={tag + index} content={tag} variant="outline" />
         ))}
       </div>
     </div>

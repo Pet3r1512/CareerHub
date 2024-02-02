@@ -51,27 +51,27 @@ export const industryOptions = [
 
 export const companySize = [
   {
-    size: "1-50",
+    size: "1 - 50",
     count: 25,
   },
   {
-    size: "51-150",
+    size: "51 - 150",
     count: 57,
   },
   {
-    size: "151-250",
+    size: "151 - 250",
     count: 45,
   },
   {
-    size: "251-500",
+    size: "251 - 500",
     count: 4,
   },
   {
-    size: "501-1000",
+    size: "501 - 1000",
     count: 43,
   },
   {
-    size: "1000-above",
+    size: "1000 - above",
     count: 23,
   },
 ];

@@ -53,9 +53,9 @@ function ChooseLocation() {
         </SelectTrigger>
         <SelectContent>
           <SelectGroup className="text-gray-600">
-            {locations.map((location, index) => (
+            {locations.map((location) => (
               <SelectItem
-                key={index}
+                key={location.value}
                 value={location.value}
                 className="cursor-pointer"
               >

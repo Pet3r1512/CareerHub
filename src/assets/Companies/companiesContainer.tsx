@@ -27,8 +27,32 @@ export default function CompaniesContainer({
   const search = searchParams.get("search") || "";
   const size = searchParams.get("size") || "";
   const industry = searchParams.get("industry")?.split(",");
-  const data = companies.filter((company) =>
-    company.name.toLowerCase().includes(search.toLowerCase() || "")
+
+  const checkSize = (size: number) => {
+    switch (true) {
+      case size >= 1 && size <= 50:
+        return "1 - 50";
+      case size >= 51 && size <= 150:
+        return "51 - 150";
+      case size >= 151 && size <= 250:
+        return "151 - 250";
+      case size >= 251 && size <= 500:
+        return "251 - 500";
+      case size >= 501 && size <= 1000:
+        return "501 - 1000";
+      case size >= 1001:
+        return "1000 - above";
+      default:
+        return "";
+    }
+  };
+
+  const data = companies.filter(
+    (company) =>
+      company.name.toLowerCase().includes(search.toLowerCase() || "") &&
+      (company.industry_tags.some((tag) => industry?.includes(tag)) ||
+        !industry) &&
+      (checkSize(company.company_size) == size || !size)
   );
 
   return (
