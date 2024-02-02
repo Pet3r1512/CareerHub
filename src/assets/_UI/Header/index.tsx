@@ -1,8 +1,6 @@
 import { ChevronLeft } from "lucide-react";
-import ButtonBlock from "../_button";
 import Logo from "../_logo";
 import Menu from "./_menu";
-import { useState } from "react";
 import Sidebar from "./_sidebar";
 import Auth from "./_auth";
 import { useAppSelector } from "@/lib/store";

@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         })
         if(user) {
-            const token = generateToken(user.id.toString());
+            const token = generateToken(user.uuid);
             const cookie = serialize('token', token, {
                 path: '/',
                 maxAge: 3600, // 1 hour expiration
@@ -33,7 +33,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(200).json({
                 result: "Done",
                 message: user?.password,
-                user_full_name: user?.full_name
+                user_full_name: user?.full_name,
+                uuid: user?.uuid
             });
         }
         else {
