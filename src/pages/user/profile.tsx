@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Page from "@/assets/_UI/Page";
-import Header from "@/assets/_UI/Header";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import UserDashboard from "@/assets/User/Dashboard";
 
-function Profile() {
+export default function Profile() {
   const router = useRouter();
 
   useEffect(() => {
@@ -14,10 +14,8 @@ function Profile() {
   }, []);
 
   return (
-    <Page pageName="Careerhub - Profile">
-      <></>
+    <Page pageName="Profile" noMenu>
+      <UserDashboard />
     </Page>
   );
 }
-
-export default Profile;
