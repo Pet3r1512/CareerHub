@@ -23,7 +23,7 @@ import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/router";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { login, useAppDispatch } from "@/lib/store";
+import { login, useAppDispatch, useAppSelector } from "@/lib/store";
 
 export default function SignIn() {
   return (
@@ -121,7 +121,7 @@ function SignInForm() {
             className: "bg-green",
           });
           setTimeout(() => {
-            router.push("/profile");
+            router.push("/user/profile");
           }, 1000);
         } else {
           toast({
