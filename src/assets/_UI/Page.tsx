@@ -9,11 +9,13 @@ export default function Page({
   children,
   pageName = "Home",
   noHeader = false,
+  noMenu = false,
   className,
 }: {
   children: ReactNode;
   pageName?: string;
   noHeader?: boolean;
+  noMenu?: boolean;
   className?: string;
 }) {
   const [openSidebar, setOpenSidebar] = useState(false);
