@@ -6,7 +6,8 @@ type QueryProps = {
     search?: string | string[];
     page?: string | string[] | number;
     location?: string | string[];
-    options?: string | string[];
+    industry?: string | string[];
+    size?: string | string[];
   };
 };
 
@@ -18,7 +19,8 @@ export function PushQuery({ pathname, query }: QueryProps) {
       query.location != "All" && {
         location: query.location.toString(),
       }),
-    ...(query.options && { options: query.options.toString() }),
+    ...(query.industry && { industry: query.industry.toString() }),
+    ...(query.size && { size: query.size.toString() }),
   });
 
   const newQuery = params.toString() ? `${params.toString()}` : "";

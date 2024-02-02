@@ -25,6 +25,8 @@ export default function CompaniesContainer({
 
   const searchParams = useSearchParams();
   const search = searchParams.get("search") || "";
+  const size = searchParams.get("size") || "";
+  const industry = searchParams.get("industry")?.split(",");
   const data = companies.filter((company) =>
     company.name.toLowerCase().includes(search.toLowerCase() || "")
   );
