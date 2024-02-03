@@ -36,29 +36,28 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
-      - when: on_fail
-        name: Send Discord Notification
-        command: |
-          DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1203163354680655902/OnCfXS-HFyfVYeWglQPR_EJA6HzzRLurRgDt7P0RwPvPUxkea6Z-ncp4AoffsRsWMVB0"
-          BUILD_STATUS=$(if [ "${CIRCLE_ON_ERROR}" == "true" ]; then echo "Failure"; else echo "Success"; fi)
-          curl -X POST -H "Content-Type: application/json" -d '{
-            "content": "Build Status: '"$CIRCLE_BUILD_URL"'",
-            "embeds": [
-              {
-                "title": "Build Details",
-                "fields": [
-                  {
-                    "name": "Branch",
-                    "value": "'"$CIRCLE_BRANCH"'"
-                  },
-                  {
-                    "name": "Status",
-                    "value": "'"$BUILD_STATUS"'"
-                  }
-                ]
-              }
-            ]
-          }' $DISCORD_WEBHOOK_URL
+      - run:
+          name: Send Discord Notification
+          command: |
+            DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1203163354680655902/OnCfXS-HFyfVYeWglQPR_EJA6HzzRLurRgDt7P0RwPvPUxkea6Z-ncp4AoffsRsWMVB0"
+            curl -X POST -H "Content-Type: application/json" -d '{
+              "content": "Build Status: '"$CIRCLE_BUILD_URL"'",
+              "embeds": [
+                {
+                  "title": "Build Details",
+                  "fields": [
+                    {
+                      "name": "Branch",
+                      "value": "'"$CIRCLE_BRANCH"'"
+                    },
+                    {
+                      "name": "Status",
+                      "value": "'"$CIRCLE_STATUS"'"
+                    }
+                  ]
+                }
+              ]
+            }' $DISCORD_WEBHOOK_URL
 
 workflows:
   version: 2
