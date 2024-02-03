@@ -14,23 +14,31 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 ### Development
 
 - [Next.js](https://nextjs.org/) - TypeScript
+- [Redux](https://redux.js.org/)
+
+### Styling
+
 - [Tailwind](https://tailwindcss.com/)
 - [ShadcnUI](https://ui.shadcn.com/)
 - [Material Tailwind](https://www.material-tailwind.com/)
+
+### Storages and Databases
+
 - [Prisma](https://www.prisma.io/)
 - [PlanetScale](https://planetscale.com/)
 - [Supabase](https://supabase.com/)
-- [Redux](https://redux.js.org/)
 
-### Form validations and security
+### Authentication and security
 
 - [React Hook Form](https://react-hook-form.com/)
 - [Bcrypt](https://github.com/kelektiv/node.bcrypt.js)
+- [NextAuth](https://next-auth.js.org/)
 
 ### Testing and Deployment
 
 - [Vercel](https://vercel.com/)
 - [MeticulousAI](https://www.meticulous.ai/)
+- [CircleCI](https://circleci.com/)
 
 ## Features
 
