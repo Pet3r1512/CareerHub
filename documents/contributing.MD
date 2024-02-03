@@ -13,7 +13,10 @@
 - First, you need to get all the latest code from MAIN BRANCH by using this command:
 
 ```html
-git checkout main git pull
+git checkout main 
+```
+```html
+git pull
 ```
 
 - After this command has completly executed, you will create a new branch:
