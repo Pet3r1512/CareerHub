@@ -39,6 +39,7 @@ jobs:
       - run:
           name: Send Discord Notification
           command: |
+            DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1203163354680655902/OnCfXS-HFyfVYeWglQPR_EJA6HzzRLurRgDt7P0RwPvPUxkea6Z-ncp4AoffsRsWMVB0"
             curl -X POST -H "Content-Type: application/json" -d '{
               "content": "Build Status: '"$CIRCLE_BUILD_URL"'",
               "embeds": [
