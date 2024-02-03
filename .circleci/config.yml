@@ -23,6 +23,7 @@ jobs:
             echo "  4. Configure the jobs to use the context that includes NPM_TOKEN"
             echo "  5. Add a step to inject your NPM_TOKEN environment variable into npm before 'install-packages'"
             echo "     For an example, see https://circleci.com/blog/publishing-npm-packages-using-circleci-2-0/#:~:text=the%20deploy%20job%20has%20several%20steps%20that%20run%20to%20authenticate%20with%20and%20publish%20to"
+          when: on_fail
       - run:
           command: npm run build
       - run:
@@ -35,8 +36,6 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
-    when: on_fail
-
       - run:
           name: Send Discord Notification
           command: |
@@ -59,6 +58,7 @@ jobs:
                 }
               ]
             }' $DISCORD_WEBHOOK_URL
+
 workflows:
   version: 2
   build:
