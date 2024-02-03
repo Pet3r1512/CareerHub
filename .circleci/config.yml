@@ -4,6 +4,31 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
+  build:
+    docker:
+      - image: cimg/base:2021.08
+    steps:
+      - run:
+          name: Send Discord Notification
+          command: |
+            curl -X POST -H "Content-Type: application/json" -d '{
+              "content": "Build Status: '"$CIRCLE_BUILD_URL"'",
+              "embeds": [
+                {
+                  "title": "Build Details",
+                  "fields": [
+                    {
+                      "name": "Branch",
+                      "value": "'"$CIRCLE_BRANCH"'"
+                    },
+                    {
+                      "name": "Status",
+                      "value": "'"$CIRCLE_STATUS"'"
+                    }
+                  ]
+                }
+              ]
+            }' $DISCORD_WEBHOOK_URL
   build-node:
     # Build node project
     executor: node/default
