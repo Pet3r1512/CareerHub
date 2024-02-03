@@ -1,36 +1,10 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:.
 version: 2.1
+
 orbs:
   node: circleci/node@5
+
 jobs:
-  build:
-    docker:
-      - image: cimg/base:2021.08
-    steps:
-      - run:
-          name: Send Discord Notification
-          command: |
-            curl -X POST -H "Content-Type: application/json" -d '{
-              "content": "Build Status: '"$CIRCLE_BUILD_URL"'",
-              "embeds": [
-                {
-                  "title": "Build Details",
-                  "fields": [
-                    {
-                      "name": "Branch",
-                      "value": "'"$CIRCLE_BRANCH"'"
-                    },
-                    {
-                      "name": "Status",
-                      "value": "'"$CIRCLE_STATUS"'"
-                    }
-                  ]
-                }
-              ]
-            }' $DISCORD_WEBHOOK_URL
   build-node:
-    # Build node project
     executor: node/default
     steps:
       - checkout
@@ -38,7 +12,7 @@ jobs:
           pkg-manager: npm
       - run:
           name: Print node install help instructions
-          command: |-
+          command: |
             echo "One cause for node package install failure is if you have private repositories that it can't reach
             One way to fix this for private npm packages:
               1. Use the npm CLI's \"login\" command to create a token (usually saved in your user's \"~/.npmrc\" file)
@@ -62,19 +36,24 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
       - run:
-          name: deploy
-          command: "#e.g. ./deploy.sh"
-workflows:
-  build:
-    jobs:
-      - build-node
-    # - deploy:
-    #     requires:
-    #       - build-node
+          name: Send Discord Notification
+          command: |
+            curl -X POST -H "Content-Type: application/json" -d '{
+              "content": "Build Status: '"$CIRCLE_BUILD_URL"'",
+              "embeds": [
+                {
+                  "title": "Build Details",
+                  "fields": [
+                    {
+                      "name": "Branch",
+                      "value": "'"$CIRCLE_BRANCH"'"
+                    },
+                    {
+                      "name": "Status",
+                      "value": "'"$CIRCLE_STATUS"'"
+                    }
+                  ]
+                }
+              ]
+            }' $DISCORD_WEBHOOK_URL
