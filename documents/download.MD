@@ -1,4 +1,4 @@
-# How to contribute?
+# How to download?
 
 ## Step 1: Clone this project
 
@@ -13,7 +13,7 @@ git clone git@github.com:Pet3r1512/CareerHub.git
 - We need to know the information about you when you want to cooperate with us in this repo. So, please assign your email and name:
 
 ```html
-git congif user.email "Your email address"
+git config user.email "Your email address"
 ```
 
 ```html
