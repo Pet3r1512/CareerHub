@@ -38,7 +38,7 @@ export default function UserAvatar() {
                 {authData.user}
               </Typography>
               <SignOutButton>
-                <LogOut className="lg:hidden" />
+                <LogOut className="lg:hidden text-red-700" />
               </SignOutButton>
             </Typography>
             <Avatar>
