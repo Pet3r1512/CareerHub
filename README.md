@@ -95,5 +95,3 @@ SOFTWARE.
 If there is any copyright violation of any of the project's resources, please contact us via Email:
 
     peter1512.dev@gmail.com
-
-.

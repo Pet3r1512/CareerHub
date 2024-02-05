@@ -64,3 +64,7 @@ workflows:
   build:
     jobs:
       - build-node
+This code is licensed from CircleCI to the user under the MIT license.
+See here for details: https://circleci.com/developer/orbs/licensing
+This code is licensed from CircleCI to the user under the MIT license. See
+https://circleci.com/orbs/registry/licensing for details.

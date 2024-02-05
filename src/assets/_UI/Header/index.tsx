@@ -3,8 +3,8 @@ import Logo from "../_logo";
 import Menu from "./_menu";
 import Sidebar from "./_sidebar";
 import Auth from "./_auth";
-import { useAppSelector } from "@/lib/store";
 import UserAvatar from "./_avatar";
+import { useEffect, useState } from "react";
 
 export default function Header({
   openSidebar,
@@ -13,7 +13,10 @@ export default function Header({
   openSidebar: boolean;
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const user = useAppSelector((state) => state.auth.user);
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setUser(localStorage.getItem("user")!);
+  }, []);
 
   return (
     <section className="w-full flex justify-between items-center">
