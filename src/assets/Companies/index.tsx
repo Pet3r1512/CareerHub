@@ -17,7 +17,7 @@ export default function CompaniesAndJobsLayout({
 }) {
   const searchParams = useSearchParams();
   const search = searchParams.get("search") || "";
-  const size = searchParams.get("size") || "";
+  const size = searchParams.get("size")?.split(",") || "";
   const industry = searchParams.get("industry")?.split(",");
 
   const checkSize = (size: number) => {
@@ -44,7 +44,7 @@ export default function CompaniesAndJobsLayout({
       company.name.toLowerCase().includes(search.toLowerCase() || "") &&
       (company.industry_tags.some((tag) => industry?.includes(tag)) ||
         !industry) &&
-      (checkSize(company.company_size) == size || !size)
+      (size.includes(checkSize(company.company_size)) || !size.length)
   );
 
   const jobsData = jobs.filter((job) =>
