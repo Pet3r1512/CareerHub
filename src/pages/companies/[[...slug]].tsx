@@ -1,5 +1,5 @@
 import Intro from "@/assets/Companies/intro";
-import Companies from "@/assets/Companies";
+import CompaniesAndJobsLayout from "@/assets/Companies";
 import Page from "@/assets/_UI/Page";
 import { useState } from "react";
 
@@ -15,7 +15,10 @@ export default function CompaniesPage() {
         className="mt-8 lg:max-h-screen w-full"
         loading={{ isSearchLoading, setIsSearchLoading }}
       />
-      <Companies loading={{ isSearchLoading, setIsSearchLoading }} />
+      <CompaniesAndJobsLayout
+        loading={{ isSearchLoading, setIsSearchLoading }}
+        type="company"
+      />
     </Page>
   );
 }
