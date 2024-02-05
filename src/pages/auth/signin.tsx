@@ -95,6 +95,7 @@ function SignInForm() {
         if (data) {
           if (data.result === "Done") {
             userPassword = data.message;
+            localStorage.setItem("user", data.user_full_name);
             dispatch(
               login({ full_name: data.user_full_name, uuid: data.uuid })
             );
@@ -116,6 +117,7 @@ function SignInForm() {
       })
       .then((data) => {
         if (data.result === true) {
+          localStorage.setItem("token", data.token);
           toast({
             title: "Log in successfully",
             className: "bg-green",
@@ -129,6 +131,9 @@ function SignInForm() {
             title: "Email or password is incorrect!",
           });
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
     setSubmitting(false);
   };
