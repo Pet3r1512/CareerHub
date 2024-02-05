@@ -3,10 +3,12 @@ import { twMerge } from "tailwind-merge";
 import CustomizeBadge from "@/components/customizeBadge";
 import PaginationSection from "@/components/paginationSection";
 import { useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 type CompaniesGridProps = {
   view: "grid" | "list";
-  sort: string;
+  type: "company" | "job";
   loading: {
     isSearchLoading: boolean;
     setIsSearchLoading: (value: boolean) => void;
@@ -23,9 +25,24 @@ type Company = {
   remaining_jobs_count: number;
 };
 
-export default function CompaniesGrid({
+type Job = {
+  title: string;
+  employment_type: string;
+  company: {
+    name: string;
+    image: string;
+    location: {
+      city: string;
+      country: string;
+    };
+  };
+  description: string;
+  tags: string[];
+};
+
+export default function CompaniesAndJobsGrid({
   view,
-  sort,
+  type,
   loading,
   data,
 }: CompaniesGridProps) {
@@ -51,13 +68,17 @@ export default function CompaniesGrid({
         {!loading.isSearchLoading &&
           data
             .slice(firstItemIndex, lastItemIndex)
-            .map((company, index) => (
-              <CompanyItem
-                key={company.name + index}
-                company={company}
-                index={index}
-              />
-            ))}
+            .map((item, index) =>
+              type == "company" ? (
+                <CompanyItem
+                  key={item.name + index}
+                  company={item}
+                  index={index}
+                />
+              ) : (
+                <JobItem key={item.title + item.company.name} job={item} />
+              )
+            )}
       </div>
       <PaginationSection
         currentPage={currentPage}
@@ -100,6 +121,43 @@ function CompanyItem({ company, index }: { company: Company; index: number }) {
         {company.industry_tags.map((tag, index) => (
           <CustomizeBadge key={tag + index} content={tag} variant="outline" />
         ))}
+      </div>
+    </div>
+  );
+}
+
+function JobItem({ job }: { job: Job }) {
+  return (
+    <div key={job.title + job.company.name} className="border p-6 rounded-md">
+      <div className="flex flex-col gap-4 md:flex-wrap md:justify-between">
+        <div className="flex gap-6">
+          <div>Image</div>
+          <div className="flex flex-col gap-2">
+            <strong>{job.title}</strong>
+            <p className="opacity-70 line-clamp-1">
+              {job.company.name} - {job.company.location.city},{" "}
+              {job.company.location.country}
+            </p>
+            <div className="flex gap-2">
+              <Badge className="p-1 px-3 cursor-pointer w-fit text-green bg-green/20 h-fit whitespace-nowrap">
+                {job.employment_type}
+              </Badge>
+              <Separator orientation="vertical" />
+              <div className="flex flex-wrap gap-2">
+                {job.tags.map((tag, index) => (
+                  <CustomizeBadge
+                    key={tag + index}
+                    content={tag}
+                    variant="outline"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="self-end">
+          <Button className="text-white px-8">Apply</Button>
+        </div>
       </div>
     </div>
   );

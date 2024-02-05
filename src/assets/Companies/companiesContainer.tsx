@@ -8,7 +8,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useState } from "react";
-import CompaniesGrid from "./companiesGrid";
+import CompaniesAndJobsGrid from "./companiesGrid";
 
 export default function CompaniesAndJobsContainer({
   type,
@@ -78,17 +78,13 @@ export default function CompaniesAndJobsContainer({
           </label>
         </div>
       </div>
-      {type == "company" ? (
-        <CompaniesGrid
-          key={view}
-          view={view}
-          sort={sort}
-          loading={loading}
-          data={data}
-        />
-      ) : (
-        <div>Jobs</div>
-      )}
+      <CompaniesAndJobsGrid
+        key={view}
+        view={view}
+        type={type}
+        loading={loading}
+        data={data}
+      />
     </section>
   );
 }
