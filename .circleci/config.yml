@@ -67,9 +67,16 @@
 version: 2.1
 
 description: |
-  Create and send custom notifications and messages to Discord for CircleCI job statuses. This orb uses the certified slack orb as a base with commands changed for usage in Discord. View the orb's source: https://github.com/antonioned/circleci-discord-orb
-display:
-  source_url: https://github.com/antonioned/circleci-discord-orb
+  Create and send custom notifications and messages to Discord for CircleCI job statuses. This orb uses the certified slack orb as a base with commands changed for usage in Discord.
+
+orbs:
+  discord: antonioned/discord@0.1.0
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - discord/status
 
 commands:
   status:
