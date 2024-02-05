@@ -1,5 +1,5 @@
 import { Drawer } from "@material-tailwind/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Logo from "../_logo";
 import Menu from "./_menu";
 import { ChevronRight, User } from "lucide-react";
@@ -17,8 +17,20 @@ export default function Sidebar({
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const user = useAppSelector((state) => state.auth.user);
+  const [authData, setAuthData] = useState({
+    user: "",
+    token: "",
+  });
   const router = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("user") || !localStorage.getItem("token")) {
+      router.push("/auth/signin");
+    }
+    setAuthData({
+      user: localStorage.getItem("user")!,
+      token: localStorage.getItem("token")!,
+    });
+  }, []);
 
   return (
     <Drawer
@@ -43,7 +55,7 @@ export default function Sidebar({
       </div>
       <div className="flex flex-col justify-between h-full">
         <Menu className="flex flex-col" />
-        {!user ? (
+        {!authData.user ? (
           <Auth />
         ) : (
           <div className="flex flex-col gap-16 text-gray text-lg font-semibold">
