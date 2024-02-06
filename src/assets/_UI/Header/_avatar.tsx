@@ -11,6 +11,8 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Typography } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 import { ChevronDown, LogOut } from "lucide-react";
+import Account from "./User/account";
+import QuickView from "./User/quickview";
 
 export default function UserAvatar() {
   const [authData, setAuthData] = useState({
@@ -30,7 +32,7 @@ export default function UserAvatar() {
       <Menubar className="border-0 w-full lg:max-w-fit">
         <MenubarMenu>
           <UserMenuTrigger />
-          <UserMenuContent />
+          <UserMenuContent user={authData.user} />
         </MenubarMenu>
       </Menubar>
     );
@@ -55,18 +57,14 @@ function UserMenuTrigger() {
   );
 }
 
-function UserMenuContent() {
+function UserMenuContent({ user }: { user: string }) {
   const router = useRouter();
 
   return (
-    <MenubarContent className="hidden lg:block">
-      <MenubarItem
-        onClick={() => {
-          router.push("/user/profile");
-        }}
-      >
-        Profile
-      </MenubarItem>
+    <MenubarContent className="hidden lg:block rounded-lg px-4 py-2 transition-all duration-150 ease-linear">
+      <QuickView user={user} />
+      <MenubarSeparator />
+      <Account />
       <MenubarSeparator />
       <MenubarItem
         onClick={() => {
