@@ -45,7 +45,7 @@ export default function UserAvatar() {
           <MenubarContent className="hidden lg:block">
             <MenubarItem
               onClick={() => {
-                router.push("/profile");
+                router.push("/user/profile");
               }}
             >
               Profile
