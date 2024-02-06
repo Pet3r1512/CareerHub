@@ -23,9 +23,6 @@ export default function Sidebar({
   });
   const router = useRouter();
   useEffect(() => {
-    if (!localStorage.getItem("user") || !localStorage.getItem("token")) {
-      router.push("/auth/signin");
-    }
     setAuthData({
       user: localStorage.getItem("user")!,
       token: localStorage.getItem("token")!,

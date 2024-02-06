@@ -19,9 +19,6 @@ export default function UserAvatar() {
   });
   const router = useRouter();
   useEffect(() => {
-    if (!localStorage.getItem("user") || !localStorage.getItem("token")) {
-      router.push("/auth/signin");
-    }
     setAuthData({
       user: localStorage.getItem("user")!,
       token: localStorage.getItem("token")!,
@@ -54,8 +51,15 @@ export default function UserAvatar() {
               Profile
             </MenubarItem>
             <MenubarSeparator />
-            <MenubarItem className="text-red-500">
-              <SignOutButton />
+            <MenubarItem
+              onClick={() => {
+                localStorage.removeItem("user");
+                localStorage.removeItem("token");
+                router.push("/auth/signin");
+              }}
+              className="text-red-500"
+            >
+              Sign Out
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
