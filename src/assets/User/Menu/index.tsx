@@ -13,6 +13,7 @@ import MenuItem from "./menuItem";
 import TooltipContainer from "@/components/tooltipContainer";
 import { SetStateAction, useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useRouter } from "next/router";
 
 const overviewSections = [
   {
@@ -121,6 +122,8 @@ function CareerSection({ expandMenu }: { expandMenu: boolean }) {
 export default function UserDashboardMenu() {
   const [expandMenu, setExpandMenu] = useState(false);
 
+  const router = useRouter();
+
   return (
     <section
       className={twMerge(
@@ -135,7 +138,14 @@ export default function UserDashboardMenu() {
         />
         <CareerSection expandMenu={expandMenu} />
       </div>
-      <button className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 absolute bottom-4 text-red-500 w-full">
+      <button
+        className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 absolute bottom-4 text-red-500 w-full"
+        onClick={() => {
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          router.push("/auth/signin");
+        }}
+      >
         <LogOut />
         <p className={twMerge("font-semibold", expandMenu ? "" : "hidden")}>
           Sign Out
