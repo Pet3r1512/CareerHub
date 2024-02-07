@@ -1,5 +1,13 @@
 import { MenubarSeparator } from "@/components/ui/menubar";
-import { User, Settings, FileText, LogOut, Bell, Send } from "lucide-react";
+import {
+  User,
+  Settings,
+  FileText,
+  LogOut,
+  Bell,
+  Send,
+  Save,
+} from "lucide-react";
 import MenuItem from "./menuItem";
 
 const overviewSections = [
@@ -24,12 +32,12 @@ const careerSections = [
   {
     id: "APPLIED",
     name: "Applied Jobs",
-    icon: <User />,
+    icon: <Send />,
   },
   {
     id: "SAVED",
     name: "Saved Jobs",
-    icon: <Send />,
+    icon: <Save />,
   },
   {
     id: "NOTIFICATIONS",
