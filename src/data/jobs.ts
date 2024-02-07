@@ -14,6 +14,8 @@ export const jobs = [
     description:
       "We are seeking a talented and motivated software developer to join our dynamic team. The ideal candidate will have strong programming skills, a passion for technology, and a desire to contribute to innovative projects.",
     tags: ["Technology", "Engineering"],
+    capacity: 5,
+    applied: 2,
   },
   {
     title: "Marketing Specialist",
@@ -30,6 +32,8 @@ export const jobs = [
     description:
       "Join our marketing team and help create impactful campaigns. The ideal candidate should have experience in digital marketing, social media management, and content creation.",
     tags: ["Marketing", "Social Media"],
+    capacity: 3,
+    applied: 1,
   },
   {
     title: "Data Analyst",
@@ -46,6 +50,8 @@ export const jobs = [
     description:
       "We are looking for a detail-oriented data analyst to interpret and analyze data. The ideal candidate should have strong analytical skills and be proficient in data visualization tools.",
     tags: ["Analytics"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "Graphic Designer",
@@ -62,6 +68,8 @@ export const jobs = [
     description:
       "Join our design team and bring creative concepts to life. The ideal candidate should have expertise in graphic design software, a strong portfolio, and a passion for visual storytelling.",
     tags: ["Design"],
+    capacity: 3,
+    applied: 1,
   },
   {
     title: "Customer Support Representative",
@@ -78,6 +86,8 @@ export const jobs = [
     description:
       "Join our customer support team and assist customers with product inquiries, issues, and feedback. Excellent communication skills and a customer-centric approach are essential.",
     tags: ["Customer Service", "Communication"],
+    capacity: 4,
+    applied: 2,
   },
   {
     title: "Project Manager",
@@ -94,6 +104,8 @@ export const jobs = [
     description:
       "We are seeking an experienced project manager to lead and coordinate projects from initiation to completion. Strong organizational and leadership skills are crucial for success.",
     tags: ["Project Management"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "Sales Representative",
@@ -110,6 +122,8 @@ export const jobs = [
     description:
       "Join our sales team and drive revenue growth by acquiring new clients and maintaining relationships with existing ones. Strong interpersonal and negotiation skills are essential.",
     tags: ["Sales", "Communication"],
+    capacity: 3,
+    applied: 1,
   },
   {
     title: "Human Resources Specialist",
@@ -126,6 +140,8 @@ export const jobs = [
     description:
       "We are looking for a part-time HR specialist to support various HR functions, including recruitment, employee relations, and benefits administration.",
     tags: ["Human Resources"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "Content Writer",
@@ -142,6 +158,8 @@ export const jobs = [
     description:
       "Join our content team and create engaging and informative content across various platforms. Strong writing skills, creativity, and attention to detail are crucial.",
     tags: ["Content Writing"],
+    capacity: 3,
+    applied: 1,
   },
   {
     title: "IT Support Specialist",
@@ -158,6 +176,8 @@ export const jobs = [
     description:
       "We are seeking a skilled IT support specialist to provide technical assistance to our internal teams. Strong troubleshooting skills and knowledge of IT systems are required.",
     tags: ["Technology", "Customer Service", "Communication"],
+    capacity: 3,
+    applied: 1,
   },
   {
     title: "Financial Analyst",
@@ -174,6 +194,8 @@ export const jobs = [
     description:
       "Join our finance team and analyze financial data to provide insights and support decision-making. Strong analytical skills and financial modeling expertise are essential.",
     tags: ["Finance", "Accounting", "Analytics"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "UX/UI Designer",
@@ -190,6 +212,8 @@ export const jobs = [
     description:
       "We are looking for a talented UX/UI designer to create intuitive and visually appealing user interfaces. The ideal candidate should have experience in user research, wireframing, and prototyping.",
     tags: ["Design", "Technology", "Research"],
+    capacity: 10,
+    applied: 3,
   },
   {
     title: "Network Engineer",
@@ -206,6 +230,8 @@ export const jobs = [
     description:
       "We are hiring a network engineer to design, implement, and maintain our company's networks. Strong knowledge of networking protocols and experience with network troubleshooting is required.",
     tags: ["Engineering", "Technology", "Networking"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "Content Marketing Manager",
@@ -222,6 +248,8 @@ export const jobs = [
     description:
       "Join our marketing team as a content marketing manager. Develop and execute content strategies, manage campaigns, and analyze performance metrics.",
     tags: ["Marketing", "Content Writing", "Analytics"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "Mobile App Developer",
@@ -238,6 +266,8 @@ export const jobs = [
     description:
       "We are seeking a skilled mobile app developer to join our development team. Experience in iOS and Android app development is required.",
     tags: ["Engineering", "Technology"],
+    capacity: 3,
+    applied: 1,
   },
   {
     title: "Environmental Scientist",
@@ -254,6 +284,8 @@ export const jobs = [
     description:
       "Join our environmental science team part-time. Conduct research, analyze data, and contribute to environmental impact assessments.",
     tags: ["Research"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "UI/UX Researcher",
@@ -270,6 +302,8 @@ export const jobs = [
     description:
       "We are looking for a UI/UX researcher to conduct user research, analyze user behavior, and provide insights to enhance our product design.",
     tags: ["Research", "Design", "Technology", "Analytics"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "DevOps Engineer",
@@ -286,6 +320,8 @@ export const jobs = [
     description:
       "Join our DevOps team to streamline our development and deployment processes. Experience with containerization, automation, and cloud platforms is required.",
     tags: ["Engineering", "Technology"],
+    capacity: 15,
+    applied: 4,
   },
   {
     title: "Data Scientist",
@@ -302,6 +338,8 @@ export const jobs = [
     description:
       "We are seeking a talented data scientist to analyze large datasets, develop predictive models, and derive actionable insights for our business.",
     tags: ["Technology", "Analytics", "Research"],
+    capacity: 2,
+    applied: 1,
   },
   {
     title: "Cybersecurity Analyst",
@@ -318,5 +356,7 @@ export const jobs = [
     description:
       "Join our cybersecurity team to monitor and secure our IT systems. Experience in threat detection, incident response, and security protocols is required.",
     tags: ["Networking", "Security", "Engineering", "Analytics", "Technology"],
+    capacity: 2,
+    applied: 1,
   },
 ];
