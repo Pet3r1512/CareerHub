@@ -51,7 +51,11 @@ export default function CompaniesAndJobsView({
                   index={index}
                 />
               ) : (
-                <JobItem key={item.title + item.company.name} job={item} />
+                <JobItem
+                  key={item.title + item.company.name}
+                  job={item}
+                  view={view}
+                />
               )
             )}
       </div>
