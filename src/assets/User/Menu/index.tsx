@@ -7,8 +7,12 @@ import {
   Bell,
   Send,
   Save,
+  Menu,
 } from "lucide-react";
 import MenuItem from "./menuItem";
+import TooltipContainer from "@/components/tooltipContainer";
+import { SetStateAction, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const overviewSections = [
   {
@@ -46,28 +50,64 @@ const careerSections = [
   },
 ];
 
-function OverviewSection() {
+function OverviewSection({
+  expandMenu,
+  setExpandMenu,
+}: {
+  expandMenu: boolean;
+  setExpandMenu: React.Dispatch<SetStateAction<boolean>>;
+}) {
   return (
     <section>
-      <p className="text-2xl cursor-default font-extrabold pl-2">Overview</p>
+      <p className="flex items-center justify-between cursor-default">
+        <p
+          className={twMerge(
+            "text-2xl font-extrabold pl-2",
+            expandMenu ? "" : "hidden"
+          )}
+        >
+          Overview
+        </p>
+        <TooltipContainer message="Toggle Menu">
+          <button
+            className={`${expandMenu ? "" : "mx-auto"}`}
+            onClick={() => {
+              setExpandMenu(!expandMenu);
+            }}
+          >
+            <Menu />
+          </button>
+        </TooltipContainer>
+      </p>
       <MenubarSeparator />
-      <ul className="flex flex-col gap-y-4 pl-3">
+      <ul
+        className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
+      >
         {overviewSections.map((section) => {
-          return <MenuItem item={section} />;
+          return <MenuItem expandMenu={expandMenu} item={section} />;
         })}
       </ul>
     </section>
   );
 }
 
-function CareerSection() {
+function CareerSection({ expandMenu }: { expandMenu: boolean }) {
   return (
     <section>
-      <p className="text-2xl cursor-default font-extrabold pl-2">Your Carrer</p>
+      <p
+        className={twMerge(
+          "text-2xl cursor-default font-extrabold pl-2",
+          expandMenu ? "visible" : "invisible"
+        )}
+      >
+        Your Carrer
+      </p>
       <MenubarSeparator />
-      <ul className="flex flex-col gap-y-4 pl-3">
+      <ul
+        className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
+      >
         {careerSections.map((section) => {
-          return <MenuItem item={section} />;
+          return <MenuItem expandMenu={expandMenu} item={section} />;
         })}
       </ul>
     </section>
@@ -75,15 +115,27 @@ function CareerSection() {
 }
 
 export default function UserDashboardMenu() {
+  const [expandMenu, setExpandMenu] = useState(false);
+
   return (
-    <section className="lg:h-full w-60 shadow-2xl rounded-2xl relative">
-      <div className="flex flex-col gap-y-24">
-        <OverviewSection />
-        <CareerSection />
+    <section
+      className={twMerge(
+        "lg:h-full shadow-2xl rounded-2xl relative transition-all duration-175 ease-linear",
+        expandMenu ? "w-60" : "w-16"
+      )}
+    >
+      <div className="h-1/2 flex flex-col justify-between">
+        <OverviewSection
+          expandMenu={expandMenu}
+          setExpandMenu={setExpandMenu}
+        />
+        <CareerSection expandMenu={expandMenu} />
       </div>
       <button className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 absolute bottom-4 text-red-500 w-full">
         <LogOut />
-        <p className="font-semibold">Sign Out</p>
+        <p className={twMerge("font-semibold", expandMenu ? "" : "hidden")}>
+          Sign Out
+        </p>
       </button>
     </section>
   );
