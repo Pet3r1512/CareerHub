@@ -8,7 +8,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useState } from "react";
-import CompaniesAndJobsGrid from "./companiesGrid";
+import CompaniesAndJobsView from "./companiesView";
 
 export default function CompaniesAndJobsContainer({
   type,
@@ -78,7 +78,7 @@ export default function CompaniesAndJobsContainer({
           </label>
         </div>
       </div>
-      <CompaniesAndJobsGrid
+      <CompaniesAndJobsView
         key={view}
         view={view}
         type={type}

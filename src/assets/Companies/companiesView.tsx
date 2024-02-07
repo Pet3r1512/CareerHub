@@ -40,7 +40,7 @@ type Job = {
   tags: string[];
 };
 
-export default function CompaniesAndJobsGrid({
+export default function CompaniesAndJobsView({
   view,
   type,
   loading,
