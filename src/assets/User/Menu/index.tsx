@@ -84,7 +84,9 @@ function OverviewSection({
         className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
       >
         {overviewSections.map((section) => {
-          return <MenuItem expandMenu={expandMenu} item={section} />;
+          return (
+            <MenuItem key={section.id} expandMenu={expandMenu} item={section} />
+          );
         })}
       </ul>
     </section>
@@ -107,7 +109,9 @@ function CareerSection({ expandMenu }: { expandMenu: boolean }) {
         className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
       >
         {careerSections.map((section) => {
-          return <MenuItem expandMenu={expandMenu} item={section} />;
+          return (
+            <MenuItem key={section.id} expandMenu={expandMenu} item={section} />
+          );
         })}
       </ul>
     </section>

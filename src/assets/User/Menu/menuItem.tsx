@@ -18,7 +18,6 @@ export default function MenuItem({
   if (expandMenu) {
     return (
       <button
-        key={item.id}
         className="flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175
       px-4"
       >
