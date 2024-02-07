@@ -10,12 +10,14 @@ export default function Page({
   pageName = "Home",
   noHeader = false,
   noMenu = false,
+  noFooter = false,
   className,
 }: {
   children: ReactNode;
   pageName?: string;
   noHeader?: boolean;
   noMenu?: boolean;
+  noFooter?: boolean;
   className?: string;
 }) {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -55,12 +57,18 @@ export default function Page({
               <Header
                 openSidebar={openSidebar}
                 setOpenSidebar={setOpenSidebar}
+                noMenu={noMenu}
               />
             </div>
             {children}
           </main>
         </motion.main>
-        <Footer className={openSidebar ? "hidden" : ""} />
+        <Footer
+          className={twMerge(
+            openSidebar ? "hidden" : "",
+            noFooter ? "hidden" : ""
+          )}
+        />
       </AnimatePresence>
     </div>
   );
