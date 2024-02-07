@@ -9,7 +9,7 @@ export default function Profile() {
   useEffect(() => {}, []);
 
   return (
-    <Page pageName="Profile" noMenu>
+    <Page pageName="Profile" noMenu noFooter className="h-screen">
       <UserDashboard />
     </Page>
   );
