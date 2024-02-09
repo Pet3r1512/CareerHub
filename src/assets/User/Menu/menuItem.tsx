@@ -31,18 +31,9 @@ export default function MenuItem({
     <TooltipContainer message={item.name}>
       <button
         key={item.id}
-        className="flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175
-      px-4"
+        className="flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 overflow-x-hidden px-4"
       >
         {item.icon}
-        <p
-          className={twMerge(
-            "font-semibold",
-            expandMenu === false ? "hidden" : ""
-          )}
-        >
-          {item.name}
-        </p>
       </button>
     </TooltipContainer>
   );

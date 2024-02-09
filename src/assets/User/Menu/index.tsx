@@ -82,7 +82,10 @@ function OverviewSection({
       </p>
       <MenubarSeparator />
       <ul
-        className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
+        className={twMerge(
+          "flex flex-col gap-y-4 overflow-x-hidden",
+          expandMenu ? "pl-3" : ""
+        )}
       >
         {overviewSections.map((section) => {
           return (
@@ -96,15 +99,12 @@ function OverviewSection({
 
 function CareerSection({ expandMenu }: { expandMenu: boolean }) {
   return (
-    <section>
-      <p
-        className={twMerge(
-          "text-2xl cursor-default font-extrabold pl-2",
-          expandMenu ? "visible" : "invisible"
-        )}
-      >
-        Your Carrer
-      </p>
+    <section className="transition-all duration-150 ease-in-out">
+      {expandMenu ? (
+        <p className="text-2xl cursor-default font-extrabold pl-2">Carrer</p>
+      ) : (
+        <div className="h-[28px] w-[210px]"></div>
+      )}
       <MenubarSeparator />
       <ul
         className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
@@ -120,7 +120,7 @@ function CareerSection({ expandMenu }: { expandMenu: boolean }) {
 }
 
 export default function UserDashboardMenu() {
-  const [expandMenu, setExpandMenu] = useState(false);
+  const [expandMenu, setExpandMenu] = useState(true);
 
   const router = useRouter();
 
