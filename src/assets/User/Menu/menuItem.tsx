@@ -1,8 +1,9 @@
 import TooltipContainer from "@/components/tooltipContainer";
-import { ReactNode, use, useEffect, useState } from "react";
+import { ReactNode, use, useCallback, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 interface MenuItem {
   id: string;
@@ -19,39 +20,47 @@ export default function MenuItem({
 }) {
   const [selectedSection, setSelectedSection] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const handleMenuClick = (section: string) => {
-    console.log(section);
-    const param = new URLSearchParams({ ...(section && { section }) });
-    const newQuery = param.toString() ? `?${param.toString()}` : "";
-    return router.replace(router.pathname + newQuery, undefined, {
-      scroll: false,
-    });
-  };
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   if (expandMenu) {
     return (
-      <button
+      <Link
         className={twMerge(
           "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
           useSearchParams().get("section") ===
-            item.name.toString().toLowerCase().replace(/\s/g, "")
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
             ? "bg-primary text-white"
             : ""
         )}
-        onClick={() =>
-          handleMenuClick(item.name.toString().toLowerCase().replace(/\s/g, ""))
+        href={
+          pathname +
+          "?" +
+          createQueryString(
+            "section",
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
+          )
         }
       >
         {item.icon}
         <p className={twMerge("font-semibold")}>{item.name}</p>
-      </button>
+      </Link>
     );
   }
 
   return (
     <TooltipContainer message={item.name}>
-      <button
+      <Link
         key={item.id}
         className={twMerge(
           "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
@@ -60,12 +69,17 @@ export default function MenuItem({
             ? "bg-primary text-white"
             : ""
         )}
-        onClick={() =>
-          handleMenuClick(item.name.toString().toLowerCase().replace(/\s/g, ""))
+        href={
+          pathname +
+          "?" +
+          createQueryString(
+            "section",
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
+          )
         }
       >
         {item.icon}
-      </button>
+      </Link>
     </TooltipContainer>
   );
 }
