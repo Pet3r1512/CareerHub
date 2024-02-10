@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Footer from "./Footer";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,20 +29,22 @@ export default function Page({
     exit: { opacity: 0, x: 300, y: 0 },
   };
 
-  const hours: number = 48;
-  const now: number = new Date().getTime();
-  const setupTime: string | null = localStorage.getItem("setupTime");
+  useEffect(() => {
+    const hours: number = 48;
+    const now: number = new Date().getTime();
+    const setupTime: string | null = localStorage.getItem("setupTime");
 
-  if (setupTime === null) {
-    window.localStorage.setItem("setupTime", now.toString());
-  } else {
-    const setupTimeNumber: number = parseInt(setupTime, 10);
-    if (now - setupTimeNumber > hours * 60 * 60 * 1000) {
-      window.localStorage.removeItem("user");
-      window.localStorage.removeItem("token");
+    if (setupTime === null) {
       window.localStorage.setItem("setupTime", now.toString());
+    } else {
+      const setupTimeNumber: number = parseInt(setupTime, 10);
+      if (now - setupTimeNumber > hours * 60 * 60 * 1000) {
+        window.localStorage.removeItem("user");
+        window.localStorage.removeItem("token");
+        window.localStorage.setItem("setupTime", now.toString());
+      }
     }
-  }
+  }, []);
 
   return (
     <div>
