@@ -29,6 +29,21 @@ export default function Page({
     exit: { opacity: 0, x: 300, y: 0 },
   };
 
+  const hours: number = 48;
+  const now: number = new Date().getTime();
+  const setupTime: string | null = localStorage.getItem("setupTime");
+
+  if (setupTime === null) {
+    window.localStorage.setItem("setupTime", now.toString());
+  } else {
+    const setupTimeNumber: number = parseInt(setupTime, 10);
+    if (now - setupTimeNumber > hours * 60 * 60 * 1000) {
+      window.localStorage.removeItem("user");
+      window.localStorage.removeItem("token");
+      window.localStorage.setItem("setupTime", now.toString());
+    }
+  }
+
   return (
     <div>
       <Head>
