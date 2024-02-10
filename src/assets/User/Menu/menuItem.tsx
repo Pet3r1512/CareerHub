@@ -1,7 +1,6 @@
 import TooltipContainer from "@/components/tooltipContainer";
-import { ReactNode, use, useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback } from "react";
 import { twMerge } from "tailwind-merge";
-import { useRouter } from "next/router";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -18,8 +17,6 @@ export default function MenuItem({
   item: MenuItem;
   expandMenu: boolean;
 }) {
-  const [selectedSection, setSelectedSection] = useState("");
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -38,7 +35,7 @@ export default function MenuItem({
       <Link
         className={twMerge(
           "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
-          useSearchParams().get("section") ===
+          searchParams.get("section") ===
             item.name.toString().toLowerCase().replace(/\s/g, "_")
             ? "bg-primary text-white"
             : ""
@@ -64,8 +61,8 @@ export default function MenuItem({
         key={item.id}
         className={twMerge(
           "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
-          useSearchParams().get("section") ===
-            item.name.toString().toLowerCase().replace(/\s/g, "")
+          searchParams.get("section") ===
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
             ? "bg-primary text-white"
             : ""
         )}
