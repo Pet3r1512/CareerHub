@@ -37,7 +37,7 @@ export default function MenuItem({
           "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
           searchParams.get("section") ===
             item.name.toString().toLowerCase().replace(/\s/g, "_")
-            ? "bg-primary text-white"
+            ? "border-r-4 border-primary"
             : ""
         )}
         href={
