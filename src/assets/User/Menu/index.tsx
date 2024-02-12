@@ -146,9 +146,9 @@ export default function UserDashboardMenu() {
         }}
       >
         <LogOut />
-        <p className={twMerge("font-semibold", expandMenu ? "" : "hidden")}>
+        <span className={twMerge("font-semibold", expandMenu ? "" : "hidden")}>
           Sign Out
-        </p>
+        </span>
       </button>
     </section>
   );
