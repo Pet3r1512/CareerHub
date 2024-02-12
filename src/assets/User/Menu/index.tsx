@@ -60,7 +60,7 @@ function OverviewSection({
 }) {
   return (
     <section>
-      <p className="flex items-center justify-between cursor-default">
+      <div className="flex items-center justify-between cursor-default">
         <p
           className={twMerge(
             "text-2xl font-extrabold pl-2",
@@ -79,7 +79,7 @@ function OverviewSection({
             <Menu />
           </button>
         </TooltipContainer>
-      </p>
+      </div>
       <MenubarSeparator />
       <ul
         className={twMerge(
