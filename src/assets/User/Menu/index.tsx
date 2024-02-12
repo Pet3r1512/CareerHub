@@ -105,7 +105,6 @@ function CareerSection({ expandMenu }: { expandMenu: boolean }) {
       ) : (
         <div className="h-[28px] w-[210px]"></div>
       )}
-      <MenubarSeparator />
       <ul
         className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
       >
