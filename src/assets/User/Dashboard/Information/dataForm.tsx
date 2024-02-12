@@ -41,29 +41,44 @@ export default function DataForm() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/api/auth/getUser", {
-        method: "POST",
-        body: JSON.stringify(localStorage.getItem("user_id")),
-        mode: "cors",
-        headers: { "Content-type": "application/json" },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
-        .then((data) => {
-          return data.user;
+      try {
+        const userId = localStorage.getItem("user_id");
+        if (!userId) {
+          // Handle case where user ID is not available
+          return;
+        }
+
+        const response = await fetch("/api/auth/getUser", {
+          method: "POST",
+          body: JSON.stringify(userId),
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
         });
-      setCurrentUser(response);
+
+        if (response.ok) {
+          const data = await response.json();
+          setCurrentUser(data.user);
+        } else {
+          // Handle error response
+        }
+      } catch (error) {
+        // Handle fetch error
+        console.error("Error fetching user data:", error);
+      }
     };
+
     fetchData();
   }, []);
 
   return (
-    <>
-      <RegisteredFormData currentUser={currentUser!} />
-    </>
+    <div>
+      {/* Render component content */}
+      {currentUser ? (
+        <RegisteredFormData currentUser={currentUser!} />
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
   );
 }
 
@@ -89,7 +104,9 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
 
   return (
     <Form {...form}>
-      <h1 className="text-lg font-bold cursor-default">Register Information</h1>
+      <h1 className="text-lg font-bold cursor-default mb-8">
+        Register Information
+      </h1>
       <form onSubmit={() => {}} className="space-y-8">
         <div className="flex items-center gap-x-2 w-full">
           <FormField
@@ -170,7 +187,9 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
             }}
             className={twMerge(
               "bg-gray-400 text-black font-semibold lg:hover:bg-gray-400 lg:hover:text-black",
-              editMode ? "bg-red-500" : ""
+              editMode
+                ? "bg-red-500 lg:hover:bg-red-500 lg:hover:text-black"
+                : ""
             )}
           >
             {editMode ? "Cancel" : "Edit"}
