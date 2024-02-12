@@ -96,6 +96,7 @@ function SignInForm() {
           if (data.result === "Done") {
             userPassword = data.message;
             localStorage.setItem("user", data.user_full_name);
+            localStorage.setItem("user_id", data.uuid);
             dispatch(
               login({ full_name: data.user_full_name, uuid: data.uuid })
             );
