@@ -13,7 +13,12 @@ export default function Profile() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    router.push(pathname + "?section=public_profile");
+    router.push(
+      pathname +
+        `?user_token=${localStorage
+          .getItem("user_id")
+          ?.replace("-", "")}&section=public_profile`
+    );
   }, []);
 
   return (
