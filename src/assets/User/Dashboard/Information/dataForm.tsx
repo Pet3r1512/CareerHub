@@ -1,7 +1,6 @@
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -12,8 +11,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { twMerge } from "tailwind-merge";
+import DashboardLoading from "../_loading";
 
 const phoneRegex = new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/);
 
@@ -71,12 +69,12 @@ export default function DataForm() {
   }, []);
 
   return (
-    <div>
+    <div className="h-full w-full">
       {/* Render component content */}
       {currentUser ? (
         <RegisteredFormData currentUser={currentUser!} />
       ) : (
-        <div>Loading...</div>
+        <DashboardLoading />
       )}
     </div>
   );
@@ -84,21 +82,18 @@ export default function DataForm() {
 
 function RegisteredFormData({ currentUser }: { currentUser: User }) {
   const [editMode, setEditMode] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      uuid: "",
+      uuid: localStorage.getItem("user_id")!,
       full_name: "",
       gender: "",
       email: "",
     },
   });
 
-  const {
-    register,
-    clearErrors,
-    formState: { errors, isSubmitting },
-  } = useForm<PublicProfile>();
+  const {} = useForm<PublicProfile>();
 
   type PublicProfile = z.infer<typeof formSchema>;
 
@@ -107,7 +102,7 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
       <h1 className="text-lg font-bold cursor-default mb-8">
         Register Information
       </h1>
-      <form onSubmit={() => {}} className="space-y-8">
+      <form className="space-y-8">
         <div className="flex items-center gap-x-2 w-full">
           <FormField
             control={form.control}
@@ -123,8 +118,9 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
                 <FormControl>
                   <div className="grid w-full items-center gap-1.5">
                     <Input
+                      id="full_name"
                       value={currentUser?.full_name}
-                      disabled={!editMode}
+                      disabled
                       className="border-green border-2 font-extrabold text-black"
                     />
                   </div>
@@ -138,10 +134,7 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
             name="gender"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel
-                  htmlFor="full_name"
-                  className="text-md font-semibold"
-                >
+                <FormLabel htmlFor="gender" className="text-md font-semibold">
                   Gender
                 </FormLabel>
                 <FormControl>
@@ -170,7 +163,8 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
                 <div className="grid w-full items-center gap-1.5">
                   <Input
                     value={currentUser?.email}
-                    disabled={!editMode}
+                    id="email"
+                    disabled
                     className="border-green border-2 font-extrabold text-black"
                   />
                 </div>
@@ -179,25 +173,6 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
             </FormItem>
           )}
         />
-        <div className="flex gap-x-2 items-center justify-end">
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              setEditMode(!editMode);
-            }}
-            className={twMerge(
-              "bg-gray-400 text-black font-semibold lg:hover:bg-gray-400 lg:hover:text-black",
-              editMode
-                ? "bg-red-500 lg:hover:bg-red-500 lg:hover:text-black"
-                : ""
-            )}
-          >
-            {editMode ? "Cancel" : "Edit"}
-          </Button>
-          <Button className="bg-green font-bold" disabled={!editMode}>
-            Update
-          </Button>
-        </div>
       </form>
     </Form>
   );
