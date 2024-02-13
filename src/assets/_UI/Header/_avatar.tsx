@@ -89,7 +89,5 @@ function SignOutButton({ children }: { children?: ReactNode }) {
     router.push("/auth/signin");
   };
 
-  return (
-    <button onClick={handleLogout}>{!children ? "Sign Out" : children}</button>
-  );
+  return <div onClick={handleLogout}>{!children ? "Sign Out" : children}</div>;
 }
