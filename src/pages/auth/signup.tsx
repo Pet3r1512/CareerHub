@@ -31,10 +31,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 import { twMerge } from "tailwind-merge";
 
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  hide = "hide",
+export enum GenderEnum {
+  female = "Female",
+  male = "Male",
+  hide = "Hide",
 }
 
 const formSchema = z
