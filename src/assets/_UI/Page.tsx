@@ -56,6 +56,7 @@ export default function Page({
         onExitComplete={() => window.scrollTo(0, 0)}
       >
         <motion.main
+          key="main"
           variants={variants}
           initial="hidden"
           animate="enter"
