@@ -248,9 +248,9 @@ function SignUpForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent id="gender">
-                        <SelectItem value="male">Male</SelectItem>
-                        <SelectItem value="female">Female</SelectItem>
-                        <SelectItem value="hide">Hide Your Gender</SelectItem>
+                        <SelectItem value="Male">Male</SelectItem>
+                        <SelectItem value="Female">Female</SelectItem>
+                        <SelectItem value="Hide">Hide Your Gender</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
