@@ -55,6 +55,9 @@ export default function Profile() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      router.push("/auth/signin");
+    }
     router.push(
       pathname +
         `?user_token=${localStorage
