@@ -13,6 +13,7 @@ import MenuItem from "./menuItem";
 import TooltipContainer from "@/components/tooltipContainer";
 import { SetStateAction, useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useRouter } from "next/router";
 
 const overviewSections = [
   {
@@ -59,7 +60,7 @@ function OverviewSection({
 }) {
   return (
     <section>
-      <p className="flex items-center justify-between cursor-default">
+      <div className="flex items-center justify-between cursor-default">
         <p
           className={twMerge(
             "text-2xl font-extrabold pl-2",
@@ -78,10 +79,13 @@ function OverviewSection({
             <Menu />
           </button>
         </TooltipContainer>
-      </p>
+      </div>
       <MenubarSeparator />
       <ul
-        className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
+        className={twMerge(
+          "flex flex-col gap-y-4 overflow-x-hidden",
+          expandMenu ? "pl-3" : ""
+        )}
       >
         {overviewSections.map((section) => {
           return (
@@ -95,16 +99,12 @@ function OverviewSection({
 
 function CareerSection({ expandMenu }: { expandMenu: boolean }) {
   return (
-    <section>
-      <p
-        className={twMerge(
-          "text-2xl cursor-default font-extrabold pl-2",
-          expandMenu ? "visible" : "invisible"
-        )}
-      >
-        Your Carrer
-      </p>
-      <MenubarSeparator />
+    <section className="transition-all duration-150 ease-in-out">
+      {expandMenu ? (
+        <p className="text-2xl cursor-default font-extrabold pl-2">Carrer</p>
+      ) : (
+        <div className="h-[28px] w-[210px]"></div>
+      )}
       <ul
         className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
       >
@@ -119,7 +119,9 @@ function CareerSection({ expandMenu }: { expandMenu: boolean }) {
 }
 
 export default function UserDashboardMenu() {
-  const [expandMenu, setExpandMenu] = useState(false);
+  const [expandMenu, setExpandMenu] = useState(true);
+
+  const router = useRouter();
 
   return (
     <section
@@ -135,11 +137,18 @@ export default function UserDashboardMenu() {
         />
         <CareerSection expandMenu={expandMenu} />
       </div>
-      <button className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 absolute bottom-4 text-red-500 w-full">
+      <button
+        className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 absolute bottom-4 text-red-500 w-full"
+        onClick={() => {
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          router.push("/auth/signin");
+        }}
+      >
         <LogOut />
-        <p className={twMerge("font-semibold", expandMenu ? "" : "hidden")}>
+        <span className={twMerge("font-semibold", expandMenu ? "" : "hidden")}>
           Sign Out
-        </p>
+        </span>
       </button>
     </section>
   );

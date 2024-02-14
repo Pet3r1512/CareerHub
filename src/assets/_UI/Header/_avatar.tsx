@@ -42,14 +42,14 @@ export default function UserAvatar() {
 function UserMenuTrigger() {
   return (
     <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
-      <Typography className="truncate text-xl flex items-center justify-between w-full">
+      <div className="truncate text-xl flex items-center justify-between w-full">
         <Typography className="truncate text-lg font-bold w-1/2 lg:w-full">
           Me <ChevronDown className="hidden lg:inline-block" />
         </Typography>
         <SignOutButton>
           <LogOut className="lg:hidden text-red-700" />
         </SignOutButton>
-      </Typography>
+      </div>
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
       </Avatar>
@@ -89,7 +89,5 @@ function SignOutButton({ children }: { children?: ReactNode }) {
     router.push("/auth/signin");
   };
 
-  return (
-    <button onClick={handleLogout}>{!children ? "Sign Out" : children}</button>
-  );
+  return <div onClick={handleLogout}>{!children ? "Sign Out" : children}</div>;
 }

@@ -9,9 +9,25 @@ datasource db {
 }
 
 model User {
-  uuid      String @id @default(uuid())
-  full_name String
-  gender    String
-  email     String
-  password  String
+  uuid       String       @id @default(uuid())
+  full_name  String
+  gender     String
+  email      String
+  password   String
+  UserDetail UserDetail[]
+}
+
+model UserDetail {
+  info_id      Int       @id @default(autoincrement())
+  user_id      String
+  phone_number String?
+  birth_day    DateTime?
+  age          Int
+  location     String?
+  occupation   String?
+  created_date DateTime  @default(now())
+
+  User User @relation(fields: [user_id], references: [uuid])
+
+  @@index([user_id])
 }

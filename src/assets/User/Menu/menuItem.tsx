@@ -1,6 +1,8 @@
 import TooltipContainer from "@/components/tooltipContainer";
-import { ReactNode } from "react";
+import { ReactNode, useCallback } from "react";
 import { twMerge } from "tailwind-merge";
+import { usePathname, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 interface MenuItem {
   id: string;
@@ -15,35 +17,66 @@ export default function MenuItem({
   item: MenuItem;
   expandMenu: boolean;
 }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
   if (expandMenu) {
     return (
-      <button
-        className="flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175
-      px-4"
+      <Link
+        className={twMerge(
+          "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
+          searchParams.get("section") ===
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
+            ? "border-r-4 border-primary"
+            : ""
+        )}
+        href={
+          pathname +
+          "?" +
+          createQueryString(
+            "section",
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
+          )
+        }
       >
         {item.icon}
         <p className={twMerge("font-semibold")}>{item.name}</p>
-      </button>
+      </Link>
     );
   }
 
   return (
     <TooltipContainer message={item.name}>
-      <button
+      <Link
         key={item.id}
-        className="flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175
-      px-4"
+        className={twMerge(
+          "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
+          searchParams.get("section") ===
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
+            ? "bg-primary text-white"
+            : ""
+        )}
+        href={
+          pathname +
+          "?" +
+          createQueryString(
+            "section",
+            item.name.toString().toLowerCase().replace(/\s/g, "_")
+          )
+        }
       >
         {item.icon}
-        <p
-          className={twMerge(
-            "font-semibold",
-            expandMenu === false ? "hidden" : ""
-          )}
-        >
-          {item.name}
-        </p>
-      </button>
+      </Link>
     </TooltipContainer>
   );
 }
