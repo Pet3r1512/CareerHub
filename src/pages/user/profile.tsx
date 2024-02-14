@@ -6,6 +6,8 @@ import AccountSetting from "@/assets/User/Dashboard/AccountSetting";
 import Resume from "@/assets/User/Dashboard/Resume";
 import { useRouter } from "next/router";
 import Information from "@/assets/User/Dashboard/Information";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const getStaticProps = async () => {
   try {
@@ -67,21 +69,39 @@ export default function Profile() {
   }, []);
 
   return (
-    <Page pageName="Profile" noMenu noFooter className="h-screen">
-      <div className="flex pt-8 h-full gap-2">
-        <UserDashboardMenu />
-        <div className="flex-1 shadow-2xl rounded-2xl">
-          {searchParams.get("section") === "public_profile" && (
-            <Information key={"information"} />
-          )}
-          {searchParams.get("section") === "account_settings" && (
-            <AccountSetting key={"account_setting"} />
-          )}
-          {searchParams.get("section") === "your_resumes" && (
-            <Resume key={"resumes"} />
-          )}
+    <div>
+      <Page
+        pageName="Profile"
+        noMenu
+        noFooter
+        className="h-screen hidden sm:block"
+      >
+        <div className="pt-8 h-full gap-2 flex">
+          <UserDashboardMenu />
+          <div className="flex-1 shadow-2xl rounded-2xl">
+            {searchParams.get("section") === "public_profile" && (
+              <Information key={"information"} />
+            )}
+            {searchParams.get("section") === "account_settings" && (
+              <AccountSetting key={"account_setting"} />
+            )}
+            {searchParams.get("section") === "your_resumes" && (
+              <Resume key={"resumes"} />
+            )}
+          </div>
         </div>
+      </Page>
+      <div className="sm:hidden flex flex-col items-center gap-y-4 justify-center h-screen px-4">
+        <p className="text-2xl font-semibold text-center">
+          We only allow your profile to be accessed on devices with larger
+          screens to ensure that you can access all information in the most
+          complete and accurate way.
+        </p>
+        <p className="text-center text-lg">Sorry for the inconvenience</p>
+        <Link href={"/"}>
+          <Button className="text-white hover:bg-primary">Home</Button>
+        </Link>
       </div>
-    </Page>
+    </div>
   );
 }
