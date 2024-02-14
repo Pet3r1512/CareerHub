@@ -319,7 +319,7 @@ export default function AdditionalDataForm() {
         </Button>
       </form>
       <Toaster />
-      {!validUpadte && (
+      {(!validUpadte || !loading) && (
         <p className="text-red-400 text-right cursor-default">
           ***You can not update until{" "}
           <span className="font-bold">
