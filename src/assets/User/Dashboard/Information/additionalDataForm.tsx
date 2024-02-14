@@ -289,7 +289,10 @@ export default function AdditionalDataForm() {
                   <SelectContent id="occupation">
                     {departments.map((dep) => {
                       return (
-                        <SelectItem value={dep.code + "-" + dep.name}>
+                        <SelectItem
+                          key={dep.code}
+                          value={dep.code + "-" + dep.name}
+                        >
                           {dep.name}
                         </SelectItem>
                       );
