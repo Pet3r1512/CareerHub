@@ -13,8 +13,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import DashboardLoading from "../_loading";
 
-const phoneRegex = new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/);
-
 const formSchema = z.object({
   uuid: z.string(),
   full_name: z.string(),
@@ -24,7 +22,6 @@ const formSchema = z.object({
       required_error: "Email is required!",
     })
     .email(),
-  phone_number: z.string().regex(phoneRegex, "Invalid Number!"),
 });
 
 interface User {
@@ -99,7 +96,7 @@ function RegisteredFormData({ currentUser }: { currentUser: User }) {
 
   return (
     <Form {...form}>
-      <h1 className="text-lg font-bold cursor-default mb-8">
+      <h1 className="text-xl font-bold cursor-default mb-8">
         Register Information
       </h1>
       <form className="space-y-8">
