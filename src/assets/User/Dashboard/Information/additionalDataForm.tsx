@@ -18,7 +18,7 @@ import {
 import { Toaster } from "@/components/ui/toaster";
 import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -43,11 +43,8 @@ const formSchema = z.object({
 });
 
 export default function AdditionalDataForm() {
-  const [submitting, setSubmitting] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
-  const [updated, setUpdated] = useState(false);
+  const [isDone, setIsDone] = useState(false);
   const [validUpadte, setValidUpadte] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({
     phone_number: "",
     birth_day: "",
@@ -56,42 +53,15 @@ export default function AdditionalDataForm() {
     age: 0,
     nextValidUpdate: "",
   });
-
   const {
     register,
     clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<AdditionalFormData>();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      uuid: localStorage.getItem("user_id")!,
-      phone_number: "",
-      birth_day: "",
-      location: "",
-      occupation: "",
-    },
-  });
-
-  const departments = [
-    { name: "Information Technology (IT)", code: "IT" },
-    { name: "Marketing", code: "MK" },
-    { name: "Design", code: "DS" },
-    { name: "Sales", code: "SL" },
-    { name: "Human Resources (HR)", code: "HR" },
-    { name: "Finance and Accountant", code: "FA" },
-    { name: "Operations", code: "OP" },
-    { name: "Customer Service", code: "CS" },
-    { name: "Research and Development (R&D)", code: "RD" },
-    { name: "Administration", code: "AD" },
-    { name: "Student", code: "ST" },
-  ];
-
   type AdditionalFormData = z.infer<typeof formSchema>;
 
   useEffect(() => {
-    setLoading(true);
     const fetchData = async () => {
       try {
         const userId = localStorage.getItem("user_id");
@@ -126,10 +96,79 @@ export default function AdditionalDataForm() {
         console.error("Error fetching user data:", error);
       }
     };
-
     fetchData();
-    setLoading(false);
+    setIsDone(true);
   }, []);
+
+  return (
+    <div className="w-full h-full">
+      {!isDone ? (
+        <></>
+      ) : (
+        <AdditionalForm
+          details={details}
+          setDetails={setDetails}
+          validUpdate={validUpadte}
+        />
+      )}
+    </div>
+  );
+}
+
+function AdditionalForm({
+  details,
+  setDetails,
+  validUpdate,
+}: {
+  details: {
+    phone_number: string;
+    birth_day: string;
+    location: string;
+    occupation: string;
+    age: number;
+    nextValidUpdate: string;
+  };
+  setDetails: React.Dispatch<
+    SetStateAction<{
+      phone_number: string;
+      birth_day: string;
+      location: string;
+      occupation: string;
+      age: number;
+      nextValidUpdate: string;
+    }>
+  >;
+  validUpdate: boolean;
+}) {
+  const [submitting, setSubmitting] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [updated, setUpdated] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const departments = [
+    { name: "Information Technology (IT)", code: "IT" },
+    { name: "Marketing", code: "MK" },
+    { name: "Design", code: "DS" },
+    { name: "Sales", code: "SL" },
+    { name: "Human Resources (HR)", code: "HR" },
+    { name: "Finance and Accountant", code: "FA" },
+    { name: "Operations", code: "OP" },
+    { name: "Customer Service", code: "CS" },
+    { name: "Research and Development (R&D)", code: "RD" },
+    { name: "Administration", code: "AD" },
+    { name: "Student", code: "ST" },
+  ];
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      uuid: localStorage.getItem("user_id")!,
+      phone_number: "",
+      birth_day: "",
+      location: "",
+      occupation: "",
+    },
+  });
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setSubmitting(true);
@@ -165,13 +204,9 @@ export default function AdditionalDataForm() {
     setSubmitting(false);
   };
 
-  if (loading) {
-    return <></>;
-  }
-
   return (
     <Form {...form}>
-      <h1 className="text-xl font-bold cursor-default">
+      <h1 className="text-xl font-bold cursor-default mb-8">
         Additional Information
       </h1>
       <form
@@ -312,14 +347,14 @@ export default function AdditionalDataForm() {
         />
         <Button
           type="submit"
-          disabled={submitting ? true : false || !validUpadte}
+          disabled={submitting ? true : false || !validUpdate}
           className="bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0"
         >
           Update
         </Button>
       </form>
       <Toaster />
-      {(!validUpadte || !loading) && (
+      {(!validUpdate || !loading) && (
         <p className="text-red-400 text-right cursor-default">
           ***You can not update until{" "}
           <span className="font-bold">
