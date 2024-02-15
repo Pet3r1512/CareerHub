@@ -68,7 +68,7 @@ export default function Page({
             className={twMerge(
               "max-w-[100rem] mx-auto pt-9 pb-14 px-2 lg:px-0 lg:min-h-screen",
               className,
-              openSidebar ? "h-screen overflow-hidden" : ""
+              openSidebar ? "h-full overflow-hidden" : ""
             )}
           >
             <div className={noHeader ? "hidden" : ""}>
