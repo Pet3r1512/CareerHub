@@ -52,6 +52,10 @@ export default async function handler(
     if(!user) {
         return res.status(401).json({message: "User Not Found!"})
     }
+    
+    await prisma.user.delete({
+      where: {uuid: uuid}
+    })
 
     const newUserDetail = await prisma.userDetail.create({
         data: {
