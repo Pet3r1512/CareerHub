@@ -31,7 +31,7 @@ function canUpdate(lastUpdateDateString: string): boolean {
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30); // Subtract 30 days
 
   // Check if the last update date is within the last 30 days
-  return lastUpdateDate >= thirtyDaysAgo;
+  return lastUpdateDate <= thirtyDaysAgo;
 }
 
 const formSchema = z.object({
@@ -44,7 +44,7 @@ const formSchema = z.object({
 
 export default function AdditionalDataForm() {
   const [isDone, setIsDone] = useState(false);
-  const [validUpadte, setValidUpadte] = useState(false);
+  const [validUpadte, setValidUpadte] = useState(true);
   const [details, setDetails] = useState({
     phone_number: "",
     birth_day: "",
@@ -347,14 +347,14 @@ function AdditionalForm({
         />
         <Button
           type="submit"
-          disabled={submitting || validUpdate ? true : false}
+          disabled={submitting || loading || !validUpdate ? true : false}
           className="bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0"
         >
           Update
         </Button>
       </form>
       <Toaster />
-      {validUpdate && (
+      {!validUpdate && (
         <p className="text-red-400 text-right cursor-default">
           ***You can not update until{" "}
           <span className="font-bold">
