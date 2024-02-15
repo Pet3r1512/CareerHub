@@ -286,7 +286,7 @@ function AdditionalForm({
                     <Input
                       type="text"
                       id="location"
-                      placeholder="Quan 7, TP.HCM"
+                      placeholder="Your home address"
                       {...field}
                     />
                   ) : (
@@ -347,14 +347,14 @@ function AdditionalForm({
         />
         <Button
           type="submit"
-          disabled={submitting ? true : false || !validUpdate}
+          disabled={submitting || validUpdate ? true : false}
           className="bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0"
         >
           Update
         </Button>
       </form>
       <Toaster />
-      {(!validUpdate || !loading) && (
+      {validUpdate && (
         <p className="text-red-400 text-right cursor-default">
           ***You can not update until{" "}
           <span className="font-bold">
