@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import DashboardLoading from "../_loading";
 
 const formSchema = z.object({
@@ -31,10 +31,17 @@ interface User {
   gender: string;
 }
 
-export default function DataForm() {
+export default function DataForm({
+  fetching,
+  setFetching,
+}: {
+  fetching: boolean;
+  setFetching: React.Dispatch<SetStateAction<boolean>>;
+}) {
   const [currentUser, setCurrentUser] = useState<User>();
 
   useEffect(() => {
+    setFetching(true);
     const fetchData = async () => {
       try {
         const userId = localStorage.getItem("user_id");
@@ -63,6 +70,7 @@ export default function DataForm() {
     };
 
     fetchData();
+    setFetching(false);
   }, []);
 
   return (

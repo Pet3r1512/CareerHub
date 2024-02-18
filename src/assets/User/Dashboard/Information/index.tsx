@@ -1,8 +1,11 @@
+import { useState } from "react";
 import UserDashboardSectionLayout from "../_UserDashboardSectionLayout";
 import AdditionalDataForm from "./additionalDataForm";
 import DataForm from "./dataForm";
 
 function Information() {
+  const [fetching, setFetching] = useState(false);
+
   return (
     <UserDashboardSectionLayout sectionTitle="Information">
       <div className="flex flex-col gap-y-4">
@@ -13,8 +16,8 @@ function Information() {
           companies.
         </p>
         <div className="flex flex-col gap-y-8">
-          <DataForm />
-          <AdditionalDataForm />
+          <DataForm fetching={fetching} setFetching={setFetching} />
+          <AdditionalDataForm fetching={fetching} setFetching={setFetching} />
         </div>
       </div>
     </UserDashboardSectionLayout>

@@ -55,7 +55,13 @@ const formSchema = z.object({
   occupation: z.string(),
 });
 
-export default function AdditionalDataForm() {
+export default function AdditionalDataForm({
+  fetching,
+  setFetching,
+}: {
+  fetching: boolean;
+  setFetching: React.Dispatch<SetStateAction<boolean>>;
+}) {
   const [isDone, setIsDone] = useState(false);
   const [details, setDetails] = useState({
     phone_number: "",
@@ -113,7 +119,7 @@ export default function AdditionalDataForm() {
 
   return (
     <div className="w-full h-full">
-      {!isDone ? (
+      {fetching ? (
         <></>
       ) : (
         <AdditionalForm details={details} setDetails={setDetails} />
