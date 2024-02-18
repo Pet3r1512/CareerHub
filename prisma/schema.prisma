@@ -20,5 +20,4 @@ model User {
   location     String?
   occupation   String?
   created_date DateTime  @default(now())
-  next_update  DateTime?
 }
