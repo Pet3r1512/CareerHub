@@ -20,6 +20,7 @@ import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
 const phoneRegex = new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/);
@@ -226,7 +227,7 @@ function AdditionalForm({
         toast({
           title: "Update Successfully!!!",
           description:
-            "Next update: " + details.nextValidUpdate.toString().slice(0, 9),
+            "Next update: " + details.nextValidUpdate.toString().slice(0, 10),
           className: "bg-green",
         });
         setUpdated(true);
@@ -299,7 +300,7 @@ function AdditionalForm({
                     />
                   ) : (
                     <Input
-                      value={details.birth_day?.toString().slice(0, 9)}
+                      value={details.birth_day.toString().slice(0, 10)}
                       className="border-green border-2 font-extrabold text-black"
                     />
                   )}
@@ -385,10 +386,11 @@ function AdditionalForm({
         />
         <Button
           type="submit"
-          disabled={
-            submitting || loading || details.birth_day == null ? false : true
-          }
-          className="bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0"
+          disabled={details.birth_day == null ? false : true}
+          className={twMerge(
+            "bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0",
+            submitting || loading ? "cursor-not-allowed opacity-70" : ""
+          )}
         >
           Update
         </Button>
