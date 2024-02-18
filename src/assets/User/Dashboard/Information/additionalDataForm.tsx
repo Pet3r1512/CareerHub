@@ -205,7 +205,6 @@ function AdditionalForm({
             age: user.age,
             nextValidUpdate: user.nextChangeValidOn,
           });
-          console.log(details);
         });
     };
     fetchData();
@@ -306,7 +305,7 @@ function AdditionalForm({
                     />
                   ) : (
                     <Input
-                      value={details.birth_day.toString().slice(0, 10)}
+                      value={details.birth_day?.toString().slice(0, 10)}
                       className="border-green border-2 font-extrabold text-black"
                     />
                   )}
