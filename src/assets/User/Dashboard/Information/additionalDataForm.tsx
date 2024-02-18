@@ -240,6 +240,7 @@ function AdditionalForm({
                       <Input
                         value={details.phone_number}
                         className="border-green border-2 font-extrabold text-black"
+                        disabled={updated}
                       />
                     )}
                   </div>
@@ -271,6 +272,7 @@ function AdditionalForm({
                     <Input
                       value={details.birth_day?.toString().slice(0, 9)}
                       className="border-green border-2 font-extrabold text-black"
+                      disabled={updated}
                     />
                   )}
                 </FormControl>
@@ -303,6 +305,7 @@ function AdditionalForm({
                     <Input
                       value={details.location}
                       className="border-green border-2 font-extrabold text-black"
+                      disabled={updated}
                     />
                   )}
                 </div>
@@ -347,6 +350,7 @@ function AdditionalForm({
                 <Input
                   value={details.occupation}
                   className="border-green border-2 font-extrabold text-black"
+                  disabled={updated}
                 />
               )}
               <FormMessage />
