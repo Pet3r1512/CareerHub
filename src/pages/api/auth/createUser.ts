@@ -35,6 +35,10 @@ export default async function handler(
         gender: gender,
         email: email,
         password: password,
+        phone_number: "",
+        location: "",
+        occupation: "",
+        age: 0,
       },
     });
 

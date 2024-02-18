@@ -16,9 +16,6 @@ function Information() {
           <DataForm />
           <AdditionalDataForm />
         </div>
-        <p className="text-gray-dark text-right cursor-default">
-          ***This information is updated only once a month.
-        </p>
       </div>
     </UserDashboardSectionLayout>
   );

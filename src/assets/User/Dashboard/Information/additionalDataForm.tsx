@@ -24,6 +24,18 @@ import { z } from "zod";
 
 const phoneRegex = new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/);
 
+function reverseDate(date: string) {
+  var dateParts = date.split("-");
+  var year = dateParts[0];
+  var month = dateParts[1];
+  var day = dateParts[2];
+
+  // Construct the new date string in "DDMMYYYY" format
+  var newDateString = day + "-" + month + "-" + year;
+
+  return newDateString;
+}
+
 function canUpdate(lastUpdateDateString: string): boolean {
   const lastUpdateDate = new Date(lastUpdateDateString);
   const currentDate = new Date();
@@ -31,7 +43,7 @@ function canUpdate(lastUpdateDateString: string): boolean {
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30); // Subtract 30 days
 
   // Check if the last update date is within the last 30 days
-  return lastUpdateDate <= thirtyDaysAgo;
+  return lastUpdateDate >= thirtyDaysAgo;
 }
 
 const formSchema = z.object({
@@ -44,7 +56,6 @@ const formSchema = z.object({
 
 export default function AdditionalDataForm() {
   const [isDone, setIsDone] = useState(false);
-  const [validUpadte, setValidUpadte] = useState(true);
   const [details, setDetails] = useState({
     phone_number: "",
     birth_day: "",
@@ -87,7 +98,6 @@ export default function AdditionalDataForm() {
             age: data.user_detail.age,
             nextValidUpdate: data.nextChangeValidOn,
           });
-          setValidUpadte(canUpdate(details.nextValidUpdate));
         } else {
           // Handle error response
         }
@@ -105,11 +115,7 @@ export default function AdditionalDataForm() {
       {!isDone ? (
         <></>
       ) : (
-        <AdditionalForm
-          details={details}
-          setDetails={setDetails}
-          validUpdate={validUpadte}
-        />
+        <AdditionalForm details={details} setDetails={setDetails} />
       )}
     </div>
   );
@@ -118,7 +124,6 @@ export default function AdditionalDataForm() {
 function AdditionalForm({
   details,
   setDetails,
-  validUpdate,
 }: {
   details: {
     phone_number: string;
@@ -138,7 +143,6 @@ function AdditionalForm({
       nextValidUpdate: string;
     }>
   >;
-  validUpdate: boolean;
 }) {
   const [submitting, setSubmitting] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
@@ -175,30 +179,33 @@ function AdditionalForm({
     await fetch("/api/user/updateUser", {
       method: "POST",
       body: JSON.stringify({ values }),
+      mode: "cors",
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setUpdated(true);
         setDetails({
-          phone_number: data.info.full_name,
-          birth_day: data.info.birth_day,
-          location: data.info.location,
-          occupation: data.info.occupation,
-          age: data.info.age,
+          phone_number: data.user.phone_number,
+          birth_day: data.user.birth_day,
+          location: data.user.location,
+          occupation: data.user.occupation,
+          age: data.user.age,
           nextValidUpdate: data.nextChangeValidOn,
         });
         toast({
           title: "Update Successfully!!!",
+          description:
+            "Next update: " + details.nextValidUpdate.toString().slice(0, 9),
           className: "bg-green",
         });
+        setUpdated(true);
       })
       .catch((error) => {
         toast({
           variant: "destructive",
           title: "Failed!",
-          description: error,
+          description: error.message,
         });
       });
     setSubmitting(false);
@@ -211,7 +218,7 @@ function AdditionalForm({
       </h1>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="space-y-8 relative"
+        className="space-y-8 relative flex flex-col gap-y-4"
       >
         <div className="flex items-center gap-x-2">
           <FormField
@@ -233,7 +240,6 @@ function AdditionalForm({
                       <Input
                         value={details.phone_number}
                         className="border-green border-2 font-extrabold text-black"
-                        disabled
                       />
                     )}
                   </div>
@@ -254,13 +260,17 @@ function AdditionalForm({
                   Birth Day
                 </FormLabel>
                 <FormControl>
-                  {details.birth_day === "" ? (
-                    <Input type="date" id="birth_day" {...field} />
+                  {details.birth_day === null ? (
+                    <Input
+                      min="01-01-1800"
+                      type="date"
+                      id="birth_day"
+                      {...field}
+                    />
                   ) : (
                     <Input
-                      value={details.birth_day.toString().slice(0, 9)}
+                      value={details.birth_day?.toString().slice(0, 9)}
                       className="border-green border-2 font-extrabold text-black"
-                      disabled
                     />
                   )}
                 </FormControl>
@@ -293,7 +303,6 @@ function AdditionalForm({
                     <Input
                       value={details.location}
                       className="border-green border-2 font-extrabold text-black"
-                      disabled
                     />
                   )}
                 </div>
@@ -338,7 +347,6 @@ function AdditionalForm({
                 <Input
                   value={details.occupation}
                   className="border-green border-2 font-extrabold text-black"
-                  disabled
                 />
               )}
               <FormMessage />
@@ -347,21 +355,13 @@ function AdditionalForm({
         />
         <Button
           type="submit"
-          disabled={submitting || loading || !validUpdate ? true : false}
+          disabled={submitting || loading || updated}
           className="bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0"
         >
           Update
         </Button>
       </form>
       <Toaster />
-      {!validUpdate && (
-        <p className="text-red-400 text-right cursor-default">
-          ***You can not update until{" "}
-          <span className="font-bold">
-            {details.nextValidUpdate.toString().slice(0, 9)}
-          </span>
-        </p>
-      )}
     </Form>
   );
 }
