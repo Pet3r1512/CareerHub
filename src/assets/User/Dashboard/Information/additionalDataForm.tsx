@@ -174,6 +174,36 @@ function AdditionalForm({
     },
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("/api/auth/getUser", {
+        method: "POST",
+        body: JSON.stringify(localStorage.getItem("user_id")),
+        mode: "cors",
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          const user = data.user;
+
+          setDetails({
+            phone_number: user.phone_number,
+            birth_day: user.birth_day,
+            location: user.location,
+            occupation: user.occupation,
+            age: user.age,
+            nextValidUpdate: user.nextChangeValidOn,
+          });
+          console.log(details);
+        });
+    };
+    fetchData();
+  }, []);
+
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setSubmitting(true);
     await fetch("/api/user/updateUser", {
@@ -234,13 +264,12 @@ function AdditionalForm({
                 </FormLabel>
                 <FormControl>
                   <div className="grid w-full items-center gap-1.5">
-                    {details.phone_number === "" ? (
+                    {!details.phone_number ? (
                       <Input type="tel" id="phone_number" {...field} />
                     ) : (
                       <Input
                         value={details.phone_number}
                         className="border-green border-2 font-extrabold text-black"
-                        disabled={updated}
                       />
                     )}
                   </div>
@@ -261,7 +290,7 @@ function AdditionalForm({
                   Birth Day
                 </FormLabel>
                 <FormControl>
-                  {details.birth_day === null ? (
+                  {!details.birth_day ? (
                     <Input
                       min="01-01-1800"
                       type="date"
@@ -272,7 +301,6 @@ function AdditionalForm({
                     <Input
                       value={details.birth_day?.toString().slice(0, 9)}
                       className="border-green border-2 font-extrabold text-black"
-                      disabled={updated}
                     />
                   )}
                 </FormControl>
@@ -294,7 +322,7 @@ function AdditionalForm({
               </FormLabel>
               <FormControl>
                 <div className="grid w-full items-center gap-1.5">
-                  {details.location === "" ? (
+                  {!details.location ? (
                     <Input
                       type="text"
                       id="location"
@@ -305,7 +333,6 @@ function AdditionalForm({
                     <Input
                       value={details.location}
                       className="border-green border-2 font-extrabold text-black"
-                      disabled={updated}
                     />
                   )}
                 </div>
@@ -323,7 +350,7 @@ function AdditionalForm({
                 Occupation
               </FormLabel>
 
-              {details.occupation === "" ? (
+              {!details.occupation ? (
                 <Select onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger>
@@ -350,7 +377,6 @@ function AdditionalForm({
                 <Input
                   value={details.occupation}
                   className="border-green border-2 font-extrabold text-black"
-                  disabled={updated}
                 />
               )}
               <FormMessage />
@@ -359,7 +385,9 @@ function AdditionalForm({
         />
         <Button
           type="submit"
-          disabled={submitting || loading || updated}
+          disabled={
+            submitting || loading || details.birth_day == null ? false : true
+          }
           className="bg-green lg:hover:bg-green rounded-xl font-bold absolute bottom-0 right-0"
         >
           Update
