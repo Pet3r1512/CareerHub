@@ -5,7 +5,7 @@
 - Cloing this project to your computer by using this command (with SSH):
 
 ```html
-git clone git@github.com:Pet3r1512/CareerHub.git
+git clone https://github.com/Pet3r1512/CareerHub.git
 ```
 
 ## Step 2: Setup your contributor's information
