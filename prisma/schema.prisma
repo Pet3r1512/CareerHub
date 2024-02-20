@@ -9,9 +9,15 @@ datasource db {
 }
 
 model User {
-  uuid      String @id @default(uuid())
-  full_name String
-  gender    String
-  email     String
-  password  String
+  uuid         String    @id @default(uuid())
+  full_name    String
+  gender       String
+  email        String
+  password     String
+  phone_number String?
+  birth_day    DateTime?
+  age          Int?
+  location     String?
+  occupation   String?
+  created_date DateTime  @default(now())
 }

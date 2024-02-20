@@ -31,10 +31,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 import { twMerge } from "tailwind-merge";
 
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  hide = "hide",
+export enum GenderEnum {
+  female = "Female",
+  male = "Male",
+  hide = "Hide",
 }
 
 const formSchema = z
@@ -248,9 +248,9 @@ function SignUpForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent id="gender">
-                        <SelectItem value="male">Male</SelectItem>
-                        <SelectItem value="female">Female</SelectItem>
-                        <SelectItem value="hide">Hide Your Gender</SelectItem>
+                        <SelectItem value="Male">Male</SelectItem>
+                        <SelectItem value="Female">Female</SelectItem>
+                        <SelectItem value="Hide">Hide Your Gender</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

@@ -9,9 +9,11 @@ import { useEffect, useState } from "react";
 export default function Header({
   openSidebar,
   setOpenSidebar,
+  noMenu,
 }: {
   openSidebar: boolean;
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+  noMenu?: boolean;
 }) {
   const [user, setUser] = useState("");
   useEffect(() => {
@@ -22,7 +24,9 @@ export default function Header({
     <section className="w-full flex justify-between items-center">
       <div className="flex items-center gap-8">
         <Logo />
-        <Menu />
+        <div className={noMenu ? "hidden" : ""}>
+          <Menu />
+        </div>
       </div>
       <button
         className="flex items-center lg:hidden font-semibold"
