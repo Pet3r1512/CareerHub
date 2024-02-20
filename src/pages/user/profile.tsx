@@ -57,12 +57,7 @@ export default function Profile() {
       router.push("/auth/signin");
     }
     // false
-    router.push(
-      pathname +
-        `?user_token=${localStorage
-          .getItem("user_id")
-          ?.replace("-", "")}&section=public_profile`
-    );
+    router.push(pathname + `?.replace("-", "")}&section=public_profile`);
   }, []);
 
   return (
