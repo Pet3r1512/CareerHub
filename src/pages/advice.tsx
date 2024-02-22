@@ -1,14 +1,13 @@
-import Blog from "@/assets/Advice/blog";
 import BlogContainer from "@/assets/Advice/blogContainer";
 import Page from "@/assets/_UI/Page";
 
-import { coverLetters } from "@/data/advices/cover-letters";
+import { advices_blogs } from "@/data/advices/advice-blogs";
 
 export default function Advice() {
   return (
     <Page pageName="Advice">
       <div className="pt-16">
-        {coverLetters.map((blog, index) => {
+        {advices_blogs.map((blog, index) => {
           return <BlogContainer key={blog.id + index.toString()} blog={blog} />;
         })}
       </div>
