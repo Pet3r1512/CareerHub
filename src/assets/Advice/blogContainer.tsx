@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Blog } from "./blog";
+import { BlogProps } from "./blog";
 import Link from "next/link";
 
-export default function BlogContainer({ blog }: { blog: Blog }) {
+export default function BlogContainer({ blog }: { blog: BlogProps }) {
   const imgStyle = {
     width: "auto",
   };
@@ -17,6 +17,7 @@ export default function BlogContainer({ blog }: { blog: Blog }) {
           height={24}
           width={1000}
           quality={20}
+          priority
           style={imgStyle}
         />
         <h1 className="line-clamp-2 font-semibold text-lg">{blog.title}</h1>
