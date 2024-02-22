@@ -1,11 +1,11 @@
-import { BlogProps } from "@/assets/Blog/blog";
-import BlogContainer from "@/assets/Blog/blogContainer";
-import LoadingBlogContainer from "@/assets/Blog/loadingBlogContainer";
+import { BlogProps } from "@/assets/Advice/blog";
+import BlogContainer from "@/assets/Advice/blogContainer";
+import LoadingBlogContainer from "@/assets/Advice/loadingBlogContainer";
 import Page from "@/assets/_UI/Page";
 
 import { useEffect, useState } from "react";
 
-export default function Blog() {
+export default function Advice() {
   const [blogs, setBlogs] = useState<BlogProps[]>([]);
   const [loading, setLoading] = useState(false);
 

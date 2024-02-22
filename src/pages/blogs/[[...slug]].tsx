@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 
 import { advices_blogs } from "@/data/advices/advice-blogs";
-import Blog, { BlogProps } from "@/assets/Blog/blog";
+import Blog, { BlogProps } from "@/assets/Advice/blog";
 import Page from "@/assets/_UI/Page";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
