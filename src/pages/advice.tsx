@@ -8,8 +8,8 @@ export default function Advice() {
   return (
     <Page pageName="Advice">
       <div className="pt-16">
-        {coverLetters.map((blog) => {
-          return <BlogContainer blog={blog} />;
+        {coverLetters.map((blog, index) => {
+          return <BlogContainer key={blog.id + index.toString()} blog={blog} />;
         })}
       </div>
     </Page>

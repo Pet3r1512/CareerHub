@@ -11,7 +11,7 @@ export default function BlogPage() {
       <div className="pt-16">
         {coverLetters.map((item) => {
           if (item.id.toString() === blogId) {
-            return <Blog blog={item} />;
+            return <Blog key={item.id} blog={item} />;
           }
         })}
       </div>
