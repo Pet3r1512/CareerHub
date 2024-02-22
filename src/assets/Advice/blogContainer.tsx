@@ -12,9 +12,9 @@ export default function BlogContainer({ blog }: { blog: BlogProps }) {
       <div className="w-96 shadow-xl rounded-2xl p-2 cursor-default lg:hover:shadow-2xl">
         <Image
           src={blog.img_url}
-          className="object-cover rounded-xl"
+          className="object-cover rounded-xl min-h-[245px]"
           alt={""}
-          height={24}
+          height={1000}
           width={1000}
           quality={20}
           priority
