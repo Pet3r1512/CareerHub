@@ -23,3 +23,23 @@ export type Job = {
   capacity: number;
   applied: number;
 };
+
+export type EmploymentType = {
+  type: string;
+  count: number;
+};
+
+export type JobCategory = {
+  category: string;
+  count: number;
+};
+
+export type JobLevel = {
+  level: string;
+  count: number;
+};
+
+export type SalaryRange = {
+  range: string;
+  count: number;
+};
