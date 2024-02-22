@@ -4,6 +4,7 @@ export interface BlogProps {
   id: number;
   img_url: string;
   title: string;
+  type: string;
   published_date: string;
   author: string;
   content: string;
