@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export interface Blog {
+export interface BlogProps {
   id: number;
   img_url: string;
   title: string;
@@ -9,7 +9,7 @@ export interface Blog {
   content: string;
 }
 
-export default function Blog({ blog }: { blog: Blog }) {
+export default function Blog({ blog }: { blog: BlogProps }) {
   return (
     <div key={blog.id}>
       <Image
@@ -19,7 +19,7 @@ export default function Blog({ blog }: { blog: Blog }) {
         width={1000}
         height={384}
       />
-      <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
+      <h1 className="text-3xl font-bold my-4">{blog.title}</h1>
       <p className="text-right cursor-default font-semibold text-lg text-primary">
         {blog.author} - {blog.published_date}
       </p>
