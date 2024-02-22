@@ -40,7 +40,7 @@ function AboutSection() {
               className="text-gray hover:text-white transition-all duration-75 ease-linear"
               key={index}
             >
-              <a href="#">{section}</a>
+              <a href={section.replace(/\s+/g, "-").toLowerCase()}>{section}</a>
             </li>
           );
         })}
