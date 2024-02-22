@@ -23,13 +23,7 @@ export default function Main() {
 }
 
 function AboutSection() {
-  const sections = [
-    "Companies",
-    "Pricing",
-    "Terms",
-    "Advice",
-    "Privacy Policy",
-  ];
+  const sections = ["Companies", "Pricing", "Terms", "Blogs", "Privacy Policy"];
   return (
     <div>
       <p className="text-white font-bold mb-3 cursor-default">About</p>
