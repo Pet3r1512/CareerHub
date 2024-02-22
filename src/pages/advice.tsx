@@ -1,8 +1,8 @@
 import { BlogProps } from "@/assets/Advice/blog";
 import BlogContainer from "@/assets/Advice/blogContainer";
+import LoadingBlogContainer from "@/assets/Advice/loadingBlogContainer";
 import Page from "@/assets/_UI/Page";
 
-import { advices_blogs } from "@/data/advices/advice-blogs";
 import { useEffect, useState } from "react";
 
 export default function Advice() {
@@ -26,10 +26,14 @@ export default function Advice() {
     setLoading(false);
   }, []);
 
+  if (loading) {
+    return <LoadingBlogContainer />;
+  }
+
   return (
     <Page pageName="Advice">
       <div className="pt-16 grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-y-14 lg:gap-0">
-        {blogs?.map((blog, index) => {
+        {blogs.map((blog, index) => {
           return <BlogContainer key={blog.id + index.toString()} blog={blog} />;
         })}
       </div>
