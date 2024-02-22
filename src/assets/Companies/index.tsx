@@ -2,8 +2,8 @@ import CompaniesOptions from "../_UI/SideOptions/companiesOptions";
 import CompaniesAndJobsContainer from "./companiesContainer";
 import { companies } from "@/data/companies";
 import { jobs } from "@/data/jobs";
-import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import JobOptionsContainer from "../_UI/SideOptions/jobOptions";
 
 export default function CompaniesAndJobsLayout({
   loading,
@@ -19,6 +19,7 @@ export default function CompaniesAndJobsLayout({
   const search = searchParams.get("search") || "";
   const size = searchParams.get("size")?.split(",") || "";
   const industry = searchParams.get("industry")?.split(",");
+  const employmentType = searchParams.get("employmentType")?.split(",");
 
   const checkSize = (size: number) => {
     switch (true) {
@@ -47,13 +48,18 @@ export default function CompaniesAndJobsLayout({
       (size.includes(checkSize(company.company_size)) || !size.length)
   );
 
-  const jobsData = jobs.filter((job) =>
-    job.title.toLowerCase().includes(search.toLowerCase() || "")
+  const jobsData = jobs.filter(
+    (job) =>
+      job.title.toLowerCase().includes(search.toLowerCase() || "") &&
+      job.employment_type
+        .toLowerCase()
+        .includes(employmentType?.toString().toLowerCase() || "")
   );
 
   return (
     <div className="flex gap-8">
-      <CompaniesOptions />
+      {type == "company" && <CompaniesOptions />}
+      {type == "job" && <JobOptionsContainer />}
       <CompaniesAndJobsContainer
         loading={loading}
         data={type == "company" ? companiesData : jobsData}

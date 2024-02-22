@@ -8,6 +8,7 @@ type QueryProps = {
     location?: string | string[];
     industry?: string | string[];
     size?: string | string[];
+    employmentType?: string | string[];
   };
 };
 
@@ -21,6 +22,9 @@ export function PushQuery({ pathname, query }: QueryProps) {
       }),
     ...(query.industry && { industry: query.industry.toString() }),
     ...(query.size && { size: query.size.toString() }),
+    ...(query.employmentType && {
+      employmentType: query.employmentType.toString(),
+    }),
   });
 
   const newQuery = params.toString() ? `${params.toString()}` : "";
