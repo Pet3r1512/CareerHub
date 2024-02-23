@@ -16,7 +16,7 @@ export default function Advice() {
         const result = await fetch("/api/blogs/getBlogs");
         if (result.ok) {
           const data = await result.json();
-          setBlogs(data.blogs);
+          setBlogs(data.blogs.reverse());
         }
       } catch (error) {
         console.error(error);
@@ -27,12 +27,18 @@ export default function Advice() {
   }, []);
 
   if (loading) {
-    return <LoadingBlogContainer />;
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <LoadingBlogContainer />
+        <LoadingBlogContainer />
+        <LoadingBlogContainer />
+      </div>
+    );
   }
 
   return (
     <Page pageName="Advice">
-      <div className="pt-16 grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-y-14 lg:gap-0">
+      <div className="pt-16 grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-y-14 lg:gap-0 md:grid-cols-max">
         {blogs.map((blog, index) => {
           return <BlogContainer key={blog.id + index.toString()} blog={blog} />;
         })}
