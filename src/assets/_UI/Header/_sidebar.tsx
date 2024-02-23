@@ -34,7 +34,7 @@ export default function Sidebar({
       open={isOpen}
       placement="right"
       className={twMerge(
-        "px-4 py-6 flex flex-col gap-y-8",
+        "px-4 pb-6 flex flex-col gap-y-8",
         isOpen ? "sidebar-opened" : ""
       )}
     >
