@@ -13,10 +13,10 @@ export default function BlogContainer({ blog }: { blog: BlogProps }) {
       href={"/blogs?blog=" + blog.id.toString()}
       className="inline-block w-fit lg:w-full mx-auto lg:mx-0 sm:h-[320px] lg:h-[355px]"
     >
-      <div className="w-96 lg:w-[420px] sm:h-[320px] lg:h-[355px] shadow-xl rounded-2xl py-2 cursor-default lg:hover:shadow-2xl px-4 flex flex-col justify-between">
+      <div className="w-96 xl:w-[420px] sm:h-[320px] lg:h-[355px] shadow-xl rounded-2xl py-2 cursor-default lg:hover:shadow-2xl px-4 flex flex-col justify-between gap-y-4 sm:gap-y-0">
         <Image
           src={blog.img_url}
-          className="object-contain rounded-xl lg:h-[245px] lg:w-full mx-auto"
+          className="object-contain rounded-xl h-1/2 lg:h-[245px] lg:w-full mx-auto"
           alt={""}
           height={1000}
           width={1000}
