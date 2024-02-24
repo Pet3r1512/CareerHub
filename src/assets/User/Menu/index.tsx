@@ -14,8 +14,10 @@ import TooltipContainer from "@/components/tooltipContainer";
 import { SetStateAction, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
+import Logo from "@/assets/_UI/_logo";
+import Link from "next/link";
 
-const overviewSections = [
+const sections = [
   {
     id: "INFORMATION",
     name: "Public Profile",
@@ -31,9 +33,6 @@ const overviewSections = [
     name: "Your Resumes",
     icon: <FileText />,
   },
-];
-
-const careerSections = [
   {
     id: "APPLIED",
     name: "Applied Jobs",
@@ -51,7 +50,7 @@ const careerSections = [
   },
 ];
 
-function OverviewSection({
+function SectionItem({
   expandMenu,
   setExpandMenu,
 }: {
@@ -60,18 +59,20 @@ function OverviewSection({
 }) {
   return (
     <section>
-      <div className="flex items-center justify-between cursor-default">
-        <p
-          className={twMerge(
-            "text-2xl font-extrabold pl-2",
-            expandMenu ? "" : "hidden"
-          )}
+      <div className="flex items-center justify-between px-2 cursor-default">
+        <Link
+          href="/"
+          className={`flex items-center gap-x-2 ${!expandMenu ? "hidden" : ""}`}
         >
-          Overview
-        </p>
+          <Logo
+            src="https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/CareerHub_noName-removebg-preview.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NhcmVlckh1Yl9ub05hbWUtcmVtb3ZlYmctcHJldmlldy5wbmciLCJpYXQiOjE3MDg3NDk1NjEsImV4cCI6MTc0MDI4NTU2MX0.9r29dXpk7EceyeBJw3dlrGDyCU0wFVlauJoyaaaC9Qk&t=2024-02-24T04%3A39%3A19.838Z"
+            imgClassName="!h-12"
+          />
+          <p className="text-xl font-bold text-primary">CareerHub</p>
+        </Link>
         <TooltipContainer message="Toggle Menu">
           <button
-            className={`${expandMenu ? "" : "mx-auto"}`}
+            className={`h-[49px] ${expandMenu ? "" : "mx-auto"}`}
             onClick={() => {
               setExpandMenu(!expandMenu);
             }}
@@ -84,31 +85,10 @@ function OverviewSection({
       <ul
         className={twMerge(
           "flex flex-col gap-y-4 overflow-x-hidden",
-          expandMenu ? "pl-3" : ""
+          expandMenu ? "pl-0" : ""
         )}
       >
-        {overviewSections.map((section) => {
-          return (
-            <MenuItem key={section.id} expandMenu={expandMenu} item={section} />
-          );
-        })}
-      </ul>
-    </section>
-  );
-}
-
-function CareerSection({ expandMenu }: { expandMenu: boolean }) {
-  return (
-    <section className="transition-all duration-150 ease-in-out">
-      {expandMenu ? (
-        <p className="text-2xl cursor-default font-extrabold pl-2">Carrer</p>
-      ) : (
-        <div className="h-[28px] w-[210px]"></div>
-      )}
-      <ul
-        className={twMerge("flex flex-col gap-y-4", expandMenu ? "pl-3" : "")}
-      >
-        {careerSections.map((section) => {
+        {sections.map((section) => {
           return (
             <MenuItem key={section.id} expandMenu={expandMenu} item={section} />
           );
@@ -126,19 +106,15 @@ export default function UserDashboardMenu() {
   return (
     <section
       className={twMerge(
-        "lg:h-full shadow-2xl rounded-2xl relative transition-all duration-175 ease-linear",
-        expandMenu ? "w-60" : "w-16"
+        "shadow-2xl rounded-2xl relative transition-all duration-175 ease-linear flex flex-col justify-between",
+        expandMenu ? "sm:w-52 lg:w-60" : "w-16"
       )}
     >
-      <div className="h-1/2 flex flex-col justify-between">
-        <OverviewSection
-          expandMenu={expandMenu}
-          setExpandMenu={setExpandMenu}
-        />
-        <CareerSection expandMenu={expandMenu} />
+      <div className="flex flex-col justify-between">
+        <SectionItem expandMenu={expandMenu} setExpandMenu={setExpandMenu} />
       </div>
       <button
-        className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 absolute bottom-4 text-red-500 w-full"
+        className="flex items-center gap-x-2 cursor-default lg:hover:bg-red-500 lg:hover:text-white transition-colors duration-150 rounded-l-2xl ease-linear py-2 px-4 text-red-500 w-full"
         onClick={() => {
           localStorage.removeItem("user");
           localStorage.removeItem("token");
