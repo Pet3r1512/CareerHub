@@ -61,33 +61,33 @@ export const advices_blogs = [
       </p>
       <ol class="list-decimal pl-4">
         <li class="mb-4">
-          <h3 class="text-lg font-semibold mb-2">1. Research the Company and Role:</h3>
+          <h3 class="text-lg font-semibold mb-2">Research the Company and Role:</h3>
           <ol>- Gather information about the company's mission, values, culture, and recent news.</ol>
           <ol>- Understand the job requirements and responsibilities to tailor your responses accordingly.</ol>
         </li>
         <li class="mb-4">
-          <h3 class="text-lg font-semibold mb-2">2. Practice Common Interview Questions:</h3>
+          <h3 class="text-lg font-semibold mb-2">Practice Common Interview Questions:</h3>
           <ol>- Review common interview questions and prepare concise, thoughtful responses.</ol>
           <ol>- Practice answering behavioral interview questions using the STAR method (Situation, Task, Action, Result).</ol>
         </li>
         <li class="mb-4">
-          <h3 class="text-lg font-semibold mb-2">3. Showcase Your Skills and Experiences:</h3>
+          <h3 class="text-lg font-semibold mb-2">Showcase Your Skills and Experiences:</h3>
           <ol>- Prepare examples and anecdotes that demonstrate your relevant skills and experiences.</ol>
           <ol>- Quantify your achievements whenever possible to provide concrete evidence of your capabilities.</ol>
         </li>
         <li class="mb-4">
-          <h3 class="text-lg font-semibold mb-2">4. Dress Appropriately and Arrive Early:</h3>
+          <h3 class="text-lg font-semibold mb-2">Dress Appropriately and Arrive Early:</h3>
           <ol>- Choose professional attire that aligns with the company's dress code and culture.</ol>
           <ol>- Plan your route and aim to arrive at least 15 minutes early to account for any unexpected delays./ol>
         </li>
         <li class="mb-4">
-          <h3 class="text-lg font-semibold mb-2">5. Demonstrate Enthusiasm and Confidence:
+          <h3 class="text-lg font-semibold mb-2">Demonstrate Enthusiasm and Confidence:
           </h3>
           <ol>- Show enthusiasm for the role and company throughout the interview.</ol>
           <ol>- Maintain good eye contact, posture, and body language to convey confidence and professionalism.</ol>
         </li>
         <li class="mb-4">
-          <h3 class="text-lg font-semibold mb-2">6. Prepare Questions for the Interviewer:
+          <h3 class="text-lg font-semibold mb-2">Prepare Questions for the Interviewer:
           </h3>
           <ol>- Prepare insightful questions to ask the interviewer about the role, team, and company culture.</ol>
           <ol>- Demonstrate your interest and engagement in the opportunity by asking thoughtful questions.</ol>
