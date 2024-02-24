@@ -3,17 +3,17 @@ import Page from "@/assets/_UI/Page";
 export default function Terms(){
     return(
         <Page pageName="Terms">
-            <p className="text-5xl  px-64 martin mb-7 mt-10">{"CarreerHub's Terms of Service"}</p> 
-            <p className="text-xl px-64 mb-7">Welcome to CarreerHub, a platform designed to connect job seekers with employment oppoturnities. By using out website, you agree to comply with and be bound by the following terms and condition of use. Please read these terms carefully before using our services.</p>
+            <p className="text-5xl px-4 sm:px-8 lg:px-64 martin mb-7 mt-10">{"CarreerHub's Terms of Service"}</p> 
+            <p className="text-xl px-4 sm:px-8 lg:px-64 mb-7">Welcome to CarreerHub, a platform designed to connect job seekers with employment oppoturnities. By using out website, you agree to comply with and be bound by the following terms and condition of use. Please read these terms carefully before using our services.</p>
 
-            <ol className="list-decimal text-xl px-64 mb-2 flex flex-col gap-y-2">
+            <ol className="list-decimal text-xl px-8 sm:px-16 lg:px-64 mb-2 flex flex-col gap-y-2">
             <li>Acceptance of Terms: By accessing or using CarreerHub, you acknowledge that you have read, understood, and agree to be bound by these terms of service. If you do not agree to these terms, please refrain from using our website.</li>
             <li>Use of Services: Our service are intended for individuals seeking employment oppoturnities and for employers seeking to hire talent. You agree to ue our services solely for lawful purposes and ion accordancej with these terms of service, any applicable laws, and regulations.</li>
             <li>User Accounts: In order to access certain features of our website, you may be required to create a user account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to provide accurate, current, and complete information during the registration process and to update such information as necessary to keep it accurate, current and complete.</li>
             <li>Job listing: CarreerHub may provide job listing and other employment-related information posted by employers or third-party recruiters. We do not endorse or guarantee the accuracy of any job listing or the legitimacy of any employer. It is your responsibility to research and verify the legitimacy and suitability of any job opportunity before applying.</li>
             <li>User Content: Our website may allow users to post, submit, or transmit content, including resumes, profiles, and job listings. By submitting content to CarreerHub. you grant us a non-exclusive, royalty-free, perpetual, irrevocable, and fully sublicensable rigth to use, reproduce, modify adapt, publish translate, create derivative works from, distribute, and display such content throughout the world in any media.</li>
             <li>Prohibited Conduct: You agree not to engage in any of the follwing prohibited activities:</li>
-            <ul className="list-disc text-xl px-24 flex flex-col gap-y-2 mb-2 mt-2">
+            <ul className="list-disc text-xl px-8 sm:px-16 lg:px-24 flex flex-col gap-y-2 mb-2 mt-2">
                 <li>Violating any applicable laws or regulations.</li>
                 <li>Posting false, misleading, or in accurate information.</li>
                 <li>Impersonating  any person or entity or misrepresentin your affiliation with any person or entity.</li>
