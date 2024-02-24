@@ -12,7 +12,7 @@ export default function Logo({
 
   return (
     <div
-      className={twMerge("flex items-center gap-x-2 cursor-default", className)}
+      className={twMerge("flex items-center gap-x-2 cursor-pointer", className)}
       onClick={() => {
         router.push("/");
       }}
