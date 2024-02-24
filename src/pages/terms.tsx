@@ -3,7 +3,7 @@ import Page from "@/assets/_UI/Page";
 export default function Terms(){
     return(
         <Page pageName="Terms">
-            <p className="text-5xl  px-64 martin mb-7 mt-10">CarreerHub's Terms of Service</p> 
+            <p className="text-5xl  px-64 martin mb-7 mt-10">{"CarreerHub's Terms of Service"}</p> 
             <p className="text-xl px-64 mb-7">Welcome to CarreerHub, a platform designed to connect job seekers with employment oppoturnities. By using out website, you agree to comply with and be bound by the following terms and condition of use. Please read these terms carefully before using our services.</p>
 
             <ol className="list-decimal text-xl px-64 mb-2 flex flex-col gap-y-2">
@@ -17,14 +17,14 @@ export default function Terms(){
                 <li>Violating any applicable laws or regulations.</li>
                 <li>Posting false, misleading, or in accurate information.</li>
                 <li>Impersonating  any person or entity or misrepresentin your affiliation with any person or entity.</li>
-                <li>Posting or transmitting any content that is unlawful, harmful, threantening, abusive, harassing, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or racially, ethnically, or otherwise objectionable.</li>
+                <li>{"Posting or transmitting any content that is unlawful, harmful, threantening, abusive, harassing, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or racially, ethnically, or otherwise objectionable."}</li>
                 <li>Attempting to interfere with, disrupt, or gain unauthorized access to our website, servers, or networks.</li>
                 <li>Engaging in any conduct that restricts or inhibits any other user from using or enjoying our website.</li>
             </ul>
             <li>Intellectual Property Rights: All content and materials available on CarreerHub, including but not limited to text, graphics, logos, button icons, images, audios clips, and software, are the property of CarreerHub or its licensors and are protected by copyright, trademark, and other intellectual property laws.</li>
-            <li>Disclaimer of Warranties: CarreerHub provides it services on an "as-is" and "as-available" basis, without any warranties of any kind, either express or implied. We do not warrant that our website will ber uninterrupted or error-free, that defects will be corrected, or that our website or the servers that make it available are free fo viruses or other harmful components.</li>
+            <li>{`Disclaimer of Warranties: CarreerHub provides it services on an "as-is" and "as-available" basis, without any warranties of any kind, either express or implied. We do not warrant that our website will ber uninterrupted or error-free, that defects will be corrected, or that our website or the servers that make it available are free fo viruses or other harmful components.`}</li>
             <li>Limitation of Liability: Iin no event shall CarreerHub be liable for any in direct, incidental, special, consequential, or puntitive damages, arising out of or in connection with your use of our website or these terms of service.</li>
-            <li>Indemnifications: You agree to indemnify and hold harmless CarreerHub, its officers, directors, employees, and agents fromm and against any and all claims, liabilities, damages, losses, or expenses,including reasonable attorneys'fees and costs, arising out of or in any way connectd with your use of our website or violation of these terms of service.</li>
+            <li>{"Indemnifications: You agree to indemnify and hold harmless CarreerHub, its officers, directors, employees, and agents fromm and against any and all claims, liabilities, damages, losses, or expenses,including reasonable attorneys'fees and costs, arising out of or in any way connectd with your use of our website or violation of these terms of service."}</li>
             <li>Changes to Terms: CarreerHub reserves the rights to modify or revise these terms of service at any time, without prior notice. Your continued use of our website following the posting of any changes to these terms will constitute your acceptance of such changes.</li>
             <li>Governing Law: These terms of service shall be governed by an construed in accordance wiht the laws of CarreerHub, withour regard to its conflict of law provisions.</li>
             <li>Contact Us: If you have any questions or concerns about these terms of service, please contact us at carreerhub@gmail.com</li>
