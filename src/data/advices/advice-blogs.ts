@@ -10,7 +10,7 @@ export const advices_blogs = [
       "Crafting Compelling Cover Letters: Your Ultimate Guide to Captivating Employers",
     content: `<div class="p-4 bg-white rounded-lg shadow-md mb-8">
       <p class="text-lg mb-4">In today's competitive job market, a well-written cover letter can be your ticket to standing out from the crowd and landing your dream job. While your resume provides a summary of your skills and experiences, your cover letter offers a unique opportunity to showcase your personality, passion, and enthusiasm for the position. In this guide, we'll walk you through the essential elements of a compelling cover letter and provide tips to help you craft one that captures the attention of employers.</p>
-      <ol class="list-decimal pl-4">
+      <ol class="pl-4">
         <li class="mb-4">
           <h3 class="text-lg font-semibold mb-2">1. Understand the Purpose of a Cover Letter:</h3>
           <ol>Clarify the purpose of a cover letter: to introduce yourself, highlight relevant experiences, and express your interest in the job.</ol>
@@ -59,7 +59,7 @@ export const advices_blogs = [
       <p class="text-lg mb-8">
       Congratulations! You've landed an interview for a job you're excited about. Now it's time to prepare thoroughly to make a lasting impression on your potential employer. In this guide, we'll share essential tips to help you prepare for your interview effectively and increase your chances of success.
       </p>
-      <ol class="list-decimal pl-4">
+      <ol class="pl-4">
         <li class="mb-4">
           <h3 class="text-lg font-semibold mb-2">1. Research the Company and Role:</h3>
           <ol>- Gather information about the company's mission, values, culture, and recent news.</ol>
