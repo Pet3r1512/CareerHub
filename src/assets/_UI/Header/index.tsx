@@ -23,7 +23,7 @@ export default function Header({
   return (
     <section className="w-full flex justify-between items-center">
       <div className="flex items-center gap-8">
-        <Logo />
+        <Logo imgClassName="h-28 lg:h-32" />
         <div className={noMenu ? "hidden" : ""}>
           <Menu />
         </div>

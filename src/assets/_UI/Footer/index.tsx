@@ -12,7 +12,7 @@ export default function Footer({ className }: { className?: string }) {
     >
       <div className="md:max-w-[100rem] mx-auto">
         <Main />
-        <hr className="my-12 block h-[1px] border-0 p-0 border-t-[1px] border-solid border-gray"></hr>
+        <hr className="my-12 block h-[1px] border-0 p-0 border-t-[1px] border-solid border-gray invisible lg:visible"></hr>
         <SubFooter />
       </div>
     </section>

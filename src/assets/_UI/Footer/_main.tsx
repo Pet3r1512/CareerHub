@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <section className="flex md:gap-x-4 gap-y-8 flex-col sm:flex-row flex-wrap justify-between">
       <div className="flex flex-col gap-6 sm:w-[30%] lg:w-1/3">
-        <Logo className="text-white" />
+        <Logo className="text-white" imgClassName="h-40 lg:h-32" />
         <p className="text-gray font-[550]">
           Navigating Your Career Journey with CareerHub.
         </p>
