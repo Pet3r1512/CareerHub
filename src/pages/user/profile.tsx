@@ -67,9 +67,10 @@ export default function Profile() {
         pageName="Profile"
         noMenu
         noFooter
+        noHeader
         className="h-screen hidden sm:block"
       >
-        <div className="pt-8 gap-2 flex min-h-[80dvh]">
+        <div className="gap-2 flex min-h-screen py-16">
           <UserDashboardMenu />
           <div className="flex-1 shadow-2xl rounded-2xl">
             {searchParams.get("section") === "public_profile" && (
