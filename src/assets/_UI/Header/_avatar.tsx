@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { ChevronDown, LogOut } from "lucide-react";
 import Account from "./User/account";
 import QuickView from "./User/quickview";
+import { mitr } from "../Page";
 
 export default function UserAvatar() {
   const [authData, setAuthData] = useState({
@@ -72,7 +73,7 @@ function UserMenuContent({ user }: { user: string }) {
           localStorage.removeItem("token");
           router.push("/auth/signin");
         }}
-        className="text-red-500"
+        className={`text-red-500 ${mitr.variable} font-sans`}
       >
         Sign Out
       </MenubarItem>

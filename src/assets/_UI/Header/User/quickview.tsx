@@ -4,12 +4,16 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import splitUserName from "@/lib/splitUserName";
 import { Typography } from "@material-tailwind/react";
+import { twMerge } from "tailwind-merge";
+import { mitr } from "../../Page";
 
 export default function QuickView({ user }: { user: string }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-y-2">
+    <div
+      className={twMerge("flex flex-col gap-y-2", `${mitr.variable} font-sans`)}
+    >
       <div className="flex items-center justify-between">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
