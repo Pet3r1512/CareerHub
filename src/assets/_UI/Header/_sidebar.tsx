@@ -59,11 +59,11 @@ export default function Sidebar({
             <button
               className="flex items-center gap-2"
               onClick={() => {
-                router.push("/profile");
+                router.push("/user/profile");
               }}
             >
               <User />
-              <Link href="/profile">Profile</Link>
+              <Link href="/user/profile">Profile</Link>
             </button>
             <UserAvatar />
           </div>

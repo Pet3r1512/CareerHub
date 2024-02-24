@@ -4,6 +4,17 @@ import Footer from "./Footer";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./Header";
+import localFont from "@next/font/local";
+
+export const mitr = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Mitr/Mitr-Regular.ttf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-mitr",
+});
 
 export default function Page({
   children,
@@ -67,6 +78,7 @@ export default function Page({
             id="body"
             className={twMerge(
               "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
+              `${mitr.variable} font-sans`,
               className,
               openSidebar ? "h-full overflow-hidden" : ""
             )}
@@ -84,7 +96,8 @@ export default function Page({
         <Footer
           className={twMerge(
             openSidebar ? "hidden" : "",
-            noFooter ? "hidden" : ""
+            noFooter ? "hidden" : "",
+            `${mitr.variable} font-sans`
           )}
         />
       </AnimatePresence>
