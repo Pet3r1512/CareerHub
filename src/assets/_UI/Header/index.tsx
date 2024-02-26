@@ -5,6 +5,7 @@ import Sidebar from "./_sidebar";
 import Auth from "./_auth";
 import UserAvatar from "./_avatar";
 import { useEffect, useState } from "react";
+import DropDownMenu from "./dropDownMenu";
 
 export default function Header({
   openSidebar,
@@ -25,7 +26,8 @@ export default function Header({
       <div className="flex items-center gap-8">
         <Logo imgClassName="h-28 lg:h-32" />
         <div className={noMenu ? "hidden" : ""}>
-          <Menu />
+          {/* <Menu /> */}
+          <DropDownMenu />
         </div>
       </div>
       <button
