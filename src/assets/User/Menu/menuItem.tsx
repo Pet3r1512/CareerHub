@@ -30,31 +30,6 @@ export default function MenuItem({
     [searchParams]
   );
 
-  if (expandMenu) {
-    return (
-      <Link
-        className={twMerge(
-          "flex items-center gap-x-2 cursor-default lg:hover:bg-primary lg:hover:text-white duration-150 rounded-l-2xl ease-linear py-2 transition-all duration-175 px-4",
-          searchParams.get("section") ===
-            item.name.toString().toLowerCase().replace(/\s/g, "_")
-            ? "border-r-4 border-primary"
-            : ""
-        )}
-        href={
-          pathname +
-          "?" +
-          createQueryString(
-            "section",
-            item.name.toString().toLowerCase().replace(/\s/g, "_")
-          )
-        }
-      >
-        {item.icon}
-        <p className={twMerge("font-semibold")}>{item.name}</p>
-      </Link>
-    );
-  }
-
   return (
     <TooltipContainer message={item.name}>
       <Link
@@ -76,6 +51,9 @@ export default function MenuItem({
         }
       >
         {item.icon}
+        <p className={twMerge("font-semibold", !expandMenu ? "hidden" : "")}>
+          {item.name}
+        </p>
       </Link>
     </TooltipContainer>
   );

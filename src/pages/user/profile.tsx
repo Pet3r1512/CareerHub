@@ -8,6 +8,9 @@ import { useRouter } from "next/router";
 import Information from "@/assets/User/Dashboard/Information";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import AppliedJob from "@/assets/User/Dashboard/AppliedJobs";
+import SavedJobs from "@/assets/User/Dashboard/SavedJobs";
+import Notifications from "@/assets/User/Dashboard/Notifications";
 
 export const getStaticProps = async () => {
   try {
@@ -56,8 +59,6 @@ export default function Profile() {
       // false
       router.push("/auth/signin");
     }
-    // false
-    router.push(pathname + `?.replace("-", "")}&section=public_profile`);
   }, []);
 
   return (
@@ -66,9 +67,10 @@ export default function Profile() {
         pageName="Profile"
         noMenu
         noFooter
+        noHeader
         className="h-screen hidden sm:block"
       >
-        <div className="pt-8 h-full gap-2 flex">
+        <div className="gap-2 flex min-h-screen py-16">
           <UserDashboardMenu />
           <div className="flex-1 shadow-2xl rounded-2xl">
             {searchParams.get("section") === "public_profile" && (
@@ -79,6 +81,15 @@ export default function Profile() {
             )}
             {searchParams.get("section") === "your_resumes" && (
               <Resume key={"resumes"} />
+            )}
+            {searchParams.get("section") === "applied_jobs" && (
+              <AppliedJob key={"applied_job"} />
+            )}
+            {searchParams.get("section") === "saved_jobs" && (
+              <SavedJobs key={"saved_jobs"} />
+            )}
+            {searchParams.get("section") === "notifications" && (
+              <Notifications key={"notifications"} />
             )}
           </div>
         </div>
