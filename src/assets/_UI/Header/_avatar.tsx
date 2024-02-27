@@ -1,77 +1,94 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import {
   Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { logout, useAppSelector } from "@/lib/store";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Typography } from "@material-tailwind/react";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
-import { LogOut } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
+import Account from "./User/account";
+import QuickView from "./User/quickview";
+import { mitr } from "../Page";
 
 export default function UserAvatar() {
-  const [userToken, setUserToken] = useState("");
+  const [authData, setAuthData] = useState({
+    user: "",
+    token: "",
+  });
   const router = useRouter();
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    if (!Cookies.get().token) {
-      dispatch(logout());
-      router.push("/auth/signin");
-    }
-    setUserToken(Cookies.get().token);
+    setAuthData({
+      user: localStorage.getItem("user")!,
+      token: localStorage.getItem("token")!,
+    });
   }, []);
 
-  const user = useAppSelector((state) => state.auth.user);
-
-  const handleLogout = async () => {
-    await fetch("/api/auth/logout")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .catch((err) => console.error(err));
-    router.push("/auth/signin");
-  };
-
-  if (userToken !== "") {
+  if (authData.token !== "") {
     return (
       <Menubar className="border-0 w-full lg:max-w-fit">
         <MenubarMenu>
-          <MenubarTrigger className="flex w-full items-center flex-row-reverse lg:flex-row gap-2 hover:cursor-pointer">
-            <Typography className="truncate text-xl font-bold flex items-center justify-between w-full">
-              {user?.full_name}
-              <button className="lg:hidden text-red-700" onClick={handleLogout}>
-                <LogOut />
-              </button>
-            </Typography>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            </Avatar>
-          </MenubarTrigger>
-          <MenubarContent className="hidden lg:block">
-            <MenubarItem
-              onClick={() => {
-                router.push("/profile");
-              }}
-            >
-              Profile
-            </MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem className="text-red-500">
-              <button onClick={handleLogout}>Sign Out</button>
-            </MenubarItem>
-          </MenubarContent>
+          <UserMenuTrigger />
+          <UserMenuContent user={authData.user} />
         </MenubarMenu>
       </Menubar>
     );
   }
+}
+
+function UserMenuTrigger() {
+  return (
+    <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
+      <div className="truncate text-xl flex items-center justify-between w-full">
+        <Typography className="truncate text-lg font-bold w-1/2 lg:w-full">
+          Me <ChevronDown className="hidden lg:inline-block" />
+        </Typography>
+        <SignOutButton>
+          <LogOut className="lg:hidden text-red-700" />
+        </SignOutButton>
+      </div>
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      </Avatar>
+    </MenubarTrigger>
+  );
+}
+
+function UserMenuContent({ user }: { user: string }) {
+  const router = useRouter();
+
+  return (
+    <MenubarContent className="hidden lg:block rounded-lg px-4 py-2 transition-all duration-150 ease-linear">
+      <QuickView user={user} />
+      <MenubarSeparator />
+      <Account />
+      <MenubarSeparator />
+      <MenubarItem
+        onClick={() => {
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          router.push("/auth/signin");
+        }}
+        className={`text-red-500 ${mitr.variable} font-sans`}
+      >
+        Sign Out
+      </MenubarItem>
+    </MenubarContent>
+  );
+}
+
+function SignOutButton({ children }: { children?: ReactNode }) {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    router.push("/auth/signin");
+  };
+
+  return <div onClick={handleLogout}>{!children ? "Sign Out" : children}</div>;
 }

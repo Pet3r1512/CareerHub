@@ -1,0 +1,22 @@
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ReactNode } from "react";
+
+export default function UserDashboardSectionLayout({
+  sectionTitle,
+  children,
+}: {
+  sectionTitle: string;
+  children: ReactNode;
+}) {
+  return (
+    <ScrollArea className="w-full h-full overflow-y-scroll">
+      <div className="p-6 flex flex-col gap-y-4">
+        <h1 className="text-4xl font-extrabold cursor-default">
+          {sectionTitle}
+        </h1>
+
+        {children}
+      </div>
+    </ScrollArea>
+  );
+}

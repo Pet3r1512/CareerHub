@@ -1,21 +1,34 @@
 import Head from "next/head";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Footer from "./Footer";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./Header";
+import localFont from "@next/font/local";
+
+export const mitr = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Mitr/Mitr-Regular.ttf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-mitr",
+});
 
 export default function Page({
   children,
   pageName = "Home",
   noHeader = false,
   noMenu = false,
+  noFooter = false,
   className,
 }: {
   children: ReactNode;
   pageName?: string;
   noHeader?: boolean;
   noMenu?: boolean;
+  noFooter?: boolean;
   className?: string;
 }) {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -27,6 +40,23 @@ export default function Page({
     exit: { opacity: 0, x: 300, y: 0 },
   };
 
+  useEffect(() => {
+    const hours: number = 48;
+    const now: number = new Date().getTime();
+    const setupTime: string | null = localStorage.getItem("setupTime");
+
+    if (setupTime === null) {
+      window.localStorage.setItem("setupTime", now.toString());
+    } else {
+      const setupTimeNumber: number = parseInt(setupTime, 10);
+      if (now - setupTimeNumber > hours * 60 * 60 * 1000) {
+        window.localStorage.removeItem("user");
+        window.localStorage.removeItem("token");
+        window.localStorage.setItem("setupTime", now.toString());
+      }
+    }
+  }, []);
+
   return (
     <div>
       <Head>
@@ -37,6 +67,7 @@ export default function Page({
         onExitComplete={() => window.scrollTo(0, 0)}
       >
         <motion.main
+          key="main"
           variants={variants}
           initial="hidden"
           animate="enter"
@@ -46,21 +77,29 @@ export default function Page({
           <main
             id="body"
             className={twMerge(
-              "max-w-[100rem] mx-auto pt-6 pb-14 px-2 lg:px-0 lg:min-h-screen",
+              "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
+              `${mitr.variable} font-sans`,
               className,
-              openSidebar ? "h-screen overflow-hidden" : ""
+              openSidebar ? "h-full overflow-hidden" : ""
             )}
           >
             <div className={noHeader ? "hidden" : ""}>
               <Header
                 openSidebar={openSidebar}
                 setOpenSidebar={setOpenSidebar}
+                noMenu={noMenu}
               />
             </div>
             {children}
           </main>
         </motion.main>
-        <Footer className={openSidebar ? "hidden" : ""} />
+        <Footer
+          className={twMerge(
+            openSidebar ? "hidden" : "",
+            noFooter ? "hidden" : "",
+            `${mitr.variable} font-sans`
+          )}
+        />
       </AnimatePresence>
     </div>
   );

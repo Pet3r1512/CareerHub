@@ -4,9 +4,9 @@ import ButtonBlock from "../_button";
 
 export default function Main() {
   return (
-    <section className="flex md:gap-x-4 gap-y-8 flex-col sm:flex-row lg:w-[100rem] justify-between">
+    <section className="flex md:gap-x-4 gap-y-8 flex-col sm:flex-row flex-wrap justify-between">
       <div className="flex flex-col gap-6 sm:w-[30%] lg:w-1/3">
-        <Logo className="text-white" />
+        <Logo className="text-white" imgClassName="h-40 lg:h-32" />
         <p className="text-gray font-[550]">
           Navigating Your Career Journey with CareerHub.
         </p>
@@ -15,7 +15,7 @@ export default function Main() {
         <AboutSection />
         <ResourceSection />
       </div>
-      <div className="sm:w-max lg:w-1/3">
+      <div className="">
         <Subcription />
       </div>
     </section>
@@ -40,7 +40,7 @@ function AboutSection() {
               className="text-gray hover:text-white transition-all duration-75 ease-linear"
               key={index}
             >
-              <a href="#">{section}</a>
+              <a href={section.replace(/\s+/g, "-").toLowerCase()}>{section}</a>
             </li>
           );
         })}

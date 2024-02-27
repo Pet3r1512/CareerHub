@@ -19,13 +19,13 @@ export default async function handler(
   const { full_name, gender, email, password } = parsedBody.values;
   try {
     const testRecord = await prisma.user.findFirst({
-      where: { OR: [{ full_name }, { email }] },
+      where: { email: email },
     });
 
     if (testRecord) {
       return res.status(409).json({
-        result: "Conflict",
-        message: "Email address or full name already exists. Please try again.",
+        result: "Create account failed!",
+        message: "Email address is already exists. Please try again.",
       });
     }
 
