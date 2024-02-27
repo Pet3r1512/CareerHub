@@ -10,7 +10,7 @@ export default function Menu({ className }: { className?: string }) {
       )}
     >
       <li>
-        <Link href="#">Find Jobs</Link>
+        <Link href="/jobs">Find Jobs</Link>
       </li>
       <li>
         <Link href="/companies">Browse Companies</Link>

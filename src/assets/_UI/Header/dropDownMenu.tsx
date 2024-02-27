@@ -45,7 +45,7 @@ export default function DropDownMenu() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              <ListItem title="Find Jobs" href="/#">
+              <ListItem title="Find Jobs" href="/jobs">
                 Discover jobs across the world!
               </ListItem>
               <ListItem title="Browse Companies" href="/companies">
