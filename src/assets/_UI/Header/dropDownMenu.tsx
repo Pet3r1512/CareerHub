@@ -45,10 +45,14 @@ export default function DropDownMenu() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              <ListItem title="Find Jobs" href="/#">
+              <ListItem className="text-primary" title="Find Jobs" href="/#">
                 Discover jobs across the world!
               </ListItem>
-              <ListItem title="Browse Companies" href="/companies">
+              <ListItem
+                className="text-primary"
+                title="Browse Companies"
+                href="/companies"
+              >
                 Find your dream jobs at favorites companies!
               </ListItem>
             </ul>
@@ -60,10 +64,23 @@ export default function DropDownMenu() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="flex gap-3 p-4 w-max">
-              <ListItem title="Pricing & Plans" href="/pricing"></ListItem>
-              <ListItem title="Terms of Usage" href="/terms"></ListItem>
-              <ListItem title="Blogs" href="/advice"></ListItem>
               <ListItem
+                className="text-gray-dark"
+                title="Pricing & Plans"
+                href="/pricing"
+              ></ListItem>
+              <ListItem
+                className="text-gray-dark"
+                title="Terms of Usage"
+                href="/terms"
+              ></ListItem>
+              <ListItem
+                className="text-gray-dark"
+                title="Blogs"
+                href="/advice"
+              ></ListItem>
+              <ListItem
+                className="text-gray-dark"
                 title="Privacy Policies"
                 href="/privacy-policy"
               ></ListItem>
