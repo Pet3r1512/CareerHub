@@ -1,11 +1,10 @@
-import { ChevronLeft } from "lucide-react";
 import Logo from "../_logo";
-import Menu from "./_menu";
 import Sidebar from "./_sidebar";
 import Auth from "./_auth";
 import UserAvatar from "./_avatar";
 import { useEffect, useState } from "react";
 import DropDownMenu from "./dropDownMenu";
+import { Menu } from "lucide-react";
 
 export default function Header({
   openSidebar,
@@ -26,17 +25,16 @@ export default function Header({
       <div className="flex items-center gap-8">
         <Logo imgClassName="h-28 lg:h-32" />
         <div className={noMenu ? "hidden" : ""}>
-          {/* <Menu /> */}
           <DropDownMenu />
         </div>
       </div>
       <button
-        className="flex items-center lg:hidden font-semibold"
+        className="flex items-center lg:hidden font-semibold pr-4"
         onClick={() => {
           setOpenSidebar(true);
         }}
       >
-        Menu <ChevronLeft />
+        <Menu />
       </button>
       <Sidebar isOpen={openSidebar} setIsOpen={setOpenSidebar} />
       {/* Signin/Signup button for PCs */}
