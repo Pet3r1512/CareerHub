@@ -37,7 +37,7 @@ ListItem.displayName = "ListItem";
 
 export default function DropDownMenu() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden lg:block">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="font-medium text-lg">
@@ -51,6 +51,22 @@ export default function DropDownMenu() {
               <ListItem title="Browse Companies" href="/companies">
                 Find your dream jobs at favorites companies!
               </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="font-medium text-lg">
+            About Us
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="flex gap-3 p-4 w-max">
+              <ListItem title="Pricing & Plans" href="/pricing"></ListItem>
+              <ListItem title="Terms of Usage" href="/terms"></ListItem>
+              <ListItem title="Blogs" href="/advice"></ListItem>
+              <ListItem
+                title="Privacy Policies"
+                href="/privacy-policy"
+              ></ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
