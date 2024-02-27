@@ -55,6 +55,7 @@ export default function CompaniesOptions() {
                 className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
                 value={i.industry}
                 onClick={(e) => handleIndustryCheck(e)}
+                checked={industry.includes(i.industry)}
               />
               <label
                 htmlFor={i.industry}
@@ -74,6 +75,7 @@ export default function CompaniesOptions() {
                 className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
                 value={i.size}
                 onClick={(e) => handleSizeCheck(e)}
+                checked={size.includes(i.size)}
               />
               <label
                 htmlFor={i.size}
