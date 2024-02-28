@@ -41,7 +41,7 @@ export default function DropDownMenu() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="font-medium text-lg">
-            Your Career
+            Your career
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -60,7 +60,7 @@ export default function DropDownMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="font-medium text-lg">
-            About Us
+            About us
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="flex gap-3 p-4 w-max">
