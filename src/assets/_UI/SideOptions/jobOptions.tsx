@@ -18,31 +18,69 @@ import {
   JobLevel,
   SalaryRange,
 } from "@/types/company";
-import { PushQuery } from "@/utils/routerQuery";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 export default function JobOptionsContainer() {
   const [employmentTypeCheck, setEmploymentTypeCheck] = useState<string[]>([]);
   const [jobCategoriesCheck, setJobCategoriesCheck] = useState<string[]>([]);
   const [jobLevelCheck, setJobLevelCheck] = useState<string[]>([]);
   const [salaryRangeCheck, setSalaryRangeCheck] = useState<string[]>([]);
+  const router = useRouter();
   const firstRender = useRef(true);
+  const secondRender = useRef(true);
 
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    const { employmentType } = router.query;
+
+    setEmploymentTypeCheck(
+      employmentType ? employmentType.toString().split(",") : []
+    );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
+  useEffect(() => {
+    const updatedFilters = () => {
+      const employmentTypeQuery =
+        employmentTypeCheck.length > 0
+          ? employmentTypeCheck.join(",")
+          : undefined;
+
+      const query = {
+        ...router.query,
+        employmentType: employmentTypeQuery,
+      };
+
+      if (!employmentTypeQuery) {
+        delete query.employmentType;
+      }
+
+      router.push(
+        {
+          pathname: router.pathname,
+          query: query,
+        },
+        undefined,
+        { scroll: false }
+      );
+    };
+
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
-    const employmentTypeQuery =
-      employmentTypeCheck.length > 0 ? `${employmentTypeCheck.join(",")}` : "";
-    PushQuery({
-      pathname: Router.pathname,
-      query: {
-        ...Router.query,
-        page: "",
-        employmentType: employmentTypeQuery,
-      },
-    });
+
+    if (secondRender.current) {
+      secondRender.current = false;
+      return;
+    }
+
+    updatedFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employmentTypeCheck]);
 
   const handleEmploymentTypeCheck = (e: any) => {
@@ -64,11 +102,13 @@ export default function JobOptionsContainer() {
         <JobOptionsContent
           name="Type of Employment "
           employmentType={employmentType}
+          employmentTypeCheck={employmentTypeCheck}
           onClick={handleEmploymentTypeCheck}
         />
         <JobOptionsContent
           name="Categories"
           jobCategories={jobCategories}
+          jobCategoriesCheck={jobCategoriesCheck}
           onClick={handleJobCategoriesCheck}
         />
         <JobOptionsContent
@@ -86,21 +126,29 @@ export default function JobOptionsContainer() {
   );
 }
 
+type JobOptionsContentProps = {
+  name: string;
+  employmentType?: EmploymentType[];
+  employmentTypeCheck?: string[];
+  jobCategories?: JobCategory[];
+  jobCategoriesCheck?: string[];
+  jobLevel?: JobLevel[];
+  jobLevelCheck?: string[];
+  salaryRange?: SalaryRange[];
+  salaryRangeCheck?: string[];
+  onClick: any;
+};
+
 function JobOptionsContent({
   name,
   employmentType,
+  employmentTypeCheck,
   jobCategories,
+  jobCategoriesCheck,
   jobLevel,
   salaryRange,
   onClick,
-}: {
-  name: string;
-  employmentType?: EmploymentType[];
-  jobCategories?: JobCategory[];
-  jobLevel?: JobLevel[];
-  salaryRange?: SalaryRange[];
-  onClick: any;
-}) {
+}: JobOptionsContentProps) {
   return (
     <Accordion type="single" collapsible className="w-full" defaultValue={name}>
       <AccordionItem value={name} className="border-none">
@@ -113,12 +161,14 @@ function JobOptionsContent({
               <CheckboxForEmploymentType
                 data={employmentType}
                 onClick={onClick}
+                employmentTypeCheck={employmentTypeCheck}
               />
             )}
             {jobCategories && (
               <CheckboxForJobCategories
                 data={jobCategories}
                 onClick={onClick}
+                jobCategoriesCheck={jobCategoriesCheck}
               />
             )}
             {jobLevel && (
@@ -137,9 +187,11 @@ function JobOptionsContent({
 function CheckboxForEmploymentType({
   data,
   onClick,
+  employmentTypeCheck,
 }: {
   data: EmploymentType[];
   onClick: any;
+  employmentTypeCheck?: string[];
 }) {
   return data.map((i) => (
     <div key={i.type} className="flex gap-2 items-center">
@@ -148,6 +200,7 @@ function CheckboxForEmploymentType({
         className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
         value={i.type}
         onClick={(e) => onClick(e)}
+        checked={employmentTypeCheck?.includes(i.type)}
       />
       <label
         htmlFor={i.type}
@@ -162,9 +215,11 @@ function CheckboxForEmploymentType({
 function CheckboxForJobCategories({
   data,
   onClick,
+  jobCategoriesCheck,
 }: {
   data: JobCategory[];
   onClick: any;
+  jobCategoriesCheck?: string[];
 }) {
   return data.map((i) => (
     <div key={i.category} className="flex gap-2 items-center">
@@ -173,6 +228,7 @@ function CheckboxForJobCategories({
         className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
         value={i.category}
         onClick={(e) => onClick(e)}
+        checked={jobCategoriesCheck?.includes(i.category)}
       />
       <label
         htmlFor={i.category}
