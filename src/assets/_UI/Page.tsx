@@ -80,7 +80,7 @@ export default function Page({
               "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
               `${mitr.variable} font-sans`,
               className,
-              openSidebar ? "h-full overflow-hidden" : ""
+              openSidebar ? "!h-screen overflow-hidden" : ""
             )}
           >
             <div className={noHeader ? "hidden" : ""}>
