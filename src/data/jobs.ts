@@ -5,7 +5,7 @@ export const jobs = [
     company: {
       name: "Tech Solutions Inc.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BY21lLnBuZyIsImlhdCI6MTcwNDcwODY5NCwiZXhwIjoxNzM2MjQ0Njk0fQ.6NWYj1PZiq2-X-iRnb15hB0v8UQmn1CTSsdOpJbzmbY&t=2024-01-08T10%3A11%3A32.805Z",
       location: {
         city: "San Francisco",
         country: "USA",
@@ -25,7 +25,7 @@ export const jobs = [
     company: {
       name: "Digital Marketing Solutions Ltd.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Biosynthesis.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Biosynthesis.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9CaW9zeW50aGVzaXMucG5nIiwiaWF0IjoxNzA0NzA4NzEyLCJleHAiOjE3MzYyNDQ3MTJ9.fu4ZOCzo9rpYmHQsw1J7wXZDxFtTtlhdKPT0Lv9iNkE&t=2024-01-08T10%3A11%3A51.128Z",
       location: {
         city: "London",
         country: "UK",
@@ -45,7 +45,7 @@ export const jobs = [
     company: {
       name: "Analytics Innovations Corp.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Featherdev.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Featherdev.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9GZWF0aGVyZGV2LnBuZyIsImlhdCI6MTcwNDcwODczMCwiZXhwIjoxNzM2MjQ0NzMwfQ.EdsjEGoR1yRCIM2W6QAhYhvlj-yz3opxV-WCUQvFRQ0&t=2024-01-08T10%3A12%3A08.960Z",
       location: {
         city: "New York",
         country: "USA",
@@ -65,7 +65,7 @@ export const jobs = [
     company: {
       name: "Creative Studios Ltd.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Globalbank.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Globalbank.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9HbG9iYWxiYW5rLnBuZyIsImlhdCI6MTcwNDcwODc1MCwiZXhwIjoxNzM2MjQ0NzUwfQ.08dp1vEmFNRwhFoOjjTf67ZZnjvMdw_1UtlNqN2IVwo&t=2024-01-08T10%3A12%3A29.185Z",
       location: {
         city: "Paris",
         country: "France",
@@ -85,7 +85,7 @@ export const jobs = [
     company: {
       name: "SupportTech Solutions",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Hourglass.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Hourglass.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Ib3VyZ2xhc3MucG5nIiwiaWF0IjoxNzA0NzA4Nzc1LCJleHAiOjE3MzYyNDQ3NzV9.xRoJvhpEBWb5lxwjdfVwjuczy53exaaCtnfgJLZQXNk&t=2024-01-08T10%3A12%3A54.753Z",
       location: {
         city: "Berlin",
         country: "Germany",
@@ -105,7 +105,7 @@ export const jobs = [
     company: {
       name: "ProjectX Innovations",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Layers.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Layers.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9MYXllcnMucG5nIiwiaWF0IjoxNzA0NzA4Nzk4LCJleHAiOjE3MzYyNDQ3OTh9.VQlKDTsFE0sFgPbD9OszjO8UTx-RwOkq0HlffyxSyko&t=2024-01-08T10%3A13%3A16.881Z",
       location: {
         city: "Tokyo",
         country: "Japan",
@@ -125,7 +125,7 @@ export const jobs = [
     company: {
       name: "SalesPro Solutions",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Nietzsche.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Nietzsche.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9OaWV0enNjaGUucG5nIiwiaWF0IjoxNzA0NzA4ODE1LCJleHAiOjE3MzYyNDQ4MTV9.7HfwNPpBjFf-ZVzXDh1t4wuLnl5BueoVVHhGeVJejio&t=2024-01-08T10%3A13%3A33.857Z",
       location: {
         city: "Sydney",
         country: "Australia",
@@ -145,7 +145,7 @@ export const jobs = [
     company: {
       name: "PeopleHub Corp.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Silverwings.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Sisphys.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9TaXNwaHlzLnBuZyIsImlhdCI6MTcwNDcwODg1MywiZXhwIjoxNzM2MjQ0ODUzfQ.86cONIplrknRSkx78iwcQVp7MSt4DPayfYcTMtRHJ98&t=2024-01-08T10%3A14%3A11.887Z",
       location: {
         city: "Toronto",
         country: "Canada",
@@ -165,7 +165,7 @@ export const jobs = [
     company: {
       name: "FinanceGenius Inc.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Surf.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Startup.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9TdGFydHVwLnBuZyIsImlhdCI6MTcwNDcwODg3MCwiZXhwIjoxNzM2MjQ0ODcwfQ.lBr7c3-pnNOtaPO2PXJpOzlRC1P1TKy72oRzCyBtlqU&t=2024-01-08T10%3A14%3A29.304Z",
       location: {
         city: "Zurich",
         country: "Switzerland",
@@ -185,7 +185,7 @@ export const jobs = [
     company: {
       name: "DesignCraft Studios",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Morningsun.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Aura.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BdXJhLnBuZyIsImlhdCI6MTcwNDcwOTI4MywiZXhwIjoxNzM2MjQ1MjgzfQ.952PLPai6nk46IlQqokpy3IkfnFBPoakpLlgXZwrrUI&t=2024-01-08T10%3A21%3A21.808Z",
       location: {
         city: "Barcelona",
         country: "Spain",
@@ -205,7 +205,7 @@ export const jobs = [
     company: {
       name: "TechSupport Plus",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Pluto.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mercury.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZXJjdXJ5LnBuZyIsImlhdCI6MTcwNDcwOTMxMCwiZXhwIjoxNzM2MjQ1MzEwfQ.jvEy72zN-9YjHFF9ULBVKoBZcpN-bAgtGDwOHhDdjc0&t=2024-01-08T10%3A21%3A48.885Z",
       location: {
         city: "Berlin",
         country: "Germany",
@@ -225,7 +225,7 @@ export const jobs = [
     company: {
       name: "ContentMasters Co.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Blacklight.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mercury.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZXJjdXJ5LnBuZyIsImlhdCI6MTcwNDcwOTMxMCwiZXhwIjoxNzM2MjQ1MzEwfQ.jvEy72zN-9YjHFF9ULBVKoBZcpN-bAgtGDwOHhDdjc0&t=2024-01-08T10%3A21%3A48.885Z",
       location: {
         city: "New York",
         country: "USA",
@@ -245,7 +245,7 @@ export const jobs = [
     company: {
       name: "NetworkSolutions Ltd.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Bluewave.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Tapline.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9UYXBsaW5lLnBuZyIsImlhdCI6MTcwNDcwOTM2MCwiZXhwIjoxNzM2MjQ1MzYwfQ.8wcGJ1_ADOhWX2Rfzb5-kjiBlV_PpGwf0fHJRxOq9Os&t=2024-01-08T10%3A22%3A39.678Z",
       location: {
         city: "Tokyo",
         country: "Japan",
@@ -265,7 +265,7 @@ export const jobs = [
     company: {
       name: "HealthPlus Innovations",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Falcon.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Unicoin.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Vbmljb2luLnBuZyIsImlhdCI6MTcwNDcwOTM4MSwiZXhwIjoxNzM2MjQ1MzgxfQ.xlEQ4zYVmwEdyxCJCRYOjHR6ePMEGKN0-ViYt02T67M&t=2024-01-08T10%3A23%3A00.083Z",
       location: {
         city: "Berlin",
         country: "Germany",
@@ -285,7 +285,7 @@ export const jobs = [
     company: {
       name: "QualityMinds Inc.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Redwood.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Zactic.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9aYWN0aWMucG5nIiwiaWF0IjoxNzA0NzA5Mzk3LCJleHAiOjE3MzYyNDUzOTd9.98UV6YcXGKJi2jvRZg8yYoSk55vOIAn_tSGfcjuaoEc&t=2024-01-08T10%3A23%3A16.007Z",
       location: {
         city: "San Francisco",
         country: "USA",
@@ -305,7 +305,7 @@ export const jobs = [
     company: {
       name: "BusinessInsights Ltd.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Solaris.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BY21lLnBuZyIsImlhdCI6MTcwNDcwODY5NCwiZXhwIjoxNzM2MjQ0Njk0fQ.6NWYj1PZiq2-X-iRnb15hB0v8UQmn1CTSsdOpJbzmbY&t=2024-01-08T10%3A11%3A32.805Z",
       location: {
         city: "London",
         country: "UK",
@@ -325,7 +325,7 @@ export const jobs = [
     company: {
       name: "LegalSolutions Corp.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Venture.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Biosynthesis.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9CaW9zeW50aGVzaXMucG5nIiwiaWF0IjoxNzA0NzA4NzEyLCJleHAiOjE3MzYyNDQ3MTJ9.fu4ZOCzo9rpYmHQsw1J7wXZDxFtTtlhdKPT0Lv9iNkE&t=2024-01-08T10%3A11%3A51.128Z",
       location: {
         city: "New York",
         country: "USA",
@@ -345,7 +345,7 @@ export const jobs = [
     company: {
       name: "SocialBuzz Solutions",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Stratos.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Featherdev.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9GZWF0aGVyZGV2LnBuZyIsImlhdCI6MTcwNDcwODczMCwiZXhwIjoxNzM2MjQ0NzMwfQ.EdsjEGoR1yRCIM2W6QAhYhvlj-yz3opxV-WCUQvFRQ0&t=2024-01-08T10%3A12%3A08.960Z",
       location: {
         city: "Los Angeles",
         country: "USA",
@@ -365,7 +365,7 @@ export const jobs = [
     company: {
       name: "SupplyChain Dynamics",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Apollo.png?token=...",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Globalbank.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9HbG9iYWxiYW5rLnBuZyIsImlhdCI6MTcwNDcwODc1MCwiZXhwIjoxNzM2MjQ0NzUwfQ.08dp1vEmFNRwhFoOjjTf67ZZnjvMdw_1UtlNqN2IVwo&t=2024-01-08T10%3A12%3A29.185Z",
       location: {
         city: "Shanghai",
         country: "China",
