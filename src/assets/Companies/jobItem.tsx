@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import CustomizeBadge from "@/components/customizeBadge";
 import { Progress } from "@/components/ui/progress";
+import Image from "next/image";
 
 export default function JobItem({
   job,
@@ -26,7 +27,14 @@ export default function JobItem({
         <div
           className={`flex gap-6 ${view === "grid" ? "flex-col" : "flex-row"}`}
         >
-          <div>Image</div>
+          <div className="relative h-12 w-12">
+            <Image
+              src={job.company.image}
+              alt={job.company.name}
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <a
               href="#"

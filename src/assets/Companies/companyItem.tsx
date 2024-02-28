@@ -1,6 +1,7 @@
 import { Company } from "@/types/company";
 import { Badge } from "@/components/ui/badge";
 import CustomizeBadge from "@/components/customizeBadge";
+import Image from "next/image";
 
 export default function CompanyItem({
   company,
@@ -15,7 +16,14 @@ export default function CompanyItem({
       className="border p-4 flex flex-col gap-4 lg:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md cursor-pointer"
     >
       <div className="flex justify-between items-start">
-        <p>Image</p>
+        <div className="w-12 h-12 relative">
+          <Image
+            src={company.image}
+            alt={company.name}
+            fill
+            style={{ objectFit: "contain" }}
+          />
+        </div>
         <Badge
           variant={"secondary"}
           className="bg-primary/10 text-primary p-1 px-2 rounded-md lg:text-base font-normal cursor-pointer"
