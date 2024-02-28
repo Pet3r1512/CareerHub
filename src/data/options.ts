@@ -171,7 +171,7 @@ export const salaryRange = [
     count: 10,
   },
   {
-    range: "$3000 or above",
+    range: "$2000 or above",
     count: 4,
   },
 ];
