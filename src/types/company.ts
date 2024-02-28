@@ -22,6 +22,8 @@ export type Job = {
   tags: string[];
   capacity: number;
   applied: number;
+  job_level: string;
+  salary_range: number;
 };
 
 export type EmploymentType = {
