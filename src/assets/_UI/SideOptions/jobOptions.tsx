@@ -18,6 +18,7 @@ import {
   JobLevel,
   SalaryRange,
 } from "@/types/company";
+import JobOptionCheckbox from "./jobOptionCheckbox";
 import { useRouter } from "next/router";
 
 export default function JobOptionsContainer() {
@@ -34,11 +35,17 @@ export default function JobOptionsContainer() {
       return;
     }
 
-    const { employmentType } = router.query;
+    const { employmentType, jobCategory, jobLevel, salaryRange } = router.query;
 
     setEmploymentTypeCheck(
       employmentType ? employmentType.toString().split(",") : []
     );
+
+    setJobCategoriesCheck(jobCategory ? jobCategory.toString().split(",") : []);
+
+    setJobLevelCheck(jobLevel ? jobLevel.toString().split(",") : []);
+
+    setSalaryRangeCheck(salaryRange ? salaryRange.toString().split(",") : []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
@@ -50,13 +57,40 @@ export default function JobOptionsContainer() {
           ? employmentTypeCheck.join(",")
           : undefined;
 
+      const jobCategoriesQuery =
+        jobCategoriesCheck.length > 0
+          ? jobCategoriesCheck.join(",")
+          : undefined;
+
+      const jobLevelQuery =
+        jobLevelCheck.length > 0 ? jobLevelCheck.join(",") : undefined;
+
+      const salaryRangeQuery =
+        salaryRangeCheck.length > 0 ? salaryRangeCheck.join(",") : undefined;
+
       const query = {
         ...router.query,
         employmentType: employmentTypeQuery,
+        jobCategory: jobCategoriesQuery,
+        jobLevel: jobLevelQuery,
+        salaryRange: salaryRangeQuery,
+        page: 1,
       };
 
       if (!employmentTypeQuery) {
         delete query.employmentType;
+      }
+
+      if (!jobCategoriesQuery) {
+        delete query.jobCategory;
+      }
+
+      if (!jobLevelQuery) {
+        delete query.jobLevel;
+      }
+
+      if (!salaryRangeQuery) {
+        delete query.salaryRange;
       }
 
       router.push(
@@ -81,7 +115,12 @@ export default function JobOptionsContainer() {
 
     updatedFilters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [employmentTypeCheck]);
+  }, [
+    employmentTypeCheck,
+    jobCategoriesCheck,
+    jobLevelCheck,
+    salaryRangeCheck,
+  ]);
 
   const handleEmploymentTypeCheck = (e: any) => {
     if (e.target.ariaChecked === "false") {
@@ -92,9 +131,27 @@ export default function JobOptionsContainer() {
       );
     }
   };
-  const handleJobCategoriesCheck = (e: any) => {};
-  const handleJobLevelCheck = (e: any) => {};
-  const handleSalaryRangeCheck = (e: any) => {};
+  const handleJobCategoriesCheck = (e: any) => {
+    if (e.target.ariaChecked === "false") {
+      setJobCategoriesCheck((prev) => [...prev, e.target.value]);
+    } else {
+      setJobCategoriesCheck((prev) => prev.filter((i) => i !== e.target.value));
+    }
+  };
+  const handleJobLevelCheck = (e: any) => {
+    if (e.target.ariaChecked === "false") {
+      setJobLevelCheck((prev) => [...prev, e.target.value]);
+    } else {
+      setJobLevelCheck((prev) => prev.filter((i) => i !== e.target.value));
+    }
+  };
+  const handleSalaryRangeCheck = (e: any) => {
+    if (e.target.ariaChecked === "false") {
+      setSalaryRangeCheck((prev) => [...prev, e.target.value]);
+    } else {
+      setSalaryRangeCheck((prev) => prev.filter((i) => i !== e.target.value));
+    }
+  };
 
   return (
     <div className="lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center hidden">
@@ -114,11 +171,13 @@ export default function JobOptionsContainer() {
         <JobOptionsContent
           name="Job Level"
           jobLevel={jobLevel}
+          jobLevelCheck={jobLevelCheck}
           onClick={handleJobLevelCheck}
         />
         <JobOptionsContent
           name="Salary Range"
           salaryRange={salaryRange}
+          salaryRangeCheck={salaryRangeCheck}
           onClick={handleSalaryRangeCheck}
         />
       </div>
@@ -146,7 +205,9 @@ function JobOptionsContent({
   jobCategories,
   jobCategoriesCheck,
   jobLevel,
+  jobLevelCheck,
   salaryRange,
+  salaryRangeCheck,
   onClick,
 }: JobOptionsContentProps) {
   return (
@@ -158,134 +219,40 @@ function JobOptionsContent({
         <AccordionContent>
           <div className="flex flex-col gap-4">
             {employmentType && (
-              <CheckboxForEmploymentType
+              <JobOptionCheckbox
                 data={employmentType}
                 onClick={onClick}
-                employmentTypeCheck={employmentTypeCheck}
+                label="employmentType"
+                checked={employmentTypeCheck}
               />
             )}
             {jobCategories && (
-              <CheckboxForJobCategories
+              <JobOptionCheckbox
                 data={jobCategories}
                 onClick={onClick}
-                jobCategoriesCheck={jobCategoriesCheck}
+                label="jobCategory"
+                checked={jobCategoriesCheck}
               />
             )}
             {jobLevel && (
-              <CheckboxForJobLevel data={jobLevel} onClick={onClick} />
+              <JobOptionCheckbox
+                data={jobLevel}
+                onClick={onClick}
+                label="jobLevel"
+                checked={jobLevelCheck}
+              />
             )}
             {salaryRange && (
-              <CheckboxForSalaryRange data={salaryRange} onClick={onClick} />
+              <JobOptionCheckbox
+                data={salaryRange}
+                onClick={onClick}
+                label="salaryRange"
+                checked={salaryRangeCheck}
+              />
             )}
           </div>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
   );
-}
-
-function CheckboxForEmploymentType({
-  data,
-  onClick,
-  employmentTypeCheck,
-}: {
-  data: EmploymentType[];
-  onClick: any;
-  employmentTypeCheck?: string[];
-}) {
-  return data.map((i) => (
-    <div key={i.type} className="flex gap-2 items-center">
-      <Checkbox
-        id={i.type}
-        className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
-        value={i.type}
-        onClick={(e) => onClick(e)}
-        checked={employmentTypeCheck?.includes(i.type)}
-      />
-      <label
-        htmlFor={i.type}
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        {i.type} ({i.count})
-      </label>
-    </div>
-  ));
-}
-
-function CheckboxForJobCategories({
-  data,
-  onClick,
-  jobCategoriesCheck,
-}: {
-  data: JobCategory[];
-  onClick: any;
-  jobCategoriesCheck?: string[];
-}) {
-  return data.map((i) => (
-    <div key={i.category} className="flex gap-2 items-center">
-      <Checkbox
-        id={i.category}
-        className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
-        value={i.category}
-        onClick={(e) => onClick(e)}
-        checked={jobCategoriesCheck?.includes(i.category)}
-      />
-      <label
-        htmlFor={i.category}
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        {i.category} ({i.count})
-      </label>
-    </div>
-  ));
-}
-
-function CheckboxForJobLevel({
-  data,
-  onClick,
-}: {
-  data: JobLevel[];
-  onClick: any;
-}) {
-  return data.map((i) => (
-    <div key={i.level} className="flex gap-2 items-center">
-      <Checkbox
-        id={i.level}
-        className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
-        value={i.level}
-        onClick={(e) => onClick(e)}
-      />
-      <label
-        htmlFor={i.level}
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        {i.level} ({i.count})
-      </label>
-    </div>
-  ));
-}
-
-function CheckboxForSalaryRange({
-  data,
-  onClick,
-}: {
-  data: SalaryRange[];
-  onClick: any;
-}) {
-  return data.map((i) => (
-    <div key={i.range} className="flex gap-2 items-center">
-      <Checkbox
-        id={i.range}
-        className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
-        value={i.range}
-        onClick={(e) => onClick(e)}
-      />
-      <label
-        htmlFor={i.range}
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        {i.range} ({i.count})
-      </label>
-    </div>
-  ));
 }
