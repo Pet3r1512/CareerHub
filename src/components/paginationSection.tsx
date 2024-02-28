@@ -36,36 +36,48 @@ export default function PaginationSection({
 
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
-      router.push({
-        pathname: router.pathname,
-        query: {
-          ...router.query,
-          page: currentPage + 1,
+      router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            page: currentPage + 1,
+          },
         },
-      });
+        undefined,
+        { shallow: true, scroll: false }
+      );
     }
   };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      router.push({
-        pathname: router.pathname,
-        query: {
-          ...router.query,
-          page: currentPage - 1,
+      router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            page: currentPage - 1,
+          },
         },
-      });
+        undefined,
+        { shallow: true, scroll: false }
+      );
     }
   };
 
   const handleCurrentPage = (page: number) => {
-    router.push({
-      pathname: router.pathname,
-      query: {
-        ...router.query,
-        page: page,
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          page: page,
+        },
       },
-    });
+      undefined,
+      { shallow: true, scroll: false }
+    );
   };
 
   const renderPage = () => {
