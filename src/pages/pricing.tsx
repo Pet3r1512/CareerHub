@@ -6,7 +6,7 @@ export default function Pricing() {
   return (
     <Page pageName="Pricing">
       <div className="pt-16 grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-y-14 lg:gap-0 md:grid-cols-max"></div>
-      <p className="text-[80px] text-center ">Help you to find the best job</p>
+      <p className="text-[80px] text-center">{`Help you to find the best job`}</p>
       <div className="flex gap-x-4 justify-center w-full mt-20 flex-col lg:flex-row gap-y-5">
         <div className="bg-white border-primary border-2 rounded-lg shadow-md p-4 flex-1 flex flex-col justify-between">
           <div>
@@ -51,7 +51,7 @@ export default function Pricing() {
               </p>
               <p className="flex gap-x-2 mb-3 text-gray-700">
                 <CheckCircle2 />
-                Access to jobs labeled as "Priority" or "Featured".
+                {`Access to jobs labeled as "Priority" or "Featured".`}
               </p>
               <p className="flex gap-x-2 mb-3 text-gray-700">
                 <CheckCircle2 />
@@ -97,7 +97,7 @@ export default function Pricing() {
         </div>
       </div>
       <p className="pt-20 text-center  text-lg tracking-tight text-[#666]">
-        TRUSTED BY WOLRD'S #1 BOSS
+        {`TRUSTED BY WOLRD'S #1 BOSS`}
       </p>
     </Page>
   );
