@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./Header";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 
 export const mitr = localFont({
   src: [
