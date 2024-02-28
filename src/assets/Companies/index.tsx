@@ -20,6 +20,9 @@ export default function CompaniesAndJobsLayout({
   const size = searchParams.get("size")?.split(",") || "";
   const industry = searchParams.get("industry")?.split(",");
   const employmentType = searchParams.get("employmentType")?.split(",");
+  const jobCategory = searchParams.get("jobCategory")?.split(",");
+  const jobLevel = searchParams.get("jobLevel")?.split(",");
+  const salaryRange = searchParams.get("salaryRange")?.split(",") || "";
 
   const checkSize = (size: number) => {
     switch (true) {
@@ -40,6 +43,21 @@ export default function CompaniesAndJobsLayout({
     }
   };
 
+  const checkSalaryRange = (salary: number) => {
+    switch (true) {
+      case salary >= 700 && salary < 1000:
+        return "$700 - $1000";
+      case salary >= 1000 && salary < 1500:
+        return "$1000 - $1500";
+      case salary >= 1500 && salary < 2000:
+        return "$1500 - $2000";
+      case salary >= 2000:
+        return "$2000 or above";
+      default:
+        return "";
+    }
+  };
+
   const companiesData = companies.filter(
     (company) =>
       company.name.toLowerCase().includes(search.toLowerCase() || "") &&
@@ -53,7 +71,13 @@ export default function CompaniesAndJobsLayout({
       job.title.toLowerCase().includes(search.toLowerCase() || "") &&
       job.employment_type
         .toLowerCase()
-        .includes(employmentType?.toString().toLowerCase() || "")
+        .includes(employmentType?.toString().toLowerCase() || "") &&
+      job.tags.some((tag) => jobCategory?.includes(tag) || !jobCategory) &&
+      job.job_level
+        .toLowerCase()
+        .includes(jobLevel?.toString().toLowerCase() || "") &&
+      (salaryRange.includes(checkSalaryRange(job.salary_range)) ||
+        !salaryRange.length)
   );
 
   return (
