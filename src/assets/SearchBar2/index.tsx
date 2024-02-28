@@ -33,6 +33,7 @@ function ChooseLocation() {
       query: {
         ...router.query,
         location: value,
+        page: 1,
       },
     });
   };
@@ -90,16 +91,21 @@ function SearchName({ type, loading }: SearchBar2Props) {
       const query = {
         ...router.query,
         search: debouncedInputValue,
+        page: 1,
       };
 
       if (!debouncedInputValue) {
         delete query.search;
       }
 
-      router.push({
-        pathname: router.pathname,
-        query: query,
-      });
+      router.push(
+        {
+          pathname: router.pathname,
+          query: query,
+        },
+        undefined,
+        { shallow: true, scroll: false }
+      );
       setLoading(false);
     }
 
