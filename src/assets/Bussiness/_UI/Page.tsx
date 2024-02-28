@@ -45,7 +45,7 @@ export default function Page({
               "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
               `${mitr.variable} font-sans`,
               className,
-              open ? "h-full overflow-hidden" : ""
+              open ? "!h-screen overflow-hidden" : ""
             )}
           >
             <div>
