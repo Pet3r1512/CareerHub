@@ -8,8 +8,7 @@ import {
   PaginationEllipsis,
 } from "@/components/ui/pagination";
 import { twMerge } from "tailwind-merge";
-import Router from "next/router";
-import { PushQuery } from "@/utils/routerQuery";
+import { useRouter } from "next/router";
 
 export default function PaginationSection({
   totalItems,
@@ -21,6 +20,7 @@ export default function PaginationSection({
   currentPage: number;
 }) {
   const pageNumbers = [];
+  const router = useRouter();
 
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
@@ -36,10 +36,10 @@ export default function PaginationSection({
 
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
-      PushQuery({
-        pathname: Router.pathname,
+      router.push({
+        pathname: router.pathname,
         query: {
-          ...Router.query,
+          ...router.query,
           page: currentPage + 1,
         },
       });
@@ -48,10 +48,10 @@ export default function PaginationSection({
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      PushQuery({
-        pathname: Router.pathname,
+      router.push({
+        pathname: router.pathname,
         query: {
-          ...Router.query,
+          ...router.query,
           page: currentPage - 1,
         },
       });
@@ -59,10 +59,10 @@ export default function PaginationSection({
   };
 
   const handleCurrentPage = (page: number) => {
-    PushQuery({
-      pathname: Router.pathname,
+    router.push({
+      pathname: router.pathname,
       query: {
-        ...Router.query,
+        ...router.query,
         page: page,
       },
     });
