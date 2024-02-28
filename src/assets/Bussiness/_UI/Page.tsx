@@ -1,7 +1,7 @@
 import Footer from "@/assets/_UI/Footer";
 import { mitr } from "@/assets/_UI/Page";
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import Header from "../Header";
 import Head from "next/head";
@@ -15,6 +15,7 @@ export default function Page({
   children: ReactNode;
   className?: string;
 }) {
+  const [open, setOpen] = useState(false);
   const variants = {
     hidden: { opacity: 0, x: 300, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -43,11 +44,12 @@ export default function Page({
             className={twMerge(
               "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
               `${mitr.variable} font-sans`,
-              className
+              className,
+              open ? "h-full overflow-hidden" : ""
             )}
           >
             <div>
-              <Header />
+              <Header open={open} setOpen={setOpen} />
             </div>
             {children}
           </main>
