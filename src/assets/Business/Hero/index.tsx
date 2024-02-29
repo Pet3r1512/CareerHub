@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export default function Hero() {
   return (
-    <section className="flex justify-between md:items-start relative md:unset lg:min-h-screen w-full mt-4 md:mt-0">
+    <section className="flex justify-between md:items-start lg:items-center relative md:unset lg:min-h-[80dvh] w-full mt-4 md:mt-0">
       <Introduction />
       <Suspense fallback={<>Loading...</>}>
         <div className="w-[55%] [&>p]:unset relative sm:unset hidden md:block h-fit md:mr-[-40px] lg:mr-[-120px]">

@@ -25,7 +25,7 @@ export default function Page({
   return (
     <div>
       <Head>
-        <title>{"CareerHub Bussiness - " + pageName}</title>
+        <title>{"CareerHub Business - " + pageName}</title>
       </Head>
       <AnimatePresence
         initial={false}
@@ -42,10 +42,9 @@ export default function Page({
           <main
             id="body"
             className={twMerge(
-              "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
+              "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 min-h-screen sm:min-h-max lg:min-h-screen",
               `${mitr.variable} font-sans`,
-              className,
-              open ? "!h-screen overflow-hidden" : ""
+              className
             )}
           >
             <div>

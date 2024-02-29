@@ -1,7 +1,7 @@
-import Hero from "@/assets/Bussiness/Hero";
-import Page from "@/assets/Bussiness/_UI/Page";
+import Hero from "@/assets/Business/Hero";
+import Page from "@/assets/Business/_UI/Page";
 
-export default function Bussiness() {
+export default function Business() {
   return (
     <Page pageName="Home">
       <div className="flex items-center justify-center">
