@@ -34,8 +34,8 @@ export default function Header({
         >
           <DropDownMenu />
           <Link
-            className="font-medium bg-primary text-white rounded-2xl px-5 py-3 mb-[1px]"
-            href={"/bussiness/"}
+            className="font-medium bg-primary text-white rounded-2xl px-5 py-3 mb-[1px] hidden lg:block"
+            href={"/business/"}
           >
             For Companies
           </Link>
