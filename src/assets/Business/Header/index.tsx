@@ -42,15 +42,17 @@ export default function Header({
         className="p-4 flex flex-col justify-between"
       >
         <BusinessLogo />
-        <div className="flex items-center gap-x-4">
+        <div className="flex w-full items-center gap-x-2">
           <Link href="/">
             <Button className="px-6 py-4 rounded-xl font-semibold bg-white border-2 border-primary text-primary hover:bg-white">
               For Candidates
             </Button>
           </Link>
-          <Button className="px-6 py-4 rounded-xl text-white">
-            Post a Job
-          </Button>
+          <Link href="#">
+            <Button className="px-6 py-4 rounded-xl text-white">
+              Post a Job
+            </Button>
+          </Link>
         </div>
       </Drawer>
     </section>
