@@ -82,7 +82,7 @@ export default function CompaniesAndJobsLayout({
 
   return (
     <div className="flex gap-8">
-      {type == "company" && <CompaniesOptions />}
+      {type == "company" && <CompaniesOptions isHidden={true} />}
       {type == "job" && <JobOptionsContainer />}
       <CompaniesAndJobsContainer
         loading={loading}

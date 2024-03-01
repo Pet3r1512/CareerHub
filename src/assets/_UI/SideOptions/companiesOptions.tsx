@@ -2,8 +2,9 @@ import { industryOptions, companySize } from "@/data/options";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import { twMerge } from "tailwind-merge";
 
-export default function CompaniesOptions() {
+export default function CompaniesOptions({ isHidden }: { isHidden: boolean }) {
   const [industry, setIndustry] = useState<string[]>([]);
   const [size, setSize] = useState<string[]>([]);
   const firstRender = useRef(true);
@@ -83,7 +84,12 @@ export default function CompaniesOptions() {
   };
 
   return (
-    <div className="lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center hidden">
+    <div
+      className={twMerge(
+        "lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center",
+        isHidden ? "hidden" : "lg:flex"
+      )}
+    >
       <div className="w-fit h-full flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <p className="font-bold">Industry</p>

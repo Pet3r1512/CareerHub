@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import CompaniesAndJobsView from "./companiesView";
+import FilterDialog from "@/components/filterDialog";
+import CompaniesOptions from "../_UI/SideOptions/companiesOptions";
 
 export default function CompaniesAndJobsContainer({
   type,
@@ -76,6 +78,9 @@ export default function CompaniesAndJobsContainer({
               <StretchHorizontalIcon strokeWidth={2} />
             </div>
           </label>
+          <FilterDialog>
+            <CompaniesOptions isHidden={false} />
+          </FilterDialog>
         </div>
       </div>
       <CompaniesAndJobsView
