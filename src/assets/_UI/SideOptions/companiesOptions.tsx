@@ -1,30 +1,70 @@
 import { industryOptions, companySize } from "@/data/options";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState, useRef, useEffect } from "react";
-import Router from "next/router";
-import { PushQuery } from "@/utils/routerQuery";
+import { useRouter } from "next/router";
+import { twMerge } from "tailwind-merge";
 
-export default function CompaniesOptions() {
+export default function CompaniesOptions({ isHidden }: { isHidden: boolean }) {
   const [industry, setIndustry] = useState<string[]>([]);
   const [size, setSize] = useState<string[]>([]);
   const firstRender = useRef(true);
+  const secondRender = useRef(true);
+  const router = useRouter();
 
   useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    const { industry, size } = router.query;
+
+    setIndustry(industry ? industry.toString().split(",") : []);
+    setSize(size ? size.toString().split(",") : []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
+  useEffect(() => {
+    const updatedFilters = () => {
+      const industryQuery =
+        industry.length > 0 ? `${industry.join(",")}` : undefined;
+      const sizeQuery = size.length > 0 ? `${size.join(",")}` : undefined;
+
+      const query = {
+        ...router.query,
+        industry: industryQuery,
+        size: sizeQuery,
+      };
+
+      if (!industryQuery) {
+        delete query.industry;
+      }
+
+      if (!sizeQuery) {
+        delete query.size;
+      }
+
+      router.push(
+        {
+          pathname: router.pathname,
+          query: query,
+        },
+        undefined,
+        { shallow: true, scroll: false }
+      );
+    };
+
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
-    const industryQuery = industry.length > 0 ? `${industry.join(",")}` : "";
-    const sizeQuery = size.length > 0 ? `${size.join(",")}` : "";
-    PushQuery({
-      pathname: Router.pathname,
-      query: {
-        ...Router.query,
-        page: "",
-        industry: industryQuery,
-        size: sizeQuery,
-      },
-    });
+
+    if (secondRender.current) {
+      secondRender.current = false;
+      return;
+    }
+
+    updatedFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [industry, size]);
 
   const handleIndustryCheck = (e: any) => {
@@ -44,7 +84,12 @@ export default function CompaniesOptions() {
   };
 
   return (
-    <div className="lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center hidden">
+    <div
+      className={twMerge(
+        "lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center",
+        isHidden ? "hidden" : ""
+      )}
+    >
       <div className="w-fit h-full flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <p className="font-bold">Industry</p>
@@ -55,6 +100,7 @@ export default function CompaniesOptions() {
                 className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
                 value={i.industry}
                 onClick={(e) => handleIndustryCheck(e)}
+                checked={industry.includes(i.industry)}
               />
               <label
                 htmlFor={i.industry}
@@ -74,6 +120,7 @@ export default function CompaniesOptions() {
                 className="text-white w-6 h-6 border-gray-400 border-2 data-[state=checked]:border-primary"
                 value={i.size}
                 onClick={(e) => handleSizeCheck(e)}
+                checked={size.includes(i.size)}
               />
               <label
                 htmlFor={i.size}

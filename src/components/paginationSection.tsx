@@ -8,8 +8,7 @@ import {
   PaginationEllipsis,
 } from "@/components/ui/pagination";
 import { twMerge } from "tailwind-merge";
-import Router from "next/router";
-import { PushQuery } from "@/utils/routerQuery";
+import { useRouter } from "next/router";
 
 export default function PaginationSection({
   totalItems,
@@ -21,6 +20,7 @@ export default function PaginationSection({
   currentPage: number;
 }) {
   const pageNumbers = [];
+  const router = useRouter();
 
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
@@ -36,36 +36,48 @@ export default function PaginationSection({
 
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
-      PushQuery({
-        pathname: Router.pathname,
-        query: {
-          ...Router.query,
-          page: currentPage + 1,
+      router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            page: currentPage + 1,
+          },
         },
-      });
+        undefined,
+        { shallow: true, scroll: false }
+      );
     }
   };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      PushQuery({
-        pathname: Router.pathname,
-        query: {
-          ...Router.query,
-          page: currentPage - 1,
+      router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            page: currentPage - 1,
+          },
         },
-      });
+        undefined,
+        { shallow: true, scroll: false }
+      );
     }
   };
 
   const handleCurrentPage = (page: number) => {
-    PushQuery({
-      pathname: Router.pathname,
-      query: {
-        ...Router.query,
-        page: page,
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          page: page,
+        },
       },
-    });
+      undefined,
+      { shallow: true, scroll: false }
+    );
   };
 
   const renderPage = () => {
