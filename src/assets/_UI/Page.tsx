@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "./Header";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 
 export const mitr = localFont({
   src: [
@@ -79,8 +79,7 @@ export default function Page({
             className={twMerge(
               "max-w-[100rem] mx-auto pt-0 pb-14 px-2 lg:px-0 lg:min-h-screen",
               `${mitr.variable} font-sans`,
-              className,
-              openSidebar ? "h-full overflow-hidden" : ""
+              className
             )}
           >
             <div className={noHeader ? "hidden" : ""}>

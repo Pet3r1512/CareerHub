@@ -8,55 +8,28 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useState } from "react";
-import CompaniesGrid from "./companiesGrid";
-import { companies } from "@/data/companies";
-import { useSearchParams } from "next/navigation";
+import CompaniesAndJobsView from "./companiesView";
+import FilterDialog from "@/components/filterDialog";
+import CompaniesOptions from "../_UI/SideOptions/companiesOptions";
+import JobOptionsContainer from "../_UI/SideOptions/jobOptions";
 
-export default function CompaniesContainer({
+export default function CompaniesAndJobsContainer({
+  type,
   loading,
+  data,
 }: {
+  type: "company" | "job";
   loading: {
     isSearchLoading: boolean;
     setIsSearchLoading: (value: boolean) => void;
   };
+  data: any[];
 }) {
-  const [view, setView] = useState<"grid" | "list">("grid");
   const [sort, setSort] = useState<string>("relevant");
-
-  const searchParams = useSearchParams();
-  const search = searchParams.get("search") || "";
-  const size = searchParams.get("size") || "";
-  const industry = searchParams.get("industry")?.split(",");
-
-  const checkSize = (size: number) => {
-    switch (true) {
-      case size >= 1 && size <= 50:
-        return "1 - 50";
-      case size >= 51 && size <= 150:
-        return "51 - 150";
-      case size >= 151 && size <= 250:
-        return "151 - 250";
-      case size >= 251 && size <= 500:
-        return "251 - 500";
-      case size >= 501 && size <= 1000:
-        return "501 - 1000";
-      case size >= 1001:
-        return "1000 - above";
-      default:
-        return "";
-    }
-  };
-
-  const data = companies.filter(
-    (company) =>
-      company.name.toLowerCase().includes(search.toLowerCase() || "") &&
-      (company.industry_tags.some((tag) => industry?.includes(tag)) ||
-        !industry) &&
-      (checkSize(company.company_size) == size || !size)
-  );
+  const [view, setView] = useState<"grid" | "list">("grid");
 
   return (
-    <section className="lg:w-[65%] h-full pt-16 lg:p-12 lg:px-16 flex flex-col gap-8">
+    <section className="lg:w-[65%] h-full pt-16 lg:p-12 lg:px-16 flex flex-col gap-8 mx-auto lg:mx-0">
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between items-center">
         <div className="leading-loose">
           <h1 className="font-bold text-4xl">All Jobs</h1>
@@ -106,12 +79,16 @@ export default function CompaniesContainer({
               <StretchHorizontalIcon strokeWidth={2} />
             </div>
           </label>
+          <FilterDialog>
+            {type == "job" && <JobOptionsContainer isHidden={false} />}
+            {type == "company" && <CompaniesOptions isHidden={false} />}
+          </FilterDialog>
         </div>
       </div>
-      <CompaniesGrid
+      <CompaniesAndJobsView
         key={view}
         view={view}
-        sort={sort}
+        type={type}
         loading={loading}
         data={data}
       />

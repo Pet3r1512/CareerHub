@@ -52,7 +52,12 @@ export default function Sidebar({
         </button>
       </div>
       <div className="flex flex-col justify-between h-full">
-        <MenuAccordion />
+        <div className="flex flex-col gap-y-6">
+          <MenuAccordion />
+          <Link href="/business/" className="font-semibold text-lg">
+            For Business
+          </Link>
+        </div>
         {!authData.user ? (
           <Auth />
         ) : (

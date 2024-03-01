@@ -355,6 +355,7 @@ function SignUpForm() {
               )}
             />
           </Button>
+          <p>{`By logging in with my social media account, I have read and agree to CareerHub's `}<Link href="/terms" className="text-primary underline" >Terms of Service</Link> and <Link href="/privacy-policy" className="text-primary underline">Privacy Policy</Link></p>
           <Typography color="black" className="mt-4 font-normal text-right">
             Already have an account?{" "}
             <Link

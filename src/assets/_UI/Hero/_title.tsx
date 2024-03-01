@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Title() {
   return (
-    <div className="md:w-[38%] flex flex-col gap-y-4 md:gap-y-8 lg:gap-y-16">
+    <div className="relative lg:top-[-120px] md:w-[38%] flex flex-col gap-y-4 md:gap-y-8 lg:gap-y-16">
       <h1 className="text-[70px] leading-none md:text-6xl lg:text-[90px] md:leading-none font-bold">
         Discover more than{" "}
         <span className="text-blue leading-tight">5000+ Jobs</span>

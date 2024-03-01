@@ -5,6 +5,8 @@ import UserAvatar from "./_avatar";
 import { useEffect, useState } from "react";
 import DropDownMenu from "./dropDownMenu";
 import { Menu } from "lucide-react";
+import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 export default function Header({
   openSidebar,
@@ -24,8 +26,19 @@ export default function Header({
     <section className="w-full flex justify-between items-center">
       <div className="flex items-center gap-8">
         <Logo imgClassName="h-28 lg:h-32" />
-        <div className={noMenu ? "hidden" : ""}>
+        <div
+          className={twMerge(
+            "flex items-center gap-x-4",
+            noMenu ? "hidden" : ""
+          )}
+        >
           <DropDownMenu />
+          <Link
+            className="font-medium bg-primary text-white rounded-2xl px-5 py-3 mb-[1px] hidden lg:block"
+            href={"/business/"}
+          >
+            For Companies
+          </Link>
         </div>
       </div>
       <button
