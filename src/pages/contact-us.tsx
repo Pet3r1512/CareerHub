@@ -10,8 +10,8 @@ export default function ContactUs(){
                         <p className="text-gray-600 lg:w-8/12 lg:mx-auto">This is our technical team. If you have any advice, please contact us with our infomation below</p>
                     </div>
 
-                    <div className="py-20 gap-28 md:gap-48 flex justify-center relative">
-                        <p className="bg-gray-300 h-1 w-full absolute"></p>
+                    <div className="py-20 gap-28 md:gap-40 flex flex-col md:flex-row justify-center relative">
+                        <p className="bg-gray-300 h-1 w-full absolute hidden md:block"></p>
                         <div className="border-t-4 space-y-8 group text-center">
                             <div className="w-32 h-32 -mt-16 mx-auto rounded-[2rem] rotate-45 overflow-hidden">
                                 <img src="https://media.discordapp.net/attachments/817598810883883028/1211973714498035772/IMG_0463.jpg?ex=65f0257a&is=65ddb07a&hm=73297ddf685f9720bff69add93a8feb6612ed34c5431489dba554c73f8aa1692&=&format=webp&width=526&height=701" alt="man picture" loading="lazy" width="640" height="805" className="w-full h-full object-cover -rotate-45 scale-125 mx-auto trasition duration-300 group-hover:scale-[1.4]"/>
@@ -46,8 +46,8 @@ export default function ContactUs(){
                         </div>
                     </div>
 
-                    <div className="py-20 gap-28 md:gap-48 flex justify-center relative">
-                        <p className="bg-gray-300 h-1 w-full absolute"></p>
+                    <div className="py-20 gap-28 md:gap-40 flex flex-col md:flex-row justify-center relative">
+                        <p className="bg-gray-300 h-1 w-full absolute hidden md:block"></p>
                         <div className="border-t-4 space-y-8 group text-center">
                             <div className="w-32 h-32 -mt-16 mx-auto rounded-[2rem] rotate-45 overflow-hidden">
                                 <img src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/306611015_107373962122040_6885802368151341792_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=wShRiOTyYE0AX9g_rh8&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfAHFcxWngcLeyj7P01oqmZJDhmnN6JwwA9RM8QAavMi4A&oe=65E31C90" alt="man picture" loading="lazy" width="640" height="805" className="w-full h-full object-cover -rotate-45 scale-125 mx-auto trasition duration-300 group-hover:scale-[1.4]"/>
