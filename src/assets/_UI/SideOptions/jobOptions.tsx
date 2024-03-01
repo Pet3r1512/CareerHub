@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   employmentType,
   jobCategories,
@@ -20,8 +19,13 @@ import {
 } from "@/types/company";
 import JobOptionCheckbox from "./jobOptionCheckbox";
 import { useRouter } from "next/router";
+import { twMerge } from "tailwind-merge";
 
-export default function JobOptionsContainer() {
+export default function JobOptionsContainer({
+  isHidden,
+}: {
+  isHidden: boolean;
+}) {
   const [employmentTypeCheck, setEmploymentTypeCheck] = useState<string[]>([]);
   const [jobCategoriesCheck, setJobCategoriesCheck] = useState<string[]>([]);
   const [jobLevelCheck, setJobLevelCheck] = useState<string[]>([]);
@@ -154,7 +158,12 @@ export default function JobOptionsContainer() {
   };
 
   return (
-    <div className="lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center hidden">
+    <div
+      className={twMerge(
+        "lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center",
+        isHidden ? "hidden" : ""
+      )}
+    >
       <div className="w-fit h-full flex flex-col gap-6">
         <JobOptionsContent
           name="Type of Employment "

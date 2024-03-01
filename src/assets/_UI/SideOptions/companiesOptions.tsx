@@ -87,7 +87,7 @@ export default function CompaniesOptions({ isHidden }: { isHidden: boolean }) {
     <div
       className={twMerge(
         "lg:w-1/4 h-full lg:py-12 lg:flex lg:justify-center",
-        isHidden ? "hidden" : "lg:flex"
+        isHidden ? "hidden" : ""
       )}
     >
       <div className="w-fit h-full flex flex-col gap-8">

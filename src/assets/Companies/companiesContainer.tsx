@@ -11,6 +11,7 @@ import { useState } from "react";
 import CompaniesAndJobsView from "./companiesView";
 import FilterDialog from "@/components/filterDialog";
 import CompaniesOptions from "../_UI/SideOptions/companiesOptions";
+import JobOptionsContainer from "../_UI/SideOptions/jobOptions";
 
 export default function CompaniesAndJobsContainer({
   type,
@@ -79,7 +80,8 @@ export default function CompaniesAndJobsContainer({
             </div>
           </label>
           <FilterDialog>
-            <CompaniesOptions isHidden={false} />
+            {type == "job" && <JobOptionsContainer isHidden={false} />}
+            {type == "company" && <CompaniesOptions isHidden={false} />}
           </FilterDialog>
         </div>
       </div>
