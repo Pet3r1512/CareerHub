@@ -32,7 +32,7 @@ export default function CompanyItem({
         </Badge>
       </div>
       <a
-        href="#"
+        href={`/companies/${company.name.toLowerCase().replace(/\s/g, "-")}`}
         className="text-base lg:text-lg font-bold relative group/item w-fit"
       >
         <span
