@@ -213,6 +213,13 @@ function getColorClass(tag: string, variant: "secondary" | "outline") {
           : `border border-[#6a5acd] text-[#6a5acd]`;
       break;
 
+    case "Information Technology":
+      badgeColorClass =
+        variant === "secondary"
+          ? `bg-[#540b0e]/20 text-[#540b0e]`
+          : `border border-[#540b0e] text-[#540b0e]`;
+      break;
+
     default:
       // Handle the default case if needed
       break;
