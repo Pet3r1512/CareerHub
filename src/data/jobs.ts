@@ -14,6 +14,10 @@ export const jobs = [
     description:
       "We are seeking a talented and motivated software developer to join our dynamic team. The ideal candidate will have strong programming skills, a passion for technology, and a desire to contribute to innovative projects.",
     tags: ["Technology", "Engineering"],
+    capacity: 5,
+    applied: 2,
+    job_level: "Mid Level",
+    salary_range: 90000,
   },
   {
     title: "Marketing Specialist",
@@ -30,6 +34,10 @@ export const jobs = [
     description:
       "Join our marketing team and help create impactful campaigns. The ideal candidate should have experience in digital marketing, social media management, and content creation.",
     tags: ["Marketing", "Social Media"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Entry Level",
+    salary_range: 50000,
   },
   {
     title: "Data Analyst",
@@ -46,6 +54,10 @@ export const jobs = [
     description:
       "We are looking for a detail-oriented data analyst to interpret and analyze data. The ideal candidate should have strong analytical skills and be proficient in data visualization tools.",
     tags: ["Analytics"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Senior Level",
+    salary_range: 120000,
   },
   {
     title: "Graphic Designer",
@@ -62,6 +74,10 @@ export const jobs = [
     description:
       "Join our design team and bring creative concepts to life. The ideal candidate should have expertise in graphic design software, a strong portfolio, and a passion for visual storytelling.",
     tags: ["Design"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 80000,
   },
   {
     title: "Customer Support Representative",
@@ -78,6 +94,10 @@ export const jobs = [
     description:
       "Join our customer support team and assist customers with product inquiries, issues, and feedback. Excellent communication skills and a customer-centric approach are essential.",
     tags: ["Customer Service", "Communication"],
+    capacity: 4,
+    applied: 2,
+    job_level: "Entry Level",
+    salary_range: 55000,
   },
   {
     title: "Project Manager",
@@ -94,6 +114,10 @@ export const jobs = [
     description:
       "We are seeking an experienced project manager to lead and coordinate projects from initiation to completion. Strong organizational and leadership skills are crucial for success.",
     tags: ["Project Management"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Senior Level",
+    salary_range: 110000,
   },
   {
     title: "Sales Representative",
@@ -110,6 +134,10 @@ export const jobs = [
     description:
       "Join our sales team and drive revenue growth by acquiring new clients and maintaining relationships with existing ones. Strong interpersonal and negotiation skills are essential.",
     tags: ["Sales", "Communication"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 95000,
   },
   {
     title: "Human Resources Specialist",
@@ -124,199 +152,231 @@ export const jobs = [
       },
     },
     description:
-      "We are looking for a part-time HR specialist to support various HR functions, including recruitment, employee relations, and benefits administration.",
+      "Join our HR team and contribute to the growth and development of our workforce. The ideal candidate should have experience in HR processes and excellent interpersonal skills.",
     tags: ["Human Resources"],
-  },
-  {
-    title: "Content Writer",
-    employment_type: "Part-time",
-    company: {
-      name: "ContentCreators Ltd.",
-      image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Startup.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9TdGFydHVwLnBuZyIsImlhdCI6MTcwNDcwODg3MCwiZXhwIjoxNzM2MjQ0ODcwfQ.lBr7c3-pnNOtaPO2PXJpOzlRC1P1TKy72oRzCyBtlqU&t=2024-01-08T10%3A14%3A29.304Z",
-      location: {
-        city: "Singapore",
-        country: "Singapore",
-      },
-    },
-    description:
-      "Join our content team and create engaging and informative content across various platforms. Strong writing skills, creativity, and attention to detail are crucial.",
-    tags: ["Content Writing"],
-  },
-  {
-    title: "IT Support Specialist",
-    employment_type: "Full-time",
-    company: {
-      name: "IT Solutions Plus",
-      image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Aura.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BdXJhLnBuZyIsImlhdCI6MTcwNDcwOTI4MywiZXhwIjoxNzM2MjQ1MjgzfQ.952PLPai6nk46IlQqokpy3IkfnFBPoakpLlgXZwrrUI&t=2024-01-08T10%3A21%3A21.808Z",
-      location: {
-        city: "Dubai",
-        country: "UAE",
-      },
-    },
-    description:
-      "We are seeking a skilled IT support specialist to provide technical assistance to our internal teams. Strong troubleshooting skills and knowledge of IT systems are required.",
-    tags: ["Technology", "Customer Service", "Communication"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Entry Level",
+    salary_range: 60000,
   },
   {
     title: "Financial Analyst",
     employment_type: "Full-time",
     company: {
-      name: "Financial Insights Group",
+      name: "FinanceGenius Inc.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mercury.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZXJjdXJ5LnBuZyIsImlhdCI6MTcwNDcwOTMxMCwiZXhwIjoxNzM2MjQ1MzEwfQ.jvEy72zN-9YjHFF9ULBVKoBZcpN-bAgtGDwOHhDdjc0&t=2024-01-08T10%3A21%3A48.885Z",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Startup.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9TdGFydHVwLnBuZyIsImlhdCI6MTcwNDcwODg3MCwiZXhwIjoxNzM2MjQ0ODcwfQ.lBr7c3-pnNOtaPO2PXJpOzlRC1P1TKy72oRzCyBtlqU&t=2024-01-08T10%3A14%3A29.304Z",
       location: {
-        city: "Mumbai",
-        country: "India",
+        city: "Zurich",
+        country: "Switzerland",
       },
     },
     description:
-      "Join our finance team and analyze financial data to provide insights and support decision-making. Strong analytical skills and financial modeling expertise are essential.",
-    tags: ["Finance", "Accounting", "Analytics"],
+      "We are looking for a skilled financial analyst to assess financial performance and provide strategic recommendations. Strong analytical and problem-solving skills are a must.",
+    tags: ["Finance", "Analytics"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Senior Level",
+    salary_range: 130000,
   },
   {
     title: "UX/UI Designer",
     employment_type: "Full-time",
     company: {
-      name: "UserExperience Co.",
+      name: "DesignCraft Studios",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mercury.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZXJjdXJ5LnBuZyIsImlhdCI6MTcwNDcwOTMxMCwiZXhwIjoxNzM2MjQ1MzEwfQ.jvEy72zN-9YjHFF9ULBVKoBZcpN-bAgtGDwOHhDdjc0&t=2024-01-08T10%3A21%3A48.885Z",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Aura.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BdXJhLnBuZyIsImlhdCI6MTcwNDcwOTI4MywiZXhwIjoxNzM2MjQ1MjgzfQ.952PLPai6nk46IlQqokpy3IkfnFBPoakpLlgXZwrrUI&t=2024-01-08T10%3A21%3A21.808Z",
       location: {
         city: "Barcelona",
         country: "Spain",
       },
     },
     description:
-      "We are looking for a talented UX/UI designer to create intuitive and visually appealing user interfaces. The ideal candidate should have experience in user research, wireframing, and prototyping.",
-    tags: ["Design", "Technology", "Research"],
+      "Join our design team and create intuitive and visually appealing user experiences. The ideal candidate should have expertise in UX/UI design principles and tools.",
+    tags: ["Design", "User Experience"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 90000,
   },
   {
-    title: "Network Engineer",
+    title: "IT Support Specialist",
     employment_type: "Full-time",
     company: {
-      name: "ConnectTech Solutions",
+      name: "TechSupport Plus",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Tapline.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9UYXBsaW5lLnBuZyIsImlhdCI6MTcwNDcwOTM2MCwiZXhwIjoxNzM2MjQ1MzYwfQ.8wcGJ1_ADOhWX2Rfzb5-kjiBlV_PpGwf0fHJRxOq9Os&t=2024-01-08T10%3A22%3A39.678Z",
-      location: {
-        city: "Seattle",
-        country: "USA",
-      },
-    },
-    description:
-      "We are hiring a network engineer to design, implement, and maintain our company's networks. Strong knowledge of networking protocols and experience with network troubleshooting is required.",
-    tags: ["Engineering", "Technology", "Networking"],
-  },
-  {
-    title: "Content Marketing Manager",
-    employment_type: "Full-time",
-    company: {
-      name: "ContentCrafters Inc.",
-      image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Unicoin.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Vbmljb2luLnBuZyIsImlhdCI6MTcwNDcwOTM4MSwiZXhwIjoxNzM2MjQ1MzgxfQ.xlEQ4zYVmwEdyxCJCRYOjHR6ePMEGKN0-ViYt02T67M&t=2024-01-08T10%3A23%3A00.083Z",
-      location: {
-        city: "Austin",
-        country: "USA",
-      },
-    },
-    description:
-      "Join our marketing team as a content marketing manager. Develop and execute content strategies, manage campaigns, and analyze performance metrics.",
-    tags: ["Marketing", "Content Writing", "Analytics"],
-  },
-  {
-    title: "Mobile App Developer",
-    employment_type: "Full-time",
-    company: {
-      name: "AppGenius Tech",
-      image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Zactic.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9aYWN0aWMucG5nIiwiaWF0IjoxNzA0NzA5Mzk3LCJleHAiOjE3MzYyNDUzOTd9.98UV6YcXGKJi2jvRZg8yYoSk55vOIAn_tSGfcjuaoEc&t=2024-01-08T10%3A23%3A16.007Z",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mercury.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZXJjdXJ5LnBuZyIsImlhdCI6MTcwNDcwOTMxMCwiZXhwIjoxNzM2MjQ1MzEwfQ.jvEy72zN-9YjHFF9ULBVKoBZcpN-bAgtGDwOHhDdjc0&t=2024-01-08T10%3A21%3A48.885Z",
       location: {
         city: "Berlin",
         country: "Germany",
       },
     },
     description:
-      "We are seeking a skilled mobile app developer to join our development team. Experience in iOS and Android app development is required.",
-    tags: ["Engineering", "Technology"],
+      "We are seeking an IT support specialist to provide technical assistance to our employees. The ideal candidate should have strong troubleshooting skills and IT knowledge.",
+    tags: ["Technology", "IT"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Entry Level",
+    salary_range: 60000,
   },
   {
-    title: "Environmental Scientist",
+    title: "Content Writer",
     employment_type: "Part-time",
     company: {
-      name: "EcoSolutions Research",
+      name: "ContentMasters Co.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BY21lLnBuZyIsImlhdCI6MTcwNDcwODY5NCwiZXhwIjoxNzM2MjQ0Njk0fQ.6NWYj1PZiq2-X-iRnb15hB0v8UQmn1CTSsdOpJbzmbY&t=2024-01-08T10%3A11%3A32.805Z",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mercury.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZXJjdXJ5LnBuZyIsImlhdCI6MTcwNDcwOTMxMCwiZXhwIjoxNzM2MjQ1MzEwfQ.jvEy72zN-9YjHFF9ULBVKoBZcpN-bAgtGDwOHhDdjc0&t=2024-01-08T10%3A21%3A48.885Z",
       location: {
-        city: "Vancouver",
-        country: "Canada",
+        city: "New York",
+        country: "USA",
       },
     },
     description:
-      "Join our environmental science team part-time. Conduct research, analyze data, and contribute to environmental impact assessments.",
-    tags: ["Research"],
+      "Join our content team and create engaging and informative content for various platforms. The ideal candidate should have strong writing skills and a passion for storytelling.",
+    tags: ["Content", "Writing"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 70000,
   },
   {
-    title: "UI/UX Researcher",
+    title: "Network Engineer",
     employment_type: "Full-time",
     company: {
-      name: "UserInsights Co.",
+      name: "NetworkSolutions Ltd.",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Biosynthesis.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9CaW9zeW50aGVzaXMucG5nIiwiaWF0IjoxNzA0NzA4NzEyLCJleHAiOjE3MzYyNDQ3MTJ9.fu4ZOCzo9rpYmHQsw1J7wXZDxFtTtlhdKPT0Lv9iNkE&t=2024-01-08T10%3A11%3A51.128Z",
-      location: {
-        city: "Stockholm",
-        country: "Sweden",
-      },
-    },
-    description:
-      "We are looking for a UI/UX researcher to conduct user research, analyze user behavior, and provide insights to enhance our product design.",
-    tags: ["Research", "Design", "Technology", "Analytics"],
-  },
-  {
-    title: "DevOps Engineer",
-    employment_type: "Full-time",
-    company: {
-      name: "DevOps Solutions Ltd.",
-      image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Featherdev.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9GZWF0aGVyZGV2LnBuZyIsImlhdCI6MTcwNDcwODczMCwiZXhwIjoxNzM2MjQ0NzMwfQ.EdsjEGoR1yRCIM2W6QAhYhvlj-yz3opxV-WCUQvFRQ0&t=2024-01-08T10%3A12%3A08.960Z",
-      location: {
-        city: "Paris",
-        country: "France",
-      },
-    },
-    description:
-      "Join our DevOps team to streamline our development and deployment processes. Experience with containerization, automation, and cloud platforms is required.",
-    tags: ["Engineering", "Technology"],
-  },
-  {
-    title: "Data Scientist",
-    employment_type: "Full-time",
-    company: {
-      name: "DataInsights Analytics",
-      image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Globalbank.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9HbG9iYWxiYW5rLnBuZyIsImlhdCI6MTcwNDcwODc1MCwiZXhwIjoxNzM2MjQ0NzUwfQ.08dp1vEmFNRwhFoOjjTf67ZZnjvMdw_1UtlNqN2IVwo&t=2024-01-08T10%3A12%3A29.185Z",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Tapline.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9UYXBsaW5lLnBuZyIsImlhdCI6MTcwNDcwOTM2MCwiZXhwIjoxNzM2MjQ1MzYwfQ.8wcGJ1_ADOhWX2Rfzb5-kjiBlV_PpGwf0fHJRxOq9Os&t=2024-01-08T10%3A22%3A39.678Z",
       location: {
         city: "Tokyo",
         country: "Japan",
       },
     },
     description:
-      "We are seeking a talented data scientist to analyze large datasets, develop predictive models, and derive actionable insights for our business.",
-    tags: ["Technology", "Analytics", "Research"],
+      "We are seeking a skilled network engineer to design and implement computer networks for our organization. Strong technical skills and problem-solving abilities are essential.",
+    tags: ["Technology", "Networking"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Senior Level",
+    salary_range: 110000,
   },
   {
-    title: "Cybersecurity Analyst",
+    title: "Healthcare Specialist",
     employment_type: "Full-time",
     company: {
-      name: "SecureTech Solutions",
+      name: "HealthPlus Innovations",
       image:
-        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Hourglass.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Ib3VyZ2xhc3MucG5nIiwiaWF0IjoxNzA0NzA4Nzc1LCJleHAiOjE3MzYyNDQ3NzV9.xRoJvhpEBWb5lxwjdfVwjuczy53exaaCtnfgJLZQXNk&t=2024-01-08T10%3A12%3A54.753Z",
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Unicoin.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Vbmljb2luLnBuZyIsImlhdCI6MTcwNDcwOTM4MSwiZXhwIjoxNzM2MjQ1MzgxfQ.xlEQ4zYVmwEdyxCJCRYOjHR6ePMEGKN0-ViYt02T67M&t=2024-01-08T10%3A23%3A00.083Z",
       location: {
-        city: "Singapore",
-        country: "Singapore",
+        city: "Berlin",
+        country: "Germany",
       },
     },
     description:
-      "Join our cybersecurity team to monitor and secure our IT systems. Experience in threat detection, incident response, and security protocols is required.",
-    tags: ["Networking", "Security", "Engineering", "Analytics", "Technology"],
+      "Join our healthcare team and contribute to the development and implementation of healthcare programs. The ideal candidate should have a background in healthcare management.",
+    tags: ["Healthcare", "Management"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 85000,
+  },
+  {
+    title: "Quality Assurance Analyst",
+    employment_type: "Full-time",
+    company: {
+      name: "QualityMinds Inc.",
+      image:
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Zactic.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9aYWN0aWMucG5nIiwiaWF0IjoxNzA0NzA5Mzk3LCJleHAiOjE3MzYyNDUzOTd9.98UV6YcXGKJi2jvRZg8yYoSk55vOIAn_tSGfcjuaoEc&t=2024-01-08T10%3A23%3A16.007Z",
+      location: {
+        city: "San Francisco",
+        country: "USA",
+      },
+    },
+    description:
+      "We are looking for a detail-oriented QA analyst to ensure the quality of our software products. The ideal candidate should have experience in software testing and quality assurance.",
+    tags: ["Technology", "Quality Assurance"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Senior Level",
+    salary_range: 100000,
+  },
+  {
+    title: "Business Analyst",
+    employment_type: "Full-time",
+    company: {
+      name: "BusinessInsights Ltd.",
+      image:
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Acme.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BY21lLnBuZyIsImlhdCI6MTcwNDcwODY5NCwiZXhwIjoxNzM2MjQ0Njk0fQ.6NWYj1PZiq2-X-iRnb15hB0v8UQmn1CTSsdOpJbzmbY&t=2024-01-08T10%3A11%3A32.805Z",
+      location: {
+        city: "London",
+        country: "UK",
+      },
+    },
+    description:
+      "We are seeking a business analyst to analyze and document business processes. The ideal candidate should have strong analytical skills and business acumen.",
+    tags: ["Business", "Analytics"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 95000,
+  },
+  {
+    title: "Legal Counsel",
+    employment_type: "Full-time",
+    company: {
+      name: "LegalSolutions Corp.",
+      image:
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Biosynthesis.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9CaW9zeW50aGVzaXMucG5nIiwiaWF0IjoxNzA0NzA4NzEyLCJleHAiOjE3MzYyNDQ3MTJ9.fu4ZOCzo9rpYmHQsw1J7wXZDxFtTtlhdKPT0Lv9iNkE&t=2024-01-08T10%3A11%3A51.128Z",
+      location: {
+        city: "New York",
+        country: "USA",
+      },
+    },
+    description:
+      "Join our legal team and provide expert legal advice to the organization. The ideal candidate should have a strong legal background and excellent communication skills.",
+    tags: ["Legal"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Senior Level",
+    salary_range: 120000,
+  },
+  {
+    title: "Social Media Manager",
+    employment_type: "Part-time",
+    company: {
+      name: "SocialBuzz Solutions",
+      image:
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Featherdev.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9GZWF0aGVyZGV2LnBuZyIsImlhdCI6MTcwNDcwODczMCwiZXhwIjoxNzM2MjQ0NzMwfQ.EdsjEGoR1yRCIM2W6QAhYhvlj-yz3opxV-WCUQvFRQ0&t=2024-01-08T10%3A12%3A08.960Z",
+      location: {
+        city: "Los Angeles",
+        country: "USA",
+      },
+    },
+    description:
+      "Join our social media team and manage our online presence. The ideal candidate should have experience in social media marketing and content creation.",
+    tags: ["Marketing", "Social Media"],
+    capacity: 3,
+    applied: 1,
+    job_level: "Entry Level",
+    salary_range: 55000,
+  },
+  {
+    title: "Supply Chain Analyst",
+    employment_type: "Full-time",
+    company: {
+      name: "SupplyChain Dynamics",
+      image:
+        "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Globalbank.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9HbG9iYWxiYW5rLnBuZyIsImlhdCI6MTcwNDcwODc1MCwiZXhwIjoxNzM2MjQ0NzUwfQ.08dp1vEmFNRwhFoOjjTf67ZZnjvMdw_1UtlNqN2IVwo&t=2024-01-08T10%3A12%3A29.185Z",
+      location: {
+        city: "Shanghai",
+        country: "China",
+      },
+    },
+    description:
+      "We are seeking a supply chain analyst to optimize our supply chain processes. The ideal candidate should have strong analytical and problem-solving skills.",
+    tags: ["Supply Chain", "Analytics"],
+    capacity: 2,
+    applied: 1,
+    job_level: "Mid Level",
+    salary_range: 90000,
   },
 ];

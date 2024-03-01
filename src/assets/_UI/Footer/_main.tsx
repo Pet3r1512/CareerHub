@@ -61,7 +61,7 @@ function ResourceSection() {
               className="text-gray hover:text-white transition-all duration-75 ease-linears"
               key={index}
             >
-              <a href="#">{section}</a>
+              <a href={section.replace(/\s+/g, "-").toLowerCase()}>{section}</a>
             </li>
           );
         })}

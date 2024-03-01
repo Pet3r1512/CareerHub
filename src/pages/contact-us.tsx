@@ -45,7 +45,6 @@ export default function ContactUs(){
                             <a href="#" className="block w-max mx-auto text-center text-blue-500">View bio</a>
                         </div>
                     </div>
-
                     <div className="py-20 gap-28 md:gap-40 flex flex-col md:flex-row justify-center relative">
                         <p className="bg-gray-300 h-1 w-full absolute hidden md:block"></p>
                         <div className="border-t-4 space-y-8 group text-center">

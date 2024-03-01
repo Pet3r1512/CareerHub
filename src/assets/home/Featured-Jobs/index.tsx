@@ -18,7 +18,7 @@ export default function FeaturedJobs() {
           <MoveRight />
         </div>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-8 grid-cols-1 grid-flow-row gap-4 p-4 lg:p-8 lg:px-16">
+      <div className="grid md:grid-cols-3 md:gap-8 grid-cols-1 grid-flow-row gap-4 p-4 lg:p-8 lg:px-16">
         {jobs.slice(0, 8).map((job, index) => (
           <div
             key={index}
