@@ -2,6 +2,7 @@ import { Company } from "@/types/company";
 import { Badge } from "@/components/ui/badge";
 import CustomizeBadge from "@/components/customizeBadge";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CompanyItem({
   company,
@@ -31,7 +32,7 @@ export default function CompanyItem({
           {company.remaining_jobs_count} Jobs
         </Badge>
       </div>
-      <a
+      <Link
         href={`/companies/${company.name.toLowerCase().replace(/\s/g, "-")}`}
         className="text-base lg:text-lg font-bold relative group/item w-fit"
       >
@@ -40,7 +41,7 @@ export default function CompanyItem({
           aria-hidden
         ></span>
         {company.name}
-      </a>
+      </Link>
       <p className="text-gray-dark opacity-90 line-clamp-3">
         {company.description}
       </p>

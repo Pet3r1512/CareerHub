@@ -7,6 +7,7 @@ export default function CompanyPage() {
   const { slug } = router.query;
 
   const companyName = slug?.toString().replace(/-/g, " ");
+
   const company = companies.find(
     (company) => company.name.toLowerCase() === companyName
   );
