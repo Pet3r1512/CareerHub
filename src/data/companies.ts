@@ -179,4 +179,99 @@ export const companies = [
     company_size: 1000,
     remaining_jobs_count: 31,
   },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Zelle.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9aZWxsZS5wbmciLCJpYXQiOjE3MDkyNjgzMzgsImV4cCI6MTc0MDgwNDMzOH0.S7AnuuO7BOcXBxA-Fq_9IxHTR37uZMgCiyyxecXEkDg&t=2024-03-01T04%3A45%3A30.398Z",
+    name: "Zelle",
+    description:
+      "Zelle® is a great way to send money to friends and family, even if they bank somewhere different than you do. That means it's super easy to get paid back, or split the costs of things like dinner. With Zelle®, the money goes directly into your bank account.",
+    industry_tags: ["Blockchain"],
+    company_size: 50,
+    remaining_jobs_count: 2,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Spotify.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9TcG90aWZ5LnBuZyIsImlhdCI6MTcwOTI2ODU3NCwiZXhwIjoxNzQwODA0NTc0fQ.8m9VSjJvq5egPPHkDtuv-F7yEGwOzJuqHwNAZeH5MS0&t=2024-03-01T04%3A49%3A26.742Z",
+    name: "Spotify",
+    description:
+      "Spotify is a digital music, podcast, and video service that gives you access to millions of songs and other content from creators all over the world. Basic functions such as playing music are totally free, but you can also choose to upgrade to Spotify Premium.",
+    industry_tags: ["Media"],
+    company_size: 100,
+    remaining_jobs_count: 2,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/AppleTV.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9BcHBsZVRWLnBuZyIsImlhdCI6MTcwOTI3NTM4NSwiZXhwIjoxNzQwODExMzg1fQ.LzuiBTLzoRVN3JcNKUcyvr6KDNQ7bt4qzEmS2zKMBZI&t=2024-03-01T06%3A42%3A57.919Z",
+    name: "Apple TV",
+    description:
+      "Apple TV is a cutting-edge streaming media player developed by Apple Inc., designed to bring the best of entertainment directly to your living room.",
+    industry_tags: ["Media"],
+    company_size: 100,
+    remaining_jobs_count: 1,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Heroku.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9IZXJva3UucG5nIiwiaWF0IjoxNzA5Mjc1NTA4LCJleHAiOjE3NDA4MTE1MDh9.ZEVUTjZ851SLwcsC3Mfg1eAJZyutMsUh1ihHZCEvUKA&t=2024-03-01T06%3A45%3A00.573Z",
+    name: "Heroku",
+    description:
+      "Developers, teams, and businesses of all sizes use Heroku to deploy, manage, and scale apps.",
+    industry_tags: ["Information Technology"],
+    company_size: 270,
+    remaining_jobs_count: 10,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Moz.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Nb3oucG5nIiwiaWF0IjoxNzA5Mjc2MTk2LCJleHAiOjE3NDA4MTIxOTZ9.cjuhlAMmNWUr1D6esR5cWIpKn5TYJjDBGeunh_4KxqA&t=2024-03-01T06%3A56%3A28.282Z",
+    name: "Moz",
+    description: `Higher rankings. Quality traffic. Measurable results.
+      Power your digital marketing strategies with Moz SEO software, tools, APIs, and bespoke data solutions.`,
+    industry_tags: ["Advertising"],
+    company_size: 120,
+    remaining_jobs_count: 90,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Mega.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9NZWdhLnBuZyIsImlhdCI6MTcwOTI3OTU0MywiZXhwIjoxNzQwODE1NTQzfQ.6JQR7JqsXcPF-Ki-tF6uTS6PHBXNONZWULN8cEllWKU&t=2024-03-01T07%3A52%3A15.454Z",
+    name: "Mega",
+    description: `Store data securely online. Get more storage, easily expand your storage capacity and upload large files and folders`,
+    industry_tags: ["Cloud"],
+    company_size: 90,
+    remaining_jobs_count: 10,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Hulu.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9IdWx1LnBuZyIsImlhdCI6MTcwOTI3OTcyNiwiZXhwIjoxNzQwODE1NzI2fQ.-4-Etg3kE6C_9E5rPLcZJxfFN0QiZAHNNXIugP2XmgE&t=2024-03-01T07%3A55%3A18.094Z",
+    name: "Hulu",
+    description: `Live TV Makes It Better · Get 95+ top channels on Hulu (With Ads) + Live TV with your favorite live sports, news, and events`,
+    industry_tags: ["Gaming", "Media"],
+    company_size: 2000,
+    remaining_jobs_count: 14,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/TencentCloud.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9UZW5jZW50Q2xvdWQucG5nIiwiaWF0IjoxNzA5MjgxMzg1LCJleHAiOjE3NDA4MTczODV9.J3a_Uxu6TTVK7qH1n35MlXbYFppTO-vG8cCPa6ixJhk&t=2024-03-01T08%3A22%3A57.268Z",
+    name: "Tencent Cloud",
+    description: `Tencent Cloud is a leading global cloud service provider, offering a wide range of cloud computing services and solutions to empower businesses of all sizes to innovate and grow. `,
+    industry_tags: ["Cloud"],
+    company_size: 3000,
+    remaining_jobs_count: 42,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/BigCommerce.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9CaWdDb21tZXJjZS5wbmciLCJpYXQiOjE3MDkyODE2MzksImV4cCI6MTc0MDgxNzYzOX0.y0t_f1S5qNVG842MBbKluWAi0Uhf_H1ZGO_qfcW_GsY&t=2024-03-01T08%3A27%3A11.832Z",
+    name: "BigCommerce",
+    description: `BigCommerce is a leading software-as-a-service (SaaS) ecommerce platform empowering merchants to build, innovate, and grow their online businesses. `,
+    industry_tags: ["Information Technology"],
+    company_size: 2000,
+    remaining_jobs_count: 42,
+  },
+  {
+    image:
+      "https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Google.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Hb29nbGUucG5nIiwiaWF0IjoxNzA5Mjg1Mjg3LCJleHAiOjE3NDA4MjEyODd9.JG3N4cZeUhYoDsWjXUGbTSzer9dI-r1ROV864n5aCTg&t=2024-03-01T09%3A27%3A59.461Z",
+    name: "Google",
+    description: `Google is a multinational technology company that specializes in Internet-related services and products, encompassing search engines, online advertising technologies, cloud computing, software, and hardware. Founded in 1998 by Larry Page and Sergey Brin. `,
+    industry_tags: ["Information Technology", "Media", "Cloud"],
+    company_size: 2000,
+    remaining_jobs_count: 42,
+  },
 ];
