@@ -20,4 +20,39 @@ model User {
   location     String?
   occupation   String?
   created_date DateTime  @default(now())
+  companies    Company[]
+}
+
+model Company {
+  id            String        @id @default(uuid())
+  image_url     String
+  name          String        @unique
+  description   String
+  location      Location[]
+  industry_tags IndustryTag[]
+  company_size  Int
+  contact_link  Contact[]
+  user          User          @relation(fields: [created_by_id], references: [uuid])
+  created_by_id String
+  created_date  DateTime      @default(now())
+
+  @@index([created_by_id])
+}
+
+model IndustryTag {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  companies Company[]
+}
+
+model Contact {
+  id          Int       @id @default(autoincrement())
+  contact_url String
+  companies   Company[]
+}
+
+model Location {
+  id        Int       @id @default(autoincrement())
+  location  String    @unique
+  companies Company[]
 }
