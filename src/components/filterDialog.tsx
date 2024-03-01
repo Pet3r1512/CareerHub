@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { mitr } from "@/assets/_UI/Page";
 
 export default function FilterDialog({
   children,
@@ -21,7 +22,9 @@ export default function FilterDialog({
           <Filter size={18} strokeWidth={2} />
         </div>
       </DialogTrigger>
-      <DialogContent className="rounded-md w-2/3 h-1/2">
+      <DialogContent
+        className={`rounded-md w-2/3 h-1/2 ${mitr.variable} font-sans`}
+      >
         <DialogHeader>
           <DialogTitle>Filter</DialogTitle>
         </DialogHeader>
