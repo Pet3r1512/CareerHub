@@ -1,23 +1,23 @@
+import Page from "@/assets/_UI/Page";
 import Intro from "@/assets/Companies/intro";
 import CompaniesAndJobsLayout from "@/assets/Companies";
-import Page from "@/assets/_UI/Page";
 import { useState } from "react";
 
-export default function CompaniesPage() {
+export default function JobsPage() {
   const [isSearchLoading, setIsSearchLoading] = useState(false);
 
   return (
-    <Page className="relative" pageName="Companies">
+    <Page pageName="Jobs">
       <Intro
-        title="dream companies"
-        description="Find the dream companies you dream work for"
-        searchType="company"
+        title="dream jobs"
+        description="Find your next career at companies like HubSpot, Nike, and Dropbox."
+        searchType="job"
         className="mt-8 lg:max-h-screen w-full"
         loading={{ isSearchLoading, setIsSearchLoading }}
       />
       <CompaniesAndJobsLayout
         loading={{ isSearchLoading, setIsSearchLoading }}
-        type="company"
+        type="job"
       />
     </Page>
   );

@@ -236,7 +236,10 @@ export default function CustomizeBadge({
   return (
     <Badge
       variant={variant}
-      className={twMerge("p-1 px-3 cursor-pointer", badgeColorClass)}
+      className={twMerge(
+        "p-1 px-3 cursor-pointer w-fit whitespace-nowrap",
+        badgeColorClass
+      )}
     >
       {content}
     </Badge>

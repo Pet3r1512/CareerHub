@@ -2,6 +2,7 @@ import SearchBar2 from "../SearchBar2";
 import { popularCompanies, popularJobs } from "@/data/popular";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
+import { mitr } from "../_UI/Page";
 
 type IntroProps = {
   title: string;
@@ -38,7 +39,7 @@ export default function Intro({
         />
         <div className="w-full h-full backdrop-blur-sm bg-white/30 "></div>
       </div>
-      <p className="text-5xl font-bold font-serif z-10">
+      <p className={`text-5xl font-bold ${mitr.variable} font-sans z-10`}>
         Find your{" "}
         <span className="text-blue underline underline-offset-[8px]">
           {title}

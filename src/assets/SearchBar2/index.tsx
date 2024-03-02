@@ -11,9 +11,8 @@ import { Input } from "@/components/ui/input";
 import { SelectGroup } from "@radix-ui/react-select";
 import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { locations } from "@/data/locations";
-import { PushQuery } from "@/utils/routerQuery";
 import { useSearchParams } from "next/navigation";
 
 type SearchBar2Props = {
@@ -25,12 +24,17 @@ type SearchBar2Props = {
 };
 
 function ChooseLocation() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const locationParam = searchParams.get("location");
   const handleChange = (value: string) => {
-    PushQuery({
-      pathname: Router.pathname,
-      query: { ...Router.query, location: value, page: "" },
+    router.push({
+      pathname: router.pathname,
+      query: {
+        ...router.query,
+        location: value,
+        page: 1,
+      },
     });
   };
 
@@ -73,6 +77,7 @@ function SearchName({ type, loading }: SearchBar2Props) {
   const [inputValue, setInputValue] = useState<string | null>(null);
   const debouncedInputValue = useDebounce(inputValue, 1000);
   const firstRender = useRef(true);
+  const router = useRouter();
   const searchParams = useSearchParams();
   const searchParam = searchParams.get("search");
   const setLoading = loading.setIsSearchLoading;
@@ -83,12 +88,28 @@ function SearchName({ type, loading }: SearchBar2Props) {
     } else if (debouncedInputValue == null) {
       firstRender.current = false;
     } else {
-      PushQuery({
-        pathname: Router.pathname,
-        query: { ...Router.query, search: debouncedInputValue, page: "" },
-      });
+      const query = {
+        ...router.query,
+        search: debouncedInputValue,
+        page: 1,
+      };
+
+      if (!debouncedInputValue) {
+        delete query.search;
+      }
+
+      router.push(
+        {
+          pathname: router.pathname,
+          query: query,
+        },
+        undefined,
+        { shallow: true, scroll: false }
+      );
       setLoading(false);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedInputValue, setLoading]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
