@@ -76,7 +76,7 @@ function CompanyItem({ company, index }: { company: Company; index: number }) {
       className="border p-4 flex flex-col h-full justify-between gap-4 lg:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md cursor-pointer"
     >
       <div className="flex flex-col">
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between h-[42px] items-start">
           {!company.image ? (
             <p>Image</p>
           ) : (
@@ -86,6 +86,7 @@ function CompanyItem({ company, index }: { company: Company; index: number }) {
               alt={company.name}
               height={42}
               width={42}
+              className="object-cover h-full"
             />
           )}
           <Badge
