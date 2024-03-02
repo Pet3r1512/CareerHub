@@ -38,7 +38,7 @@ export default function CompanyLabel({ content }: CompanyLabelProps) {
   ];
 
   return (
-    <div className="flex gap-20">
+    <div className="flex flex-col md:flex-row gap-5 lg:gap-20">
       {data.map((item) => {
         return (
           <InfoLabel key={item.title} title={item.title} content={item.content}>
