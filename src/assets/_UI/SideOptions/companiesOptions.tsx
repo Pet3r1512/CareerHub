@@ -33,6 +33,7 @@ export default function CompaniesOptions({ isHidden }: { isHidden: boolean }) {
         ...router.query,
         industry: industryQuery,
         size: sizeQuery,
+        page: 1,
       };
 
       if (!industryQuery) {
