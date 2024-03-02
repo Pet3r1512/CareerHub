@@ -1,5 +1,5 @@
 import Page from "@/assets/_UI/Page";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Pricing() {
@@ -59,8 +59,8 @@ export default function Pricing() {
               </p>
             </div>
           </div>
-          <Button className="w-full text-black bg-white border-2 border-black rounded-lg py-5 hover:text-white hover:border-2">
-            Free 7 days trial
+          <Button className="w-full text-white bg-primary border-2 border-black rounded-lg py-5 hover:text-black hover:border-2 hover:bg-white justify-between">
+            Start free 7-days trial <ArrowRight />
           </Button>
         </div>
         <div className="bg-white border-primary border-2 rounded-lg shadow-md p-4 flex flex-1 flex-col justify-between">
@@ -91,14 +91,58 @@ export default function Pricing() {
               24/7 priority support via email, phone, or live chat.
             </p>
           </div>
-          <Button className=" w-full text-black bg-white border-2 border-black rounded-lg py-5 hover:text-white hover:border-2 relative bottom-0">
-            Pay me now
+          <Button className=" w-full text-white bg-primary border-2 border-black rounded-lg py-5 hover:text-black hover:border-2 hover:bg-white justify-between">
+            Pay now <ArrowRight />
           </Button>
         </div>
       </div>
       <p className="pt-20 text-center  text-lg tracking-tight text-[#666]">
         {`TRUSTED BY WOLRD'S #1 BOSS`}
       </p>
+      <div className="flex flex-1 flex-col lg:flex-row  justify-between gap-16 p-4 mt-10 w-full">
+        <p className="border-2 w-full  p-5 rounded-lg border-gray-500">
+          <img
+            className="h-[50px] mx-auto"
+            src="images/Footer/linkedin2.png"
+            alt="linkedinLogo"
+          />
+          <p className="text-7xl text-center font-semibold">98%</p>
+          <p className="text-2xl text-[#666] text-center">Job opportunity</p>
+        </p>
+        <p className="border-2 w-full  p-5 rounded-lg border-gray-500">
+          <img
+            className="w-[150px] mx-auto"
+            src="images/Footer/indeed.png"
+            alt="indeedLogo"
+          />
+          <p className="text-6xl font-semibold text-center pt-4">200+</p>
+          <p className="text-2xl text-[#666] text-center pt-2">
+            New job every day
+          </p>
+        </p>
+        <p className="border-2 w-full  p-5 rounded-lg border-gray-500">
+          <img
+            className="w-[170px] mx-auto"
+            src="/images/Footer/glassdoor.png"
+            alt="glassdoorLogo"
+          />
+          <p className="text-6xl font-semibold text-center pt-2">5x</p>
+          <p className="text-2xl text-[#666] text-center pt-1.5">
+            Faster time to get hired.
+          </p>
+        </p>
+        <p className="border-2 w-full rounded-lg border-gray-500 ">
+          <img
+            className="w-[80px] h-[65px] mx-auto mt-4"
+            src="/images/Footer/wwr.png"
+            alt="wwrLogo"
+          />
+          <p className="text-6xl font-semibold text-center ">100%</p>
+          <p className="text-2xl text-[#666] text-center pt-1.5">
+            Remote job opportunity
+          </p>
+        </p>
+      </div>
     </Page>
   );
 }
