@@ -32,7 +32,7 @@ export default function CompaniesAndJobsContainer({
     <section className="lg:w-[65%] h-full pt-16 lg:p-12 lg:px-16 flex flex-col gap-8 mx-auto lg:mx-0">
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between items-center">
         <div className="leading-loose">
-          <h1 className="font-bold text-4xl">All Jobs</h1>
+          <h1 className="font-bold text-4xl">All Companies</h1>
           <p>Showing {data.length} results</p>
         </div>
         <div className="flex items-center gap-4">
