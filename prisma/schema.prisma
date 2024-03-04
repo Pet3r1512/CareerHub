@@ -25,11 +25,13 @@ model User {
 
 model Company {
   id            String        @id @default(uuid())
-  image_url     String
+  image_url     String        @db.VarChar(1000)
   name          String        @unique
+  founded_date  DateTime
   description   String
-  location      Location[]
+  location      String
   industry_tags IndustryTag[]
+  remain_jobs   Int
   company_size  Int
   contact_link  Contact[]
   user          User          @relation(fields: [created_by_id], references: [uuid])
@@ -41,7 +43,7 @@ model Company {
 
 model IndustryTag {
   id        Int       @id @default(autoincrement())
-  name      String    @unique
+  name      String
   companies Company[]
 }
 
@@ -49,10 +51,4 @@ model Contact {
   id          Int       @id @default(autoincrement())
   contact_url String
   companies   Company[]
-}
-
-model Location {
-  id        Int       @id @default(autoincrement())
-  location  String    @unique
-  companies Company[]
 }
