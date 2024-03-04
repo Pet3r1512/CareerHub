@@ -1,6 +1,8 @@
 import Page from "@/assets/_UI/Page";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+
 import {
   Accordion,
   AccordionContent,
@@ -106,46 +108,52 @@ export default function Pricing() {
         {`TRUSTED BY WOLRD'S #1 BOSS`}
       </p>
       <div className="graybar  flex w-[200px] h-[2px] border-2 border-gray-150 rounded-full m-auto  "></div>
-      <div className="flex flex-1 flex-col lg:flex-row  justify-between gap-16  mt-7 w-full">
-        <span className="border-2 w-full  p-5 rounded-lg border-gray-500">
-          <img
-            className="h-[50px] mx-auto"
-            src="images/Footer/linkedin2.png"
+      <div className="flex flex-1 flex-col lg:flex-row  justify-between gap-16  mt-7 w-full ">
+        <span className="border-2 w-full  p-5 rounded-lg border-gray-500 flex justify-evenly flex-col">
+          <Image
+            width={60}
+            height={80}
+            className="h-[60px] mx-auto"
+            src="/images/Footer/linkedin2.png"
             alt="linkedinLogo"
           />
           <p className="text-7xl text-center font-semibold">98%</p>
-          <p className="text-2xl text-[#666] text-center">Job opportunity</p>
+          <p className="text-2xl text-[#666] text-center ">Job opportunity</p>
         </span>
-        <span className="border-2 w-full  p-5 rounded-lg border-gray-500">
-          <img
-            className="w-[150px] mx-auto"
-            src="images/Footer/indeed.png"
+        <span className="border-2 w-full  rounded-lg border-gray-500 flex justify-evenly flex-col">
+          <Image
+            width={140}
+            height={45}
+            className="mx-auto h-[45px]"
+            src="/images/Footer/indeed.png"
             alt="indeedLogo"
           />
-          <p className="text-6xl font-semibold text-center pt-4">200+</p>
-          <p className="text-2xl text-[#666] text-center pt-2">
-            New job every day
-          </p>
+          <p className="text-6xl font-semibold text-center ">200+</p>
+          <p className="text-2xl text-[#666] text-center ">New job every day</p>
         </span>
-        <span className="border-2 w-full  p-5 rounded-lg border-gray-500">
-          <img
+        <span className="border-2 w-full rounded-lg border-gray-500 flex justify-evenly flex-col">
+          <Image
             className="w-[170px] mx-auto"
+            width={150}
+            height={50}
             src="/images/Footer/glassdoor.png"
             alt="glassdoorLogo"
           />
-          <p className="text-6xl font-semibold text-center pt-2">5x</p>
-          <p className="text-2xl text-[#666] text-center pt-1.5">
+          <p className="text-6xl font-semibold text-center ">5x</p>
+          <p className="text-2xl text-[#666] text-center ">
             Faster time to get hired.
           </p>
         </span>
-        <span className="border-2 w-full rounded-lg border-gray-500 ">
-          <img
-            className="w-[80px] h-[65px] mx-auto mt-4"
+        <span className="border-2 w-full rounded-lg border-gray-500 flex justify-evenly flex-col ">
+          <Image
+            width={150}
+            height={50}
+            className="w-[75px] h-[50px] mx-auto"
             src="/images/Footer/wwr.png"
             alt="wwrLogo"
           />
           <p className="text-6xl font-semibold text-center ">100%</p>
-          <p className="text-2xl text-[#666] text-center pt-1.5">
+          <p className="text-2xl text-[#666] text-center">
             Remote job opportunity
           </p>
         </span>
@@ -189,7 +197,7 @@ export default function Pricing() {
             Can I upgrade or downgrade my membership package after purchase?
           </AccordionTrigger>
           <AccordionContent className="text-lg">
-            Yes, you can upgrade or downgrade your membership package at any
+            Our Yes, you can upgrade or downgrade your membership package at any
             time by contacting us via email or the provided phone number on the
             website.
           </AccordionContent>
@@ -238,14 +246,14 @@ export default function Pricing() {
             membership package?
           </AccordionTrigger>
           <AccordionContent className="text-lg">
-            Answer: We often have promotions and discounts for membership
-            packages. Please check our website or follow us on social media for
-            updates on these offers.
+            We often have promotions and discounts for membership packages.
+            Please check our website or follow us on social media for updates on
+            these offers.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-9">
           <AccordionTrigger>
-            Can I request a refund if I'm not satisfied with my membership
+            Can I request a refund if I&apos;m not satisfied with my membership
             package?
           </AccordionTrigger>
           <AccordionContent className="text-lg">
