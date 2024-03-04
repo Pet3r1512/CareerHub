@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { companies } from "@/data/companies";
 import Page from "@/assets/_UI/Page";
 import CompanyHeader from "@/components/company/company-header";
+import Profile from "@/components/company/profile";
 
 export default function CompanyPage() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function CompanyPage() {
   return (
     <Page pageName={company.name}>
       <CompanyHeader />
+      <Profile/>
     </Page>
   );
 }
