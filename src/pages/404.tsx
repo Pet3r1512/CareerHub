@@ -8,7 +8,7 @@ const NotFoundPage: React.FC = () => {
         <div className="text-center">
         <h1 className="text-4xl font-bold mb-4 text-primary">{`404 - Not found`}</h1>
         <p className="text-lg">{`Sorry, the page you are looking for does not exist.`}</p>
-        <p className="text-lg">{`Please go back to `}<Link href="http://localhost:3000/" className="text-primary underline" >Home</Link> </p>
+        <p className="text-lg">{`Please go back to `}<Link href="/" className="text-primary underline" >Home</Link> </p>
         </div>
         <div className="h-[500px] relative w-[500px]">
         <Image src="/images/Ilustration.png" alt="" fill className="object-cover"/>
