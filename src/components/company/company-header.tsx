@@ -5,9 +5,9 @@ import { Button } from "../ui/button";
 
 export default function CompanyHeader() {
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
+    <div className="flex flex-col lg:flex-row gap-8 border-y-2 h-[200px]">
       <div className="flex justify-between">
-        <div className="lg:w-[150px] lg:h-[150px] w-[100px] h-[100px]">
+        <div className="lg:w-[150px] lg:h-[200px] lg:mt-3 w-[100px] h-[100px]">
           <Image
             src="https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/Companies/Google.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NvbXBhbmllcy9Hb29nbGUucG5nIiwiaWF0IjoxNzA5Mjg1Mjg3LCJleHAiOjE3NDA4MjEyODd9.JG3N4cZeUhYoDsWjXUGbTSzer9dI-r1ROV864n5aCTg&t=2024-03-01T09%3A27%3A59.461Z"
             alt="BusinessSolutions Inc."
