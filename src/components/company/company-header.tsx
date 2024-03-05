@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export default function CompanyHeader() {
   return (
-    <div className="flex flex-col lg:flex-row gap-8 border-y-2 h-[200px]">
+    <div className="flex flex-col lg:flex-row gap-8 lg:border-y-2 h-[200px]">
       <div className="flex justify-between">
         <div className="lg:w-[150px] lg:h-[200px] lg:mt-3 w-[100px] h-[100px]">
           <Image
