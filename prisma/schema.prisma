@@ -21,3 +21,10 @@ model User {
   occupation   String?
   created_date DateTime  @default(now())
 }
+
+model Admin {
+  uuid     String @id @default(uuid())
+  username String
+  password String
+  name     String
+}
