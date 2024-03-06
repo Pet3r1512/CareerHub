@@ -2,8 +2,31 @@ import Intro from "@/assets/Companies/intro";
 import CompaniesAndJobsLayout from "@/assets/Companies";
 import Page from "@/assets/_UI/Page";
 import { useState } from "react";
+import prisma from "@/lib/prisma";
 
-export default function CompaniesPage() {
+export async function getServerSideProps() {
+  try {
+    const companies = await prisma.company.findMany();
+    return {
+      props: {
+        companies: JSON.parse(JSON.stringify(companies)),
+      },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: {
+        companies: [],
+        error: "Could not fetch data. Please try again later.",
+      },
+    };
+  }
+}
+
+export default function CompaniesPage(props: {
+  companies: any[];
+  error?: string;
+}) {
   const [isSearchLoading, setIsSearchLoading] = useState(false);
 
   return (
@@ -18,6 +41,7 @@ export default function CompaniesPage() {
       <CompaniesAndJobsLayout
         loading={{ isSearchLoading, setIsSearchLoading }}
         type="company"
+        data={props.companies}
       />
     </Page>
   );
