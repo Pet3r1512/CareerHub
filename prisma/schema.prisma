@@ -24,31 +24,29 @@ model User {
 }
 
 model Company {
-  id            String        @id @default(uuid())
-  image_url     String        @db.VarChar(1000)
-  name          String        @unique
+  id            String   @id @default(uuid())
+  image_url     String?  @db.VarChar(1000)
+  name          String   @unique
   founded_date  DateTime
-  description   String
+  description   String   @db.VarChar(1500)
   location      String
-  industry_tags IndustryTag[]
+  industry_tags String
   remain_jobs   Int
   company_size  Int
-  contact_link  Contact[]
-  user          User          @relation(fields: [created_by_id], references: [uuid])
+  contact_link  Contact?
+  user          User     @relation(fields: [created_by_id], references: [uuid])
   created_by_id String
-  created_date  DateTime      @default(now())
+  created_date  DateTime @default(now())
 
   @@index([created_by_id])
 }
 
-model IndustryTag {
-  id        Int       @id @default(autoincrement())
-  name      String
-  companies Company[]
-}
-
 model Contact {
-  id          Int       @id @default(autoincrement())
-  contact_url String
-  companies   Company[]
+  email        String  @id
+  facebook_url String?
+  twitter_url  String?
+  linkedin_url String?
+
+  company    Company @relation(fields: [company_id], references: [id])
+  company_id String  @unique
 }
