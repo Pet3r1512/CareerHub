@@ -55,7 +55,7 @@ export default function CompanyItem({
         {company.description}
       </p>
       <div className="flex flex-wrap gap-4">
-        {company.industry_tags.map((tag, index) => (
+        {industry_tags.map((tag, index) => (
           <CustomizeBadge key={tag + index} content={tag} variant="outline" />
         ))}
       </div>
