@@ -20,8 +20,10 @@ export default function CompanyPage() {
 
   return (
     <Page pageName={company.name}>
-      <CompanyHeader />
-      <Profile/>
+      <div className="flex flex-col gap-8">
+        <CompanyHeader />
+        <Profile />
+      </div>
     </Page>
   );
 }
