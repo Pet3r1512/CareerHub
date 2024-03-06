@@ -13,6 +13,7 @@ export default function CompanyItem({
   index: number;
 }) {
   const router = useRouter();
+  const industry_tags = company.industry_tags.split(",");
 
   return (
     <div
@@ -27,7 +28,7 @@ export default function CompanyItem({
       <div className="flex justify-between items-start">
         <div className="w-12 h-12 relative">
           <Image
-            src={company.image}
+            src={company.image_url}
             alt={company.name}
             fill
             style={{ objectFit: "contain" }}
@@ -54,7 +55,7 @@ export default function CompanyItem({
         {company.description}
       </p>
       <div className="flex flex-wrap gap-4">
-        {company.industry_tags.map((tag, index) => (
+        {industry_tags.map((tag, index) => (
           <CustomizeBadge key={tag + index} content={tag} variant="outline" />
         ))}
       </div>

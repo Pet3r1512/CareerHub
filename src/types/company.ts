@@ -1,9 +1,13 @@
 export type Company = {
-  image: string;
+  id: string;
+  image_url: string;
   name: string;
+  founded_data: string;
   description: string;
-  industry_tags: string[];
+  location: string;
+  industry_tags: string;
   company_size: number;
+  created_by_id: string;
   remaining_jobs_count: number;
 };
 
