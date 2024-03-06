@@ -2,6 +2,7 @@ import Page from "@/assets/_UI/Page";
 import Intro from "@/assets/Companies/intro";
 import CompaniesAndJobsLayout from "@/assets/Companies";
 import { useState } from "react";
+import { jobs } from "@/data/jobs";
 
 export default function JobsPage() {
   const [isSearchLoading, setIsSearchLoading] = useState(false);
@@ -18,6 +19,7 @@ export default function JobsPage() {
       <CompaniesAndJobsLayout
         loading={{ isSearchLoading, setIsSearchLoading }}
         type="job"
+        data={jobs}
       />
     </Page>
   );

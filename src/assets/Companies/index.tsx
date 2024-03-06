@@ -3,7 +3,6 @@ import CompaniesAndJobsContainer from "./companiesContainer";
 import { useSearchParams } from "next/navigation";
 import JobOptionsContainer from "../_UI/SideOptions/jobOptions";
 import { Company, Job } from "@/types/company";
-import { jobs } from "@/data/jobs";
 
 export default function CompaniesAndJobsLayout({
   loading,
@@ -66,6 +65,7 @@ export default function CompaniesAndJobsLayout({
   }
 
   if (type === "job") {
+    const jobs = data as Job[];
     const employmentType = searchParams.get("employmentType")?.split(",");
     const jobCategory = searchParams.get("jobCategory")?.split(",");
     const jobLevel = searchParams.get("jobLevel")?.split(",");

@@ -3,6 +3,7 @@ import CompaniesAndJobsLayout from "@/assets/Companies";
 import Page from "@/assets/_UI/Page";
 import { useState } from "react";
 import prisma from "@/lib/prisma";
+import { Company } from "@/types/company";
 
 export async function getServerSideProps() {
   try {
@@ -24,7 +25,7 @@ export async function getServerSideProps() {
 }
 
 export default function CompaniesPage(props: {
-  companies: any[];
+  companies: Company[];
   error?: string;
 }) {
   const [isSearchLoading, setIsSearchLoading] = useState(false);
