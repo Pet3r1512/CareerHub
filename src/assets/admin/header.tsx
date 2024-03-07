@@ -1,7 +1,8 @@
 import { LogOut } from "lucide-react";
 import Logo from "../_UI/_logo";
+import { useEffect } from "react";
 
-export default function Header() {
+export default function Header({ admin }: { admin: string }) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-x-4">
@@ -10,10 +11,14 @@ export default function Header() {
           For Admin
         </p>
       </div>
-      <div className="flex items-center gap-x-4">
-        <p>Thanh Phong</p>
-        <LogOut className="text-red-500" />
-      </div>
+      {admin === "" ? (
+        <></>
+      ) : (
+        <div className="flex items-center gap-x-4">
+          <p>{admin}</p>
+          <LogOut className="text-red-500" />
+        </div>
+      )}
     </div>
   );
 }
