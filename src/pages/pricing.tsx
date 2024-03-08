@@ -9,7 +9,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
+import Faqs from "@/assets/Pricing/faqs";
+import { faqs } from "@/data/faqs";
 export default function Pricing() {
   return (
     <Page pageName="Pricing">
@@ -22,7 +23,7 @@ export default function Pricing() {
             <p className="text-primary text-5xl">$0</p>
             <p className=" mb-5">Start your next side project</p>
             <p className="flex gap-x-2 mb-3 text-gray-700">
-              <CheckCircle2 />
+              <CheckCircle2 className="text-green" />
               Basic access to all job listings on the website.
             </p>
             <p className="flex gap-x-2 mb-3 text-gray-700">
@@ -34,7 +35,7 @@ export default function Pricing() {
               Basic email support.
             </p>
           </div>
-          <Button className="w-full text-black bg-white border-2 border-black rounded-lg py-5  hover:text-white hover:border-2">
+          <Button className="w-full text-black bg-white border-2 border-black rounded-lg py-5  hover:text-white hover:border-2   hover:text-lg duration-200 transition-all ease-linear ">
             Your current plan
           </Button>
         </div>
@@ -67,7 +68,7 @@ export default function Pricing() {
               </p>
             </div>
           </div>
-          <Button className="w-full text-white bg-primary border-2 border-black rounded-lg py-5 hover:text-black hover:border-2 hover:bg-white justify-between">
+          <Button className="w-full text-white bg-primary border-2 border-black rounded-lg py-5 hover:text-black hover:border-2 hover:bg-white hover:text-lg duration-200 transition-all ease-linear  justify-between">
             Start free 7-days trial <ArrowRight />
           </Button>
         </div>
@@ -99,7 +100,7 @@ export default function Pricing() {
               24/7 priority support via email, phone, or live chat.
             </p>
           </div>
-          <Button className=" w-full text-white bg-primary border-2 border-black rounded-lg py-5 hover:text-black hover:border-2 hover:bg-white justify-between">
+          <Button className=" w-full text-white bg-primary border-2 border-black rounded-lg py-5 hover:text-black hover:border-2 hover:bg-white justify-between  hover:text-lg duration-200 transition-all ease-linear ">
             Pay now <ArrowRight />
           </Button>
         </div>
@@ -173,105 +174,18 @@ export default function Pricing() {
       <div>
         <h2 className="text-7xl font-bold mt-20 mb-10 text-center">FAQS</h2>
       </div>
+
       <Accordion type="single" collapsible className="w-full text-xl">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>
-            Where can I purchase a membership package?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            You can purchase membership packages directly on our website through
-            a secure and user-friendly payment gateway.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger className="text-lg">
-            Do I need to create an account to purchase a membership package?
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes, you need to create an account on our website to purchase a
-            membership package.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>
-            Can I upgrade or downgrade my membership package after purchase?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            Our Yes, you can upgrade or downgrade your membership package at any
-            time by contacting us via email or the provided phone number on the
-            website.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-4">
-          <AccordionTrigger>
-            Can I cancel my membership subscription?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            Yes, you can cancel your subscription at any time. However, there
-            are no refunds for the time already used.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-5">
-          <AccordionTrigger>
-            Can I transfer my membership package to someone else?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            No, your membership package is personal and cannot be transferred to
-            another person.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-6">
-          <AccordionTrigger>
-            How will I receive employer contact information with my membership
-            package?{" "}
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            Premium membership packages will have access to employer contact
-            information, while basic membership packages will have lower
-            priority access.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-7">
-          <AccordionTrigger>
-            Is there an expiration date for membership packages?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            Yes, each membership package has a specific expiration date, and you
-            can view details of this expiration when purchasing.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-8">
-          <AccordionTrigger>
-            Can I participate in promotions or discounts when purchasing a
-            membership package?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            We often have promotions and discounts for membership packages.
-            Please check our website or follow us on social media for updates on
-            these offers.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-9">
-          <AccordionTrigger>
-            Can I request a refund if I&apos;m not satisfied with my membership
-            package?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            We do not offer refunds for purchased membership packages. However,
-            we always welcome feedback to improve our services.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-10">
-          <AccordionTrigger>
-            How can I contact customer service if I have issues or questions
-            about my membership package?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg">
-            You can contact us via email, phone, or live chat on the website.
-            Our customer support team will be happy to assist you with any
-            issues or questions you may have.
-          </AccordionContent>
-        </AccordionItem>
+        {faqs.map((faq, index) => {
+          return (
+            <Faqs
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              index={index}
+            />
+          );
+        })}
       </Accordion>
     </Page>
   );
