@@ -22,7 +22,7 @@ export default function QuickView({ user }: { user: string }) {
       className={twMerge("flex flex-col gap-y-2", `${mitr.variable} font-sans`)}
     >
       <div className="flex items-center justify-between">
-        <Avatar className="bg-primary text xl justify-center items-center">
+        <Avatar className="bg-primary text-white text-xl justify-center items-center">
           {userNameChar}
         </Avatar>
         <Typography className="font-bold">{splitUserName(user)}</Typography>

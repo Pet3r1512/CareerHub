@@ -59,7 +59,7 @@ function UserMenuTrigger({ userName }: { userName: string }) {
           <LogOut className="lg:hidden text-red-700" />
         </SignOutButton>
       </div>
-      <Avatar className="bg-primary text xl justify-center items-center">
+      <Avatar className="bg-primary text-white text-xl justify-center items-center">
         {userNameChar}
       </Avatar>
     </MenubarTrigger>
