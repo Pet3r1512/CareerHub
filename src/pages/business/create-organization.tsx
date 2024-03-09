@@ -266,7 +266,7 @@ export default function CreateOrganization() {
                             </FormControl>
                             <div className="space-y-1 leading-none">
                               <FormLabel className="text-black">
-                                I agree to the
+                                I agree to the{" "}
                                 <Link href="#" className="text-blue">
                                   terms and conditions
                                 </Link>
