@@ -31,13 +31,15 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Link from "next/link";
 import ImageWithLoading from "@/assets/_UI/_imageWithLoading";
 import { Suspense } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
+import { Minus } from "lucide-react";
+import ContactCombobox from "@/components/organization-form/contact-combobox";
 
-const CreateOrganizationSchema = z.object({
+const validationSchema = z.object({
   company_name: z
     .string()
     .trim()
@@ -45,6 +47,9 @@ const CreateOrganizationSchema = z.object({
       message: "Organization name is required",
     })
     .max(255),
+  URLs: z.array(
+    z.object({ label: z.string(), value: z.string().url().min(1) })
+  ),
   location: z
     .string()
     .trim()
@@ -54,9 +59,6 @@ const CreateOrganizationSchema = z.object({
     .max(255),
   company_type: z.string().min(1, {
     message: "Please select an organization type.",
-  }),
-  founder: z.string().trim().min(1, {
-    message: "Founder's name is required.",
   }),
   description: z.string().trim().min(1, {
     message: "Organization description is required.",
@@ -68,37 +70,52 @@ const CreateOrganizationSchema = z.object({
   }),
 });
 
+type FormValues = z.infer<typeof validationSchema>;
+
 export default function CreateOrganization() {
   const { toast } = useToast();
 
-  const form = useForm<z.infer<typeof CreateOrganizationSchema>>({
-    resolver: zodResolver(CreateOrganizationSchema),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(validationSchema),
+    mode: "onSubmit",
     defaultValues: {
       company_name: "",
+      URLs: [
+        {
+          label: "Add links to your website, social media, etc.",
+          value: "",
+        },
+      ],
       location: "",
-      founder: "",
+      company_type: "",
       description: "",
       terms: false,
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof CreateOrganizationSchema>) => {
-    toast({
-      className: "border border-green bg-green",
-      title: "Organization Created",
-      description: "Your organization has been created successfully.",
-    });
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "URLs",
+  });
+
+  const onSubmit = (values: FormValues) => {
+    console.log(values);
   };
+
+  const { isValid, isDirty } = form.formState;
+
+  const isSubmittable = !!isValid && !!isDirty;
 
   return (
     <Page pageName="Create Organization" className="p-0">
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="flex items-center justify-center py-16 px-4 relative">
+        <div className="flex items-center justify-center py-16 px-4 relative w-full h-screen">
           <ImageWithLoading
             src="https://images.unsplash.com/photo-1534312527009-56c7016453e6?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Create Organization background image"
             fill
-            className="w-full h-full object-cover rounded-t-lg z-0"
+            priority
+            className="w-full h-full object-cover rounded-t-lg"
           />
           <Card className="w-full lg:w-1/2 z-10">
             <CardHeader>
@@ -109,25 +126,9 @@ export default function CreateOrganization() {
               <CardContent>
                 <Form {...form}>
                   <form
-                    onSubmit={form.handleSubmit(handleSubmit)}
+                    onSubmit={form.handleSubmit(onSubmit)}
                     className="mt-4 space-y-4"
                   >
-                    <FormField
-                      control={form.control}
-                      name="founder"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="founder">Founder</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Name of the founder"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
                     <FormField
                       control={form.control}
                       name="company_name"
@@ -152,7 +153,7 @@ export default function CreateOrganization() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel htmlFor="location">
-                            Contact Information
+                            Organization Location
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -164,6 +165,41 @@ export default function CreateOrganization() {
                         </FormItem>
                       )}
                     />
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center justify-between">
+                        <FormLabel>URLs</FormLabel>
+                        <ContactCombobox append={append} />
+                      </div>
+
+                      {fields.map((field, index) => (
+                        <FormField
+                          control={form.control}
+                          key={field.id}
+                          name={`URLs.${index}.value`}
+                          render={({ field }) => (
+                            <FormItem className="w-full">
+                              <FormControl>
+                                <div className="flex space-x-4 items-center">
+                                  <Input
+                                    placeholder={fields[index].label}
+                                    {...field}
+                                  />
+                                  <Button
+                                    type="button"
+                                    onClick={() => remove(index)}
+                                    variant="outline"
+                                    className="w-fit"
+                                  >
+                                    <Minus size={16} />
+                                  </Button>
+                                </div>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      ))}
+                    </div>
                     <FormField
                       control={form.control}
                       name="company_type"
@@ -230,7 +266,7 @@ export default function CreateOrganization() {
                             </FormControl>
                             <div className="space-y-1 leading-none">
                               <FormLabel className="text-black">
-                                I agree to the {/* Add link for terms later */}
+                                I agree to the
                                 <Link href="#" className="text-blue">
                                   terms and conditions
                                 </Link>
@@ -243,7 +279,11 @@ export default function CreateOrganization() {
                       )}
                     />
                     <CardFooter className="w-full flex justify-end p-0">
-                      <Button type="submit" className="text-[#d9d9d9] mt-4">
+                      <Button
+                        type="submit"
+                        disabled={!isSubmittable}
+                        className="text-[#d9d9d9] mt-4"
+                      >
                         Create Organization
                       </Button>
                     </CardFooter>
