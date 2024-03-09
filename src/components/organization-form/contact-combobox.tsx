@@ -67,7 +67,11 @@ export default function ContactCombobox({ append }: { append: any }) {
     return (
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-fit" type="button">
+          <Button
+            variant="outline"
+            className="w-fit text-gray-dark"
+            type="button"
+          >
             <Plus size={16} />
           </Button>
         </PopoverTrigger>
@@ -81,7 +85,11 @@ export default function ContactCombobox({ append }: { append: any }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="outline" className="w-fit" type="button">
+        <Button
+          variant="outline"
+          className="w-fit text-gray-dark"
+          type="button"
+        >
           <Plus size={14} />
         </Button>
       </DrawerTrigger>
