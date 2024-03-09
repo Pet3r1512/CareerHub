@@ -113,7 +113,7 @@ export default function CreateOrganization() {
   return (
     <Page pageName="Create Organization" className="p-0">
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="flex items-center justify-center py-16 px-4 relative w-full h-screen">
+        <div className="flex items-center justify-center py-16 px-4 relative w-full min-h-screen">
           <ImageWithLoading
             src="https://images.unsplash.com/photo-1534312527009-56c7016453e6?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Create Organization background image"
