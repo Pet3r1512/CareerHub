@@ -47,6 +47,8 @@ const validationSchema = z.object({
       message: "Organization name is required",
     })
     .max(255),
+  image:
+    typeof window === "undefined" ? z.any() : z.instanceof(FileList).optional(),
   URLs: z.array(
     z.object({ label: z.string(), value: z.string().url().min(1) })
   ),
@@ -77,7 +79,7 @@ export default function CreateOrganization() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(validationSchema),
-    mode: "onSubmit",
+    mode: "onChange",
     defaultValues: {
       company_name: "",
       URLs: [
@@ -92,6 +94,8 @@ export default function CreateOrganization() {
       terms: false,
     },
   });
+
+  const fileRef = form.register("image");
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
@@ -149,6 +153,26 @@ export default function CreateOrganization() {
                     />
                     <FormField
                       control={form.control}
+                      name="image"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel htmlFor="image">
+                            Organization Logo
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              {...fileRef}
+                              className="text-gray-dark"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
                       name="location"
                       render={({ field }) => (
                         <FormItem>
@@ -188,7 +212,7 @@ export default function CreateOrganization() {
                                     type="button"
                                     onClick={() => remove(index)}
                                     variant="outline"
-                                    className="w-fit"
+                                    className="w-fit text-gray-dark"
                                   >
                                     <Minus size={16} />
                                   </Button>
