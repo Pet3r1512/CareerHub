@@ -32,7 +32,7 @@ export default function UserAvatar() {
     return (
       <Menubar className="border-0 w-full lg:max-w-fit">
         <MenubarMenu>
-          <UserMenuTrigger />
+          <UserMenuTrigger userName={authData.user} />
           <UserMenuContent user={authData.user} />
         </MenubarMenu>
       </Menubar>
@@ -40,7 +40,15 @@ export default function UserAvatar() {
   }
 }
 
-function UserMenuTrigger() {
+
+function UserMenuTrigger({ userName }: { userName: string }) {
+  const splitUserName=splitName(userName)
+  const userNameChar=splitUserName[splitUserName.length - 1].charAt(0)
+  function splitName(userName: string){
+    const userN=userName.split(' ');
+    return userN;
+  }
+
   return (
     <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
       <div className="truncate text-xl flex items-center justify-between w-full">
@@ -51,8 +59,8 @@ function UserMenuTrigger() {
           <LogOut className="lg:hidden text-red-700" />
         </SignOutButton>
       </div>
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <Avatar className="bg-primary text-white text-xl justify-center items-center">
+        {userNameChar}
       </Avatar>
     </MenubarTrigger>
   );
