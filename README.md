@@ -17,7 +17,8 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 ### Development
 
 - [Next.js](https://nextjs.org/) - TypeScript
-- [Redux](https://redux.js.org/)
+- [tRPC](https://trpc.io/)
+- [React Query](https://tanstack.com/query/v3/)
 
 ### Styling
 
@@ -29,6 +30,7 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 
 - [Prisma](https://www.prisma.io/)
 - [PlanetScale](https://planetscale.com/)
+- [Neon](https://neon.tech/)
 - [Supabase](https://supabase.com/)
 
 ### Authentication and security
@@ -63,7 +65,7 @@ This project is only used for EDUCATIONAL AND LEARNING PURPOSE; COMMERCIAL of an
 
 Special thanks to:
 
-- [Figma Design](<https://www.figma.com/file/CcrwqMT0urq0xXUATau6ap/Jobhuntly---Job-Board-%26-Portal-Web-and-Mobile-UI-Kit-(Community)?type=design&node-id=0-1&mode=design&t=6O7040LGadXeGkeO-0>)
+- [Figma Design](<https://www.figma.com/file/Iv5kIX06OgoDdtsFpl7LNG/JobHuntly---Job-Hunting-Website-(Community)?type=design&node-id=0-1&mode=design&t=aFxShUy9pru2yAIX-0>)
 - [User Dashboard Design](<https://www.figma.com/file/Bb1zBSeGgNkAAS2hyK7fm6/Dashboard---Online-Learning-Profile-(Community)?type=design&mode=design&t=PQr5zjPkbEo2kRrz-0>)
 - [Illutrations](<https://www.figma.com/file/P6Br53I38tz9P5t0V0RGdo/Free-Freelance-%26-Remote-Job-Illustration-Set-(Community)?type=design&t=6O7040LGadXeGkeO-6>)
 - [Placeholder Logos](<https://www.figma.com/file/rEFjFAtfZeqWL6b0Mcahls/PlaceLogos-%7C-Placeholder-Logos-(Community)?type=design&t=6O7040LGadXeGkeO-6>)
