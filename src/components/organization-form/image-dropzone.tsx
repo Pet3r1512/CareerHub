@@ -107,7 +107,7 @@ export default function ImageDropzone(props: ImageDropzoneProps) {
       name="image"
       render={({ field: { onChange } }) => (
         <FormItem>
-          <div className="flex justify-between items-start gap-16">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-16">
             <div>
               <FormLabel htmlFor="image" className="text-base">
                 Company Logo
