@@ -10,13 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Create staging environment
-      run: |
-        git checkout main
-        git branch -D staging
-        git push origin :staging
-        git checkout -b staging `git describe --abbrev=0 --tags`
-        git push --set-upstream origin staging
+      - name: Install Git
+        run: sudo apt-get install git -y
+
+      - name: Create staging environment
+        run: |
+          git checkout main
+          git branch -D staging || true
+          git push origin :staging || true
+          git checkout -b staging $(git describe --abbrev=0 --tags)
+          git push --set-upstream origin staging
