@@ -18,6 +18,7 @@ import {
 import { toast } from "@/components/ui/use-toast";
 import { trpc } from "@/server/utils/trpc";
 import { Toaster } from "@/components/ui/toaster";
+import { useRouter } from "next/router";
 
 export function Signin({
   admin,
@@ -34,6 +35,7 @@ export function Signin({
         title: "Log in successfully!",
         className: "bg-green",
       });
+      useRouter().push("/admin/dashboard");
     },
     onError: () => {
       toast({
