@@ -14,7 +14,6 @@ export default function UserDashboardSectionLayout({
         <h1 className="text-4xl font-extrabold cursor-default">
           {sectionTitle}
         </h1>
-
         {children}
       </div>
     </ScrollArea>
