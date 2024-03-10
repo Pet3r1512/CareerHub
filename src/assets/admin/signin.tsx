@@ -20,6 +20,8 @@ import { trpc } from "@/server/utils/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import { useRouter } from "next/router";
 
+const router = useRouter();
+
 export function Signin({
   admin,
   setAdmin,
@@ -35,7 +37,7 @@ export function Signin({
         title: "Log in successfully!",
         className: "bg-green",
       });
-      useRouter().push("/admin/dashboard");
+      router.push("/admin/dashboard");
     },
     onError: () => {
       toast({
