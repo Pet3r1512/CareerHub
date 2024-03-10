@@ -121,7 +121,7 @@ export default function CreateOrganization() {
             priority
             className="w-full h-full object-cover rounded-t-lg"
           />
-          <Card className="w-full lg:w-1/2 z-10">
+          <Card className="w-full lg:w-2/3 z-10">
             <CardHeader className="pb-0">
               <CardTitle>Basic Information</CardTitle>
               <CardDescription>
@@ -131,131 +131,155 @@ export default function CreateOrganization() {
             <CardContent>
               <Separator className="my-6" />
               <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-4"
-                >
+                <form onSubmit={form.handleSubmit(onSubmit)}>
                   <ImageDropzone name="image" form={form} />
                   <Separator className="my-6" />
-                  <FormField
-                    control={form.control}
-                    name="company_name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="company_name">
-                          Organization Name
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Full legal name of the organization."
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="location"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="location">
-                          Organization Location
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Organization's address"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                      <FormLabel>URLs</FormLabel>
-                      <ContactCombobox append={append} />
+                  <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
+                    <div className="lg:w-1/3">
+                      <FormLabel className="text-sm lg:text-base">
+                        Company Details
+                      </FormLabel>
+                      <FormDescription className="text-xs">
+                        Introduce your company core info quickly to users by
+                        fill up company details
+                      </FormDescription>
                     </div>
-
-                    {fields.map((field, index) => (
+                    <section className="flex flex-col gap-6 lg:w-2/3">
                       <FormField
                         control={form.control}
-                        key={field.id}
-                        name={`URLs.${index}.value`}
+                        name="company_name"
                         render={({ field }) => (
-                          <FormItem className="w-full">
+                          <FormItem>
+                            <FormLabel htmlFor="company_name">
+                              Company Name
+                            </FormLabel>
                             <FormControl>
-                              <div className="flex space-x-4 items-center">
-                                <Input
-                                  placeholder={fields[index].label}
-                                  {...field}
-                                />
-                                <Button
-                                  type="button"
-                                  onClick={() => remove(index)}
-                                  variant="outline"
-                                  className="w-fit text-gray-dark"
-                                >
-                                  <Minus size={16} />
-                                </Button>
-                              </div>
+                              <Input
+                                placeholder="Full legal name of the organization."
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                    ))}
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="company_type"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="company_type">
-                          Organization Type
-                        </FormLabel>
-                        <FormControl>
-                          <Select onValueChange={field.onChange}>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select..." />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectGroup>
-                                <SelectLabel>Company Type</SelectLabel>
-                                <SelectItem value="non-profit">
-                                  Non-Profit
-                                </SelectItem>
-                                <SelectItem value="for-profit">
-                                  For-Profit
-                                </SelectItem>
-                                <SelectItem value="other">Other</SelectItem>
-                              </SelectGroup>
-                            </SelectContent>
-                          </Select>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="description">Description</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Brief description of the organization."
-                            className="resize-none"
-                            {...field}
+                      <FormField
+                        control={form.control}
+                        name="location"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="location">Location</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Organization's address"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between">
+                          <FormLabel>URLs</FormLabel>
+                          <ContactCombobox append={append} />
+                        </div>
+
+                        {fields.map((field, index) => (
+                          <FormField
+                            control={form.control}
+                            key={field.id}
+                            name={`URLs.${index}.value`}
+                            render={({ field }) => (
+                              <FormItem className="w-full">
+                                <FormControl>
+                                  <div className="flex space-x-4 items-center">
+                                    <Input
+                                      placeholder={fields[index].label}
+                                      {...field}
+                                    />
+                                    <Button
+                                      type="button"
+                                      onClick={() => remove(index)}
+                                      variant="outline"
+                                      className="w-fit text-gray-dark"
+                                    >
+                                      <Minus size={16} />
+                                    </Button>
+                                  </div>
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
                           />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                        ))}
+                      </div>
+                      <FormField
+                        control={form.control}
+                        name="company_type"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="company_type">
+                              Organization Type
+                            </FormLabel>
+                            <FormControl>
+                              <Select onValueChange={field.onChange}>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select..." />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectLabel>Company Type</SelectLabel>
+                                    <SelectItem value="non-profit">
+                                      Non-Profit
+                                    </SelectItem>
+                                    <SelectItem value="for-profit">
+                                      For-Profit
+                                    </SelectItem>
+                                    <SelectItem value="other">Other</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </section>
+                  </FormItem>
+                  <Separator className="my-6 mt-8" />
+                  <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
+                    <div className="lg:w-1/3">
+                      <FormLabel className="text-sm lg:text-base">
+                        About Company
+                      </FormLabel>
+                      <FormDescription className="text-xs">
+                        Brief description for your company. URLs are
+                        hyperlinked.
+                      </FormDescription>
+                    </div>
+                    <section className="flex flex-col gap-6 lg:w-2/3">
+                      <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="description">
+                              Description
+                            </FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Brief description of the organization."
+                                className="resize-none"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </section>
+                  </FormItem>
                   <FormField
                     control={form.control}
                     name="terms"

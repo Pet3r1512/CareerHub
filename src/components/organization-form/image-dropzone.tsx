@@ -109,7 +109,7 @@ export default function ImageDropzone(props: ImageDropzoneProps) {
         <FormItem>
           <div className="flex flex-col md:flex-row justify-between items-start gap-16">
             <div>
-              <FormLabel htmlFor="image" className="text-base">
+              <FormLabel htmlFor="image" className="text-sm lg:text-base">
                 Company Logo
               </FormLabel>
               <FormDescription className="text-xs">
