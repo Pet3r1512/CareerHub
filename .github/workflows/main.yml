@@ -1,0 +1,22 @@
+name: Create Staging Environment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create staging environment
+      run: |
+        git checkout main
+        git branch -D staging
+        git push origin :staging
+        git checkout -b staging `git describe --abbrev=0 --tags`
+        git push --set-upstream origin staging
