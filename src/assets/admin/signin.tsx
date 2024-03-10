@@ -20,8 +20,6 @@ import { trpc } from "@/server/utils/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import { useRouter } from "next/router";
 
-const router = useRouter();
-
 export function Signin({
   admin,
   setAdmin,
@@ -29,6 +27,7 @@ export function Signin({
   admin: string;
   setAdmin: React.Dispatch<React.SetStateAction<string>>;
 }) {
+  const router = useRouter();
   const mutation = trpc.isAdmin.useMutation({
     onSuccess: (admin) => {
       setAdmin(admin);
