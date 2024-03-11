@@ -151,14 +151,23 @@ function SignInForm() {
 
   return (
     <Card
+      placeholder=""
       color="transparent"
       shadow={false}
       className="flex flex-col items-center"
     >
-      <Typography variant="h1" className="text-primary self-start">
+      <Typography
+        placeholder=""
+        variant="h1"
+        className="text-primary self-start"
+      >
         Log In
       </Typography>
-      <Typography color="gray" className="mt-1 font-normal w-full self-start">
+      <Typography
+        placeholder=""
+        color="gray"
+        className="mt-1 font-normal w-full self-start"
+      >
         Welcome back! Please sign in to find your dream position!
       </Typography>
       <Form {...form}>
@@ -236,7 +245,11 @@ function SignInForm() {
               )}
             />
           </Button>
-          <Typography color="black" className="mt-4 text-center font-normal">
+          <Typography
+            placeholder=""
+            color="black"
+            className="mt-4 text-center font-normal"
+          >
             Do not have an account?{" "}
             <Link
               href="/auth/signup"

@@ -40,19 +40,21 @@ export default function UserAvatar() {
   }
 }
 
-
 function UserMenuTrigger({ userName }: { userName: string }) {
-  const splitUserName=splitName(userName)
-  const userNameChar=splitUserName[splitUserName.length - 1].charAt(0)
-  function splitName(userName: string){
-    const userN=userName.split(' ');
+  const splitUserName = splitName(userName);
+  const userNameChar = splitUserName[splitUserName.length - 1].charAt(0);
+  function splitName(userName: string) {
+    const userN = userName.split(" ");
     return userN;
   }
 
   return (
     <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
       <div className="truncate text-xl flex items-center justify-between w-full">
-        <Typography className="truncate text-lg font-bold w-1/2 lg:w-full">
+        <Typography
+          placeholder=""
+          className="truncate text-lg font-bold w-1/2 lg:w-full"
+        >
           Me <ChevronDown className="hidden lg:inline-block" />
         </Typography>
         <SignOutButton>

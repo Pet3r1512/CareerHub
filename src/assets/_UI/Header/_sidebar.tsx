@@ -30,6 +30,7 @@ export default function Sidebar({
 
   return (
     <Drawer
+      placeholder=""
       open={isOpen}
       onClose={() => {
         setIsOpen(false);
