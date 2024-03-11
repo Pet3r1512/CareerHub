@@ -41,6 +41,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Minus } from "lucide-react";
 import ContactCombobox from "@/components/organization-form/contact-combobox";
 import ImageDropzone from "@/components/organization-form/image-dropzone";
+import TipTapDescription from "@/components/organization-form/tiptap-description";
 
 const validationSchema = z.object({
   company_name: z
@@ -52,7 +53,7 @@ const validationSchema = z.object({
     .max(255),
   image: z.any().optional(),
   URLs: z.array(
-    z.object({ label: z.string(), value: z.string().url().min(1) })
+    z.object({ label: z.string(), value: z.string().trim().url().min(1) })
   ),
   location: z
     .string()
@@ -61,10 +62,10 @@ const validationSchema = z.object({
       message: "Organization location is required.",
     })
     .max(255),
-  company_type: z.string().min(1, {
+  company_type: z.string().trim().min(1, {
     message: "Please select an organization type.",
   }),
-  description: z.string().trim().min(1, {
+  description: z.string().min(1, {
     message: "Organization description is required.",
   }),
   terms: z.literal<boolean>(true, {
@@ -268,10 +269,9 @@ export default function CreateOrganization() {
                               Description
                             </FormLabel>
                             <FormControl>
-                              <Textarea
-                                placeholder="Brief description of the organization."
-                                className="resize-none"
-                                {...field}
+                              <TipTapDescription
+                                description={field.name}
+                                onChange={field.onChange}
                               />
                             </FormControl>
                             <FormMessage />
