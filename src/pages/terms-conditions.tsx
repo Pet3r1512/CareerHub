@@ -14,9 +14,9 @@ export default function TermsConditionsPage() {
       </p>
       <ol className="list-decimal text-justify text-xl px-8 sm:px-16 lg:px-64 mb-2 mt-10 flex flex-col gap-2">
         <li>
-          Acceptance of Terms: Users are typically required to agree to the
+          {`Acceptance of Terms: Users are typically required to agree to the
           terms and conditions before accessing or using the company's services
-          or products.
+          or products.`}
         </li>
         <li>
           Description of Services: A clear description of the services or
@@ -24,10 +24,10 @@ export default function TermsConditionsPage() {
           restrictions.
         </li>
         <li>
-          User Responsibilities: Outlines the responsibilities of users when
+          {`User Responsibilities: Outlines the responsibilities of users when
           using the company's services or products, such as providing accurate
           information, complying with laws and regulations, and maintaining the
-          security of their accounts.
+          security of their accounts.`}
         </li>
         <li>
           Payment Terms: If applicable, details regarding payment methods,
@@ -54,9 +54,9 @@ export default function TermsConditionsPage() {
           jurisdictional considerations.
         </li>
         <li>
-          Changes to Terms: The company's right to modify or update the terms
+          {`Changes to Terms: The company's right to modify or update the terms
           and conditions, along with any notification procedures for informing
-          users of changes.
+          users of changes.`}
         </li>
         <li>
           Termination of Services: Circumstances under which the company may
@@ -65,9 +65,9 @@ export default function TermsConditionsPage() {
         </li>
       </ol>
       <p className="text-xl text-justify px-4 sm:px-8 lg:px-64 mb-7 mt-10 justify-between">
-        It's important for users to carefully read and understand the terms and
+        {`It's important for users to carefully read and understand the terms and
         conditions of a company before agreeing to them, as they govern the
-        legal relationship between the company and its users.
+        legal relationship between the company and its users.`}
       </p>
     </Page>
   );
