@@ -3,6 +3,7 @@ import { companies } from "@/data/companies";
 import Page from "@/assets/_UI/Page";
 import CompanyHeader from "@/components/company/company-header";
 import Profile from "@/components/company/profile";
+import CompanyTeam from "@/components/company/company-team";
 
 export default function CompanyPage() {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function CompanyPage() {
       <div className="flex flex-col gap-8">
         <CompanyHeader />
         <Profile />
+        <CompanyTeam />
       </div>
     </Page>
   );
