@@ -6,13 +6,13 @@ export default function TermsConditionsPage() {
       <p className="text-5xl px-4 sm:px-8 lg:px-64 mb-7 mt-10">
         Terms & Conditions
       </p>
-      <p className="text-xl  text-justify px-4 sm:px-8 lg:px-64 mb-7 mt-10">
+      <p className="text-xl  px-4 sm:px-8 lg:px-64 mb-7 mt-10">
         The specific terms and conditions of a company can vary widely depending
         on the nature of the business, the industry it operates in, and the
         jurisdiction it falls under. However, here are some common elements that
         may be included in the terms and conditions of a company:
       </p>
-      <ol className="list-decimal text-justify text-xl px-8 sm:px-16 lg:px-64 mb-2 mt-10 flex flex-col gap-2">
+      <ol className="list-decimal text-xl px-8 sm:px-16 lg:px-64 mb-2 mt-10 flex flex-col gap-2">
         <li>
           {`Acceptance of Terms: Users are typically required to agree to the
           terms and conditions before accessing or using the company's services
@@ -64,7 +64,7 @@ export default function TermsConditionsPage() {
           any consequences for violating the terms and conditions.
         </li>
       </ol>
-      <p className="text-xl text-justify px-4 sm:px-8 lg:px-64 mb-7 mt-10 justify-between">
+      <p className="text-xl px-4 sm:px-8 lg:px-64 mb-7 mt-10 justify-between">
         {`It's important for users to carefully read and understand the terms and
         conditions of a company before agreeing to them, as they govern the
         legal relationship between the company and its users.`}
