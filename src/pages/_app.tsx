@@ -1,11 +1,9 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { ReduxProvider, store } from "@/lib/store";
+import { trpc } from "../server/utils/trpc";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <ReduxProvider store={store}>
-      <Component {...pageProps} />
-    </ReduxProvider>
-  );
+function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
 }
+
+export default trpc.withTRPC(App);
