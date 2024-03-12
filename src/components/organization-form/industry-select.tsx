@@ -62,9 +62,15 @@ export default function IndustrySelect() {
       isMulti
       instanceId={"industry_type"}
       placeholder="Select Industry"
-      className="basic-multi-select text-sm text-gray-dark"
+      className="basic-multi-select text-sm text-gray-dark border-input"
       classNamePrefix="select"
-      styles={{ placeholder: (base): any => ({ ...base, color: "#64748b" }) }}
+      styles={{
+        placeholder: (base): any => ({ ...base, color: "#64748b" }),
+        control: (base): any => ({
+          ...base,
+          borderColor: "hsl(var(--input))",
+        }),
+      }}
       onChange={(val) =>
         setValue(
           "industry_type",
