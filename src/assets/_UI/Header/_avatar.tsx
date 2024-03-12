@@ -16,13 +16,6 @@ import QuickView from "./User/quickview";
 import { mitr } from "../Page";
 import { twMerge } from "tailwind-merge";
 
-const splitUserName = splitName(localStorage.getItem("user")!);
-const userNameChar = splitUserName[splitUserName.length - 1].charAt(0);
-function splitName(userName: string) {
-  const userN = userName.split(" ");
-  return userN;
-}
-
 export default function UserAvatar({
   onlyAvatar,
   size,
@@ -36,6 +29,12 @@ export default function UserAvatar({
     user: "",
     token: "",
   });
+  const splitUserName = splitName(localStorage.getItem("user")!);
+  const userNameChar = splitUserName[splitUserName.length - 1].charAt(0);
+  function splitName(userName: string) {
+    const userN = userName.split(" ");
+    return userN;
+  }
   const router = useRouter();
   useEffect(() => {
     setAuthData({
@@ -62,7 +61,10 @@ export default function UserAvatar({
     return (
       <Menubar className="border-0 w-full lg:max-w-fit">
         <MenubarMenu>
-          <UserMenuTrigger userName={authData.user} />
+          <UserMenuTrigger
+            userNameChar={userNameChar}
+            userName={authData.user}
+          />
           <UserMenuContent user={authData.user} />
         </MenubarMenu>
       </Menubar>
@@ -70,7 +72,13 @@ export default function UserAvatar({
   }
 }
 
-function UserMenuTrigger({ userName }: { userName: string }) {
+function UserMenuTrigger({
+  userName,
+  userNameChar,
+}: {
+  userName: string;
+  userNameChar: string;
+}) {
   return (
     <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
       <div className="truncate text-xl flex items-center justify-between w-full">
