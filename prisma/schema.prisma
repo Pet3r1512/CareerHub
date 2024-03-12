@@ -1,10 +1,12 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
+  directUrl    = env("DIRECT_URL")
   relationMode = "prisma"
 }
 
@@ -20,4 +22,11 @@ model User {
   location     String?
   occupation   String?
   created_date DateTime  @default(now())
+}
+
+model Admin {
+  uuid     String @id @default(uuid())
+  username String
+  password String
+  name     String
 }
