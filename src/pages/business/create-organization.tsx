@@ -153,7 +153,7 @@ export default function CreateOrganization() {
                   <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
                     <div className="lg:w-1/3">
                       <FormLabel className="text-sm lg:text-base" asChild>
-                        Company Details
+                        <legend>Company Details</legend>
                       </FormLabel>
                       <FormDescription className="text-xs">
                         Introduce your company core info quickly to users by
@@ -167,7 +167,7 @@ export default function CreateOrganization() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel htmlFor="company_name" asChild>
-                              Company Name
+                              <legend>Company Name</legend>
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -185,7 +185,7 @@ export default function CreateOrganization() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel htmlFor="location" asChild>
-                              Location
+                              <legend>Location</legend>
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -199,7 +199,9 @@ export default function CreateOrganization() {
                       />
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center justify-between">
-                          <FormLabel asChild>URLs</FormLabel>
+                          <FormLabel asChild>
+                            <legend>URLs</legend>
+                          </FormLabel>
                           <ContactCombobox append={append} />
                         </div>
 
@@ -238,7 +240,7 @@ export default function CreateOrganization() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel htmlFor="industry_type" asChild>
-                              Industry
+                              <legend>Industry</legend>
                             </FormLabel>
                             <FormControl>
                               <IndustrySelect />
@@ -253,7 +255,7 @@ export default function CreateOrganization() {
                   <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
                     <div className="lg:w-1/3">
                       <FormLabel className="text-sm lg:text-base" asChild>
-                        About Company
+                        <legend>About Company</legend>
                       </FormLabel>
                       <FormDescription className="text-xs">
                         Brief description for your company. URLs are
@@ -267,7 +269,7 @@ export default function CreateOrganization() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel htmlFor="description" asChild>
-                              Description
+                              <legend>Description</legend>
                             </FormLabel>
                             <FormControl>
                               <TipTapDescription
@@ -297,13 +299,13 @@ export default function CreateOrganization() {
                           </FormControl>
                           <div className="space-y-1 leading-none">
                             <FormLabel className="text-black" asChild>
-                              <span>
+                              <legend>
                                 I agree to the{" "}
                                 <Link href="#" className="text-blue">
                                   terms and conditions
                                 </Link>
                                 .
-                              </span>
+                              </legend>
                             </FormLabel>
                           </div>
                         </div>

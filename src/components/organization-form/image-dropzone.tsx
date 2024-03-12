@@ -112,7 +112,7 @@ export default function ImageDropzone(props: ImageDropzoneProps) {
                 className="text-sm lg:text-base"
                 asChild
               >
-                Company Logo
+                <legend>Company Logo</legend>
               </FormLabel>
               <FormDescription className="text-xs">
                 This image will be shown publicly as company logo
