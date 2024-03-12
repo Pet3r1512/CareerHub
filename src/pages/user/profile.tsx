@@ -63,14 +63,8 @@ export default function Profile() {
 
   return (
     <div>
-      <Page
-        pageName="Profile"
-        noMenu
-        noFooter
-        noHeader
-        className="h-screen hidden sm:block"
-      >
-        <div className="gap-2 flex min-h-screen py-16">
+      <Page pageName="Profile" noMenu noFooter noHeader className="h-screen">
+        <div className="gap-2 flex min-h-screen lg:h-screen py-16">
           <UserDashboardMenu />
           <div className="flex-1 shadow-2xl rounded-2xl">
             {searchParams.get("section") === "public_profile" && (
@@ -94,17 +88,6 @@ export default function Profile() {
           </div>
         </div>
       </Page>
-      <div className="sm:hidden flex flex-col items-center gap-y-4 justify-center h-screen px-4">
-        <p className="text-2xl font-semibold text-center">
-          We only allow your profile to be accessed on devices with larger
-          screens to ensure that you can access all information in the most
-          complete and accurate way.
-        </p>
-        <p className="text-center text-lg">Sorry for the inconvenience</p>
-        <Link href={"/"}>
-          <Button className="text-white hover:bg-primary">Home</Button>
-        </Link>
-      </div>
     </div>
   );
 }
