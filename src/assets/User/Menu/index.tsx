@@ -106,7 +106,7 @@ export default function UserDashboardMenu() {
   return (
     <section
       className={twMerge(
-        "shadow-2xl rounded-2xl relative transition-all duration-175 ease-linear flex flex-col justify-between",
+        "shadow-2xl rounded-2xl relative transition-all duration-175 ease-linear md:flex flex-col justify-between hidden",
         expandMenu ? "sm:w-52 lg:w-60" : "w-16"
       )}
     >
