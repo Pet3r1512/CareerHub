@@ -42,6 +42,7 @@ import ContactCombobox from "@/components/organization-form/contact-combobox";
 import ImageDropzone from "@/components/organization-form/image-dropzone";
 import TipTapDescription from "@/components/organization-form/tiptap-description";
 import IndustrySelect from "@/components/organization-form/industry-select";
+import EmployeeSelect from "@/components/organization-form/employee-select";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = [
@@ -78,6 +79,9 @@ const validationSchema = z.object({
       message: "Organization location is required.",
     })
     .max(255),
+  company_size: z
+    .string()
+    .min(1, { message: "Please select the number of employees." }),
   industry_type: z
     .array(z.string())
     .nonempty({ message: "Please select at least one industry type." }),
@@ -108,6 +112,7 @@ export default function CreateOrganization() {
         },
       ],
       location: "",
+      company_size: "",
       description: "",
       terms: false,
     },
@@ -202,6 +207,21 @@ export default function CreateOrganization() {
                           </FormItem>
                         )}
                       />
+                      <FormField
+                        control={form.control}
+                        name="company_size"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="location" asChild>
+                              <legend>Company size</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <EmployeeSelect field={field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center justify-between">
                           <FormLabel htmlFor="URLs" asChild>
@@ -209,7 +229,6 @@ export default function CreateOrganization() {
                           </FormLabel>
                           <ContactCombobox append={append} />
                         </div>
-
                         {fields.map((field, index) => (
                           <FormField
                             control={form.control}
