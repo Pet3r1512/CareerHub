@@ -30,7 +30,7 @@ export default function TipTapDescription({
     editorProps: {
       attributes: {
         class:
-          "min-h-[125px] w-full rounded-tr-md rounded-tl-md border border-input bg-background px-3 py-2 text-sm ring-offset-background  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50",
+          "min-h-[125px] w-full rounded-tr-md rounded-tl-md border border-input bg-background px-3 py-2 text-sm ring-offset-background  focus-visible:outline-none focus-visible:ring-[#2684ff] focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:hover:border-[#2684ff] hover:border-[#b3b3b3] duration-100 disabled:cursor-not-allowed disabled:opacity-50",
       },
     },
     onUpdate({ editor }) {

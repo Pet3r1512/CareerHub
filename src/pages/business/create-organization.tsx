@@ -126,6 +126,9 @@ export default function CreateOrganization() {
 
   const isSubmittable = !!isValid && !!isDirty;
 
+  const inputClassName =
+    "focus-visible:ring-[#2684ff] focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:hover:border-[#2684ff] rounded-sm hover:border-[#b3b3b3] duration-100";
+
   return (
     <Page pageName="Create Organization" className="p-0">
       <Suspense fallback={<div>Loading...</div>}>
@@ -172,6 +175,7 @@ export default function CreateOrganization() {
                             <FormControl>
                               <Input
                                 placeholder="Full legal name of the organization."
+                                className={inputClassName}
                                 {...field}
                               />
                             </FormControl>
@@ -190,6 +194,7 @@ export default function CreateOrganization() {
                             <FormControl>
                               <Input
                                 placeholder="Organization's address"
+                                className={inputClassName}
                                 {...field}
                               />
                             </FormControl>
@@ -199,7 +204,7 @@ export default function CreateOrganization() {
                       />
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center justify-between">
-                          <FormLabel asChild>
+                          <FormLabel htmlFor="URLs" asChild>
                             <legend>URLs</legend>
                           </FormLabel>
                           <ContactCombobox append={append} />
@@ -216,6 +221,7 @@ export default function CreateOrganization() {
                                   <div className="flex space-x-4 items-center">
                                     <Input
                                       placeholder={fields[index].label}
+                                      className={inputClassName}
                                       {...field}
                                     />
                                     <Button
