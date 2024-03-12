@@ -64,6 +64,7 @@ export default function IndustrySelect() {
       placeholder="Select Industry"
       className="basic-multi-select text-sm text-gray-dark"
       classNamePrefix="select"
+      styles={{ placeholder: (base): any => ({ ...base, color: "#64748b" }) }}
       onChange={(val) =>
         setValue(
           "industry_type",
