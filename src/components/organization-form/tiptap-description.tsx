@@ -1,7 +1,6 @@
 "use client";
 import { useEditor, EditorContent } from "@tiptap/react";
 import Link from "@tiptap/extension-link";
-import HardBreak from "@tiptap/extension-hard-break";
 import CharacterCount from "@tiptap/extension-character-count";
 import StarterKit from "@tiptap/starter-kit";
 import TipTapToolbar from "./tiptap-toolbar";
@@ -17,7 +16,6 @@ export default function TipTapDescription({
   const editor = useEditor({
     extensions: [
       StarterKit,
-      HardBreak,
       Link.configure({
         linkOnPaste: true,
         HTMLAttributes: {
