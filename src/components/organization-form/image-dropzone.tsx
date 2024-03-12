@@ -1,12 +1,11 @@
 import { useDropzone, FileRejection } from "react-dropzone";
 import { cn } from "@/lib/utils";
-import { twMerge } from "tailwind-merge";
 import { ImageIcon, XIcon } from "lucide-react";
 import { FormValues } from "@/pages/business/create-organization";
-import { useState, useEffect, ChangeEventHandler, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { useFieldArray, useFormContext, UseFormReturn } from "react-hook-form";
+import { useFormContext, UseFormReturn } from "react-hook-form";
 import {
   FormField,
   FormItem,
@@ -24,8 +23,7 @@ type ImageDropzoneProps = {
 export default function ImageDropzone(props: ImageDropzoneProps) {
   const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
   const { name, form } = props;
-  const { register, unregister, setValue, watch, setError, clearErrors } =
-    useFormContext();
+  const { setValue, watch, setError, clearErrors } = useFormContext();
   const [files, setFiles] = useState<(File & { preview: string })[]>(
     watch(name) || []
   );
@@ -128,6 +126,7 @@ export default function ImageDropzone(props: ImageDropzoneProps) {
                 >
                   <Input
                     type="image"
+                    className="hidden"
                     {...getInputProps({ onDrop: onChange })}
                   />
                   <div className="flex flex-col gap-2 items-center">
