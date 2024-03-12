@@ -87,7 +87,7 @@ export default function ImageDropzone(props: ImageDropzoneProps) {
   ));
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: { "image/*": [".jpg", ".jpeg", ".png"] },
+    accept: { "image/*": [".jpg", ".jpeg", ".png", ".webp"] },
     maxSize: MAX_FILE_SIZE,
     multiple: false,
     onDrop,

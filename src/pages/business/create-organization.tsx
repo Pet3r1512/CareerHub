@@ -41,6 +41,15 @@ import { Minus } from "lucide-react";
 import ContactCombobox from "@/components/organization-form/contact-combobox";
 import ImageDropzone from "@/components/organization-form/image-dropzone";
 import TipTapDescription from "@/components/organization-form/tiptap-description";
+import IndustrySelect from "@/components/organization-form/industry-select";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
 
 const validationSchema = z.object({
   company_name: z
@@ -50,10 +59,18 @@ const validationSchema = z.object({
       message: "Organization name is required",
     })
     .max(255),
-  image: z.any().optional(),
-  URLs: z.array(
-    z.object({ label: z.string(), value: z.string().trim().url().min(1) })
-  ),
+  image: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Only .jpg, .jpeg, .png and .webp formats are supported."
+    ),
+  URLs: z
+    .array(
+      z.object({ label: z.string(), value: z.string().trim().url().min(1) })
+    )
+    .nonempty({ message: "Please add at least one URL." }),
   location: z
     .string()
     .trim()
@@ -61,9 +78,9 @@ const validationSchema = z.object({
       message: "Organization location is required.",
     })
     .max(255),
-  company_type: z.string().trim().min(1, {
-    message: "Please select an organization type.",
-  }),
+  industry_type: z
+    .array(z.string())
+    .nonempty({ message: "Please select at least one industry type." }),
   description: z.string().min(1, {
     message: "Organization description is required.",
   }),
@@ -91,7 +108,6 @@ export default function CreateOrganization() {
         },
       ],
       location: "",
-      company_type: "",
       description: "",
       terms: false,
     },
@@ -216,30 +232,14 @@ export default function CreateOrganization() {
                       </div>
                       <FormField
                         control={form.control}
-                        name="company_type"
+                        name="industry_type"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel htmlFor="company_type">
-                              Organization Type
+                            <FormLabel htmlFor="industry_type">
+                              Industry
                             </FormLabel>
                             <FormControl>
-                              <Select onValueChange={field.onChange}>
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select..." />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectGroup>
-                                    <SelectLabel>Company Type</SelectLabel>
-                                    <SelectItem value="non-profit">
-                                      Non-Profit
-                                    </SelectItem>
-                                    <SelectItem value="for-profit">
-                                      For-Profit
-                                    </SelectItem>
-                                    <SelectItem value="other">Other</SelectItem>
-                                  </SelectGroup>
-                                </SelectContent>
-                              </Select>
+                              <IndustrySelect />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
