@@ -152,7 +152,7 @@ export default function CreateOrganization() {
                   <Separator className="my-6" />
                   <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
                     <div className="lg:w-1/3">
-                      <FormLabel className="text-sm lg:text-base">
+                      <FormLabel className="text-sm lg:text-base" asChild>
                         Company Details
                       </FormLabel>
                       <FormDescription className="text-xs">
@@ -166,7 +166,7 @@ export default function CreateOrganization() {
                         name="company_name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel htmlFor="company_name">
+                            <FormLabel htmlFor="company_name" asChild>
                               Company Name
                             </FormLabel>
                             <FormControl>
@@ -184,7 +184,9 @@ export default function CreateOrganization() {
                         name="location"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel htmlFor="location">Location</FormLabel>
+                            <FormLabel htmlFor="location" asChild>
+                              Location
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Organization's address"
@@ -197,7 +199,7 @@ export default function CreateOrganization() {
                       />
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center justify-between">
-                          <FormLabel>URLs</FormLabel>
+                          <FormLabel asChild>URLs</FormLabel>
                           <ContactCombobox append={append} />
                         </div>
 
@@ -235,7 +237,7 @@ export default function CreateOrganization() {
                         name="industry_type"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel htmlFor="industry_type">
+                            <FormLabel htmlFor="industry_type" asChild>
                               Industry
                             </FormLabel>
                             <FormControl>
@@ -250,7 +252,7 @@ export default function CreateOrganization() {
                   <Separator className="my-6 mt-8" />
                   <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
                     <div className="lg:w-1/3">
-                      <FormLabel className="text-sm lg:text-base">
+                      <FormLabel className="text-sm lg:text-base" asChild>
                         About Company
                       </FormLabel>
                       <FormDescription className="text-xs">
@@ -264,7 +266,7 @@ export default function CreateOrganization() {
                         name="description"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel htmlFor="description">
+                            <FormLabel htmlFor="description" asChild>
                               Description
                             </FormLabel>
                             <FormControl>
@@ -294,12 +296,14 @@ export default function CreateOrganization() {
                             />
                           </FormControl>
                           <div className="space-y-1 leading-none">
-                            <FormLabel className="text-black">
-                              I agree to the{" "}
-                              <Link href="#" className="text-blue">
-                                terms and conditions
-                              </Link>
-                              .
+                            <FormLabel className="text-black" asChild>
+                              <span>
+                                I agree to the{" "}
+                                <Link href="#" className="text-blue">
+                                  terms and conditions
+                                </Link>
+                                .
+                              </span>
                             </FormLabel>
                           </div>
                         </div>
