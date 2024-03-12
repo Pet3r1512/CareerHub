@@ -222,6 +222,12 @@ function SignInForm() {
               )}
             />
           </div>
+          <Link
+            href="/auth/forgotPassword"
+            className="italic text-xs text-gray-900"
+          >
+            Forgot Password?
+          </Link>
           <Button
             className="text-white rounded-xl px-6 py-4 text-lg font-semibold flex items-center gap-1 justify-between mt-8"
             disabled={submitting ? true : false}
