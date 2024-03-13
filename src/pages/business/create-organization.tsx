@@ -16,15 +16,6 @@ import {
   FormDescription,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -43,6 +34,7 @@ import ImageDropzone from "@/components/organization-form/image-dropzone";
 import TipTapDescription from "@/components/organization-form/tiptap-description";
 import IndustrySelect from "@/components/organization-form/industry-select";
 import EmployeeSelect from "@/components/organization-form/employee-select";
+import DateSelect from "@/components/organization-form/date-select";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = [
@@ -82,6 +74,10 @@ const validationSchema = z.object({
   company_size: z
     .string()
     .min(1, { message: "Please select the number of employees." }),
+  date_founded: z
+    .string()
+    .refine((str) => !isNaN(new Date(str).getTime()), "Invalid date.")
+    .transform((str) => new Date(str)),
   industry_type: z
     .array(z.string())
     .nonempty({ message: "Please select at least one industry type." }),
@@ -113,6 +109,7 @@ export default function CreateOrganization() {
       ],
       location: "",
       company_size: "",
+      industry_type: [],
       description: "",
       terms: false,
     },
@@ -212,11 +209,26 @@ export default function CreateOrganization() {
                         name="company_size"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel htmlFor="location" asChild>
-                              <legend>Company size</legend>
+                            <FormLabel htmlFor="company_size" asChild>
+                              <legend>Company Size</legend>
                             </FormLabel>
                             <FormControl>
                               <EmployeeSelect field={field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="date_founded"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="date_founded" asChild>
+                              <legend>Date Founded</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <DateSelect name="date_founded" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -313,7 +325,7 @@ export default function CreateOrganization() {
                     name="terms"
                     render={({ field }) => (
                       <FormItem className="flex flex-col">
-                        <div className="flex flex-row items-start space-x-3 space-y-2">
+                        <div className="flex flex-row items-center space-x-3 space-y-2">
                           <FormControl>
                             <Checkbox
                               checked={field.value}
@@ -341,7 +353,7 @@ export default function CreateOrganization() {
                   <CardFooter className="w-full flex justify-end p-0">
                     <Button
                       type="submit"
-                      disabled={!isSubmittable}
+                      // disabled={!isSubmittable}
                       className="text-[#d9d9d9] mt-4"
                     >
                       Create Organization
