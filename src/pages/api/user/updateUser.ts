@@ -24,31 +24,6 @@ function calculateAge(selectedDate: string): number {
   return age;
 }
 
-function convertToDateObject(dateString: string): Date {
-  const [year, month, day] = dateString.split("-").map(Number);
-  // Month in JavaScript Date is 0-indexed, so subtract 1
-  return new Date(year, month - 1, day);
-}
-
-export function generateNext30DaysFromDate(dateTimeString: string): Date {
-  const currentDate = new Date(dateTimeString);
-  const nextDate = new Date(currentDate.getTime() + 30 * 24 * 60 * 60 * 1000); // Adding 30 days in milliseconds
-
-  return nextDate;
-}
-
-function getTodayDateTime() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
-
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -66,7 +41,6 @@ export default async function handler(
       },
       data: {
         phone_number: phone_number,
-        birth_day: birth_day + "T12:00:00Z",
         location: location,
         occupation: occupation,
         age: calculateAge(birth_day),
@@ -79,9 +53,6 @@ export default async function handler(
     return res.status(200).json({
       message: "Update done!",
       user: updateUser,
-      nextChangeValidOn: generateNext30DaysFromDate(
-        updateUser.created_date.toString()
-      ),
     });
   } catch (error) {
     return res.status(400).json({ message: error });

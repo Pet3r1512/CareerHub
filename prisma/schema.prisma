@@ -11,17 +11,16 @@ datasource db {
 }
 
 model User {
-  uuid         String    @id @default(uuid())
+  uuid         String   @id @default(uuid())
   full_name    String
   gender       String
   email        String
   password     String
-  phone_number String?
-  birth_day    DateTime?
-  age          Int?
-  location     String?
-  occupation   String?
-  created_date DateTime  @default(now())
+  phone_number String   @default("")
+  age          Int      @default(0)
+  location     String   @default("")
+  occupation   String   @default("")
+  created_date DateTime @default(now())
 }
 
 model Admin {

@@ -28,7 +28,7 @@ export function Signin({
   setAdmin: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const router = useRouter();
-  const mutation = trpc.isAdmin.useMutation({
+  const mutation = trpc.admin.isAdmin.useMutation({
     onSuccess: (admin) => {
       setAdmin(admin);
       localStorage.setItem("admin", admin);

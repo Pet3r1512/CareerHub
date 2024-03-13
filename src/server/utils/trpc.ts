@@ -1,6 +1,6 @@
 import { httpBatchLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
-import type { AppRouter } from "../routers/admin";
+import type { AppRouter } from "../routers/_app";
 
 // define hook for
 

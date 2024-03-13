@@ -9,12 +9,11 @@ export default function UserDashboardSectionLayout({
   children: ReactNode;
 }) {
   return (
-    <ScrollArea className="w-full h-full overflow-y-scroll">
-      <div className="p-6 flex flex-col gap-y-4">
+    <ScrollArea className="w-full h-full">
+      <div className="p-6 flex flex-col gap-y-4 max-h-full overflow-y-scroll scroll-smooth">
         <h1 className="text-4xl font-extrabold cursor-default">
           {sectionTitle}
         </h1>
-
         {children}
       </div>
     </ScrollArea>
