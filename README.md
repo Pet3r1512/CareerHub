@@ -11,6 +11,7 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 - [Vu Le Tan Phat](https://github.com/PhatBen234) - Front-end Developer
 - [Dang Nhat Khang](https://github.com/nhatkhang0910) - Front-end Developer
 - [Le Gia Minh](https://github.com/Min2Solid) - Front-end Developer
+- [Ngo Quang Huy](https://github.com/popcorn11) - Full-Stack Developer
 - [Nguyen Ho Linh Dan](http://https://github.com/nguyenholinhdan) - Developer
 
 ## Technologies and Tools Used
