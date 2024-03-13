@@ -123,7 +123,24 @@ export default function CreateOrganization() {
   });
 
   const onSubmit = (values: FormValues) => {
-    console.log(values);
+    const { isValid, isDirty } = form.formState;
+
+    const isNotSubmittable = !!isValid && !!isDirty;
+
+    if (!isNotSubmittable) {
+      toast({
+        className: "bg-green border-green",
+        title: "Organization created successfully",
+        description: "You can now start using our services.",
+        duration: 5000,
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    }
   };
 
   const inputClassName =
