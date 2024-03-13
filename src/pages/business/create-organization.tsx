@@ -49,12 +49,12 @@ const validationSchema = z.object({
     .string()
     .trim()
     .min(1, {
-      message: "Organization name is required",
+      message: "Company name is required",
     })
     .max(255),
   image: z
     .any()
-    .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
+    .refine((file) => file?.size <= MAX_FILE_SIZE, "Max image size is 5MB.")
     .refine(
       (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
       "Only .jpg, .jpeg, .png and .webp formats are supported."
@@ -68,21 +68,23 @@ const validationSchema = z.object({
     .string()
     .trim()
     .min(1, {
-      message: "Organization location is required.",
+      message: "Company location is required.",
     })
     .max(255),
   company_size: z
     .string()
     .min(1, { message: "Please select the number of employees." }),
   date_founded: z
-    .string()
-    .refine((str) => !isNaN(new Date(str).getTime()), "Invalid date.")
-    .transform((str) => new Date(str)),
+    .string({
+      required_error: "Please select the date founded.",
+    })
+    .transform((str) => new Date(str))
+    .refine((date) => !isNaN(date.getTime()), "Invalid date."),
   industry_type: z
     .array(z.string())
     .nonempty({ message: "Please select at least one industry type." }),
   description: z.string().min(1, {
-    message: "Organization description is required.",
+    message: "Company description is required.",
   }),
   terms: z.literal<boolean>(true, {
     errorMap: () => ({
@@ -123,10 +125,6 @@ export default function CreateOrganization() {
   const onSubmit = (values: FormValues) => {
     console.log(values);
   };
-
-  const { isValid, isDirty } = form.formState;
-
-  const isSubmittable = !!isValid && !!isDirty;
 
   const inputClassName =
     "focus-visible:ring-[#2684ff] focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:hover:border-[#2684ff] rounded-sm hover:border-[#b3b3b3] duration-100";
@@ -176,7 +174,7 @@ export default function CreateOrganization() {
                             </FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="Full legal name of the organization."
+                                placeholder="Full legal name of the company."
                                 className={inputClassName}
                                 {...field}
                               />
@@ -195,7 +193,7 @@ export default function CreateOrganization() {
                             </FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="Organization's address"
+                                placeholder="Company's address"
                                 className={inputClassName}
                                 {...field}
                               />
@@ -351,11 +349,7 @@ export default function CreateOrganization() {
                     )}
                   />
                   <CardFooter className="w-full flex justify-end p-0">
-                    <Button
-                      type="submit"
-                      // disabled={!isSubmittable}
-                      className="text-[#d9d9d9] mt-4"
-                    >
+                    <Button type="submit" className="text-[#d9d9d9] mt-4">
                       Create Organization
                     </Button>
                   </CardFooter>
