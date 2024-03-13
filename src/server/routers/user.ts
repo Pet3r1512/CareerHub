@@ -41,7 +41,6 @@ export const userRouter = router({
     .mutation(async ({ input }) => {
       prisma.$connect();
       const { uuid } = input;
-      console.log({ input });
       const user = await prisma.user.findUnique({
         where: {
           uuid: uuid!,
