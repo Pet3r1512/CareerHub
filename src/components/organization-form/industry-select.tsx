@@ -54,7 +54,7 @@ const options = [
 ];
 
 export default function IndustrySelect() {
-  const { setValue } = useFormContext();
+  const { setValue, clearErrors } = useFormContext();
 
   return (
     <Select
@@ -71,12 +71,13 @@ export default function IndustrySelect() {
           borderColor: "hsl(var(--input))",
         }),
       }}
-      onChange={(val) =>
+      onChange={(val) => {
         setValue(
           "industry_type",
           val.map((c) => c.value)
-        )
-      }
+        );
+        clearErrors("industry_type");
+      }}
     />
   );
 }
