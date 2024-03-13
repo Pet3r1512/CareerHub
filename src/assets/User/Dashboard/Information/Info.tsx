@@ -24,7 +24,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Loading from "@/assets/_UI/loading";
-import { useEffect } from "react";
 
 const departments = [
   { name: "Information Technology (IT)", code: "IT" },
@@ -46,15 +45,15 @@ export default function Info() {
   });
 
   const mutation = trpc.user.updateUser.useMutation({
-    onSuccess: (user) => {
+    onSuccess: () => {
       toast({
         title: "Update successfully!",
         className: "bg-green",
       });
     },
-    onError: (error) => {
+    onError: () => {
       toast({
-        title: "Failed!",
+        title: "Update failed! Please try again later!",
         variant: "destructive",
       });
     },
@@ -80,7 +79,6 @@ export default function Info() {
   });
 
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
     mutation.mutate(values);
   };
 
@@ -213,12 +211,15 @@ export default function Info() {
                         <FormItem className="w-full">
                           <FormLabel htmlFor="gender">Gender</FormLabel>
                           <Select
-                            value={field.value ?? query.data?.full_name}
+                            value={field.value ?? query.data?.gender}
                             onValueChange={field.onChange}
                           >
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue id="gender" />
+                                <SelectValue
+                                  defaultValue={query.data?.gender}
+                                  id="gender"
+                                />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent id="gender">
