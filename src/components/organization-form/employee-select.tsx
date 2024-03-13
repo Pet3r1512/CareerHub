@@ -18,7 +18,7 @@ export default function EmployeeSelect({
 }) {
   return (
     <Select onValueChange={field.onChange}>
-      <SelectTrigger className="text-gray-dark focus-visible:ring-[#2684ff] focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:hover:border-[#2684ff] rounded-sm hover:border-[#b3b3b3] duration-100 ">
+      <SelectTrigger className="text-gray-dark focus:ring-[#2684ff] focus:ring-1 focus:ring-offset-0 focus:hover:border-[#2684ff] rounded-sm hover:border-[#b3b3b3] duration-100">
         <SelectValue placeholder="Select company size" />
       </SelectTrigger>
       <SelectContent>
