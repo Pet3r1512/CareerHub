@@ -8,7 +8,7 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 
 - [Pham Tang Thanh Phong](https://github.com/Pet3r1512) - Project Owner, Full-Stack Developer
 - [Le Dinh Khoi](https://github.com/lekhoi2709) - Full-Stack Developer
-- - [Ngo Quang Huy](https://github.com/popcorn11) - Full-Stack Developer
+- [Ngo Quang Huy](https://github.com/popcorn11) - Full-Stack Developer
 - [Vu Le Tan Phat](https://github.com/PhatBen234) - Front-end Developer
 - [Dang Nhat Khang](https://github.com/nhatkhang0910) - Front-end Developer
 - [Le Gia Minh](https://github.com/Min2Solid) - Front-end Developer
