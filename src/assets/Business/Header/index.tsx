@@ -36,6 +36,7 @@ export default function Header({
         </Button>
       </div>
       <Drawer
+        placeholder=""
         placement="right"
         open={open}
         onClose={closeDrawer}

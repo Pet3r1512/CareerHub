@@ -82,7 +82,10 @@ function UserMenuTrigger({
   return (
     <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
       <div className="truncate text-xl flex items-center justify-between w-full">
-        <Typography className="truncate text-lg font-bold w-1/2 lg:w-full">
+        <Typography
+          placeholder=""
+          className="truncate text-lg font-bold w-1/2 lg:w-full"
+        >
           Me <ChevronDown className="hidden lg:inline-block" />
         </Typography>
         <SignOutButton>

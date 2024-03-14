@@ -6,6 +6,7 @@ export default function FindJobLocation() {
     <div className="flex items-end gap-x-2">
       <MapPin className="mb-1" />
       <Select
+        placeholder=""
         variant="standard"
         className="[&>span]:text-lg"
         animate={{

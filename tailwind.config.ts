@@ -84,6 +84,7 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/line-clamp")],
+  important: true,
 } satisfies Config;
 
 export default withMT(config);
