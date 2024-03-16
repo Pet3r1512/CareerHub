@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Page from "@/assets/_UI/Page";
+import Page, { mitr } from "@/assets/_UI/Page";
 import UserDashboardMenu, { SectionItem } from "@/assets/User/Menu";
 import { usePathname, useSearchParams } from "next/navigation";
 import AccountSetting from "@/assets/User/Dashboard/AccountSetting";
@@ -133,9 +133,11 @@ function MobileSideBar({
   return (
     <Drawer direction="left">
       <DrawerTrigger asChild>
-        <Menu className="md:hidden absolute top-8 left-8" />
+        <Menu className="md:hidden z-50 absolute top-8 left-8" />
       </DrawerTrigger>
-      <DrawerContent className="h-full w-2/3 outline-none border-none pt-4">
+      <DrawerContent
+        className={`h-full w-2/3 !rounded-l-none outline-none border-none pt-4 ${mitr.variable} font-sans`}
+      >
         <section
           className={twMerge(
             "shadow-2xl h-full rounded-r-2xl relative transition-all duration-175 ease-linear flex flex-col justify-between",
