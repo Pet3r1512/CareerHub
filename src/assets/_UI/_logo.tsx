@@ -22,7 +22,7 @@ export default function Logo({
       <img
         src={src}
         alt=""
-        className={twMerge("lg:h-32 h-24 w-auto", imgClassName)}
+        className={twMerge("h-16 sm:h-12 lg:h-16", imgClassName)}
       />
     </div>
   );
