@@ -6,13 +6,19 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 
 ## Team Members
 
-- [Pham Tang Thanh Phong](https://github.com/Pet3r1512) - Project Owner, Full-Stack Developer
-- [Le Dinh Khoi](https://github.com/lekhoi2709) - Full-Stack Developer
-- [Ngo Quang Huy](https://github.com/popcorn11) - Full-Stack Developer
-- [Vu Le Tan Phat](https://github.com/PhatBen234) - Front-end Developer
-- [Dang Nhat Khang](https://github.com/nhatkhang0910) - Front-end Developer
-- [Le Gia Minh](https://github.com/Min2Solid) - Front-end Developer
-- [Nguyen Ho Linh Dan](http://https://github.com/nguyenholinhdan) - Front-end Developer, Tester
+- [Pham Tang Thanh Phong](https://github.com/Pet3r1512) - Project Owner
+
+# Full-Stack Developer
+
+- [Le Dinh Khoi](https://github.com/lekhoi2709)
+- [Ngo Quang Huy](https://github.com/popcorn11)
+
+# Front-End Developer
+
+- [Vu Le Tan Phat](https://github.com/PhatBen234)
+- [Dang Nhat Khang](https://github.com/nhatkhang0910)
+- [Le Gia Minh](https://github.com/Min2Solid)
+- [Nguyen Ho Linh Dan](http://https://github.com/nguyenholinhdan)
 
 ## Technologies and Tools Used
 
