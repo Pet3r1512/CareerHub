@@ -99,7 +99,7 @@ export default function Info() {
           Displaying this image as your profile picture will make you easily
           recognizable to recruiters as it will be publicly visible!
         </p>
-        <div className="flex items-center md:justify-center lg:justify-start flex-1 gap-x-4 lg:gap-x-16">
+        <div className="flex items-center sm:justify-center lg:justify-start flex-1 gap-x-4 sm:gap-x-14 lg:gap-x-16">
           <UserAvatar
             size="lg:w-[124px] lg:h-[124px] w-[80px] h-[80px]"
             fontSize="lg:text-[54px] text-4xl"

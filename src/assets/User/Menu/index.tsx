@@ -68,7 +68,9 @@ export function SectionItem({
             src="https://jlehnhviqykpbhjqjzmp.supabase.co/storage/v1/object/sign/Static%20Images/CareerHub_noName-removebg-preview.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJTdGF0aWMgSW1hZ2VzL0NhcmVlckh1Yl9ub05hbWUtcmVtb3ZlYmctcHJldmlldy5wbmciLCJpYXQiOjE3MDg3NDk1NjEsImV4cCI6MTc0MDI4NTU2MX0.9r29dXpk7EceyeBJw3dlrGDyCU0wFVlauJoyaaaC9Qk&t=2024-02-24T04%3A39%3A19.838Z"
             imgClassName="!h-12"
           />
-          <p className="text-xl md:text-lg font-bold text-primary">CareerHub</p>
+          <p className="text-xl md:text-[15px] lg:text-lg font-bold text-primary">
+            CareerHub
+          </p>
         </Link>
         <TooltipContainer message="Toggle Menu">
           <button
@@ -84,7 +86,7 @@ export function SectionItem({
         </TooltipContainer>
       </div>
       <MenubarSeparator className="hidden" />
-      <div className="h-full lg:h-auto">
+      <div className="h-full lg:h-auto mt-6">
         <ul
           className={twMerge(
             "flex flex-col gap-y-4 overflow-x-hidden",
