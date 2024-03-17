@@ -4,16 +4,16 @@ Welcome to CareerHub, a Next.js project designed to simulate a job seeker websit
 
 Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 
-## Team Members
+# Team Members
 
 - [Pham Tang Thanh Phong](https://github.com/Pet3r1512) - Project Owner
 
-# Full-Stack Developer
+## Full-Stack Developer
 
 - [Le Dinh Khoi](https://github.com/lekhoi2709)
 - [Ngo Quang Huy](https://github.com/popcorn11)
 
-# Front-End Developer
+## Front-End Developer
 
 - [Vu Le Tan Phat](https://github.com/PhatBen234)
 - [Dang Nhat Khang](https://github.com/nhatkhang0910)
