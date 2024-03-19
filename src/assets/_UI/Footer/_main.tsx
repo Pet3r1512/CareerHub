@@ -1,6 +1,7 @@
 import { Input } from "@material-tailwind/react";
 import Logo from "../_logo";
 import ButtonBlock from "../_button";
+import Link from "next/link";
 
 export default function Main() {
   return (
@@ -36,12 +37,13 @@ function AboutSection() {
       <ul className="flex flex-col gap-2">
         {sections.map((section, index) => {
           return (
-            <li
+            <Link
               className="text-gray hover:text-white transition-all duration-75 ease-linear"
               key={index}
+              href={"/" + section.replace(/\s+/g, "-").toLowerCase()}
             >
-              <a href={section.replace(/\s+/g, "-").toLowerCase()}>{section}</a>
-            </li>
+              {section}
+            </Link>
           );
         })}
       </ul>
@@ -57,12 +59,13 @@ function ResourceSection() {
       <ul className="flex flex-col gap-2">
         {sections.map((section, index) => {
           return (
-            <li
-              className="text-gray hover:text-white transition-all duration-75 ease-linears"
+            <Link
+              className="text-gray hover:text-white transition-all duration-75 ease-linear"
               key={index}
+              href={"/" + section.replace(/\s+/g, "-").toLowerCase()}
             >
-              <a href={section.replace(/\s+/g, "-").toLowerCase()}>{section}</a>
-            </li>
+              {section}
+            </Link>
           );
         })}
       </ul>

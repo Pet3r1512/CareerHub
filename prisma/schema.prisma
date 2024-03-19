@@ -31,27 +31,26 @@ model Admin {
 }
 
 model Company {
-  uuid           String   @id @default(uuid())
-  name           String
-  image          String
-  urls           URL[]
-  location       String
-  industry_tags  String[]
-  description    String
-  founded_date   String
-  employee_count Int
-  created_date   DateTime @default(now())
+  uuid                 String   @id @default(uuid())
+  name                 String
+  image                String
+  urls                 URL?
+  location             String
+  industry_tags        String[]
+  description          String
+  founded_date         String
+  company_size         Int
+  remaining_jobs_count Int
+  created_date         DateTime @default(now())
 }
 
 model URL {
-  uuid      String   @id @default(uuid())
+  uuid      String  @id @default(uuid())
   website   String?
   facebook  String?
   twitter   String?
   instagram String?
   linkedin  String?
-  company   Company? @relation(fields: [companyId], references: [uuid])
-  companyId String?
-
-  @@index([companyId])
+  Company   Company @relation(fields: [companyId], references: [uuid])
+  companyId String  @unique
 }

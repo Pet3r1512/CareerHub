@@ -12,6 +12,9 @@
     "db": "concurrently \"pscale connect careerhub --port 3309\" \"npx prisma studio\"",
     "dev-db": "concurrently \"next dev\" \"pscale connect careerhub --port 3309\" \"npx prisma studio\""
   },
+  "prisma": {
+    "seed": "npx ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@material-tailwind/react": "^2.1.5",
