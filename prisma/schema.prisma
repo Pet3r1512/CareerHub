@@ -34,7 +34,7 @@ model Company {
   uuid                 String   @id @default(uuid())
   name                 String
   image                String
-  urls                 URL[]
+  urls                 URL?
   location             String
   industry_tags        String[]
   description          String
@@ -45,14 +45,12 @@ model Company {
 }
 
 model URL {
-  uuid      String   @id @default(uuid())
+  uuid      String  @id @default(uuid())
   website   String?
   facebook  String?
   twitter   String?
   instagram String?
   linkedin  String?
-  company   Company? @relation(fields: [companyId], references: [uuid])
-  companyId String?
-
-  @@index([companyId])
+  Company   Company @relation(fields: [companyId], references: [uuid])
+  companyId String  @unique
 }
