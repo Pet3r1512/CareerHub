@@ -2,6 +2,8 @@ import { Company } from "@/types/company";
 import { Badge } from "@/components/ui/badge";
 import CustomizeBadge from "@/components/customizeBadge";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function CompanyItem({
   company,
@@ -10,10 +12,18 @@ export default function CompanyItem({
   company: Company;
   index: number;
 }) {
+  const router = useRouter();
+  const industry_tags = company.industry_tags;
+
   return (
     <div
       key={company.name + index}
       className="border p-4 flex flex-col gap-4 lg:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md cursor-pointer"
+      onClick={() =>
+        router.push(
+          `/companies/${company.name.toLowerCase().replace(/\s/g, "-")}`
+        )
+      }
     >
       <div className="flex justify-between items-start">
         <div className="w-12 h-12 relative">
@@ -31,8 +41,8 @@ export default function CompanyItem({
           {company.remaining_jobs_count} Jobs
         </Badge>
       </div>
-      <a
-        href="#"
+      <Link
+        href={`/companies/${company.name.toLowerCase().replace(/\s/g, "-")}`}
         className="text-base lg:text-lg font-bold relative group/item w-fit"
       >
         <span
@@ -40,12 +50,12 @@ export default function CompanyItem({
           aria-hidden
         ></span>
         {company.name}
-      </a>
+      </Link>
       <p className="text-gray-dark opacity-90 line-clamp-3">
         {company.description}
       </p>
       <div className="flex flex-wrap gap-4">
-        {company.industry_tags.map((tag, index) => (
+        {industry_tags.map((tag, index) => (
           <CustomizeBadge key={tag + index} content={tag} variant="outline" />
         ))}
       </div>

@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import CustomizeBadge from "@/components/customizeBadge";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function JobItem({
   job,
@@ -36,7 +37,7 @@ export default function JobItem({
             />
           </div>
           <div className="flex flex-col gap-2">
-            <a
+            <Link
               href="#"
               className="text-base lg:text-lg font-bold relative group/item w-fit"
             >
@@ -45,7 +46,7 @@ export default function JobItem({
                 aria-hidden
               ></span>
               {job.title}
-            </a>
+            </Link>
             <p className="opacity-70 line-clamp-1">
               {job.company.name} - {job.company.location.city},{" "}
               {job.company.location.country}

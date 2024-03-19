@@ -47,6 +47,10 @@ export const industryOptions = [
     industry: "Media",
     count: 4,
   },
+  {
+    industry: "Information Technology",
+    count: 3,
+  },
 ];
 
 export const companySize = [

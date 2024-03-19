@@ -1,10 +1,25 @@
 export type Company = {
+  id: string;
   image: string;
   name: string;
   description: string;
+  location: string;
   industry_tags: string[];
   company_size: number;
+  founded_date: Date;
+  created_date: Date;
+  created_by_id: string;
   remaining_jobs_count: number;
+};
+
+export type CompanyURL = {
+  uuid: string;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  linkedin?: string;
+  companyId: string;
 };
 
 export type Job = {
