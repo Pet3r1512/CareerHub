@@ -13,19 +13,11 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormDescription,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Toaster } from "@/components/ui/toaster";
@@ -38,32 +30,61 @@ import { Suspense } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { Minus } from "lucide-react";
 import ContactCombobox from "@/components/organization-form/contact-combobox";
+import ImageDropzone from "@/components/organization-form/image-dropzone";
+import TipTapDescription from "@/components/organization-form/tiptap-description";
+import IndustrySelect from "@/components/organization-form/industry-select";
+import EmployeeSelect from "@/components/organization-form/employee-select";
+import DateSelect from "@/components/organization-form/date-select";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
 
 const validationSchema = z.object({
   company_name: z
     .string()
     .trim()
     .min(1, {
-      message: "Organization name is required",
+      message: "Company name is required",
     })
     .max(255),
-  image:
-    typeof window === "undefined" ? z.any() : z.instanceof(FileList).optional(),
-  URLs: z.array(
-    z.object({ label: z.string(), value: z.string().url().min(1) })
-  ),
+  image: z
+    .any()
+    .refine((file) => file?.size <= MAX_FILE_SIZE, "Max image size is 5MB.")
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Only .jpg, .jpeg, .png and .webp formats are supported."
+    ),
+  URLs: z
+    .array(
+      z.object({ label: z.string(), value: z.string().trim().url().min(1) })
+    )
+    .nonempty({ message: "Please add at least one URL." }),
   location: z
     .string()
     .trim()
     .min(1, {
-      message: "Organization location is required.",
+      message: "Company location is required.",
     })
     .max(255),
-  company_type: z.string().min(1, {
-    message: "Please select an organization type.",
-  }),
-  description: z.string().trim().min(1, {
-    message: "Organization description is required.",
+  company_size: z
+    .string()
+    .min(1, { message: "Please select the number of employees." }),
+  date_founded: z
+    .string({
+      required_error: "Please select the date founded.",
+    })
+    .transform((str) => new Date(str))
+    .refine((date) => !isNaN(date.getTime()), "Invalid date."),
+  industry_type: z
+    .array(z.string())
+    .nonempty({ message: "Please select at least one industry type." }),
+  description: z.string().min(1, {
+    message: "Company description is required.",
   }),
   terms: z.literal<boolean>(true, {
     errorMap: () => ({
@@ -72,14 +93,14 @@ const validationSchema = z.object({
   }),
 });
 
-type FormValues = z.infer<typeof validationSchema>;
+export type FormValues = z.infer<typeof validationSchema>;
 
 export default function CreateOrganization() {
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(validationSchema),
-    mode: "onChange",
+    mode: "onBlur",
     defaultValues: {
       company_name: "",
       URLs: [
@@ -89,13 +110,12 @@ export default function CreateOrganization() {
         },
       ],
       location: "",
-      company_type: "",
+      company_size: "",
+      industry_type: [],
       description: "",
       terms: false,
     },
   });
-
-  const fileRef = form.register("image");
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
@@ -103,12 +123,28 @@ export default function CreateOrganization() {
   });
 
   const onSubmit = (values: FormValues) => {
-    console.log(values);
+    const { isValid, isDirty } = form.formState;
+
+    const isNotSubmittable = !!isValid && !!isDirty;
+
+    if (!isNotSubmittable) {
+      toast({
+        className: "bg-green border-green",
+        title: "Organization created successfully",
+        description: "You can now start using our services.",
+        duration: 5000,
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    }
   };
 
-  const { isValid, isDirty } = form.formState;
-
-  const isSubmittable = !!isValid && !!isDirty;
+  const inputClassName =
+    "focus-visible:ring-[#2684ff] focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:hover:border-[#2684ff] rounded-sm hover:border-[#b3b3b3] duration-100";
 
   return (
     <Page pageName="Create Organization" className="p-0">
@@ -121,200 +157,222 @@ export default function CreateOrganization() {
             priority
             className="w-full h-full object-cover rounded-t-lg"
           />
-          <Card className="w-full lg:w-1/2 z-10">
-            <CardHeader>
-              <CardTitle>Create Organization</CardTitle>
+          <Card className="w-full lg:w-2/3 z-10">
+            <CardHeader className="pb-0">
+              <CardTitle>Basic Information</CardTitle>
               <CardDescription>
                 Create a new organization to start using our services.
               </CardDescription>
-              <CardContent>
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="mt-4 space-y-4"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="company_name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="company_name">
-                            Organization Name
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Full legal name of the organization."
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="image"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="image">
-                            Organization Logo
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              type="file"
-                              accept="image/*"
-                              {...fileRef}
-                              className="text-gray-dark"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="location"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="location">
-                            Organization Location
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Organization's address"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center justify-between">
-                        <FormLabel>URLs</FormLabel>
-                        <ContactCombobox append={append} />
-                      </div>
-
-                      {fields.map((field, index) => (
-                        <FormField
-                          control={form.control}
-                          key={field.id}
-                          name={`URLs.${index}.value`}
-                          render={({ field }) => (
-                            <FormItem className="w-full">
-                              <FormControl>
-                                <div className="flex space-x-4 items-center">
-                                  <Input
-                                    placeholder={fields[index].label}
-                                    {...field}
-                                  />
-                                  <Button
-                                    type="button"
-                                    onClick={() => remove(index)}
-                                    variant="outline"
-                                    className="w-fit text-gray-dark"
-                                  >
-                                    <Minus size={16} />
-                                  </Button>
-                                </div>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      ))}
+            </CardHeader>
+            <CardContent>
+              <Separator className="my-6" />
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                  <ImageDropzone name="image" form={form} />
+                  <Separator className="my-6" />
+                  <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
+                    <div className="lg:w-1/3">
+                      <FormLabel className="text-sm lg:text-base" asChild>
+                        <legend>Company Details</legend>
+                      </FormLabel>
+                      <FormDescription className="text-xs">
+                        Introduce your company core info quickly to users by
+                        fill up company details
+                      </FormDescription>
                     </div>
-                    <FormField
-                      control={form.control}
-                      name="company_type"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="company_type">
-                            Organization Type
-                          </FormLabel>
-                          <FormControl>
-                            <Select onValueChange={field.onChange}>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select..." />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectGroup>
-                                  <SelectLabel>Company Type</SelectLabel>
-                                  <SelectItem value="non-profit">
-                                    Non-Profit
-                                  </SelectItem>
-                                  <SelectItem value="for-profit">
-                                    For-Profit
-                                  </SelectItem>
-                                  <SelectItem value="other">Other</SelectItem>
-                                </SelectGroup>
-                              </SelectContent>
-                            </Select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="description"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel htmlFor="description">
-                            Description
-                          </FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Brief description of the organization."
-                              className="resize-none"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="terms"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-col">
-                          <div className="flex flex-row items-start space-x-3 space-y-2">
+                    <section className="flex flex-col gap-6 lg:w-2/3">
+                      <FormField
+                        control={form.control}
+                        name="company_name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="company_name" asChild>
+                              <legend>Company Name</legend>
+                            </FormLabel>
                             <FormControl>
-                              <Checkbox
-                                checked={field.value}
-                                onCheckedChange={field.onChange}
-                                className="text-white border-gray-500 mt-2 data-[state=checked]:border-primary"
-                                id="terms"
+                              <Input
+                                placeholder="Full legal name of the company."
+                                className={inputClassName}
+                                {...field}
                               />
                             </FormControl>
-                            <div className="space-y-1 leading-none">
-                              <FormLabel className="text-black">
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="location"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="location" asChild>
+                              <legend>Location</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Company's address"
+                                className={inputClassName}
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="company_size"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="company_size" asChild>
+                              <legend>Company Size</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <EmployeeSelect field={field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="date_founded"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="date_founded" asChild>
+                              <legend>Date Founded</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <DateSelect name="date_founded" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between">
+                          <FormLabel htmlFor="URLs" asChild>
+                            <legend>URLs</legend>
+                          </FormLabel>
+                          <ContactCombobox append={append} />
+                        </div>
+                        {fields.map((field, index) => (
+                          <FormField
+                            control={form.control}
+                            key={field.id}
+                            name={`URLs.${index}.value`}
+                            render={({ field }) => (
+                              <FormItem className="w-full">
+                                <FormControl>
+                                  <div className="flex space-x-4 items-center">
+                                    <Input
+                                      placeholder={fields[index].label}
+                                      className={inputClassName}
+                                      {...field}
+                                    />
+                                    <Button
+                                      type="button"
+                                      onClick={() => remove(index)}
+                                      variant="outline"
+                                      className="w-fit text-gray-dark"
+                                    >
+                                      <Minus size={16} />
+                                    </Button>
+                                  </div>
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        ))}
+                      </div>
+                      <FormField
+                        control={form.control}
+                        name="industry_type"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="industry_type" asChild>
+                              <legend>Industry</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <IndustrySelect />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </section>
+                  </FormItem>
+                  <Separator className="my-6 mt-8" />
+                  <FormItem className="flex flex-col lg:flex-row lg:justify-between w-full lg:gap-32 gap-4">
+                    <div className="lg:w-1/3">
+                      <FormLabel className="text-sm lg:text-base" asChild>
+                        <legend>About Company</legend>
+                      </FormLabel>
+                      <FormDescription className="text-xs">
+                        Brief description for your company. URLs are
+                        hyperlinked.
+                      </FormDescription>
+                    </div>
+                    <section className="flex flex-col gap-6 lg:w-2/3">
+                      <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel htmlFor="description" asChild>
+                              <legend>Description</legend>
+                            </FormLabel>
+                            <FormControl>
+                              <TipTapDescription
+                                description={field.name}
+                                onChange={field.onChange}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </section>
+                  </FormItem>
+                  <FormField
+                    control={form.control}
+                    name="terms"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col">
+                        <div className="flex flex-row items-center space-x-3 space-y-2">
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value}
+                              onCheckedChange={field.onChange}
+                              className="text-white border-gray-500 mt-2 data-[state=checked]:border-primary"
+                              id="terms"
+                            />
+                          </FormControl>
+                          <div className="space-y-1 leading-none">
+                            <FormLabel className="text-black" asChild>
+                              <legend>
                                 I agree to the{" "}
                                 <Link href="#" className="text-blue">
                                   terms and conditions
                                 </Link>
                                 .
-                              </FormLabel>
-                            </div>
+                              </legend>
+                            </FormLabel>
                           </div>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <CardFooter className="w-full flex justify-end p-0">
-                      <Button
-                        type="submit"
-                        disabled={!isSubmittable}
-                        className="text-[#d9d9d9] mt-4"
-                      >
-                        Create Organization
-                      </Button>
-                    </CardFooter>
-                  </form>
-                </Form>
-              </CardContent>
-            </CardHeader>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <CardFooter className="w-full flex justify-end p-0">
+                    <Button type="submit" className="text-[#d9d9d9] mt-4">
+                      Create Organization
+                    </Button>
+                  </CardFooter>
+                </form>
+              </Form>
+            </CardContent>
           </Card>
         </div>
         <Toaster />

@@ -14,12 +14,27 @@ import { ChevronDown, LogOut } from "lucide-react";
 import Account from "./User/account";
 import QuickView from "./User/quickview";
 import { mitr } from "../Page";
+import { twMerge } from "tailwind-merge";
 
-export default function UserAvatar() {
+export default function UserAvatar({
+  onlyAvatar,
+  size,
+  fontSize,
+}: {
+  onlyAvatar?: boolean;
+  size?: string;
+  fontSize?: string;
+}) {
   const [authData, setAuthData] = useState({
     user: "",
     token: "",
   });
+  const splitUserName = splitName(localStorage.getItem("user")!);
+  const userNameChar = splitUserName[splitUserName.length - 1].charAt(0);
+  function splitName(userName: string) {
+    const userN = userName.split(" ");
+    return userN;
+  }
   const router = useRouter();
   useEffect(() => {
     setAuthData({
@@ -28,11 +43,28 @@ export default function UserAvatar() {
     });
   }, []);
 
+  if (onlyAvatar) {
+    return (
+      <Avatar
+        className={twMerge(
+          "bg-primary text-white text-xl justify-center items-center",
+          size,
+          fontSize
+        )}
+      >
+        {userNameChar}
+      </Avatar>
+    );
+  }
+
   if (authData.token !== "") {
     return (
       <Menubar className="border-0 w-full lg:max-w-fit">
         <MenubarMenu>
-          <UserMenuTrigger userName={authData.user} />
+          <UserMenuTrigger
+            userNameChar={userNameChar}
+            userName={authData.user}
+          />
           <UserMenuContent user={authData.user} />
         </MenubarMenu>
       </Menubar>
@@ -40,19 +72,20 @@ export default function UserAvatar() {
   }
 }
 
-
-function UserMenuTrigger({ userName }: { userName: string }) {
-  const splitUserName=splitName(userName)
-  const userNameChar=splitUserName[splitUserName.length - 1].charAt(0)
-  function splitName(userName: string){
-    const userN=userName.split(' ');
-    return userN;
-  }
-
+function UserMenuTrigger({
+  userName,
+  userNameChar,
+}: {
+  userName: string;
+  userNameChar: string;
+}) {
   return (
     <MenubarTrigger className="flex w-full items-center flex-row-reverse !bg-transparent lg:flex-col-reverse gap-2 hover:cursor-pointer">
       <div className="truncate text-xl flex items-center justify-between w-full">
-        <Typography className="truncate text-lg font-bold w-1/2 lg:w-full">
+        <Typography
+          placeholder=""
+          className="truncate text-lg font-bold w-1/2 lg:w-full"
+        >
           Me <ChevronDown className="hidden lg:inline-block" />
         </Typography>
         <SignOutButton>
