@@ -13,7 +13,7 @@ export default function CompanyItem({
   index: number;
 }) {
   const router = useRouter();
-  const industry_tags = company.industry_tags.split(",");
+  const industry_tags = company.industry_tags;
 
   return (
     <div
@@ -28,7 +28,7 @@ export default function CompanyItem({
       <div className="flex justify-between items-start">
         <div className="w-12 h-12 relative">
           <Image
-            src={company.image_url}
+            src={company.image}
             alt={company.name}
             fill
             style={{ objectFit: "contain" }}

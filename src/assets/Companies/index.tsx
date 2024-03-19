@@ -45,9 +45,7 @@ export default function CompaniesAndJobsLayout({
     const companiesData = companies.filter(
       (company) =>
         company.name.toLowerCase().includes(search.toLowerCase() || "") &&
-        (company.industry_tags
-          .split(",")
-          .some((tag) => industry?.includes(tag)) ||
+        (company.industry_tags.some((tag) => industry?.includes(tag)) ||
           !industry) &&
         (size.includes(checkSize(company.company_size)) || !size.length)
     );
