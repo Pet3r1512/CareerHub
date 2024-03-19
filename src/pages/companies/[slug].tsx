@@ -47,7 +47,14 @@ export default function CompanyPage(props: {
   return (
     <Page pageName={props.company.name}>
       <div className="flex flex-col gap-8">
-        <CompanyHeader />
+        <CompanyHeader
+          name={props.company.name}
+          image={props.company.image}
+          founded={props.company.created_date}
+          employees={props.company.company_size}
+          location={props.company.location}
+          industry={props.company.industry_tags}
+        />
         <Profile />
         <CompanyTeam />
       </div>
