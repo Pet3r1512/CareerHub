@@ -12,6 +12,16 @@ export type Company = {
   remaining_jobs_count: number;
 };
 
+export type CompanyURL = {
+  uuid: string;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  linkedin?: string;
+  companyId: string;
+};
+
 export type Job = {
   title: string;
   employment_type: string;
