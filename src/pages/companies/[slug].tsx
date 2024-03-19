@@ -3,7 +3,7 @@ import CompanyHeader from "@/components/company/company-header";
 import Profile from "@/components/company/profile";
 import CompanyTeam from "@/components/company/company-team";
 import prisma from "@/lib/prisma";
-import { Company } from "@/types/company";
+import { Company, CompanyURL } from "@/types/company";
 
 export async function getServerSideProps({
   params,
@@ -20,9 +20,16 @@ export async function getServerSideProps({
         },
       },
     });
+
+    const url = await prisma.uRL.findFirst({
+      where: {
+        companyId: company?.uuid,
+      },
+    });
     return {
       props: {
         company: JSON.parse(JSON.stringify(company)),
+        url: JSON.parse(JSON.stringify(url)),
       },
     };
   } catch (error) {
@@ -30,6 +37,7 @@ export async function getServerSideProps({
     return {
       props: {
         company: [],
+        url: {},
         error: "Could not fetch data. Please try again later.",
       },
     };
@@ -38,6 +46,7 @@ export async function getServerSideProps({
 
 export default function CompanyPage(props: {
   company: Company;
+  url: CompanyURL;
   error?: string;
 }) {
   if (!props.company) {
@@ -55,7 +64,7 @@ export default function CompanyPage(props: {
           location={props.company.location}
           industry={props.company.industry_tags}
         />
-        <Profile />
+        <Profile description={props.company.description} url={props.url} />
         <CompanyTeam />
       </div>
     </Page>

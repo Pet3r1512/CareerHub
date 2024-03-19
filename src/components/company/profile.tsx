@@ -1,6 +1,13 @@
 import { Button } from "../ui/button";
+import { CompanyURL } from "@/types/company";
 
-export default function Profile() {
+export default function Profile({
+  description,
+  url,
+}: {
+  description: string;
+  url: CompanyURL;
+}) {
   const socialChip = [
     {
       icon: (
@@ -17,7 +24,7 @@ export default function Profile() {
           />
         </svg>
       ),
-      url: "twitter.com/BusinessSolutions",
+      url: url.twitter && url.twitter,
     },
     {
       icon: (
@@ -48,7 +55,7 @@ export default function Profile() {
           </defs>
         </svg>
       ),
-      url: "facebook.com/BusinessSolutions",
+      url: url.facebook && url.facebook,
     },
     {
       icon: (
@@ -71,7 +78,7 @@ export default function Profile() {
           />
         </svg>
       ),
-      url: "linkedin.com/company/BS",
+      url: url.linkedin && url.linkedin,
     },
     {
       icon: (
@@ -83,40 +90,53 @@ export default function Profile() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M2 11.9556C2 8.47078 2 6.7284 2.67818 5.39739C3.27473 4.22661 4.22661 3.27473 5.39739 2.67818C6.7284 2 8.47078 2 11.9556 2H20.0444C23.5292 2 25.2716 2 26.6026 2.67818C27.7734 3.27473 28.7253 4.22661 29.3218 5.39739C30 6.7284 30 8.47078 30 11.9556V20.0444C30 23.5292 30 25.2716 29.3218 26.6026C28.7253 27.7734 27.7734 28.7253 26.6026 29.3218C25.2716 30 23.5292 30 20.0444 30H11.9556C8.47078 30 6.7284 30 5.39739 29.3218C4.22661 28.7253 3.27473 27.7734 2.67818 26.6026C2 25.2716 2 23.5292 2 20.0444V11.9556Z"
+            d="M16.0007 2.00382C16.0007 2.00382 24.2529 1.63483 28.628 9.8999H15.2985C15.2985 9.8999 12.783 9.81911 10.6342 12.8599C10.0169 14.1363 9.35338 15.451 10.098 18.042C9.02535 16.2313 4.4035 8.21234 4.4035 8.21234C4.4035 8.21234 7.6635 2.33057 16.0006 2.00382H16.0007Z"
+            fill="#EF3F36"
+          />
+          <path
+            d="M28.1996 22.9856C28.1996 22.9856 24.3917 30.2935 15.0246 29.9321C16.182 27.9369 21.6911 18.4302 21.6911 18.4302C21.6911 18.4302 23.0222 16.3005 21.452 12.9253C20.6533 11.7528 19.8392 10.5265 17.2159 9.87287C19.3263 9.85377 28.6047 9.87287 28.6047 9.87287C28.6047 9.87287 32.0807 15.6278 28.1996 22.9856Z"
+            fill="#FCD900"
+          />
+          <path
+            d="M3.85937 23.0434C3.85937 23.0434 -0.588931 16.1045 4.41101 8.20074C5.56459 10.1959 11.0738 19.7027 11.0738 19.7027C11.0738 19.7027 12.2621 21.9171 15.9773 22.2475C17.3933 22.1438 18.867 22.0554 20.7498 20.1217C19.7118 21.9517 15.0551 29.9476 15.0551 29.9476C15.0551 29.9476 8.3114 30.0707 3.85926 23.0434H3.85937Z"
+            fill="#61BC5B"
+          />
+          <path
+            d="M15.0208 30.0013L16.8957 22.2053C16.8957 22.2053 18.9559 22.0437 20.6844 20.1563C19.6118 22.0362 15.0208 30.0013 15.0208 30.0013Z"
+            fill="#5AB055"
+          />
+          <path
+            d="M9.71985 16.089C9.71985 12.6523 12.517 9.86523 15.9659 9.86523C19.4149 9.86523 22.212 12.6523 22.212 16.089C22.212 19.5257 19.4149 22.3127 15.9659 22.3127C12.517 22.3089 9.71985 19.5257 9.71985 16.089Z"
             fill="white"
           />
           <path
-            d="M22.0513 8.52295L16.0642 13.1954L9.94019 8.52295V8.52421L9.94758 8.53053V15.0732L15.9951 19.8466L22.0513 15.2575V8.52295Z"
-            fill="#EA4335"
+            d="M10.7653 16.0891C10.7653 13.229 13.0918 10.907 15.966 10.907C18.8363 10.907 21.1666 13.2252 21.1666 16.0891C21.1666 18.9492 18.8403 21.2712 15.966 21.2712C13.0956 21.2712 10.7653 18.9492 10.7653 16.0891Z"
+            fill="url(#paint0_linear_1_13599)"
           />
           <path
-            d="M23.6235 7.38639L22.0512 8.52292V15.2575L26.9987 11.459V9.17074C26.9987 9.17074 26.3982 5.90258 23.6235 7.38639Z"
-            fill="#FBBC05"
+            d="M28.6008 9.87685L20.881 12.1334C20.881 12.1334 19.7159 10.4303 17.2121 9.87685C19.3841 9.86528 28.6008 9.87685 28.6008 9.87685Z"
+            fill="#EACA05"
           />
           <path
-            d="M22.0512 15.2577V23.9926H25.8432C25.8432 23.9926 26.9223 23.8814 26.9999 22.6514V11.4591L22.0512 15.2577Z"
-            fill="#34A853"
+            d="M9.94753 17.7577C8.86331 15.8855 4.4035 8.21234 4.4035 8.21234L10.1211 13.848C10.1211 13.848 9.53459 15.0513 9.75459 16.7735L9.94742 17.7577H9.94753Z"
+            fill="#DF3A32"
           />
-          <path
-            d="M9.94787 23.9999V15.0731L9.94019 15.0668L9.94787 23.9999Z"
-            fill="#C5221F"
-          />
-          <path
-            d="M9.94014 8.52428L8.37646 7.39406C5.60179 5.91025 5 9.17716 5 9.17716V11.4654L9.94014 15.0669V8.52428Z"
-            fill="#C5221F"
-          />
-          <path
-            d="M9.94019 8.52417V15.0668L9.94787 15.0731V8.53048L9.94019 8.52417Z"
-            fill="#C5221F"
-          />
-          <path
-            d="M5 11.4666V22.6589C5.07646 23.8902 6.15673 24 6.15673 24H9.94877L9.94014 15.0669L5 11.4666Z"
-            fill="#4285F4"
-          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_13599"
+              x1="15.9657"
+              y1="10.9802"
+              x2="15.9657"
+              y2="20.9592"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#86BBE5" />
+              <stop offset="1" stopColor="#1072BA" />
+            </linearGradient>
+          </defs>
         </svg>
       ),
-      url: "businesssolutioninc@gmail.com",
+      url: url.website && url.website,
     },
   ];
 
@@ -124,29 +144,24 @@ export default function Profile() {
     <div className="px-2 lg:px-4 flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <h1 className="flex text-2xl">Company Profile</h1>
-        <p className=" text-gray-600">
-          BusinessSolutions Inc. is a leading provider of comprehensive usiness
-          solutions tailored to meet the evolving needs of modern enterprises.
-          Established in 2002, our company has garnered a reputation for
-          innovation, reliability, and customer-centricity. We specialize in
-          offering a wide array of services and products designed to streamline
-          operations, optimize processes, and drive sustainable growth for
-          businesses across various industries.
-        </p>
+        <p className=" text-gray-600">{description}</p>
       </div>
       <div className="h-1 border-t-2"></div>
       <div className="lg:w-1/2 flex flex-col gap-8 w-full">
         <p className="text-2xl">Contact</p>
         <div className="flex flex-wrap lg:flex-row gap-6">
-          {socialChip.map((chip, index) => (
-            <Button
-              key={index}
-              className="text-primary lg:text-lg bg-white hover:bg-white border-2 border-primary flex gap-4 py-2 h-fit max-w-full lg:w-fit"
-            >
-              <span>{chip.icon}</span>
-              <p className="truncate ">{chip.url}</p>
-            </Button>
-          ))}
+          {socialChip.map(
+            (chip, index) =>
+              chip.url && (
+                <Button
+                  key={index}
+                  className="text-primary lg:text-lg bg-white hover:bg-white border-2 border-primary flex gap-4 py-2 h-fit max-w-full lg:w-fit"
+                >
+                  <span>{chip.icon}</span>
+                  <p className="truncate ">{chip.url}</p>
+                </Button>
+              )
+          )}
         </div>
       </div>
     </div>
