@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/router";
 
 export default function Introduction() {
+  const router = useRouter();
+
   return (
     <div className="w-full md:w-1/2 flex flex-col gap-y-4 md:gap-y-8 lg:gap-y-16 md:mt-24">
       <h1 className="text-6xl sm:text-[65px] leading-none md:text-6xl lg:text-[75px] md:leading-none font-bold">
@@ -17,7 +20,10 @@ export default function Introduction() {
         organization.
       </p>
       <div className="flex flex-col gap-y-3 md:flex-row lg:items-center gap-x-2">
-        <Button className="px-6 py-4 rounded-xl w-1/2 lg:w-auto bg-white border-2 border-primary text-primary hover:bg-white">
+        <Button
+          className="px-6 py-4 rounded-xl w-1/2 lg:w-auto bg-white border-2 border-primary text-primary hover:bg-white"
+          onClick={() => router.push("/business/create-organization")}
+        >
           Create Organization
         </Button>
         <Button className="px-6 py-4 rounded-xl text-white w-1/2 lg:w-auto">

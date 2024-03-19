@@ -23,7 +23,6 @@ import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/router";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { login, useAppDispatch, useAppSelector } from "@/lib/store";
 
 export default function SignIn() {
   return (
@@ -56,8 +55,6 @@ export default function SignIn() {
 function SignInForm() {
   const [submitting, setSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
-  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -97,9 +94,6 @@ function SignInForm() {
             userPassword = data.message;
             localStorage.setItem("user", data.user_full_name);
             localStorage.setItem("user_id", data.uuid);
-            dispatch(
-              login({ full_name: data.user_full_name, uuid: data.uuid })
-            );
           } else {
             toast({
               variant: "destructive",
@@ -157,14 +151,23 @@ function SignInForm() {
 
   return (
     <Card
+      placeholder=""
       color="transparent"
       shadow={false}
       className="flex flex-col items-center"
     >
-      <Typography variant="h1" className="text-primary self-start">
+      <Typography
+        placeholder=""
+        variant="h1"
+        className="text-primary self-start"
+      >
         Log In
       </Typography>
-      <Typography color="gray" className="mt-1 font-normal w-full self-start">
+      <Typography
+        placeholder=""
+        color="gray"
+        className="mt-1 font-normal w-full self-start"
+      >
         Welcome back! Please sign in to find your dream position!
       </Typography>
       <Form {...form}>
@@ -228,6 +231,12 @@ function SignInForm() {
               )}
             />
           </div>
+          <Link
+            href="/auth/forgotPassword"
+            className="italic text-xs text-gray-900"
+          >
+            Forgot Password?
+          </Link>
           <Button
             className="text-white rounded-xl px-6 py-4 text-lg font-semibold flex items-center gap-1 justify-between mt-8"
             disabled={submitting ? true : false}
@@ -242,7 +251,11 @@ function SignInForm() {
               )}
             />
           </Button>
-          <Typography color="black" className="mt-4 text-center font-normal">
+          <Typography
+            placeholder=""
+            color="black"
+            className="mt-4 text-center font-normal"
+          >
             Do not have an account?{" "}
             <Link
               href="/auth/signup"

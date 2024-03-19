@@ -19,11 +19,7 @@ export default function Logo({
         router.push("/");
       }}
     >
-      <img
-        src={src}
-        alt=""
-        className={twMerge("lg:h-32 h-24 w-auto", imgClassName)}
-      />
+      <img src={src} alt="" className={twMerge("h-24", imgClassName)} />
     </div>
   );
 }

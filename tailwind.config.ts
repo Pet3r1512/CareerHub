@@ -30,7 +30,7 @@ const config = {
         primary: "#4640DE",
         blue: "#26A4FF",
         darkBlue: "#202430",
-        green: "#56CDAD",
+        green: "#00C851",
         white: "#FFF",
         black: "#000",
         gray: {
@@ -84,6 +84,7 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/line-clamp")],
+  important: true,
 } satisfies Config;
 
 export default withMT(config);

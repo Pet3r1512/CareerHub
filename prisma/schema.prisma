@@ -1,52 +1,57 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
+  directUrl    = env("DIRECT_URL")
   relationMode = "prisma"
 }
 
 model User {
-  uuid         String    @id @default(uuid())
+  uuid         String   @id @default(uuid())
   full_name    String
   gender       String
   email        String
   password     String
-  phone_number String?
-  birth_day    DateTime?
-  age          Int?
-  location     String?
-  occupation   String?
-  created_date DateTime  @default(now())
-  companies    Company[]
+  phone_number String   @default("")
+  age          Int      @default(0)
+  location     String   @default("")
+  occupation   String   @default("")
+  created_date DateTime @default(now())
+}
+
+model Admin {
+  uuid     String @id @default(uuid())
+  username String
+  password String
+  name     String
 }
 
 model Company {
-  id            String   @id @default(uuid())
-  image_url     String?  @db.VarChar(1000)
-  name          String   @unique
-  founded_date  DateTime
-  description   String   @db.VarChar(1500)
-  location      String
-  industry_tags String
-  remain_jobs   Int
-  company_size  Int
-  contact_link  Contact?
-  user          User     @relation(fields: [created_by_id], references: [uuid])
-  created_by_id String
-  created_date  DateTime @default(now())
-
-  @@index([created_by_id])
+  uuid           String   @id @default(uuid())
+  name           String
+  image          String
+  urls           URL[]
+  location       String
+  industry_tags  String[]
+  description    String
+  founded_date   String
+  employee_count Int
+  created_date   DateTime @default(now())
 }
 
-model Contact {
-  email        String  @id
-  facebook_url String?
-  twitter_url  String?
-  linkedin_url String?
+model URL {
+  uuid      String   @id @default(uuid())
+  website   String?
+  facebook  String?
+  twitter   String?
+  instagram String?
+  linkedin  String?
+  company   Company? @relation(fields: [companyId], references: [uuid])
+  companyId String?
 
-  company    Company @relation(fields: [company_id], references: [id])
-  company_id String  @unique
+  @@index([companyId])
 }
