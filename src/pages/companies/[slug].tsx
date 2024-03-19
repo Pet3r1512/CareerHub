@@ -59,7 +59,7 @@ export default function CompanyPage(props: {
         <CompanyHeader
           name={props.company.name}
           image={props.company.image}
-          founded={props.company.created_date}
+          founded={props.company.founded_date}
           employees={props.company.company_size}
           location={props.company.location}
           industry={props.company.industry_tags}
