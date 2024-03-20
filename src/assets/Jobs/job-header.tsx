@@ -25,7 +25,7 @@ export default function JobHeader() {
             <div className="flex flex-col gap-y-2 lg:gap-2">
               <h1 className="text-4xl">Social Media Assistant</h1>
               <p className="text-lg font-normal">
-                Stripe | Paris, France | Full-Time
+                Stripe &#x2022; Paris, France &#x2022; Full-Time
               </p>
             </div>
           </div>
