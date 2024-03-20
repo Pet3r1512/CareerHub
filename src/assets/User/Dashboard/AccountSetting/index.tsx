@@ -17,14 +17,18 @@ import Loading from "@/assets/_UI/loading";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import OtpDialog from "./otp-dialog";
+import { useState } from "react";
 
 export default function AccountSetting() {
+  const [validOTP, setValidOTP] = useState(false);
   const query = trpc.user.getUserPassword.useQuery({
     id: localStorage.getItem("user_id")!,
   });
 
   const mutation = trpc.user.updatePassword.useMutation({
     onSuccess: () => {
+      form.reset();
       toast({
         title: "Update successfully!",
         className: "bg-green",
@@ -54,10 +58,12 @@ export default function AccountSetting() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: {
       uuid: localStorage.getItem("user_id")!,
       password: query.data,
       new_password: "",
+      confirm_password: "",
     },
   });
 
@@ -133,14 +139,20 @@ export default function AccountSetting() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                disabled={mutation.isLoading}
-                className="w-fit px-4 py-3 rounded-lg text-white mt-6"
-              >
-                Save Changes
-                {mutation.isLoading ? <Loading className="text-white" /> : ""}
-              </Button>
+              <div className="flex gap-x-4 items-center mt-6">
+                <Button
+                  disabled={!validOTP || mutation.isLoading}
+                  className="w-fit px-4 py-3 rounded-lg text-white"
+                >
+                  Save Changes
+                  {mutation.isLoading ? <Loading className="text-white" /> : ""}
+                </Button>
+                <OtpDialog
+                  mutation={mutation}
+                  validForm={form.formState}
+                  setValidOTP={setValidOTP}
+                />
+              </div>
             </form>
           </Form>
         </div>
