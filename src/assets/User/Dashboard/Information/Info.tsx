@@ -1,5 +1,5 @@
 import UserAvatar from "@/assets/_UI/Header/_avatar";
-import Section from "./section";
+
 import { trpc } from "@/server/utils/trpc";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Loading from "@/assets/_UI/loading";
+import Section from "../section";
 
 const departments = [
   { name: "Information Technology (IT)", code: "IT" },
