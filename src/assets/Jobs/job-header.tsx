@@ -38,7 +38,7 @@ export default function JobHeader() {
             </div>
             <div className="border-[1px] border-gray-300 rotate-90 w-14 hidden lg:block"></div>
             <div className="gap-2.5">
-              <Button className="text-2xl text-white bg-primary w-[100px] md:w-[311px] md:h-[50px] lg:w-[164px] lg:h-[57px]">
+              <Button className="text-2xl text-white bg-primary w-[150px] h-[45px] md:w-[311px] md:h-[50px] lg:w-[164px] lg:h-[57px]">
                 <span>Apply</span>
               </Button>
             </div>
