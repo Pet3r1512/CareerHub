@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import {
   InputOTP,
   InputOTPGroup,
@@ -18,27 +17,22 @@ import {
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { TOTP } from "totp-generator";
 import React, { useState } from "react";
-import { FormState } from "react-hook-form";
 
 export default function OtpDialog({
   mutation,
-  validForm,
+  formState,
   setValidOTP,
 }: {
   mutation: any;
-  validForm: FormState<{
-    uuid: string;
-    password: string;
-    new_password: string;
-    confirm_password: string;
-  }>;
+  formState: any;
   setValidOTP: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [otp, setOtp] = useState("");
   const [inputOTP, setInputOTP] = useState("");
   const [open, setOpen] = useState(false);
 
-  const { isValid } = validForm;
+  const { isValid, isDirty } = formState;
+  const isNotSubmittable = !!isValid && !!isDirty;
 
   function generateOTP() {
     setOtp("");
@@ -54,7 +48,7 @@ export default function OtpDialog({
         }}
       >
         <Button
-          disabled={!isValid}
+          disabled={!isNotSubmittable}
           className="bg-white border-2 border-primary text-primary hover:bg-white hover:text-primary"
         >
           Send OTP
