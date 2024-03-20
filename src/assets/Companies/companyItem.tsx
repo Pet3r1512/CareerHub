@@ -31,6 +31,7 @@ export default function CompanyItem({
             src={company.image}
             alt={company.name}
             fill
+            sizes="48px"
             style={{ objectFit: "contain" }}
           />
         </div>
