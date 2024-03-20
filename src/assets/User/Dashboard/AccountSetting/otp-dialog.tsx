@@ -20,18 +20,18 @@ import React, { useState } from "react";
 
 export default function OtpDialog({
   mutation,
-  formState,
+  form,
   setValidOTP,
 }: {
   mutation: any;
-  formState: any;
+  form: any;
   setValidOTP: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [otp, setOtp] = useState("");
   const [inputOTP, setInputOTP] = useState("");
   const [open, setOpen] = useState(false);
 
-  const { isValid, isDirty } = formState;
+  const { isValid, isDirty } = form.formState;
   const isNotSubmittable = !!isValid && !!isDirty;
 
   function generateOTP() {
