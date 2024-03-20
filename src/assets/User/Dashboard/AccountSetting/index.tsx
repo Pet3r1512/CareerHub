@@ -45,7 +45,6 @@ export default function AccountSetting() {
   const formSchema = z
     .object({
       uuid: z.string(),
-      password: z.string(),
       new_password: z
         .string()
         .min(8, "Password must has at least 8 characters!"),
@@ -61,7 +60,6 @@ export default function AccountSetting() {
     mode: "onChange",
     defaultValues: {
       uuid: localStorage.getItem("user_id")!,
-      password: query.data,
       new_password: "",
       confirm_password: "",
     },
@@ -149,7 +147,7 @@ export default function AccountSetting() {
                 </Button>
                 <OtpDialog
                   mutation={mutation}
-                  formState={form.formState}
+                  form={form}
                   setValidOTP={setValidOTP}
                 />
               </div>

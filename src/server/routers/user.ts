@@ -82,7 +82,6 @@ export const userRouter = router({
     .input(
       z.object({
         uuid: z.string(),
-        password: z.string(),
         new_password: z.string(),
       })
     )
