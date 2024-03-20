@@ -149,7 +149,7 @@ export default function AccountSetting() {
                 </Button>
                 <OtpDialog
                   mutation={mutation}
-                  validForm={form.formState}
+                  formState={form.formState}
                   setValidOTP={setValidOTP}
                 />
               </div>
