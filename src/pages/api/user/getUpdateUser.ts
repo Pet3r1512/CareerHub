@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 import Cors from "cors";
 import { runMiddleware } from "@/middleware/cors";
-import { generateNext30DaysFromDate } from "./updateUser";
 const cors = Cors({
   methods: ["POST", "GET", "HEAD"],
 });
@@ -26,9 +25,6 @@ export default async function handler(
   if (user_detail) {
     return res.status(200).json({
       user_detail: user_detail,
-      nextChangeValidOn: generateNext30DaysFromDate(
-        user_detail.created_date.toString()
-      ),
     });
   }
   return res.status(400).json({ message: "User Not Found!" });

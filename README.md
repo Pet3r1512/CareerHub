@@ -4,20 +4,29 @@ Welcome to CareerHub, a Next.js project designed to simulate a job seeker websit
 
 Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 
-## Team Members
+# Team Members
 
-- [Pham Tang Thanh Phong](https://github.com/Pet3r1512) - Project Owner, Full-Stack Developer
-- [Le Dinh Khoi](https://github.com/lekhoi2709) - Full-Stack Developer
-- [Vu Le Tan Phat](https://github.com/PhatBen234) - Front-end Developer
-- [Dang Nhat Khang](https://github.com/nhatkhang0910) - Front-end Developer
-- [Le Gia Minh](https://github.com/Min2Solid) - Front-end Developer
+- [Pham Tang Thanh Phong](https://github.com/Pet3r1512) - Project Owner
+
+## Full-Stack Developer
+
+- [Le Dinh Khoi](https://github.com/lekhoi2709)
+- [Ngo Quang Huy](https://github.com/popcorn11)
+
+## Front-End Developer
+
+- [Vu Le Tan Phat](https://github.com/PhatBen234)
+- [Dang Nhat Khang](https://github.com/nhatkhang0910)
+- [Le Gia Minh](https://github.com/Min2Solid)
+- [Nguyen Ho Linh Dan](http://https://github.com/nguyenholinhdan)
 
 ## Technologies and Tools Used
 
 ### Development
 
 - [Next.js](https://nextjs.org/) - TypeScript
-- [Redux](https://redux.js.org/)
+- [tRPC](https://trpc.io/)
+- [React Query](https://tanstack.com/query/v3/)
 
 ### Styling
 
@@ -29,6 +38,7 @@ Visit our product at: [CareerHub](https://carreerhub.vercel.app/)
 
 - [Prisma](https://www.prisma.io/)
 - [PlanetScale](https://planetscale.com/)
+- [Neon](https://neon.tech/)
 - [Supabase](https://supabase.com/)
 
 ### Authentication and security
@@ -63,7 +73,7 @@ This project is only used for EDUCATIONAL AND LEARNING PURPOSE; COMMERCIAL of an
 
 Special thanks to:
 
-- [Figma Design](<https://www.figma.com/file/CcrwqMT0urq0xXUATau6ap/Jobhuntly---Job-Board-%26-Portal-Web-and-Mobile-UI-Kit-(Community)?type=design&node-id=0-1&mode=design&t=6O7040LGadXeGkeO-0>)
+- [Figma Design](<https://www.figma.com/file/Iv5kIX06OgoDdtsFpl7LNG/JobHuntly---Job-Hunting-Website-(Community)?type=design&node-id=0-1&mode=design&t=aFxShUy9pru2yAIX-0>)
 - [User Dashboard Design](<https://www.figma.com/file/Bb1zBSeGgNkAAS2hyK7fm6/Dashboard---Online-Learning-Profile-(Community)?type=design&mode=design&t=PQr5zjPkbEo2kRrz-0>)
 - [Illutrations](<https://www.figma.com/file/P6Br53I38tz9P5t0V0RGdo/Free-Freelance-%26-Remote-Job-Illustration-Set-(Community)?type=design&t=6O7040LGadXeGkeO-6>)
 - [Placeholder Logos](<https://www.figma.com/file/rEFjFAtfZeqWL6b0Mcahls/PlaceLogos-%7C-Placeholder-Logos-(Community)?type=design&t=6O7040LGadXeGkeO-6>)

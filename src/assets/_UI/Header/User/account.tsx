@@ -7,7 +7,9 @@ import Link from "next/link";
 export default function Account() {
   return (
     <div className={`${mitr.variable} font-sans`}>
-      <Typography className="font-semibold">Account</Typography>
+      <Typography placeholder="" className="font-semibold">
+        Account
+      </Typography>
       <Link href="/user/profile?section=account_settings">
         <MenubarItem>Settings</MenubarItem>
       </Link>
