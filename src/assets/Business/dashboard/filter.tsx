@@ -1,7 +1,7 @@
-import Button from "@material-tailwind/react/components/Button";
 import Page from "../_UI/Page";
 import { Filter, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import Button from "@material-tailwind/react/components/Button";
 
 export default function ApplicantFilter() {
   return (
@@ -26,8 +26,8 @@ export default function ApplicantFilter() {
       </div>
 
       <div className=" h-full bg-gray-500 border-2 border-gray-300 flex flex-col lg:flex-row">
-        <Button className="rounded-none bg-gray-500 ">Pipeline View</Button>
-        <Button className="rounded-none text-primary bg-white ">
+        <Button className="rounded-none bg-gray-500 hover:bg-black">Pipeline View</Button>
+        <Button className="rounded-none text-primary bg-white hover:bg-black hover:text-white">
           Table View
         </Button>
       </div>
