@@ -38,7 +38,7 @@ export default function CompanyItem({ company }: { company: Company }) {
       </div>
       <Link
         href={`/companies/${company.name.toLowerCase().replace(/\s/g, "-")}`}
-        className="text-base lg:text-lg font-bold relative group/item w-fit"
+        className="text-base lg:text-lg font-bold relative group/item w-fit max-w-full truncate"
       >
         <span
           className="w-0 h-[1px] absolute bottom-0 right-0 transition-all duration-500 lg:group-hover/item:w-full lg:group-hover/item:left-0 lg:group-hover/item:bg-black/40"
