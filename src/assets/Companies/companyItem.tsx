@@ -5,19 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { type Company } from "@prisma/client";
 
-export default function CompanyItem({
-  company,
-  index,
-}: {
-  company: Company;
-  index: number;
-}) {
+export default function CompanyItem({ company }: { company: Company }) {
   const router = useRouter();
   const industry_tags = company.industry_tags;
 
   return (
     <div
-      key={company.name + index}
+      key={company.uuid}
       className="border p-4 flex flex-col gap-4 lg:hover:bg-gray-100 transition duration-300 ease-in-out rounded-md cursor-pointer"
       onClick={() =>
         router.push(
