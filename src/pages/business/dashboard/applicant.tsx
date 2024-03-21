@@ -7,7 +7,6 @@ export default function Applicant() {
   return (
     <Page pageName="Applicant">
       <ApplicantFilter />
-      <ApplicantFilter2 />
       <ApplicantInfor />
     </Page>
   );
