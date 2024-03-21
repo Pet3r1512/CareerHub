@@ -1,9 +1,9 @@
-import { Company } from "@/types/company";
 import { Badge } from "@/components/ui/badge";
 import CustomizeBadge from "@/components/customizeBadge";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { type Company } from "@prisma/client";
 
 export default function CompanyItem({
   company,
