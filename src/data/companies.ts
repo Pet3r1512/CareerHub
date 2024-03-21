@@ -677,171 +677,171 @@ export const companies = [
 export const urlsData = [
   {
     website: "https://www.advertisenow.com",
-    companyId: "02177748-eae9-4c28-a775-dc9ba9c66c81",
+    companyId: "15a8d8f8-da53-4091-b24d-d730cbf8f91c",
   },
   {
     website: "https://www.businesssolutions.com",
-    companyId: "771090ae-241d-480b-8cdc-bbd0d93ec42c",
+    companyId: "b6f2afd2-ee27-4c12-976c-ccc3eab5d170",
   },
   {
     website: "https://www.blockchaininnovators.com",
-    companyId: "9073764f-35cb-4576-b633-ceb63ef3f703",
+    companyId: "ee79b97b-433c-49d2-b153-7fd9ce129647",
   },
   {
     website: "https://www.cloudtechsolutions.com",
-    companyId: "9db437b3-44a0-424c-9e2a-2b62fda886d1",
+    companyId: "b2b68748-dd8f-4aa7-9472-67baa1075ef4",
   },
   {
     website: "https://www.consumertechinnovations.com",
-    companyId: "d5076a24-1e4f-44c5-a95b-ce0801ad571a",
+    companyId: "72b5680f-e4c9-444f-95e1-791865a05093",
   },
   {
     website: "https://www.edutechsolutions.com",
-    companyId: "92fa9180-1d68-4d71-aff8-faae0fcf6feb",
+    companyId: "95512fe5-13af-4305-bc5d-9cbccef137fa",
   },
   {
     website: "https://www.finovationtech.com",
-    companyId: "7a04c26d-83c0-4409-a367-7f4585e395f8",
+    companyId: "17be5de5-3f9d-4c01-aa35-9db52d70adcc",
   },
   {
     website: "https://www.gamehubstudios.com",
-    companyId: "fc1c248a-575a-4ead-a74b-ed530b6e8c7c",
+    companyId: "688bd72a-2843-447b-aba0-b90583ee971d",
   },
   {
     website: "https://www.foodtechinnovations.com",
-    companyId: "24caba68-7e13-4b5d-9dd3-46ac6c56c968",
+    companyId: "d4239f23-8018-4806-9e84-bc5559955399",
   },
   {
     website: "https://www.healthcaretechdynamics.com",
-    companyId: "37cecf49-45c1-4b83-80dc-25b9be0a61a8",
+    companyId: "0dd8fdbd-595d-42ea-b2b8-96c0237c6b40",
   },
   {
     website: "https://www.cloudhostingsolutions.com",
-    companyId: "fb909325-773e-4cd4-b334-b1c198807cb5",
+    companyId: "fd928b46-ff72-4b0b-8ea5-5f174f7d1347",
   },
   {
     website: "https://www.mediainnovatorsgroup.com",
-    companyId: "b4fbf08d-daf7-499d-bdaf-aaeb99926ab5",
+    companyId: "2d3c5161-e23d-4143-a23c-0867c0554e1a",
   },
   {
     website: "https://www.adtechsolutions.com",
-    companyId: "23956aa8-01ec-4972-b905-043c82ebfed6",
+    companyId: "31b20cb7-c791-43b5-b8a2-80109666fab8",
   },
   {
     website: "https://www.bizserviceshub.com",
-    companyId: "89225c79-9622-4da8-8b8f-609a8ab16382",
+    companyId: "111090fa-e94e-4d40-91f0-9d2e824f5f4c",
   },
   {
     website: "https://www.blockchainsolutions.com",
-    companyId: "db6f69a4-aa17-4f63-a30b-e8aa1fe20a62",
+    companyId: "ed825d7f-2992-422d-98cd-314d2aefe6c2",
   },
   {
     website: "https://www.cloudtechinnovations.com",
-    companyId: "d7259174-e161-4843-8fef-f90827056485",
+    companyId: "27b9d349-affe-4dc3-a1f4-2d67e40fad58",
   },
   {
     website: "https://www.consumertechdynamics.com",
-    companyId: "29e52593-798b-429f-945b-d927eeed6840",
+    companyId: "21fcfc97-5bf0-49fb-8532-2a543a82a987",
   },
   {
     website: "https://www.eduinnovatesolutions.com",
-    companyId: "b2e9f713-9c5b-47c9-a529-2ea56d6f507d",
+    companyId: "aabf7dff-966b-42ff-8f42-57b82e7c7957",
   },
   {
     website: "https://www.fintechdynamics.com",
-    companyId: "6090f173-144a-4a44-8ccc-92f7ad3b21f1",
+    companyId: "b74d6db5-5ac4-4986-8303-a70b58745656",
   },
   {
     website: "https://www.gaminginnovations.com",
-    companyId: "be4a105b-59ab-4702-b658-21fc18e9f525",
+    companyId: "71863c72-c98e-48f7-acca-3b7ce11102a0",
   },
   {
     website: "https://www.zelle.com",
-    companyId: "d9ae4bc4-f8de-4f75-804f-e72b077f5dc0",
+    companyId: "7895deb0-4a45-4d20-a61e-6f222c48d15c",
   },
   {
     website: "https://www.spotify.com",
-    companyId: "835856e9-b399-4846-9358-c627bc506a4f",
+    companyId: "b993764d-4168-4596-af0e-5b3f6919e195",
   },
   {
     website: "https://www.apple.com",
-    companyId: "02cbf9b8-5743-4b33-8c5e-043af68ac077",
+    companyId: "73b41643-c03c-41a8-9c27-a1319baf95c8",
   },
   {
     website: "https://www.heroku.com",
-    companyId: "0276b3e3-0416-44f5-9b2c-9aede9e14538",
+    companyId: "89d23e44-7a3d-4892-8aeb-0ae9c549312b",
   },
   {
     website: "https://www.moz.com",
-    companyId: "fc9959bc-48f9-40b8-9d5d-4ec4f9e4a4f5",
+    companyId: "a9e2158f-a9e5-42bb-b21b-b3ae2edb5620",
   },
   {
     website: "https://www.mega.com",
-    companyId: "36384bae-41c4-427e-886f-8846f07a13d4",
+    companyId: "28624e13-268b-4582-9dc5-6ee4b47d69a0",
   },
   {
     website: "https://www.hulu.com",
-    companyId: "1f918545-7367-4149-9b8b-1f9a991a3e0e",
+    companyId: "b7aed7f1-46b2-4a1e-9a04-c19f12d1ea07",
   },
   {
     website: "https://www.tencentcloud.com",
-    companyId: "9fcbd360-c98b-44dd-994e-b4f49c78942c",
+    companyId: "7fec8628-3154-42fb-ae86-0d87d5b4be86",
   },
   {
     website: "https://www.bigcommerce.com",
-    companyId: "a9984802-ff67-4d35-9b5d-5ff5fd03e83d",
+    companyId: "f575e1d9-acb2-46e8-a344-8c651ed642e7",
   },
   {
     website: "https://www.google.com",
-    companyId: "a8f14ba1-0348-4829-8220-2dcf3b5a5e56",
+    companyId: "37d8ebb6-27d9-4e62-b478-2444ed92ef57",
   },
   {
     website: "https://www.appletv.com",
-    companyId: "b2ea51cd-df89-4171-be3e-7b33cdce2fe0",
+    companyId: "d264f231-616a-4ff1-85e2-878b99cde348",
   },
   {
     website: "https://www.amazon.com",
-    companyId: "bce16a22-976d-4403-9502-ab2a70791e81",
+    companyId: "3ed43904-e82a-4ead-ac44-66b358d4a3d0",
   },
   {
     website: "https://www.microsoft.com",
-    companyId: "2683d8cb-68e9-4180-aee7-f5a9d3326b45",
+    companyId: "35c5d52b-7aab-4ebe-b5d3-edccae318f92",
   },
   {
     website: "https://www.facebook.com",
-    companyId: "e0a7a543-a6a9-4b79-9a1e-6d8f4e5b73e1",
+    companyId: "b450f7e3-5ff1-466b-80eb-479ba3bf1dad",
   },
   {
     website: "https://abc.xyz",
-    companyId: "4c0a9edb-38f4-4614-a3af-eac308d36ced",
+    companyId: "5bd8c28c-03e4-40c7-92e2-a41731d85fb4",
   },
   {
     website: "https://www.tesla.com",
-    companyId: "7dc3cf71-a15f-41cb-9d58-98b2b8e8d543",
+    companyId: "5e67c708-2eba-4153-b070-67a9f3b859a2",
   },
   {
     website: "https://www.nvidia.com",
-    companyId: "8c43e0e0-6385-45cf-8a78-130882eb5c6f",
+    companyId: "cbb0bb2b-2035-4e06-a5e8-97cab022de44",
   },
   {
     website: "https://www.netflix.com",
-    companyId: "8c7d11fd-78d5-4992-a745-30e77efbda29",
+    companyId: "b920fc6a-5426-4f72-a204-176d540e5763",
   },
   {
     website: "https://www.uber.com",
-    companyId: "65a2a83c-f637-4860-9076-e436d3d72095",
+    companyId: "70a66dfd-5a74-4964-9f0e-db52f1c5b41b",
   },
   {
     website: "https://www.paypal.com",
-    companyId: "7bc152ac-de30-49c5-9a04-232fc3bacb4a",
+    companyId: "e6d65589-7b9e-43f2-a606-f61ba7d471bd",
   },
   {
     website: "https://www.salesforce.com",
-    companyId: "21ba04f1-a32f-4198-8366-ecb94acef2cf",
+    companyId: "f393595d-6bb5-4898-bf69-19bbb01c37a7",
   },
   {
     website: "https://www.oracle.com",
-    companyId: "6bb0226e-11db-45b3-84b2-6eeb4b0fc9eb",
+    companyId: "c3f9ddce-adc3-4c4a-be15-5bba138fc5d8",
   },
   {
     website: "https://www.ibm.com/",
@@ -849,7 +849,7 @@ export const urlsData = [
     twitter: "https://twitter.com/IBM",
     facebook: "https://www.facebook.com/ibm/",
     instagram: "https://www.instagram.com/ibm/",
-    companyId: "ec50bcb5-fced-4f7e-917c-d61c5b256949",
+    companyId: "37140c20-e18d-4a1a-9bde-febacbd519fc",
   },
   {
     website: "https://www.cisco.com/",
@@ -857,7 +857,7 @@ export const urlsData = [
     twitter: "https://twitter.com/Cisco",
     facebook: "https://www.facebook.com/Cisco/",
     instagram: "https://www.instagram.com/cisco/",
-    companyId: "3b2b1b0f-e550-4927-b56d-dbec1cee57d2",
+    companyId: "f40da078-9eed-4bf1-9f4e-98ed82439d36",
   },
   {
     website: "https://www.intel.com/",
@@ -865,7 +865,7 @@ export const urlsData = [
     twitter: "https://twitter.com/intel",
     facebook: "https://www.facebook.com/Intel/",
     instagram: "https://www.instagram.com/intel/",
-    companyId: "9aae0928-4521-4204-944f-dfa354edf539",
+    companyId: "1b7f8b5d-fbad-446f-b76f-5ac6021460e6",
   },
   {
     website: "https://www.adobe.com/",
@@ -873,7 +873,7 @@ export const urlsData = [
     twitter: "https://twitter.com/Adobe",
     facebook: "https://www.facebook.com/Adobe/",
     instagram: "https://www.instagram.com/adobe/",
-    companyId: "526e3795-1668-44e9-ba92-f9fd174eeb6e",
+    companyId: "25321cc6-8ec1-40f7-b9b3-fb341bd99c98",
   },
   {
     website: "https://www.twitter.com/",
@@ -881,7 +881,7 @@ export const urlsData = [
     twitter: "https://twitter.com/Twitter",
     facebook: "https://www.facebook.com/Twitter/",
     instagram: "https://www.instagram.com/twitter/",
-    companyId: "5809f13e-a8a0-4386-98b1-6fd65b123a42",
+    companyId: "318b4e4a-2d3c-4d45-8d7e-521e88cc23e3",
   },
   {
     website: "https://www.squareup.com/",
@@ -889,7 +889,7 @@ export const urlsData = [
     twitter: "https://twitter.com/Square",
     facebook: "https://www.facebook.com/Square/",
     instagram: "https://www.instagram.com/square/",
-    companyId: "c330e4a6-43a1-4a7d-8fe4-f91fbc6f8dd0",
+    companyId: "97e318c9-8d34-452d-9545-416fbd7b5f63",
   },
   {
     website: "https://www.zoom.us/",
@@ -897,6 +897,6 @@ export const urlsData = [
     twitter: "https://twitter.com/zoom_us",
     facebook: "https://www.facebook.com/zoomvideocommunications/",
     instagram: "https://www.instagram.com/zoom/",
-    companyId: "f2af6e92-5855-4e87-be71-272315581bbb",
+    companyId: "f3545518-34a3-4661-a115-637fb6bc30e9",
   },
 ];
