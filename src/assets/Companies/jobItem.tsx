@@ -6,6 +6,7 @@ import CustomizeBadge from "@/components/customizeBadge";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
 import Link from "next/link";
+import JobCapacityProgress from "@/components/job/job-capacity-progress";
 
 export default function JobItem({
   job,
@@ -68,25 +69,15 @@ export default function JobItem({
             </div>
           </div>
         </div>
-        <div
-          className={`flex gap-4 ${
-            view === "grid"
+        <JobCapacityProgress
+          applied={job.applied}
+          capacity={job.capacity}
+          className={
+            view == "grid"
               ? "flex-row-reverse mt-4 justify-between"
               : "flex-col-reverse mt-4 md:mt-0 md:flex-col"
-          }`}
-        >
-          <Button className="text-white px-8">Apply</Button>
-          <div className="flex flex-col items-center justify-center gap-2 text-sm">
-            <Progress
-              value={progressValue}
-              className="h-2 bg-gray-300"
-              indicatorColor="bg-green"
-            />
-            <p>
-              <strong>{job.applied} applied </strong>of {job.capacity} capacity
-            </p>
-          </div>
-        </div>
+          }
+        />
       </div>
     </div>
   );
