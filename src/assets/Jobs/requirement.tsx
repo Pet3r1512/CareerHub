@@ -15,9 +15,7 @@ export default function Requirement() {
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl">Who are you</h1>
         {Whoareyou.map((item, index) => {
-          return (
-            <Content item={item}/>
-          );
+          return <Content key={index} item={item} />;
         })}
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function AdditionReq() {
         <h1 className="text-2xl">Nice-To-Have</h1>
         {Nicetohave.map((item, index) => {
           return (
-            <Content item={item}/>
+            <Content key={index} item={item}/>
           );
         })}
       </div>

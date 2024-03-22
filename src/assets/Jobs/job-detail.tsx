@@ -23,9 +23,7 @@ export default function JobDetail() {
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl">Responsibilities</h1>
         {Responsibilities.map((item, index) => {
-          return (
-            <Content item={item}/>
-          );
+          return <Content key={index} item={item} />;
         })}
       </div>
     </div>
