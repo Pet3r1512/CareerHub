@@ -1,5 +1,6 @@
 import About from "@/assets/Jobs/about";
 import AdditionReq from "@/assets/Jobs/addition-req";
+import Categories from "@/assets/Jobs/categories";
 import JobDetail from "@/assets/Jobs/job-detail";
 import JobHeader from "@/assets/Jobs/job-header";
 import Requirement from "@/assets/Jobs/requirement";
@@ -16,11 +17,15 @@ export default function JobDemo() {
           <Requirement></Requirement>
           <hr className="lg:hidden" />
           <AdditionReq></AdditionReq>
+          <hr className="lg:hidden" />
         </div>
         <div className="p-8 gap-10 w-[22%]">
           <About></About>
+          <hr />
+          <Categories></Categories>
         </div>
       </div>
+      <hr />
     </Page>
   );
 }
