@@ -10,13 +10,14 @@ export default function JobDemo() {
   return (
     <Page pageName="Job Description">
       <JobHeader></JobHeader>
-      <div className="flex gap-8">
+      <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex flex-col w-full lg:w-2/3 p-8 gap-10">
           <JobDetail></JobDetail>
           <hr className="lg:hidden" />
           <Requirement></Requirement>
           <hr className="lg:hidden" />
           <AdditionReq></AdditionReq>
+          <hr className="lg:hidden"/>
         </div>
         <div className="flex flex-1 flex-col p-8 gap-10">
           <About></About>

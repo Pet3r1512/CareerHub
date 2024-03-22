@@ -20,6 +20,7 @@ export default function JobDetail() {
           community and incentivize others to engage on our channels.
         </p>
       </div>
+      <hr className="lg:hidden" />
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl">Responsibilities</h1>
         {Responsibilities.map((item, index) => {
