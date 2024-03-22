@@ -6,15 +6,17 @@ export default function JobCapacityProgress({
   applied,
   capacity,
   className,
+  isButton = true,
 }: {
   applied: number;
   capacity: number;
   className?: string;
+  isButton?: boolean;
 }) {
   const progressValue = (applied * 100) / capacity;
   return (
     <div className={twMerge("flex gap-4", className)}>
-      <Button className="text-white px-8">Apply</Button>
+      <Button className={twMerge("text-white px-8", isButton == true?'':'hidden')}>Apply</Button>
       <div className="flex flex-col items-center justify-center gap-2 text-sm">
         <Progress
           value={progressValue}
