@@ -1,5 +1,6 @@
 import About from "@/assets/Jobs/about";
 import AdditionReq from "@/assets/Jobs/addition-req";
+import Categories from "@/assets/Jobs/categories";
 import JobDetail from "@/assets/Jobs/job-detail";
 import JobHeader from "@/assets/Jobs/job-header";
 import Requirement from "@/assets/Jobs/requirement";
@@ -17,10 +18,13 @@ export default function JobDemo() {
           <hr className="lg:hidden" />
           <AdditionReq></AdditionReq>
         </div>
-        <div className="flex-1 p-8 gap-10">
+        <div className="flex flex-1 flex-col p-8 gap-10">
           <About></About>
+          <hr />
+          <Categories></Categories>
         </div>
       </div>
+      <hr />
     </Page>
   );
 }
