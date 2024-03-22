@@ -45,11 +45,7 @@ export default function CompaniesAndJobsView({
             .slice(firstItemIndex, lastItemIndex)
             .map((item, index) =>
               type == "company" ? (
-                <CompanyItem
-                  key={item.name + index}
-                  company={item}
-                  index={index}
-                />
+                <CompanyItem key={item.name + index} company={item} />
               ) : (
                 <JobItem
                   key={item.title + item.company.name}
