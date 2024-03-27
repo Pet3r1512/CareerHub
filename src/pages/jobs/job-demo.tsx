@@ -19,7 +19,7 @@ export default function JobDemo() {
           <AdditionReq></AdditionReq>
           <hr className="lg:hidden" />
         </div>
-        <div className="p-8 gap-10 w-full lg:w-[22%] flex flex-col">
+        <div className="p-8 gap-10 w-full md:w-1/2 md:mx-auto lg:mx-0 lg:w-[22%] flex flex-col">
           <About></About>
           <hr />
           <Categories></Categories>
