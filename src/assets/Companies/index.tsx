@@ -2,7 +2,8 @@ import CompaniesOptions from "../_UI/SideOptions/companiesOptions";
 import CompaniesAndJobsContainer from "./companiesContainer";
 import { useSearchParams } from "next/navigation";
 import JobOptionsContainer from "../_UI/SideOptions/jobOptions";
-import { Company, Job } from "@/types/company";
+import { Job } from "@/types/company";
+import { type Company } from "@prisma/client";
 
 export default function CompaniesAndJobsLayout({
   loading,

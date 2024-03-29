@@ -3,7 +3,7 @@ import CompaniesAndJobsLayout from "@/assets/Companies";
 import Page from "@/assets/_UI/Page";
 import { useState } from "react";
 import prisma from "@/lib/prisma";
-import { Company } from "@/types/company";
+import { type Company } from "@prisma/client";
 
 export async function getServerSideProps() {
   try {

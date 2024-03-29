@@ -38,7 +38,7 @@ model Company {
   location             String
   industry_tags        String[]
   description          String
-  founded_date         String
+  founded_date         DateTime
   company_size         Int
   remaining_jobs_count Int
   created_date         DateTime @default(now())
