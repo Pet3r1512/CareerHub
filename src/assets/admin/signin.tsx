@@ -19,6 +19,7 @@ import { toast } from "@/components/ui/use-toast";
 import { trpc } from "@/server/utils/trpc";
 import { Toaster } from "@/components/ui/toaster";
 import { useRouter } from "next/router";
+import { setWithExpiry } from "@/utils/localStorage";
 
 export function Signin({
   admin,
@@ -29,9 +30,10 @@ export function Signin({
 }) {
   const router = useRouter();
   const mutation = trpc.admin.isAdmin.useMutation({
-    onSuccess: (admin) => {
+    onSuccess: (data) => {
       setAdmin(admin);
-      localStorage.setItem("admin", admin);
+      localStorage.setItem("admin", data.admin);
+      setWithExpiry("admin-token", data.token, 86400000);
       toast({
         title: "Log in successfully!",
         className: "bg-green",

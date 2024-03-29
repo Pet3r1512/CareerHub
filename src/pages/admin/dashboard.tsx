@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Header from "@/assets/admin/header";
+import Page from "@/assets/_UI/Page";
+import Table from "@/assets/admin/table";
 
 const Dashboard = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -20,10 +23,15 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <p>Admin logged in</p>
-    </div>
+    <Page
+      pageName="Admin Dashboard"
+      noMenu
+      noFooter
+      noHeader
+      className="h-screen relative"
+    >
+      <Table />
+    </Page>
   );
 };
 

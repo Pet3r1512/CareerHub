@@ -64,28 +64,26 @@ export default function Profile() {
   }, []);
 
   return (
-    <div>
-      <Page
-        pageName="Profile"
-        noMenu
-        noFooter
-        noHeader
-        className="h-screen relative"
-      >
-        <MobileSideBar
-          searchParams={searchParams}
+    <Page
+      pageName="Profile"
+      noMenu
+      noFooter
+      noHeader
+      className="h-screen relative"
+    >
+      <MobileSideBar
+        searchParams={searchParams}
+        expandMenu={expandMenu}
+        setExpandMenu={setExpandMenu}
+      />
+      <div className="gap-2 flex min-h-screen max-h-screen lg:max-h-none lg:h-screen py-4 lg:py-16">
+        <UserDashboardMenu
           expandMenu={expandMenu}
           setExpandMenu={setExpandMenu}
         />
-        <div className="gap-2 flex min-h-screen max-h-screen lg:max-h-none lg:h-screen py-4 lg:py-16">
-          <UserDashboardMenu
-            expandMenu={expandMenu}
-            setExpandMenu={setExpandMenu}
-          />
-          <ProfileSections searchParams={searchParams} />
-        </div>
-      </Page>
-    </div>
+        <ProfileSections searchParams={searchParams} />
+      </div>
+    </Page>
   );
 }
 

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { publicProcedure, router } from "../trpc";
 import { PrismaClient } from "@prisma/client";
+import { generateToken } from "@/utils/auth";
 
 const prisma = new PrismaClient();
 
@@ -23,7 +24,8 @@ export const adminRouter = router({
       });
       prisma.$disconnect();
       if (admin) {
-        return admin.name;
+        const token = generateToken(admin.uuid);
+        return { admin: admin.name, token: token };
       }
       throw new Error();
     }),

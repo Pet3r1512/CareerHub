@@ -10,6 +10,11 @@ const nextConfig = {
         port: "",
         pathname: "/storage/v1/object/sign/Static%20Images/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
     ],
   },
   async headers() {
